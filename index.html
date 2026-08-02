@@ -1,1072 +1,481 @@
-<meta name="robots" content="noindex, nofollow">
+<!doctype html>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Tablero de Control · Meta Ads · Héctor Hugo de la Peña</title>
 <style>
-:root {
-  --bg: #f5f6f8; --card: #ffffff; --text: #1a1d24; --muted: #5a6272; --border: #e2e5ea;
-  --verde: #167a3d; --verde-bg: #e3f6ea; --ambar: #8a5a00; --ambar-bg: #fff3d6;
-  --rojo: #b3231c; --rojo-bg: #fde3e1; --gris: #5a6272; --gris-bg: #eceef2;
-  --accent: #2557d6; --accent-bg: #e8eefd; --shadow: 0 1px 3px rgba(20,22,30,.08), 0 1px 2px rgba(20,22,30,.06);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14161c; --card: #1c1f27; --text: #e7e9ee; --muted: #9aa2b1; --border: #2b2f3a;
-    --verde: #4ade80; --verde-bg: #133b23; --ambar: #fbbf24; --ambar-bg: #3d2f06;
-    --rojo: #f87171; --rojo-bg: #3d1613; --gris: #9aa2b1; --gris-bg: #262a34;
-    --accent: #7ea3ff; --accent-bg: #1a2540; --shadow: 0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.3);
+  :root{
+    --bg: #f4f5f7;
+    --bg-elev: #ffffff;
+    --bg-elev2: #eef0f3;
+    --text: #1a1d23;
+    --text-dim: #55606e;
+    --text-faint: #8892a0;
+    --border: #dde1e7;
+    --accent: #2d5fe0;
+    --verde-bg: #e3f6ea; --verde-fg: #157347; --verde-bd:#9fdcb7;
+    --ambar-bg: #fff6dd; --ambar-fg: #92650a; --ambar-bd:#f3d98b;
+    --rojo-bg: #fde8e8; --rojo-fg: #b3261e; --rojo-bd:#f3aca8;
+    --gris-bg: #eceff2; --gris-fg: #5b6572; --gris-bd:#d3d8de;
+    --shadow: 0 1px 2px rgba(20,20,30,.06), 0 1px 8px rgba(20,20,30,.04);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-}
-:root[data-theme="dark"] {
-  --bg: #14161c; --card: #1c1f27; --text: #e7e9ee; --muted: #9aa2b1; --border: #2b2f3a;
-  --verde: #4ade80; --verde-bg: #133b23; --ambar: #fbbf24; --ambar-bg: #3d2f06;
-  --rojo: #f87171; --rojo-bg: #3d1613; --gris: #9aa2b1; --gris-bg: #262a34;
-  --accent: #7ea3ff; --accent-bg: #1a2540; --shadow: 0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.3);
-}
-:root[data-theme="light"] {
-  --bg: #f5f6f8; --card: #ffffff; --text: #1a1d24; --muted: #5a6272; --border: #e2e5ea;
-  --verde: #167a3d; --verde-bg: #e3f6ea; --ambar: #8a5a00; --ambar-bg: #fff3d6;
-  --rojo: #b3231c; --rojo-bg: #fde3e1; --gris: #5a6272; --gris-bg: #eceef2;
-  --accent: #2557d6; --accent-bg: #e8eefd; --shadow: 0 1px 3px rgba(20,22,30,.08), 0 1px 2px rgba(20,22,30,.06);
-}
-* { box-sizing: border-box; }
-body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height:1.5; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 20px 16px 60px; }
-header.top { padding: 18px 0 8px; }
-h1 { font-size: 1.5rem; margin: 0 0 4px; }
-.subtitle { color: var(--muted); font-size: .92rem; }
-.timestamp-bar { display:flex; flex-wrap:wrap; gap: 10px; margin: 14px 0 24px; }
-.chip { background: var(--accent-bg); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: .85rem; font-weight: 600; }
-.block-title { display:flex; align-items:center; gap:10px; margin: 34px 0 14px; }
-.block-title h2 { font-size: 1.2rem; margin:0; }
-.block-tag { font-size: .72rem; text-transform: uppercase; letter-spacing:.04em; background: var(--gris-bg); color: var(--muted); padding: 4px 10px; border-radius: 999px; font-weight:700; }
-.block-tag.decision { background: var(--accent-bg); color: var(--accent); }
-.card { background: var(--card); border:1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow); }
-.card h3 { margin: 0 0 10px; font-size: 1rem; }
-.card p { margin: 6px 0; color: var(--muted); font-size: .92rem; }
-.kpi-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 14px; margin-bottom: 18px; }
-.kpi { background: var(--card); border:1px solid var(--border); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); }
-.kpi .label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 6px; }
-.kpi .value { font-size: 1.5rem; font-weight: 700; }
-.kpi .hint { font-size: .8rem; color: var(--muted); margin-top: 4px; }
-table { width: 100%; border-collapse: collapse; font-size: .87rem; }
-th { text-align:left; padding: 9px 10px; border-bottom: 2px solid var(--border); color: var(--muted); font-size: .74rem; text-transform: uppercase; letter-spacing: .03em; white-space:nowrap; }
-td { padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-td.tname { min-width: 220px; }
-.sub { color: var(--muted); font-size: .78rem; margin-top: 2px; }
-.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .78rem; color: var(--muted); }
-.mono.small { font-size: .72rem; }
-.table-scroll { overflow-x: auto; }
-.tag { display:inline-block; margin-left:8px; font-size:.68rem; background: var(--gris-bg); color: var(--muted); padding: 2px 8px; border-radius: 999px; vertical-align: middle; }
-.pill { display:inline-block; padding: 3px 10px; border-radius: 999px; font-weight: 700; font-size: .78rem; white-space: nowrap; }
-.pill-verde { background: var(--verde-bg); color: var(--verde); }
-.pill-ambar { background: var(--ambar-bg); color: var(--ambar); }
-.pill-rojo { background: var(--rojo-bg); color: var(--rojo); }
-.pill-gris { background: var(--gris-bg); color: var(--gris); }
-.badge { display:inline-block; font-size: .68rem; padding: 2px 8px; border-radius: 6px; margin-top:4px; margin-right:4px; font-weight:600; }
-.badge-info { background: var(--accent-bg); color: var(--accent); }
-.badge-warn { background: var(--ambar-bg); color: var(--ambar); }
-.badge-win { background: var(--verde-bg); color: var(--verde); }
-.alert-list { margin: 4px 0 0; padding-left: 18px; }
-.alert-list li { margin-bottom: 6px; font-size: .88rem; }
-.ok { color: var(--verde); font-weight: 600; }
-.gap-alert td { background: var(--rojo-bg); }
-.audit-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow:hidden; }
-.audit-head { display:flex; align-items:center; gap:10px; padding: 10px 14px; background: var(--gris-bg); }
-.audit-item.audit-warn .audit-head { background: var(--rojo-bg); }
-.audit-num { width: 22px; height:22px; border-radius:50%; background: var(--card); display:flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:700; flex-shrink:0; }
-.audit-title { flex:1; font-weight: 600; font-size: .9rem; }
-.audit-count { font-size: .75rem; color: var(--muted); font-weight:600; }
-.audit-body { padding: 10px 14px; font-size: .87rem; }
-.audit-body ul { margin:0; padding-left: 18px; }
-.audit-body li { margin-bottom: 5px; }
-.winners-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 12px; }
-.winner-card { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; background: var(--gris-bg); }
-.winner-card.winner-rest { opacity: .85; }
-.winner-name { font-weight: 700; margin-bottom: 6px; }
-.winner-status { font-size: .85rem; color: var(--muted); }
-.winner-note { margin-top: 6px; font-size: .8rem; color: var(--ambar); font-weight: 600; }
-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: .82rem; }
-footer ul { padding-left: 18px; }
-footer li { margin-bottom: 8px; }
-.legend { display:flex; gap: 14px; flex-wrap:wrap; font-size:.82rem; color: var(--muted); margin-top:8px; }
-.legend span.dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle; }
-.dot-verde { background: var(--verde); } .dot-ambar { background: var(--ambar); } .dot-rojo { background: var(--rojo); }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg: #14161b;
+      --bg-elev: #1c1f26;
+      --bg-elev2: #23262e;
+      --text: #e8eaee;
+      --text-dim: #a7afbc;
+      --text-faint: #737c8a;
+      --border: #30343d;
+      --accent: #7d9dff;
+      --verde-bg: #103322; --verde-fg: #4fd68a; --verde-bd:#1c5c3c;
+      --ambar-bg: #3a2c0c; --ambar-fg: #f0c15c; --ambar-bd:#634b16;
+      --rojo-bg: #3a1616; --rojo-fg: #ff8c85; --rojo-bd:#6b2321;
+      --gris-bg: #262a32; --gris-fg: #9aa3b0; --gris-bd:#383d47;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 2px 12px rgba(0,0,0,.25);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--sans);
+    font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:20px 16px 80px;}
+  a{color:var(--accent);}
+  h1{font-size:1.5rem; margin:0 0 4px;}
+  h2{font-size:1.2rem; margin:0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  h3{font-size:1rem; margin:28px 0 10px; color:var(--text);}
+  .subtitle{color:var(--text-dim); font-size:.92rem; margin:0 0 18px;}
+  .tag{
+    display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.04em;
+    text-transform:uppercase; padding:3px 9px; border-radius:99px; border:1px solid var(--border);
+    color:var(--text-dim); background:var(--bg-elev2);
+  }
+  header.top{
+    background:var(--bg-elev); border:1px solid var(--border); border-radius:14px;
+    padding:18px 20px; margin-bottom:18px; box-shadow:var(--shadow);
+  }
+  .meta-row{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:10px; font-size:.85rem; color:var(--text-dim);}
+  .meta-row b{color:var(--text);}
+  .callout{
+    border-radius:12px; padding:14px 16px; margin:14px 0; font-size:.9rem; line-height:1.55;
+    border:1px solid var(--border);
+  }
+  .callout.warn{ background:var(--ambar-bg); color:var(--ambar-fg); border-color:var(--ambar-bd); }
+  .callout.info{ background:var(--bg-elev2); color:var(--text-dim); border-color:var(--border); }
+  .callout.danger{ background:var(--rojo-bg); color:var(--rojo-fg); border-color:var(--rojo-bd); }
+  .callout b{color:inherit;}
+  section.block{
+    background:var(--bg-elev); border:1px solid var(--border); border-radius:14px;
+    padding:20px 20px 8px; margin-bottom:22px; box-shadow:var(--shadow);
+  }
+  section.block > .block-head{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--border);
+  }
+  .block-head .badge{
+    font-size:.72rem; font-weight:600; color:var(--text-faint); text-transform:none;
+  }
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:20px;}
+  .stat-card{
+    background:var(--bg-elev2); border:1px solid var(--border); border-radius:10px; padding:14px 16px;
+  }
+  .stat-card .label{font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-faint); margin-bottom:6px;}
+  .stat-card .value{font-size:1.35rem; font-weight:700; font-variant-numeric:tabular-nums;}
+  .stat-card .sub{font-size:.78rem; color:var(--text-dim); margin-top:4px;}
+  .progress-bar{height:8px; background:var(--gris-bg); border-radius:99px; overflow:hidden; margin-top:8px;}
+  .progress-bar > div{height:100%; background:var(--accent); border-radius:99px;}
+  .table-scroll{overflow-x:auto; margin:0 0 22px; border:1px solid var(--border); border-radius:10px;}
+  table{border-collapse:collapse; width:100%; min-width:640px; font-size:.86rem;}
+  thead th{
+    text-align:left; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--text-faint); background:var(--bg-elev2); padding:9px 12px; border-bottom:1px solid var(--border);
+    white-space:nowrap; position:sticky; top:0;
+  }
+  tbody td{padding:9px 12px; border-bottom:1px solid var(--border); vertical-align:top; font-variant-numeric:tabular-nums;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:var(--bg-elev2);}
+  td.num, th.num{text-align:right;}
+  td.id, .idtxt{font-family:var(--mono); font-size:.72rem; color:var(--text-faint);}
+  .pill{
+    display:inline-flex; align-items:center; gap:5px; font-size:.72rem; font-weight:700;
+    padding:3px 9px; border-radius:99px; border:1px solid; white-space:nowrap;
+  }
+  .pill.verde{background:var(--verde-bg); color:var(--verde-fg); border-color:var(--verde-bd);}
+  .pill.ambar{background:var(--ambar-bg); color:var(--ambar-fg); border-color:var(--ambar-bd);}
+  .pill.rojo{background:var(--rojo-bg); color:var(--rojo-fg); border-color:var(--rojo-bd);}
+  .pill.gris{background:var(--gris-bg); color:var(--gris-fg); border-color:var(--gris-bd);}
+  .dot{width:7px; height:7px; border-radius:50%; background:currentColor; flex:none;}
+  .name-cell{font-weight:600; max-width:280px;}
+  .name-cell .campmeta{display:block; font-weight:400; color:var(--text-faint); font-size:.76rem; margin-top:2px;}
+  .flag-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .flag-list li{
+    border:1px solid var(--border); border-left:4px solid var(--rojo-bd); border-radius:8px;
+    padding:10px 14px; background:var(--bg-elev2); font-size:.85rem;
+  }
+  .flag-list li.ambarborder{border-left-color:var(--ambar-bd);}
+  .flag-list li b{display:block; margin-bottom:2px;}
+  .flag-list li .idtxt{display:block; margin-top:3px;}
+  footer{
+    margin-top:30px; padding-top:18px; border-top:1px solid var(--border);
+    color:var(--text-faint); font-size:.78rem; line-height:1.7;
+  }
+  footer p{margin:6px 0;}
+  .toc{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+  .toc a{
+    font-size:.78rem; font-weight:600; text-decoration:none; color:var(--text-dim);
+    background:var(--bg-elev2); border:1px solid var(--border); padding:6px 12px; border-radius:99px;
+  }
+  .toc a:hover{color:var(--accent); border-color:var(--accent);}
+  .winners-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
+  .winner-card{border:1px solid var(--border); border-radius:10px; padding:12px 14px; background:var(--bg-elev2);}
+  .winner-card .wname{font-weight:700; font-size:.95rem;}
+  .winner-card .wstatus{margin-top:6px; font-size:.82rem; color:var(--text-dim);}
+  code{font-family:var(--mono); background:var(--gris-bg); padding:1px 5px; border-radius:4px; font-size:.85em;}
+  ::selection{background:var(--accent); color:#fff;}
 </style>
-
+</head>
+<body>
 <div class="wrap">
-  <header class="top">
-    <h1>Tablero de Control · Meta Ads</h1>
-    <div class="subtitle">Héctor Hugo de la Peña · Cuenta 464228364039681 · MXN · Fuente: Meta Ads (conector mcp-meta)</div>
-    <div class="timestamp-bar">
-      <span class="chip">Corrida: 01/08/2026 21:56 UTC</span>
-      <span class="chip">01/08/2026 16:56 hora Colombia (UTC-5)</span>
-      <span class="chip">Ventana de decisión: last_7d</span>
-    </div>
-  </header>
 
-  <div class="card" style="border-left: 4px solid var(--accent);">
-    <h3>Criterio de decisión — la vara es el CPA, no el ROAS</h3>
-    <p>La inmersión de 2 días ($7 general / $17 VIP vía Hotmart) es producto de entrada vendido a pérdida a propósito. El dinero está en el backend: high tickets de $1.250 y $2.500 USD cerrados en vivo (~21% de compradores cierra high ticket, valor esperado ≈ $4.700 MXN/comprador). El ROAS front <strong>siempre</strong> va por debajo de 1 y eso es correcto y rentable — no se usa como filtro en este tablero. La única vara es el <strong>CPA (costo por compra)</strong>:</p>
-    <div class="legend">
-      <span><span class="dot dot-verde"></span>CPA &lt; $600 MXN — sano, candidato a escalar</span>
-      <span><span class="dot dot-ambar"></span>CPA $600–$700 MXN — mantener y vigilar</span>
-      <span><span class="dot dot-rojo"></span>CPA &gt; $700 MXN — sobre techo, candidato a cortar</span>
-    </div>
-    <p style="margin-top:10px;">El enemigo no es el ROAS bajo: es <strong>cero compras</strong>. El cuello de botella del negocio es el volumen de compradores calificados, no abaratar la compra. Público objetivo: mujeres profesionales en México (coaches, terapeutas, psicólogas, holísticas, bienestar).</p>
-    <p style="margin-top:10px; font-weight:600;">⚠ La fecha de la inmersión de agosto no está confirmada. Antes de diagnosticar problemas de landing o de creativo, considera que la falta de fecha puede ser la causa de variaciones en el ritmo de conversión.</p>
+<header class="top">
+  <h1>Tablero de Control · Meta Ads</h1>
+  <p class="subtitle">Cuenta 464228364039681 (MXN) · Business Manager <b>Héctor Hugo de la Peña</b> · Producto: Inmersión 2 días ($7 / $17 USD vía Hotmart) → backend high-ticket $1.250 / $2.500 USD</p>
+  <div class="meta-row">
+    <span>🕐 Corrida: <b>2026-08-02 00:17 UTC</b> · <b>2026-08-01 19:17 Colombia (UTC-5)</b></span>
+    <span>📅 Ventana de datos: <b>últimos 7 días (date_preset last_7d)</b></span>
+    <span>🎯 Atribución: <b>7 días clic / 1 día vista</b> — los datos siguen madurando</span>
   </div>
-
-  <!-- ============ BLOQUE 1 ============ -->
-  <div class="block-title">
-    <h2>Bloque 1 · Vigilancia</h2>
-    <span class="block-tag">se actualiza cada corrida</span>
+  <div class="toc">
+    <a href="#vigilancia">↓ Bloque 1 · Vigilancia</a>
+    <a href="#decision">↓ Bloque 2 · Decisión</a>
+    <a href="#ganadores">↓ Ganadores validados</a>
+    <a href="#metodologia">↓ Metodología</a>
   </div>
+</header>
 
-  <div class="kpi-grid">
-    <div class="kpi">
-      <div class="label">Presupuesto diario configurado</div>
-      <div class="value">$14.645 MXN</div>
-      <div class="hint">Suma de daily_budget de 28 conjuntos ACTIVE (toda la cuenta)</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Ritmo de gasto (prom. diario 7d)</div>
-      <div class="value">$5.969 MXN</div>
-      <div class="hint">40,8% del presupuesto configurado</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Ritmo — solo conjuntos de ventas</div>
-      <div class="value">$3.245 MXN</div>
-      <div class="hint">49,6% de $6.545 MXN configurado (18 conjuntos)</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Conjuntos en aprendizaje</div>
-      <div class="value">17 / 28</div>
-      <div class="hint">17 de ellos son conjuntos de ventas</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Conjuntos de ventas encendidos con gasto y cero compras (7 días)</h3>
-    <ul class="alert-list"><li><strong>AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul®</strong> <span class='mono'>(120258966162940456)</span> — gasto $264,58 MXN, campaña: 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</li><li><strong>AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966531800456)</span> — gasto $240,43 MXN, campaña: 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</li><li><strong>AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966567260456)</span> — gasto $237,97 MXN, campaña: 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</li><li><strong>AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966431360456)</span> — gasto $225,99 MXN, campaña: 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</li><li><strong>AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966556600456)</span> — gasto $218,87 MXN, campaña: 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</li></ul>
-  </div>
-
-  <div class="card">
-    <h3>Problemas de entrega (delivery ≠ active, fatiga creativa, en aprendizaje)</h3>
-    <p>18 de 28 conjuntos activos muestran algún substatus fuera de "active" — la mayoría es fase de aprendizaje normal por el arranque reciente de campañas (24 Jul–01 Ago). Fatiga creativa detectada: 1.</p>
-    <ul class="alert-list"><li><strong>01Ago® | Test Broad 03 Broad - compradores4% LAL</strong> <span class='mono'>(120258994638710456)</span> — En aprendizaje</li><li><strong>01Ago® | Test Broad 10% LAL</strong> <span class='mono'>(120258994638700456)</span> — En aprendizaje</li><li><strong>01Ago® | Test Broad 3% compradores</strong> <span class='mono'>(120258994638690456)</span> — En aprendizaje</li><li><strong>01Ago® | RMK | Interesados NO Compraron</strong> <span class='mono'>(120258991152030456)</span> — En aprendizaje</li><li><strong>AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966567260456)</span> — En aprendizaje</li><li><strong>AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966556600456)</span> — En aprendizaje</li><li><strong>AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966531800456)</span> — En aprendizaje</li><li><strong>AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966431360456)</span> — En aprendizaje</li><li><strong>AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul®</strong> <span class='mono'>(120258966162940456)</span> — En aprendizaje</li><li><strong>ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®</strong> <span class='mono'>(120258901309690456)</span> — En aprendizaje</li><li><strong>TIBIO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®</strong> <span class='mono'>(120258897356500456)</span> — En aprendizaje</li><li><strong>10 (06) CARRUSELL feb -  26Jul®</strong> <span class='mono'>(120258846320870456)</span> — En aprendizaje</li><li><strong>49 (06) CARRUSELL feb - Copia</strong> <span class='mono'>(120258846320740456)</span> — En aprendizaje</li><li><strong>Test Broad 03 Broad - compradores4% LAL 26Jul®</strong> <span class='mono'>(120258845729500456)</span> — En aprendizaje</li><li><strong>FRANK3 - - 26Jul®</strong> <span class='mono'>(120258845729490456)</span> — En aprendizaje</li><li><strong>Test Broad 3% compradores - 26Jul®</strong> <span class='mono'>(120258845729450456)</span> — En aprendizaje</li><li><strong>ABO · INM AGO · FRANK3 23Jul®</strong> <span class='mono'>(120258781767950456)</span> — En aprendizaje</li><li><strong>AD05 · NUEVOS DROPBOX | MX Frío 31Jul®</strong> <span class='mono'>(120258807833550456)</span> — Fatiga creativa</li></ul>
-  </div>
-
-  <div class="card">
-    <h3>Auditoría de configuración</h3>
-    <p>Evaluada sobre los 28 conjuntos ACTIVE de la cuenta (no solo ventas).</p>
-    <div class="audit-item audit-warn">
-      <div class="audit-head"><span class="audit-num">1</span><span class="audit-title">Ubicaciones manuales solo Facebook + Instagram</span><span class="audit-count">5 conjunto(s)</span></div>
-      <div class="audit-body"><li><strong>01Ago® | Test Broad 10% LAL</strong> <span class='mono'>(120258994638700456)</span> — publisher_platforms: vacío/nulo</li><li><strong>01Ago® | Test Broad 3% compradores</strong> <span class='mono'>(120258994638690456)</span> — publisher_platforms: vacío/nulo</li><li><strong>Test Broad 3% compradores - 26Jul®</strong> <span class='mono'>(120258845729450456)</span> — publisher_platforms: vacío/nulo</li><li><strong>Broad - Captación - Ad 2 Webinar</strong> <span class='mono'>(120253228589540456)</span> — publisher_platforms: [&#x27;facebook&#x27;, &#x27;instagram&#x27;, &#x27;threads&#x27;]</li><li><strong>Broad - Captación - Ad 1 Webinar</strong> <span class='mono'>(120253228589530456)</span> — publisher_platforms: [&#x27;facebook&#x27;, &#x27;instagram&#x27;, &#x27;threads&#x27;]</li></div>
-    </div><div class="audit-item audit-warn">
-      <div class="audit-head"><span class="audit-num">2</span><span class="audit-title">optimization_goal debe ser OFFSITE_CONVERSIONS (no VALUE)</span><span class="audit-count">2 conjunto(s)</span></div>
-      <div class="audit-body"><li><strong>Test Broad 03 Broad - compradores4% LAL 26Jul®</strong> <span class='mono'>(120258845729500456)</span></li><li><strong>Test Broad 3% compradores - 26Jul®</strong> <span class='mono'>(120258845729450456)</span></li></div>
-    </div><div class="audit-item audit-ok">
-      <div class="audit-head"><span class="audit-num">3</span><span class="audit-title">Exclusión obligatoria 'COMPRAS INMERSION 180D'</span><span class="audit-count">0 conjunto(s)</span></div>
-      <div class="audit-body">Todos los conjuntos activos excluyen correctamente a 'COMPRAS INMERSION 180D'.</div>
-    </div><div class="audit-item audit-warn">
-      <div class="audit-head"><span class="audit-num">4</span><span class="audit-title">LAL 10% (agotado) o LAL 4% compradores (caro/ineficiente) en uso</span><span class="audit-count">7 conjunto(s)</span></div>
-      <div class="audit-body"><li><strong>01Ago® | Test Broad 03 Broad - compradores4% LAL</strong> <span class='mono'>(120258994638710456)</span> — usa: Público similar (MX, 4%) - COMPRAS INMERSION 180D</li><li><strong>01Ago® | Test Broad 10% LAL</strong> <span class='mono'>(120258994638700456)</span> — usa: Lookalike (10%) - StartFly HUGOMX PRINCIPAL - Website using Purchase</li><li><strong>Test Broad 03 Broad - compradores4% LAL 26Jul®</strong> <span class='mono'>(120258845729500456)</span> — usa: Público similar (MX, 4%) - COMPRAS INMERSION 180D</li><li><strong>LOOK &amp; LIKE + BROAD</strong> <span class='mono'>(120255509354020456)</span> — usa: Público similar (MX, 4%) - COMPRAS INMERSION 180D</li><li><strong>LOOK &amp; LIKE + BROAD</strong> <span class='mono'>(120255509354020456)</span> — usa: Público similar (2% to 4%) - StartFly HUGOMX PRINCIPAL - Website using Purchase</li><li><strong>LOOK &amp; LIKE + BROAD</strong> <span class='mono'>(120253228518350456)</span> — usa: Público similar (MX, 4%) - COMPRAS INMERSION 180D</li><li><strong>LOOK &amp; LIKE + BROAD</strong> <span class='mono'>(120253228518350456)</span> — usa: Público similar (2% to 4%) - StartFly HUGOMX PRINCIPAL - Website using Purchase</li></div>
-    </div><div class="audit-item audit-warn">
-      <div class="audit-head"><span class="audit-num">5</span><span class="audit-title">Test de creativos nuevos por encima de $150 MXN/día</span><span class="audit-count">11 conjunto(s)</span></div>
-      <div class="audit-body"><li><strong>01Ago® | Test Broad 03 Broad - compradores4% LAL</strong> <span class='mono'>(120258994638710456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>01Ago® | Test Broad 10% LAL</strong> <span class='mono'>(120258994638700456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>01Ago® | Test Broad 3% compradores</strong> <span class='mono'>(120258994638690456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966567260456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966556600456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966531800456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966431360456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul®</strong> <span class='mono'>(120258966162940456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li><li><strong>Test Broad 03 Broad - compradores4% LAL 26Jul®</strong> <span class='mono'>(120258845729500456)</span> — presupuesto $200 MXN/día (tope test: $150 MXN/día)</li><li><strong>Test Broad 3% compradores - 26Jul®</strong> <span class='mono'>(120258845729450456)</span> — presupuesto $245 MXN/día (tope test: $150 MXN/día)</li><li><strong>AD05 · NUEVOS DROPBOX | MX Frío 31Jul®</strong> <span class='mono'>(120258807833550456)</span> — presupuesto $300 MXN/día (tope test: $150 MXN/día)</li></div>
-    </div><div class="audit-item audit-warn">
-      <div class="audit-head"><span class="audit-num">6</span><span class="audit-title">Advantage+ Audience activo o rango de edad 18-65 (rompe el filtro de mujer profesional)</span><span class="audit-count">12 conjunto(s)</span></div>
-      <div class="audit-body"><li><strong>01Ago® | Test Broad 10% LAL</strong> <span class='mono'>(120258994638700456)</span> — advantage_audience=1, edad 18-65</li><li><strong>01Ago® | Test Broad 3% compradores</strong> <span class='mono'>(120258994638690456)</span> — advantage_audience=1, edad 18-65</li><li><strong>01Ago® | RMK | Interesados NO Compraron</strong> <span class='mono'>(120258991152030456)</span> — advantage_audience=1, edad 25-65</li><li><strong>AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966567260456)</span> — advantage_audience=1, edad 25-65</li><li><strong>AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966556600456)</span> — advantage_audience=1, edad 25-65</li><li><strong>AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966531800456)</span> — advantage_audience=1, edad 25-65</li><li><strong>AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul®</strong> <span class='mono'>(120258966431360456)</span> — advantage_audience=1, edad 25-65</li><li><strong>AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul®</strong> <span class='mono'>(120258966162940456)</span> — advantage_audience=1, edad 25-65</li><li><strong>ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®</strong> <span class='mono'>(120258901309690456)</span> — advantage_audience=1, edad 25-65</li><li><strong>TIBIO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®</strong> <span class='mono'>(120258897356500456)</span> — advantage_audience=1, edad 25-65</li><li><strong>Test Broad 3% compradores - 26Jul®</strong> <span class='mono'>(120258845729450456)</span> — advantage_audience=1, edad 18-65</li><li><strong>AD05 · NUEVOS DROPBOX | MX Frío 31Jul®</strong> <span class='mono'>(120258807833550456)</span> — advantage_audience=1, edad 25-65</li></div>
-    </div>
-  </div>
-
-  <!-- ============ BLOQUE 2 ============ -->
-  <div class="block-title">
-    <h2>Bloque 2 · Decisión</h2>
-    <span class="block-tag decision">ventana fija de 7 días — no tomes decisiones con cambios intradía</span>
-  </div>
-
-  <div class="card">
-    <h3>Campañas ACTIVE (9)</h3>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Campaña</th><th>Presup./día</th><th>Gasto 7d</th><th>Compras</th><th>CPA</th><th>CTR</th><th>Frecuencia</th><th>Conjuntos ON</th><th>Anuncios ON</th></tr></thead>
-      <tbody><tr>
-      <td class="tname">🔴 INM · TIBIO + ABIERTO | 28Jul®<span class="tag">Ventas</span></td>
-      <td class="num">$2.200 MXN</td>
-      <td class="num">$7.244,02 MXN</td>
-      <td class="num">16</td>
-      <td class="num"><span class="pill pill-verde">$452,75 MXN</span></td>
-      <td class="num">3,86%</td>
-      <td class="num">1,78</td>
-      <td class="num">3</td>
-      <td class="num">16</td>
-    </tr>
-<tr>
-      <td class="tname">🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®<span class="tag">Ventas</span></td>
-      <td class="num">$200 MXN</td>
-      <td class="num">$2.276,46 MXN</td>
-      <td class="num">2</td>
-      <td class="num"><span class="pill pill-rojo">$1.138,23 MXN</span></td>
-      <td class="num">1,92%</td>
-      <td class="num">2,11</td>
-      <td class="num">2</td>
-      <td class="num">2</td>
-    </tr>
-<tr>
-      <td class="tname">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®<span class="tag">Ventas</span></td>
-      <td class="num">$845 MXN</td>
-      <td class="num">$9.428,93 MXN</td>
-      <td class="num">10</td>
-      <td class="num"><span class="pill pill-rojo">$942,89 MXN</span></td>
-      <td class="num">2,58%</td>
-      <td class="num">1,80</td>
-      <td class="num">3</td>
-      <td class="num">5</td>
-    </tr>
-<tr>
-      <td class="tname">🔴 ABO · INM · TEST CREATIVOS | 24Jul®<span class="tag">Ventas</span></td>
-      <td class="num">$2.700 MXN</td>
-      <td class="num">$8.506,63 MXN</td>
-      <td class="num">12</td>
-      <td class="num"><span class="pill pill-rojo">$708,89 MXN</span></td>
-      <td class="num">2,02%</td>
-      <td class="num">2,94</td>
-      <td class="num">9</td>
-      <td class="num">9</td>
-    </tr>
-<tr>
-      <td class="tname">🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1<span class="tag">Ventas</span></td>
-      <td class="num">$600 MXN</td>
-      <td class="num">$6.425,93 MXN</td>
-      <td class="num">8</td>
-      <td class="num"><span class="pill pill-rojo">$803,24 MXN</span></td>
-      <td class="num">3,45%</td>
-      <td class="num">1,51</td>
-      <td class="num">1</td>
-      <td class="num">1</td>
-    </tr>
-<tr>
-      <td class="tname">🟡MASTERCLASS GRATIS - CDB - Exclusions<span class="tag">Leads</span></td>
-      <td class="num">$1.800 MXN</td>
-      <td class="num">$3.372,22 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">—</span></td>
-      <td class="num">3,01%</td>
-      <td class="num">1,18</td>
-      <td class="num">1</td>
-      <td class="num">3</td>
-    </tr>
-<tr>
-      <td class="tname">🟢 Follow Me Ads - Trafico<span class="tag">Tráfico</span></td>
-      <td class="num">$900 MXN</td>
-      <td class="num">$6.309,87 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">—</span></td>
-      <td class="num">2,73%</td>
-      <td class="num">1,33</td>
-      <td class="num">6</td>
-      <td class="num">24</td>
-    </tr>
-<tr>
-      <td class="tname">🟡Captación CDB - Test<span class="tag">Leads</span></td>
-      <td class="num">$3.600 MXN</td>
-      <td class="num">$6.090,35 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">—</span></td>
-      <td class="num">3,32%</td>
-      <td class="num">1,30</td>
-      <td class="num">2</td>
-      <td class="num">2</td>
-    </tr>
-<tr>
-      <td class="tname">🟡MASTERCLASS GRATIS - CDB - $1<span class="tag">Leads</span></td>
-      <td class="num">$1.800 MXN</td>
-      <td class="num">$3.318,64 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">—</span></td>
-      <td class="num">2,50%</td>
-      <td class="num">1,25</td>
-      <td class="num">1</td>
-      <td class="num">3</td>
-    </tr></tbody>
-    </table>
-    </div>
-    <p style="margin-top:10px;">Presupuesto/día = ABO (sin CBO a nivel campaña) — suma de daily_budget de los conjuntos ACTIVE de cada campaña.</p>
-  </div>
-
-  <div class="card">
-    <h3>Conjuntos ACTIVE de ventas (18) — ordenados por CPA ascendente</h3>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Conjunto</th><th>ID</th><th>Presup./día</th><th>Gasto 7d</th><th>Compras</th><th>CPA</th><th>CTR</th><th>Frecuencia</th></tr></thead>
-      <tbody><tr>
-      <td class="tname">AD05 · NUEVOS DROPBOX | MX Frío 31Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-warn">fatiga creativa</span></td>
-      <td class="mono">120258807833550456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$2.113,18 MXN</td>
-      <td class="num">9</td>
-      <td class="num"><span class="pill pill-verde">$234,80 MXN</span></td>
-      <td class="num">2,48%</td>
-      <td class="num">2,09</td>
-    </tr>
-<tr>
-      <td class="tname">Test Broad 3% compradores - 26Jul®<div class="sub">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258845729450456</td>
-      <td class="num">$245 MXN</td>
-      <td class="num">$1.446,49 MXN</td>
-      <td class="num">4</td>
-      <td class="num"><span class="pill pill-verde">$361,62 MXN</span></td>
-      <td class="num">2,26%</td>
-      <td class="num">1,75</td>
-    </tr>
-<tr>
-      <td class="tname">TIBIO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®<div class="sub">🔴 INM · TIBIO + ABIERTO | 28Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258897356500456</td>
-      <td class="num">$800 MXN</td>
-      <td class="num">$3.118,58 MXN</td>
-      <td class="num">8</td>
-      <td class="num"><span class="pill pill-verde">$389,82 MXN</span></td>
-      <td class="num">3,09%</td>
-      <td class="num">2,17</td>
-    </tr>
-<tr>
-      <td class="tname">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®<div class="sub">🔴 INM · TIBIO + ABIERTO | 28Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258901309690456</td>
-      <td class="num">$1.100 MXN</td>
-      <td class="num">$4.125,44 MXN</td>
-      <td class="num">8</td>
-      <td class="num"><span class="pill pill-verde">$515,68 MXN</span></td>
-      <td class="num">4,48%</td>
-      <td class="num">1,48</td>
-    </tr>
-<tr>
-      <td class="tname">49 (06) CARRUSELL feb - Copia<div class="sub">🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258846320740456</td>
-      <td class="num">$100 MXN</td>
-      <td class="num">$578,18 MXN</td>
-      <td class="num">1</td>
-      <td class="num"><span class="pill pill-verde">$578,18 MXN</span></td>
-      <td class="num">1,30%</td>
-      <td class="num">1,52</td>
-    </tr>
-<tr>
-      <td class="tname">10 (06) CARRUSELL feb -  26Jul®<div class="sub">🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258846320870456</td>
-      <td class="num">$100 MXN</td>
-      <td class="num">$581,43 MXN</td>
-      <td class="num">1</td>
-      <td class="num"><span class="pill pill-verde">$581,43 MXN</span></td>
-      <td class="num">2,13%</td>
-      <td class="num">1,84</td>
-    </tr>
-<tr>
-      <td class="tname">ABO · INM AGO · FRANK3 23Jul®<div class="sub">🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258781767950456</td>
-      <td class="num">$600 MXN</td>
-      <td class="num">$3.642,49 MXN</td>
-      <td class="num">6</td>
-      <td class="num"><span class="pill pill-ambar">$607,08 MXN</span></td>
-      <td class="num">4,17%</td>
-      <td class="num">1,26</td>
-    </tr>
-<tr>
-      <td class="tname">Test Broad 03 Broad - compradores4% LAL 26Jul®<div class="sub">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258845729500456</td>
-      <td class="num">$200 MXN</td>
-      <td class="num">$3.569,48 MXN</td>
-      <td class="num">4</td>
-      <td class="num"><span class="pill pill-rojo">$892,37 MXN</span></td>
-      <td class="num">1,87%</td>
-      <td class="num">1,51</td>
-    </tr>
-<tr>
-      <td class="tname">FRANK3 - - 26Jul®<div class="sub">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258845729490456</td>
-      <td class="num">$400 MXN</td>
-      <td class="num">$2.353,51 MXN</td>
-      <td class="num">2</td>
-      <td class="num"><span class="pill pill-rojo">$1.176,76 MXN</span></td>
-      <td class="num">4,01%</td>
-      <td class="num">1,14</td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | Test Broad 03 Broad - compradores4% LAL<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258994638710456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">N/D</td>
-      <td class="num">N/D</td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | Test Broad 10% LAL<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258994638700456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">N/D</td>
-      <td class="num">N/D</td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | Test Broad 3% compradores<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258994638690456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">N/D</td>
-      <td class="num">N/D</td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | RMK | Interesados NO Compraron<div class="sub">🔴 INM · TIBIO + ABIERTO | 28Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258991152030456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">N/D</td>
-      <td class="num">N/D</td>
-    </tr>
-<tr>
-      <td class="tname">AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258966567260456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$237,97 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,04%</td>
-      <td class="num">1,30</td>
-    </tr>
-<tr>
-      <td class="tname">AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258966556600456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$218,87 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">1,22%</td>
-      <td class="num">1,29</td>
-    </tr>
-<tr>
-      <td class="tname">AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258966531800456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$240,43 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,39%</td>
-      <td class="num">1,28</td>
-    </tr>
-<tr>
-      <td class="tname">AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258966431360456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$225,99 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">1,96%</td>
-      <td class="num">1,28</td>
-    </tr>
-<tr>
-      <td class="tname">AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div><span class="badge badge-info">aprendizaje</span></td>
-      <td class="mono">120258966162940456</td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$264,58 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">4,69%</td>
-      <td class="num">1,59</td>
-    </tr></tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Anuncios ACTIVE con gasto &gt; $100 MXN (34) — ordenados por CPA</h3>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Anuncio</th><th>ID</th><th>Gasto 7d</th><th>Compras</th><th>CPA</th><th>CTR</th><th>Frecuencia</th></tr></thead>
-      <tbody><tr>
-      <td class="tname">ABT | 01 AD-HorizontalLargo | 28Jul®<div class="sub">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul® · 🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="mono">120258901309670456</td>
-      <td class="num">$107,28 MXN</td>
-      <td class="num">1</td>
-      <td class="num"><span class="pill pill-verde">$107,28 MXN</span></td>
-      <td class="num">3,81%</td>
-      <td class="num">1,05</td>
-    </tr>
-<tr>
-      <td class="tname">AD_25<div class="sub">Test Broad 3% compradores - 26Jul® · 🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div></td>
-      <td class="mono">120258845729660456</td>
-      <td class="num">$230,73 MXN</td>
-      <td class="num">2</td>
-      <td class="num"><span class="pill pill-verde">$115,36 MXN</span></td>
-      <td class="num">1,37%</td>
-      <td class="num">1,21</td>
-    </tr>
-<tr>
-      <td class="tname">AD05 | VID AD-NoDormir | 24Jul®<div class="sub">AD05 · NUEVOS DROPBOX | MX Frío 31Jul® · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="mono">120258807833600456</td>
-      <td class="num">$2.113,18 MXN</td>
-      <td class="num">9</td>
-      <td class="num"><span class="pill pill-verde">$234,80 MXN</span></td>
-      <td class="num">2,48%</td>
-      <td class="num">2,09</td>
-    </tr>
-<tr>
-      <td class="tname">ABT | 08 AD-ImgTicket02 | 28Jul®<div class="sub">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul® · 🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="mono">120258901313570456</td>
-      <td class="num">$725,26 MXN</td>
-      <td class="num">3</td>
-      <td class="num"><span class="pill pill-verde">$241,75 MXN</span></td>
-      <td class="num">5,25%</td>
-      <td class="num">1,20</td>
-    </tr>
-<tr>
-      <td class="tname">TIB | 03 AD-TipoReelIncomodo | 28Jul®<div class="sub">TIBIO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul® · 🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="mono">120258900896980456</td>
-      <td class="num">$3.118,58 MXN</td>
-      <td class="num">8</td>
-      <td class="num"><span class="pill pill-verde">$389,82 MXN</span></td>
-      <td class="num">3,09%</td>
-      <td class="num">2,17</td>
-    </tr>
-<tr>
-      <td class="tname">01<div class="sub">49 (06) CARRUSELL feb - Copia · 🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</div></td>
-      <td class="mono">120258846320500456</td>
-      <td class="num">$578,18 MXN</td>
-      <td class="num">1</td>
-      <td class="num"><span class="pill pill-verde">$578,18 MXN</span></td>
-      <td class="num">1,30%</td>
-      <td class="num">1,52</td>
-    </tr>
-<tr>
-      <td class="tname">01<div class="sub">10 (06) CARRUSELL feb -  26Jul® · 🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</div></td>
-      <td class="mono">120258846320490456</td>
-      <td class="num">$581,43 MXN</td>
-      <td class="num">1</td>
-      <td class="num"><span class="pill pill-verde">$581,43 MXN</span></td>
-      <td class="num">2,13%</td>
-      <td class="num">1,84</td>
-    </tr>
-<tr>
-      <td class="tname">FRANK3_23Jul®<div class="sub">ABO · INM AGO · FRANK3 23Jul® · 🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1</div><span class="badge badge-win">ganador validado</span></td>
-      <td class="mono">120258781767920456</td>
-      <td class="num">$3.642,49 MXN</td>
-      <td class="num">6</td>
-      <td class="num"><span class="pill pill-ambar">$607,08 MXN</span></td>
-      <td class="num">4,17%</td>
-      <td class="num">1,26</td>
-    </tr>
-<tr>
-      <td class="tname">ABT | 07 AD-ImgTicket01 | 28Jul®<div class="sub">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul® · 🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="mono">120258901313560456</td>
-      <td class="num">$2.596,30 MXN</td>
-      <td class="num">4</td>
-      <td class="num"><span class="pill pill-ambar">$649,08 MXN</span></td>
-      <td class="num">4,65%</td>
-      <td class="num">1,39</td>
-    </tr>
-<tr>
-      <td class="tname">AD_27<div class="sub">Test Broad 03 Broad - compradores4% LAL 26Jul® · 🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div><span class="badge badge-win">ganador validado</span></td>
-      <td class="mono">120258845729060456</td>
-      <td class="num">$3.569,48 MXN</td>
-      <td class="num">4</td>
-      <td class="num"><span class="pill pill-rojo">$892,37 MXN</span></td>
-      <td class="num">1,87%</td>
-      <td class="num">1,51</td>
-    </tr>
-<tr>
-      <td class="tname">AD_20<div class="sub">Test Broad 3% compradores - 26Jul® · 🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div></td>
-      <td class="mono">120258845729670456</td>
-      <td class="num">$1.154,07 MXN</td>
-      <td class="num">1</td>
-      <td class="num"><span class="pill pill-rojo">$1.154,07 MXN</span></td>
-      <td class="num">2,35%</td>
-      <td class="num">1,66</td>
-    </tr>
-<tr>
-      <td class="tname">FRANK3<div class="sub">FRANK3 - - 26Jul® · 🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div><span class="badge badge-win">ganador validado</span></td>
-      <td class="mono">120258845729720456</td>
-      <td class="num">$2.353,51 MXN</td>
-      <td class="num">2</td>
-      <td class="num"><span class="pill pill-rojo">$1.176,76 MXN</span></td>
-      <td class="num">4,01%</td>
-      <td class="num">1,14</td>
-    </tr>
-<tr>
-      <td class="tname">AD34 | test_vid04  | 31Jul®<div class="sub">AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul® · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="mono">120258966567270456</td>
-      <td class="num">$237,97 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,04%</td>
-      <td class="num">1,30</td>
-    </tr>
-<tr>
-      <td class="tname">AD32 | test_vid02  | 31Jul®<div class="sub">AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul® · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="mono">120258966531810456</td>
-      <td class="num">$240,43 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,39%</td>
-      <td class="num">1,28</td>
-    </tr>
-<tr>
-      <td class="tname">AD33 | test_vid03  | 31Jul®<div class="sub">AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul® · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="mono">120258966556590456</td>
-      <td class="num">$218,87 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">1,22%</td>
-      <td class="num">1,29</td>
-    </tr>
-<tr>
-      <td class="tname">AD30 | 10Imagenes_test  | 24Jul®<div class="sub">AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul® · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="mono">120258966162950456</td>
-      <td class="num">$264,58 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">4,69%</td>
-      <td class="num">1,59</td>
-    </tr>
-<tr>
-      <td class="tname">AD30 | 10Imagenes_test  | 31Jul®<div class="sub">AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul® · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="mono">120258966431350456</td>
-      <td class="num">$225,99 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">1,96%</td>
-      <td class="num">1,28</td>
-    </tr>
-<tr>
-      <td class="tname">ABT | 05 AD-ImgTicket02 | 28Jul®<div class="sub">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul® · 🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="mono">120258901309700456</td>
-      <td class="num">$129,49 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">1,99%</td>
-      <td class="num">1,13</td>
-    </tr>
-<tr>
-      <td class="tname">ABT | 02 AD-TipoReelMiedo | 28Jul®<div class="sub">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul® · 🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="mono">120258901309720456</td>
-      <td class="num">$377,23 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">4,55%</td>
-      <td class="num">1,12</td>
-    </tr>
-<tr>
-      <td class="tname">AD012<div class="sub">LOOK &amp; LIKE + BROAD · 🟡MASTERCLASS GRATIS - CDB - Exclusions</div></td>
-      <td class="mono">120255509354010456</td>
-      <td class="num">$3.340,49 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,00%</td>
-      <td class="num">1,18</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 2<div class="sub">Stories - Broad (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254794096980456</td>
-      <td class="num">$200,88 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,33%</td>
-      <td class="num">1,18</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 3<div class="sub">Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254793471500456</td>
-      <td class="num">$195,06 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,16%</td>
-      <td class="num">1,18</td>
-    </tr>
-<tr>
-      <td class="tname">V3 Cancún<div class="sub">LAL 1% Seguidores (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254792735490456</td>
-      <td class="num">$1.051,34 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,15%</td>
-      <td class="num">1,14</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 1<div class="sub">Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254793471510456</td>
-      <td class="num">$534,71 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,08%</td>
-      <td class="num">1,24</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 3<div class="sub">Stories - Broad (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254794096990456</td>
-      <td class="num">$504,10 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,33%</td>
-      <td class="num">1,23</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 2<div class="sub">Stories - LAL 1% Seguidores (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254792806430456</td>
-      <td class="num">$224,81 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,48%</td>
-      <td class="num">1,22</td>
-    </tr>
-<tr>
-      <td class="tname">V3 Cancún<div class="sub">Abierto (Exluyendo Seguidores) - Copy · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254792748940456</td>
-      <td class="num">$1.056,69 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">1,68%</td>
-      <td class="num">1,16</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 1<div class="sub">Stories - LAL 1% Seguidores (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254792806420456</td>
-      <td class="num">$809,83 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,65%</td>
-      <td class="num">1,17</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 1<div class="sub">Stories - Broad (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254794097020456</td>
-      <td class="num">$320,05 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,56%</td>
-      <td class="num">1,12</td>
-    </tr>
-<tr>
-      <td class="tname">V3 Cancún<div class="sub">LAL 1% Compradores (Exluyendo Seguidores) · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254792755080456</td>
-      <td class="num">$1.049,43 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,12%</td>
-      <td class="num">1,18</td>
-    </tr>
-<tr>
-      <td class="tname">Storie 2<div class="sub">Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy · 🟢 Follow Me Ads - Trafico</div></td>
-      <td class="mono">120254793471520456</td>
-      <td class="num">$313,96 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,06%</td>
-      <td class="num">1,26</td>
-    </tr>
-<tr>
-      <td class="tname">Ad 2 - Webinar<div class="sub">Broad - Captación - Ad 2 Webinar · 🟡Captación CDB - Test</div></td>
-      <td class="mono">120253228589460456</td>
-      <td class="num">$3.106,67 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,44%</td>
-      <td class="num">1,21</td>
-    </tr>
-<tr>
-      <td class="tname">Ad 1 - Webinar<div class="sub">Broad - Captación - Ad 1 Webinar · 🟡Captación CDB - Test</div></td>
-      <td class="mono">120253228589440456</td>
-      <td class="num">$2.983,68 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">3,22%</td>
-      <td class="num">1,16</td>
-    </tr>
-<tr>
-      <td class="tname">AD012<div class="sub">LOOK &amp; LIKE + BROAD · 🟡MASTERCLASS GRATIS - CDB - $1</div></td>
-      <td class="mono">120253228518420456</td>
-      <td class="num">$3.269,94 MXN</td>
-      <td class="num">0</td>
-      <td class="num"><span class="pill pill-gris">SIN COMPRAS</span></td>
-      <td class="num">2,49%</td>
-      <td class="num">1,24</td>
-    </tr></tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Brecha de gasto por campaña (campaña vs. conjuntos encendidos)</h3>
-    <p>Diferencia entre el gasto 7d reportado a nivel campaña y la suma del gasto de sus conjuntos actualmente ENCENDIDOS. La diferencia proviene de conjuntos ya apagados dentro de la ventana y contamina el CPA promedio de la campaña — por eso la tabla de conjuntos de ventas arriba es la referencia real para decidir, no la fila de campaña.</p>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Campaña</th><th>Gasto campaña 7d</th><th>Gasto conjuntos ON</th><th>Brecha $</th><th>Brecha %</th></tr></thead>
-      <tbody><tr>
-      <td class="tname">🔴 INM · TIBIO + ABIERTO | 28Jul®</td>
-      <td class="num">$7.244,02 MXN</td>
-      <td class="num">$7.244,02 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0,0%</td>
-    </tr>
-<tr class="gap-alert">
-      <td class="tname">🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</td>
-      <td class="num">$2.276,46 MXN</td>
-      <td class="num">$1.159,61 MXN</td>
-      <td class="num">$1.116,85 MXN</td>
-      <td class="num">49,1%</td>
-    </tr>
-<tr class="gap-alert">
-      <td class="tname">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</td>
-      <td class="num">$9.428,93 MXN</td>
-      <td class="num">$7.369,48 MXN</td>
-      <td class="num">$2.059,45 MXN</td>
-      <td class="num">21,8%</td>
-    </tr>
-<tr class="gap-alert">
-      <td class="tname">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</td>
-      <td class="num">$8.506,63 MXN</td>
-      <td class="num">$3.301,02 MXN</td>
-      <td class="num">$5.205,61 MXN</td>
-      <td class="num">61,2%</td>
-    </tr>
-<tr class="gap-alert">
-      <td class="tname">🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1</td>
-      <td class="num">$6.425,93 MXN</td>
-      <td class="num">$3.642,49 MXN</td>
-      <td class="num">$2.783,44 MXN</td>
-      <td class="num">43,3%</td>
-    </tr>
-<tr>
-      <td class="tname">🟡MASTERCLASS GRATIS - CDB - Exclusions</td>
-      <td class="num">$3.372,22 MXN</td>
-      <td class="num">$3.344,78 MXN</td>
-      <td class="num">$27,44 MXN</td>
-      <td class="num">0,8%</td>
-    </tr>
-<tr>
-      <td class="tname">🟢 Follow Me Ads - Trafico</td>
-      <td class="num">$6.309,87 MXN</td>
-      <td class="num">$6.309,87 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0,0%</td>
-    </tr>
-<tr>
-      <td class="tname">🟡Captación CDB - Test</td>
-      <td class="num">$6.090,35 MXN</td>
-      <td class="num">$6.090,35 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0,0%</td>
-    </tr>
-<tr>
-      <td class="tname">🟡MASTERCLASS GRATIS - CDB - $1</td>
-      <td class="num">$3.318,64 MXN</td>
-      <td class="num">$3.318,64 MXN</td>
-      <td class="num">$0,00 MXN</td>
-      <td class="num">0,0%</td>
-    </tr></tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Fragmentación — viabilidad de salida de aprendizaje</h3>
-    <p><strong>17</strong> de 18 conjuntos de ventas están en fase de aprendizaje. Viabilidad = (presupuesto diario × 7) / (50 × CPA observado). Si el resultado es menor a 1, ese presupuesto nunca alcanza para acumular las ~50 conversiones/semana que Meta necesita para salir de aprendizaje al CPA actual.</p>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Conjunto</th><th>Presup./día</th><th>CPA</th><th>¿En aprendizaje?</th><th>Viabilidad</th></tr></thead>
-      <tbody><tr>
-      <td class="tname">AD05 · NUEVOS DROPBOX | MX Frío 31Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">$234,80 MXN</td>
-      <td>No</td>
-      <td><span class="pill pill-rojo">0,18 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">Test Broad 3% compradores - 26Jul®<div class="sub">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div></td>
-      <td class="num">$245 MXN</td>
-      <td class="num">$361,62 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,09 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">TIBIO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®<div class="sub">🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="num">$800 MXN</td>
-      <td class="num">$389,82 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,29 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®<div class="sub">🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="num">$1.100 MXN</td>
-      <td class="num">$515,68 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,30 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">49 (06) CARRUSELL feb - Copia<div class="sub">🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</div></td>
-      <td class="num">$100 MXN</td>
-      <td class="num">$578,18 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,02 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">10 (06) CARRUSELL feb -  26Jul®<div class="sub">🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</div></td>
-      <td class="num">$100 MXN</td>
-      <td class="num">$581,43 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,02 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">ABO · INM AGO · FRANK3 23Jul®<div class="sub">🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1</div></td>
-      <td class="num">$600 MXN</td>
-      <td class="num">$607,08 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,14 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">Test Broad 03 Broad - compradores4% LAL 26Jul®<div class="sub">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div></td>
-      <td class="num">$200 MXN</td>
-      <td class="num">$892,37 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,03 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">FRANK3 - - 26Jul®<div class="sub">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div></td>
-      <td class="num">$400 MXN</td>
-      <td class="num">$1.176,76 MXN</td>
-      <td>Sí</td>
-      <td><span class="pill pill-rojo">0,05 — nunca saldrá de aprendizaje con este presupuesto</span></td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | Test Broad 03 Broad - compradores4% LAL<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | Test Broad 10% LAL<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | Test Broad 3% compradores<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">01Ago® | RMK | Interesados NO Compraron<div class="sub">🔴 INM · TIBIO + ABIERTO | 28Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">AD34 · NUEVOS DROPBOX  | Vid04 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">AD33 · NUEVOS DROPBOX  | Vid03 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">AD32 · NUEVOS DROPBOX  | Vid02 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">AD31 · NUEVOS DROPBOX  | Vid01 | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr>
-<tr>
-      <td class="tname">AD30 · NUEVOS DROPBOX  | Imagenes | MX Frío 31 Jul®<div class="sub">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div></td>
-      <td class="num">$300 MXN</td>
-      <td class="num">—</td>
-      <td>Sí</td>
-      <td><span class="pill pill-gris">sin compras — no calculable</span></td>
-    </tr></tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Ganadores validados en 3+ ciclos</h3>
-    <p>Si un ganador cae en rendimiento, es <strong>fatiga</strong> (descansar y refrescar creativo) — no "nunca funcionó". Se distingue explícitamente abajo.</p>
-    <div class="winners-grid">
-      <div class="winner-card">
-      <div class="winner-name">AD_27 <span class="mono small">(120258994638820456)</span></div>
-      <div class="winner-status"><span class="pill pill-gris">gasto $0,00 MXN, sin compras aún en la ventana</span> · 🔴 ABO · INM · TEST CREATIVOS | 24Jul®</div>
-      
-    </div>
-<div class="winner-card">
-      <div class="winner-name">AD_27 <span class="mono small">(120258845729060456)</span></div>
-      <div class="winner-status"><span class="pill pill-rojo">CPA $892,37 MXN (ROJO)</span> · 🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div>
-      <div class="winner-note">CPA sobre techo: es candidato a FATIGA (descansar y refrescar creativo), no a "nunca funcionó" — es un ganador validado en 3+ ciclos.</div>
-    </div>
-<div class="winner-card winner-rest">
-      <div class="winner-name">AD12</div>
-      <div class="winner-status">No está activo actualmente — en descanso o pausado. No es 'nunca funcionó'; es un ganador validado en reposo.</div>
-    </div>
-<div class="winner-card">
-      <div class="winner-name">FRANK3 <span class="mono small">(120258845729720456)</span></div>
-      <div class="winner-status"><span class="pill pill-rojo">CPA $1.176,76 MXN (ROJO)</span> · 🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</div>
-      <div class="winner-note">CPA sobre techo: es candidato a FATIGA (descansar y refrescar creativo), no a "nunca funcionó" — es un ganador validado en 3+ ciclos.</div>
-    </div>
-<div class="winner-card">
-      <div class="winner-name">FRANK3 <span class="mono small">(120258781767920456)</span></div>
-      <div class="winner-status"><span class="pill pill-ambar">CPA $607,08 MXN (AMBAR)</span> · 🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1</div>
-      
-    </div>
-<div class="winner-card winner-rest">
-      <div class="winner-name">06 INM-V02</div>
-      <div class="winner-status">No está activo actualmente — en descanso o pausado. No es 'nunca funcionó'; es un ganador validado en reposo.</div>
-    </div>
-<div class="winner-card winner-rest">
-      <div class="winner-name">03 AD TX01</div>
-      <div class="winner-status">No está activo actualmente — en descanso o pausado. No es 'nunca funcionó'; es un ganador validado en reposo.</div>
-    </div>
-<div class="winner-card winner-rest">
-      <div class="winner-name">AD25</div>
-      <div class="winner-status">No está activo actualmente — en descanso o pausado. No es 'nunca funcionó'; es un ganador validado en reposo.</div>
-    </div>
-<div class="winner-card winner-rest">
-      <div class="winner-name">03 AD TX01</div>
-      <div class="winner-status">Quemado desde finales de julio (confirmado). Su reemplazo natural es la familia <strong>ImgTicket</strong> (ABT/TIB 04-08), ya activa dentro de la campaña TIBIO+ABIERTO.</div>
-    </div>
-    </div>
-  </div>
-
-  <footer>
-    <p><strong>Notas y salvedades</strong></p>
-    <ul>
-      <li>Hotmart es la venta real; Meta es una estimación atribuida (atribución 7 días clic / 1 día vista). Los datos de esta ventana siguen madurando hasta 7 días después de cada evento.</li>
-      <li>El ROAS front no se reporta como columna de decisión a propósito: el backend de high ticket es donde vive la rentabilidad de este negocio.</li>
-      <li>Las inmersiones son eventos mensuales con ciclo predecible: semana 1 lenta (~3,7 compras/día), semana 4 pico (~9,9/día). El arranque lento no es falla del embudo — compara siempre contra la misma fase de ciclos anteriores, nunca contra la semana calendario anterior.</li>
-      <li>Benchmarks históricos: CPA 3 años ≈ $384 MXN. Julio post-evento ≈ $847 MXN. CPL bueno histórico $9,70 (un CPL de $16–20 es caro, no barato).</li>
-      <li>La fecha de la inmersión de agosto no está confirmada — puede explicar variaciones de ritmo antes de asumir un problema de landing o creativo.</li>
-      <li>Este tablero presenta candidatos con su porqué, no órdenes de cambio de presupuesto. Camilo aprueba toda decisión estratégica. Máximo +20% por edición y un cambio por conjunto cada 48–72 horas.</li>
-      <li>Nombres de anuncios no son identidad: se deduplicó y agrupó por ID en todo el tablero, nunca por nombre.</li>
-    </ul>
-  </footer>
+<div class="callout warn">
+  <b>⚠️ Fecha de la inmersión de agosto NO confirmada.</b> Antes de diagnosticar problemas de landing o de creativo por bajo desempeño, considera que el arranque de ciclo depende de cuándo se anuncie/realice el evento. El arranque lento (semana 1 ≈ 3,7 compras/día) es normal en el ciclo — no es falla de embudo. Compara siempre contra la misma fase de ciclos anteriores, nunca contra la semana calendario previa.
 </div>
+
+<div class="callout info">
+  <b>El ROAS no decide nada en este negocio.</b> La inmersión se vende a pérdida a propósito (producto de entrada); el dinero está en el backend de high-ticket (~21% de compradores cierra, valor esperado ≈ $4.700 MXN/comprador). La única vara de este tablero es el <b>CPA</b>: verde &lt; $600 MXN, ámbar $600–$700, rojo &gt; $700. El enemigo no es el ROAS bajo — es <b>cero compras</b>. Ningún ROAS aparece como columna de decisión en este documento.
+</div>
+
+<!-- ================= BLOQUE 1 — VIGILANCIA ================= -->
+<section class="block" id="vigilancia">
+  <div class="block-head">
+    <h2>🔭 Bloque 1 — Vigilancia <span class="tag">se actualiza cada corrida</span></h2>
+    <span class="badge">Estado operativo al momento de esta corrida</span>
+  </div>
+
+  <h3>Ritmo de gasto vs. presupuesto configurado</h3>
+  <div class="card-grid">
+    <div class="stat-card">
+      <div class="label">Presupuesto/día configurado (suma daily_budget, conjuntos ACTIVE)</div>
+      <div class="value">$15.255,00 MXN</div>
+      <div class="sub">31 conjuntos activos en la cuenta</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Gasto real 7d ÷ 7 (promedio diario)</div>
+      <div class="value">$7.567,67 MXN</div>
+      <div class="sub">Gasto total 7d: $52.973,67 MXN</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Ritmo vs. presupuesto configurado</div>
+      <div class="value">49,6%</div>
+      <div class="progress-bar"><div style="width:49.6%"></div></div>
+      <div class="sub">Explicado por: 3 conjuntos "01Ago" recién lanzados sin gasto aún, y 3 conjuntos técnicamente ACTIVE cuya campaña padre está PAUSED (gasto $0). No es necesariamente subgasto real del embudo en marcha.</div>
+    </div>
+  </div>
+
+  <h3>Conjuntos de ventas encendidos con gasto y CERO compras en 7 días</h3>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Conjunto</th><th>Campaña</th><th class="num">Gasto 7d</th><th>Estado</th><th class="id">ID</th></tr></thead>
+      <tbody>
+        <tr><td class="name-cell">AD34 · NUEVOS DROPBOX · Vid04</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$237,97 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966567260456</td></tr>
+        <tr><td class="name-cell">AD33 · NUEVOS DROPBOX · Vid03</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$218,87 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966556600456</td></tr>
+        <tr><td class="name-cell">AD32 · NUEVOS DROPBOX · Vid02</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$240,43 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966531800456</td></tr>
+        <tr><td class="name-cell">AD31 · NUEVOS DROPBOX · Vid01</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$225,99 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966431360456</td></tr>
+        <tr><td class="name-cell">AD30 · NUEVOS DROPBOX · Imágenes</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$264,58 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966162940456</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info" style="margin-top:-8px;">Los 5 conjuntos están dentro de la misma prueba de creativos (24Jul), en fase de aprendizaje, con gasto acumulado de ~$220–265 en 7 días — insuficiente todavía para exigir señal. No se cuentan aquí conjuntos de leads/tráfico (Masterclass, Captación, Follow Me) porque su objetivo no es la compra.</div>
+
+  <h3>Problemas de entrega</h3>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Conjunto</th><th>Campaña</th><th>Delivery</th><th>Detalle</th><th class="id">ID</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name-cell">AD05 · NUEVOS DROPBOX</td>
+          <td>🔴 ABO · INM · TEST CREATIVOS</td>
+          <td><span class="pill ambar"><span class="dot"></span>warning</span></td>
+          <td>Fatiga de creativo (has_ad_creative_fatigue). Es el mejor CPA de la prueba ($234,80) — candidato a refresco de creativo, no a corte.</td>
+          <td class="id">120258807833550456</td>
+        </tr>
+        <tr>
+          <td class="name-cell">VIDEO 06 · V02/FEBRERO</td>
+          <td>🔴02.EVERGREEN INMERSION // GENERAL (campaña PAUSED)</td>
+          <td><span class="pill rojo"><span class="dot"></span>off</span></td>
+          <td>Configurado ACTIVE a nivel de conjunto pero la campaña padre está PAUSED — no entrega. Inconsistencia de estado a corregir (activar la campaña o pausar el conjunto).</td>
+          <td class="id">120255509771690456</td>
+        </tr>
+        <tr>
+          <td class="name-cell">PP (Tibio)</td>
+          <td>🔴CDB Inmersión Ventas (campaña PAUSED)</td>
+          <td><span class="pill rojo"><span class="dot"></span>off</span></td>
+          <td>Mismo caso: conjunto ACTIVE, campaña PAUSED.</td>
+          <td class="id">120254773800260456</td>
+        </tr>
+        <tr>
+          <td class="name-cell">28 VIDEO 2901 (01) · ESCALA · Copia</td>
+          <td>🔴02 TESTEOS FEBRERO MUNDO INMERSION (campaña PAUSED)</td>
+          <td><span class="pill rojo"><span class="dot"></span>off</span></td>
+          <td>Mismo caso: conjunto ACTIVE, campaña PAUSED.</td>
+          <td class="id">120252061675580456</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info" style="margin-top:-8px;">17 de 31 conjuntos activos (55%) están en fase de aprendizaje (in_learning_phase) — ver detalle de fragmentación en Bloque 2.</div>
+
+  <h3>Auditoría de configuración</h3>
+  <ul class="flag-list">
+    <li>
+      <b>🚫 Ubicaciones no manuales / vacías (regla 1)</b>
+      Publisher platforms nulo o sin restringir a solo Facebook+Instagram:
+      <span class="idtxt">120258994638700456 — "01Ago® | Test Broad 10% LAL" (targeting vacío) · 🔴 ABO · INM · TEST CREATIVOS</span>
+      <span class="idtxt">120258994638690456 — "01Ago® | Test Broad 3% compradores" (targeting vacío) · 🔴 ABO · INM · TEST CREATIVOS</span>
+      <span class="idtxt">120258845729450456 — "Test Broad 3% compradores - 26Jul®" (targeting vacío) · 🔴04.EVERGREEN INMERSION // GENERAL</span>
+      <span class="idtxt">120255509771690456 — "VIDEO 06 - V02/FEBRERO" (targeting vacío; además campaña padre PAUSED)</span>
+    </li>
+    <li>
+      <b>🚫 Incluye plataformas no permitidas — Threads (regla 1)</b>
+      <span class="idtxt">120253228589540456 — "Broad - Captación - Ad 2 Webinar" · 🟡Captación CDB - Test (incluye facebook + instagram + threads)</span>
+      <span class="idtxt">120253228589530456 — "Broad - Captación - Ad 1 Webinar" · 🟡Captación CDB - Test (incluye facebook + instagram + threads)</span>
+    </li>
+    <li>
+      <b>🚫 optimization_goal = VALUE — error de configuración (regla 2)</b>
+      Meta persigue VIPs con ticket fijo y mata el volumen. Debe ser OFFSITE_CONVERSIONS.
+      <span class="idtxt">120258845729500456 — "Test Broad 03 Broad - compradores4% LAL 26Jul®" · 🔴04.EVERGREEN INMERSION // GENERAL</span>
+      <span class="idtxt">120258845729450456 — "Test Broad 3% compradores - 26Jul®" · 🔴04.EVERGREEN INMERSION // GENERAL</span>
+    </li>
+    <li class="ambarborder">
+      <b>✅ Exclusión "COMPRAS INMERSION 180D" (regla 3)</b>
+      Sin violaciones — los 31 conjuntos activos revisados la incluyen en excluded_custom_audiences.
+    </li>
+    <li>
+      <b>🚫 LAL 10% reactivado (agotado, no debe reactivarse) (regla 4)</b>
+      <span class="idtxt">120258994638700456 — "01Ago® | Test Broad 10% LAL" · Público: Lookalike (10%) StartFly HUGOMX PRINCIPAL · 🔴 ABO · INM · TEST CREATIVOS</span>
+    </li>
+    <li>
+      <b>🚫 LAL 4% compradores — público más caro y menos eficiente (regla 4)</b>
+      <span class="idtxt">120258994638710456 — "01Ago® | Test Broad 03 Broad - compradores4% LAL" · 🔴 ABO · INM · TEST CREATIVOS</span>
+      <span class="idtxt">120258845729500456 — "Test Broad 03 Broad - compradores4% LAL 26Jul®" · 🔴04.EVERGREEN INMERSION // GENERAL</span>
+      <span class="idtxt">120255509354020456 — "LOOK & LIKE + BROAD" · 🟡MASTERCLASS GRATIS - CDB - Exclusions</span>
+      <span class="idtxt">120253228518350456 — "LOOK & LIKE + BROAD" · 🟡MASTERCLASS GRATIS - CDB - $1</span>
+    </li>
+    <li>
+      <b>🚫 Test de creativos sobre el tope de $150/día por conjunto (regla 5)</b>
+      Campaña 🔴 ABO · INM · TEST CREATIVOS | 24Jul® — los 9 conjuntos activos están a $300/día, el doble del tope:
+      <span class="idtxt">120258994638710456, 120258994638700456, 120258994638690456, 120258966567260456, 120258966556600456, 120258966531800456, 120258966431360456, 120258966162940456, 120258807833550456 — todos $300,00 MXN/día</span>
+      Conjuntos "Test Broad" dentro de 🔴04.EVERGREEN INMERSION // GENERAL también sobre el tope:
+      <span class="idtxt">120258845729500456 — $200,00 MXN/día · 120258845729450456 — $245,00 MXN/día</span>
+    </li>
+    <li>
+      <b>🚫 Advantage+ Audience activo o rango 18-65 — rompe filtro de mujer profesional (regla 6)</b>
+      <span class="idtxt">120258994638700456, 120258994638690456, 120258991152030456, 120258966567260456, 120258966556600456, 120258966531800456, 120258966431360456, 120258966162940456, 120258901309690456, 120258897356500456, 120258845729450456, 120258807833550456 — 12 conjuntos con targeting_automation.advantage_audience = 1 (3 de ellos además con rango 18-65)</span>
+      La mayoría corresponde a la campaña de prueba de creativos 24Jul — coherente con ser "pruebas", pero rompe el filtro de audiencia objetivo mientras corren.
+    </li>
+  </ul>
+</section>
+
+<!-- ================= BLOQUE 2 — DECISIÓN ================= -->
+<section class="block" id="decision">
+  <div class="block-head">
+    <h2>🎯 Bloque 2 — Decisión <span class="tag">ventana fija de 7 días — no tomes decisiones con cambios intradía</span></h2>
+    <span class="badge">CPA es la única vara: verde &lt;$600 · ámbar $600–$700 · rojo &gt;$700</span>
+  </div>
+
+  <h3>Campañas ACTIVE</h3>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Campaña</th><th class="num">Presup./día</th><th class="num">Gasto 7d</th><th class="num">Compras</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Frec.</th><th class="num">Conj.</th><th class="num">Anuncios</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="name-cell">🔴 INM · TIBIO + ABIERTO | 28Jul®<span class="campmeta">ventas</span></td><td class="num">$2.200,00</td><td class="num">$7.244,02</td><td class="num">16</td><td class="num"><span class="pill verde">$452,75</span></td><td class="num">3,86%</td><td class="num">1,78</td><td class="num">3</td><td class="num">16</td></tr>
+        <tr><td class="name-cell">🔴 ABO · INM · TEST CREATIVOS | 24Jul®<span class="campmeta">ventas · test creativos</span></td><td class="num">$2.700,00</td><td class="num">$8.506,63</td><td class="num">12</td><td class="num"><span class="pill ambar">$708,89</span></td><td class="num">2,02%</td><td class="num">2,94</td><td class="num">9</td><td class="num">9</td></tr>
+        <tr><td class="name-cell">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®<span class="campmeta">ventas</span></td><td class="num">$845,00</td><td class="num">$9.428,93</td><td class="num">10</td><td class="num"><span class="pill ambar">$942,89</span></td><td class="num">2,58%</td><td class="num">1,80</td><td class="num">3</td><td class="num">5</td></tr>
+        <tr><td class="name-cell">🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul®<span class="campmeta">ventas</span></td><td class="num">$600,00</td><td class="num">$6.425,97</td><td class="num">8</td><td class="num"><span class="pill rojo">$803,25</span></td><td class="num">3,45%</td><td class="num">1,51</td><td class="num">1</td><td class="num">1</td></tr>
+        <tr><td class="name-cell">🔴04.TESTEO INMERSION 03 FEB CREATIVOS - 26Jul®<span class="campmeta">ventas · test creativos</span></td><td class="num">$200,00</td><td class="num">$2.276,46</td><td class="num">2</td><td class="num"><span class="pill rojo">$1.138,23</span></td><td class="num">1,92%</td><td class="num">2,11</td><td class="num">2</td><td class="num">2</td></tr>
+        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - Exclusions<span class="campmeta">leads (funnel frontal, no ventas)</span></td><td class="num">$1.800,00</td><td class="num">$3.372,47</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,01%</td><td class="num">1,18</td><td class="num">1</td><td class="num">3</td></tr>
+        <tr><td class="name-cell">🟡Captación CDB - Test<span class="campmeta">leads (funnel frontal, no ventas)</span></td><td class="num">$3.600,00</td><td class="num">$6.090,63</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,32%</td><td class="num">1,30</td><td class="num">2</td><td class="num">2</td></tr>
+        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - $1<span class="campmeta">leads (funnel frontal, no ventas)</span></td><td class="num">$1.800,00</td><td class="num">$3.318,69</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,50%</td><td class="num">1,25</td><td class="num">1</td><td class="num">3</td></tr>
+        <tr><td class="name-cell">🟢 Follow Me Ads - Trafico<span class="campmeta">tráfico (no ventas)</span></td><td class="num">$900,00</td><td class="num">$6.309,87</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,73%</td><td class="num">1,33</td><td class="num">6</td><td class="num">24</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info" style="margin-top:-8px;">*Estas 3 campañas optimizan a <b>leads</b>, no a compra (columna "Compras" = 0 por diseño, no es una alerta). CPA global de las 5 campañas de ventas: <b>$705,88 MXN</b> sobre 48 compras — justo por encima del techo de $700, y por debajo del benchmark de julio post-evento (~$847). Benchmark histórico 3 años: $384.</div>
+
+  <h3>Conjuntos ACTIVE de ventas — ordenados por CPA ascendente</h3>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Semáforo</th><th>Conjunto</th><th class="num">Presup./día</th><th class="num">Gasto 7d</th><th class="num">Compras</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Frec.</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">AD05 · NUEVOS DROPBOX<span class="campmeta">🔴 ABO TEST CREATIVOS · con fatiga de creativo</span></td><td class="num">$300,00</td><td class="num">$2.113,18</td><td class="num">9</td><td class="num">$234,80</td><td class="num">2,48%</td><td class="num">2,09</td></tr>
+        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">Test Broad 3% compradores<span class="campmeta">🔴 EVERGREEN GENERAL · goal VALUE (config a corregir)</span></td><td class="num">$245,00</td><td class="num">$1.446,49</td><td class="num">4</td><td class="num">$361,62</td><td class="num">2,26%</td><td class="num">1,75</td></tr>
+        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">TIBIO · VIDEO THRUPLAY 365D<span class="campmeta">🔴 INM TIBIO+ABIERTO</span></td><td class="num">$800,00</td><td class="num">$3.118,58</td><td class="num">8</td><td class="num">$389,82</td><td class="num">3,09%</td><td class="num">2,17</td></tr>
+        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">ABIERTO · VIDEO THRUPLAY 365D<span class="campmeta">🔴 INM TIBIO+ABIERTO · familia ImgTicket activa aquí</span></td><td class="num">$1.100,00</td><td class="num">$4.125,44</td><td class="num">8</td><td class="num">$515,68</td><td class="num">4,48%</td><td class="num">1,48</td></tr>
+        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">49 (06) CARRUSELL feb - Copia<span class="campmeta">🔴 TESTEO INM 03FEB</span></td><td class="num">$100,00</td><td class="num">$578,18</td><td class="num">1</td><td class="num">$578,18</td><td class="num">1,30%</td><td class="num">1,52</td></tr>
+        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">10 (06) CARRUSELL feb<span class="campmeta">🔴 TESTEO INM 03FEB</span></td><td class="num">$100,00</td><td class="num">$581,43</td><td class="num">1</td><td class="num">$581,43</td><td class="num">2,13%</td><td class="num">1,84</td></tr>
+        <tr><td><span class="pill ambar"><span class="dot"></span>ámbar</span></td><td class="name-cell">ABO · INM AGO · FRANK3 23Jul®<span class="campmeta">🔴 GANADORES EVERGREEN · ganador validado</span></td><td class="num">$600,00</td><td class="num">$3.642,53</td><td class="num">6</td><td class="num">$607,09</td><td class="num">4,17%</td><td class="num">1,26</td></tr>
+        <tr><td><span class="pill rojo"><span class="dot"></span>rojo</span></td><td class="name-cell">Test Broad 03 · compradores 4% LAL<span class="campmeta">🔴 EVERGREEN GENERAL · goal VALUE + audiencia LAL4% (config a corregir)</span></td><td class="num">$200,00</td><td class="num">$3.569,48</td><td class="num">4</td><td class="num">$892,37</td><td class="num">1,87%</td><td class="num">1,51</td></tr>
+        <tr><td><span class="pill rojo"><span class="dot"></span>rojo</span></td><td class="name-cell">FRANK3 - 26Jul®<span class="campmeta">🔴 EVERGREEN GENERAL · mismo creativo que arriba, aquí con fatiga</span></td><td class="num">$400,00</td><td class="num">$2.353,51</td><td class="num">2</td><td class="num">$1.176,76</td><td class="num">4,01%</td><td class="num">1,14</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD34 · NUEVOS DROPBOX · Vid04<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$237,97</td><td class="num">0</td><td class="num">—</td><td class="num">2,04%</td><td class="num">1,30</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD33 · NUEVOS DROPBOX · Vid03<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$218,87</td><td class="num">0</td><td class="num">—</td><td class="num">1,22%</td><td class="num">1,29</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD32 · NUEVOS DROPBOX · Vid02<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$240,43</td><td class="num">0</td><td class="num">—</td><td class="num">2,39%</td><td class="num">1,28</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD31 · NUEVOS DROPBOX · Vid01<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$225,99</td><td class="num">0</td><td class="num">—</td><td class="num">1,96%</td><td class="num">1,28</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD30 · NUEVOS DROPBOX · Imágenes<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$264,58</td><td class="num">0</td><td class="num">—</td><td class="num">4,69%</td><td class="num">1,59</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · Test Broad 03 · 4% LAL<span class="campmeta">🔴 ABO TEST CREATIVOS · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · Test Broad 10% LAL<span class="campmeta">🔴 ABO TEST CREATIVOS · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · Test Broad 3% compradores<span class="campmeta">🔴 ABO TEST CREATIVOS · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · RMK · Interesados NO Compraron<span class="campmeta">🔴 INM TIBIO+ABIERTO · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Anuncios ACTIVE con gasto &gt; $100 MXN — ordenados por CPA</h3>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Anuncio</th><th class="num">Gasto 7d</th><th class="num">Compras</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Frec.</th><th>Delivery</th><th class="id">ID</th></tr></thead>
+      <tbody>
+        <tr><td class="name-cell">ABT | 01 AD-HorizontalLargo</td><td class="num">$107,28</td><td class="num">1</td><td class="num"><span class="pill verde">$107,28</span></td><td class="num">3,81%</td><td class="num">1,05</td><td>en aprendizaje</td><td class="id">120258901309670456</td></tr>
+        <tr><td class="name-cell">AD_25<span class="campmeta">ganador validado</span></td><td class="num">$230,73</td><td class="num">2</td><td class="num"><span class="pill verde">$115,36</span></td><td class="num">1,37%</td><td class="num">1,21</td><td>en aprendizaje</td><td class="id">120258845729660456</td></tr>
+        <tr><td class="name-cell">AD05 | VID AD-NoDormir</td><td class="num">$2.113,18</td><td class="num">9</td><td class="num"><span class="pill verde">$234,80</span></td><td class="num">2,48%</td><td class="num">2,09</td><td><span class="pill ambar">fatiga creativa</span></td><td class="id">120258807833600456</td></tr>
+        <tr><td class="name-cell">ABT | 08 AD-ImgTicket02</td><td class="num">$725,26</td><td class="num">3</td><td class="num"><span class="pill verde">$241,75</span></td><td class="num">5,25%</td><td class="num">1,20</td><td>en aprendizaje</td><td class="id">120258901313570456</td></tr>
+        <tr><td class="name-cell">TIB | 03 AD-TipoReelIncomodo</td><td class="num">$3.118,58</td><td class="num">8</td><td class="num"><span class="pill verde">$389,82</span></td><td class="num">3,09%</td><td class="num">2,17</td><td>en aprendizaje</td><td class="id">120258900896980456</td></tr>
+        <tr><td class="name-cell">01 (Carrusell feb, copia)</td><td class="num">$578,18</td><td class="num">1</td><td class="num"><span class="pill verde">$578,18</span></td><td class="num">1,30%</td><td class="num">1,52</td><td>en aprendizaje</td><td class="id">120258846320500456</td></tr>
+        <tr><td class="name-cell">01 (Carrusell feb)</td><td class="num">$581,43</td><td class="num">1</td><td class="num"><span class="pill verde">$581,43</span></td><td class="num">2,13%</td><td class="num">1,84</td><td>en aprendizaje</td><td class="id">120258846320490456</td></tr>
+        <tr><td class="name-cell">FRANK3_23Jul®<span class="campmeta">ganador validado</span></td><td class="num">$3.642,53</td><td class="num">6</td><td class="num"><span class="pill ambar">$607,09</span></td><td class="num">4,17%</td><td class="num">1,26</td><td>en aprendizaje</td><td class="id">120258781767920456</td></tr>
+        <tr><td class="name-cell">ABT | 07 AD-ImgTicket01</td><td class="num">$2.596,30</td><td class="num">4</td><td class="num"><span class="pill ambar">$649,08</span></td><td class="num">4,65%</td><td class="num">1,39</td><td>en aprendizaje</td><td class="id">120258901313560456</td></tr>
+        <tr><td class="name-cell">AD_27<span class="campmeta">ganador validado — señal de fatiga</span></td><td class="num">$3.569,48</td><td class="num">4</td><td class="num"><span class="pill rojo">$892,37</span></td><td class="num">1,87%</td><td class="num">1,51</td><td>en aprendizaje</td><td class="id">120258845729060456</td></tr>
+        <tr><td class="name-cell">AD_20</td><td class="num">$1.154,07</td><td class="num">1</td><td class="num"><span class="pill rojo">$1.154,07</span></td><td class="num">2,35%</td><td class="num">1,66</td><td>en aprendizaje</td><td class="id">120258845729670456</td></tr>
+        <tr><td class="name-cell">FRANK3<span class="campmeta">ganador validado — señal de fatiga en este conjunto</span></td><td class="num">$2.353,51</td><td class="num">2</td><td class="num"><span class="pill rojo">$1.176,76</span></td><td class="num">4,01%</td><td class="num">1,14</td><td>en aprendizaje</td><td class="id">120258845729720456</td></tr>
+        <tr><td class="name-cell">AD012<span class="campmeta">leads, no ventas</span></td><td class="num">$3.340,74</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,00%</td><td class="num">1,18</td><td>activo</td><td class="id">120255509354010456</td></tr>
+        <tr><td class="name-cell">AD012<span class="campmeta">leads, no ventas</span></td><td class="num">$3.269,99</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,49%</td><td class="num">1,24</td><td>activo</td><td class="id">120253228518420456</td></tr>
+        <tr><td class="name-cell">Ad 2 - Webinar<span class="campmeta">leads, no ventas</span></td><td class="num">$3.106,78</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,44%</td><td class="num">1,21</td><td>activo</td><td class="id">120253228589460456</td></tr>
+        <tr><td class="name-cell">Ad 1 - Webinar<span class="campmeta">leads, no ventas</span></td><td class="num">$2.983,85</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,22%</td><td class="num">1,16</td><td>activo</td><td class="id">120253228589440456</td></tr>
+        <tr><td class="name-cell">V3 Cancún ×3<span class="campmeta">tráfico, no ventas</span></td><td class="num">$1.056,69 / $1.051,34 / $1.049,43</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,68–3,15%</td><td class="num">1,14–1,18</td><td>activo</td><td class="id">120254792748940456 / …</td></tr>
+        <tr><td class="name-cell">Storie 1/2/3 (varias)<span class="campmeta">tráfico, no ventas</span></td><td class="num">$195–$810</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,3–3,7%</td><td class="num">1,12–1,24</td><td>activo</td><td class="id">ver campaña Follow Me Ads</td></tr>
+        <tr><td class="name-cell">ABT | 02 AD-TipoReelMiedo</td><td class="num">$377,23</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">4,55%</td><td class="num">1,12</td><td>en aprendizaje</td><td class="id">120258901309720456</td></tr>
+        <tr><td class="name-cell">AD30 | 10Imagenes_test (24Jul)</td><td class="num">$264,58</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">4,69%</td><td class="num">1,59</td><td>en aprendizaje</td><td class="id">120258966162950456</td></tr>
+        <tr><td class="name-cell">AD32 | test_vid02</td><td class="num">$240,43</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,39%</td><td class="num">1,28</td><td>en aprendizaje</td><td class="id">120258966531810456</td></tr>
+        <tr><td class="name-cell">AD34 | test_vid04</td><td class="num">$237,97</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,04%</td><td class="num">1,30</td><td>en aprendizaje</td><td class="id">120258966567270456</td></tr>
+        <tr><td class="name-cell">AD30 | 10Imagenes_test (31Jul)</td><td class="num">$225,99</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,96%</td><td class="num">1,28</td><td>en aprendizaje</td><td class="id">120258966431350456</td></tr>
+        <tr><td class="name-cell">AD33 | test_vid03</td><td class="num">$218,87</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,22%</td><td class="num">1,29</td><td>en aprendizaje</td><td class="id">120258966556590456</td></tr>
+        <tr><td class="name-cell">ABT | 05 AD-ImgTicket02</td><td class="num">$129,49</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,99%</td><td class="num">1,13</td><td>en aprendizaje</td><td class="id">120258901309700456</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Brecha por campaña: gasto de campaña vs. suma de conjuntos encendidos</h3>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Campaña</th><th class="num">Gasto campaña 7d</th><th class="num">Suma conjuntos activos 7d</th><th class="num">Brecha</th><th class="num">Brecha %</th></tr></thead>
+      <tbody>
+        <tr><td class="name-cell">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</td><td class="num">$8.506,63</td><td class="num">$3.301,02</td><td class="num">$5.205,61</td><td class="num"><span class="pill rojo">61,2%</span></td></tr>
+        <tr><td class="name-cell">🔴 ABO · INM AGO · GANADORES EVERGREEN</td><td class="num">$6.425,97</td><td class="num">$3.642,53</td><td class="num">$2.783,44</td><td class="num"><span class="pill ambar">43,3%</span></td></tr>
+        <tr><td class="name-cell">🔴04.TESTEO INMERSION 03 FEB CREATIVOS</td><td class="num">$2.276,46</td><td class="num">$1.159,61</td><td class="num">$1.116,85</td><td class="num"><span class="pill ambar">49,1%</span></td></tr>
+        <tr><td class="name-cell">🔴04.EVERGREEN INMERSION // GENERAL</td><td class="num">$9.428,93</td><td class="num">$7.369,48</td><td class="num">$2.059,45</td><td class="num"><span class="pill ambar">21,8%</span></td></tr>
+        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - Exclusions</td><td class="num">$3.372,47</td><td class="num">$3.345,03</td><td class="num">$27,44</td><td class="num"><span class="pill verde">0,8%</span></td></tr>
+        <tr><td class="name-cell">🔴 INM · TIBIO + ABIERTO</td><td class="num">$7.244,02</td><td class="num">$7.244,02</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
+        <tr><td class="name-cell">🟢 Follow Me Ads - Trafico</td><td class="num">$6.309,87</td><td class="num">$6.309,87</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
+        <tr><td class="name-cell">🟡Captación CDB - Test</td><td class="num">$6.090,63</td><td class="num">$6.090,63</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
+        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - $1</td><td class="num">$3.318,69</td><td class="num">$3.318,69</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info" style="margin-top:-8px;">La brecha de las 4 campañas de ventas con test/aprendizaje activo (61,2% / 49,1% / 43,3% / 21,8%) viene de conjuntos ya apagados dentro de esas campañas — contamina el CPA/CTR promedio a nivel campaña. Usa siempre las tablas de conjunto y anuncio para decisiones, no el promedio de campaña.</div>
+
+  <h3>Fragmentación</h3>
+  <div class="card-grid">
+    <div class="stat-card">
+      <div class="label">Conjuntos en fase de aprendizaje</div>
+      <div class="value">17 / 31</div>
+      <div class="sub">55% de los conjuntos activos de la cuenta</div>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Conjunto de ventas</th><th class="num">Presup./día</th><th class="num">CPA</th><th class="num">Viabilidad = (presup×7)/(50×CPA)</th><th>Lectura</th></tr></thead>
+      <tbody>
+        <tr><td class="name-cell">AD05 · NUEVOS DROPBOX</td><td class="num">$300,00</td><td class="num">$234,80</td><td class="num">0,18</td><td><span class="pill rojo">&lt;1 · no alcanza 50 compras/sem. a este presupuesto</span></td></tr>
+        <tr><td class="name-cell">Test Broad 3% compradores (EVERGREEN)</td><td class="num">$245,00</td><td class="num">$361,62</td><td class="num">0,09</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">TIBIO · VIDEO THRUPLAY</td><td class="num">$800,00</td><td class="num">$389,82</td><td class="num">0,29</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">ABIERTO · VIDEO THRUPLAY</td><td class="num">$1.100,00</td><td class="num">$515,68</td><td class="num">0,30</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">49 (06) CARRUSELL feb - Copia</td><td class="num">$100,00</td><td class="num">$578,18</td><td class="num">0,02</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">10 (06) CARRUSELL feb</td><td class="num">$100,00</td><td class="num">$581,43</td><td class="num">0,02</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">ABO · INM AGO · FRANK3</td><td class="num">$600,00</td><td class="num">$607,09</td><td class="num">0,14</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">Test Broad 03 · 4% LAL (EVERGREEN)</td><td class="num">$200,00</td><td class="num">$892,37</td><td class="num">0,03</td><td><span class="pill rojo">&lt;1</span></td></tr>
+        <tr><td class="name-cell">FRANK3 (EVERGREEN)</td><td class="num">$400,00</td><td class="num">$1.176,76</td><td class="num">0,05</td><td><span class="pill rojo">&lt;1</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn" style="margin-top:-8px;">Los 9 conjuntos de ventas con CPA calculable dan viabilidad &lt;1 bajo la fórmula estándar de 50 conversiones/semana para graduarse de aprendizaje. En la práctica, varios ya están entregando fuera de "in_learning_phase" (p. ej. AD05 pasó a fatiga con solo 9 compras), así que Meta no siempre exige el umbral estricto — pero el dato confirma que, a los presupuestos actuales, ningún conjunto de ventas está dimensionado para salir de aprendizaje por volumen puro. Esto es lectura de fragmentación, no una orden de subir presupuesto — la decisión de escalar es de Camilo.</div>
+</section>
+
+<!-- ================= GANADORES VALIDADOS ================= -->
+<section class="block" id="ganadores">
+  <div class="block-head">
+    <h2>🏆 Ganadores validados en 3+ ciclos — fatiga vs. "nunca funcionó"</h2>
+  </div>
+  <div class="winners-grid">
+    <div class="winner-card">
+      <div class="wname">AD_27</div>
+      <div class="wstatus">Activo · CPA $892,37 (rojo). Está por encima del techo <b>en este conjunto</b> — lectura: <b>fatiga</b>, candidato a descanso/refresco, no a declarar "no funciona".</div>
+    </div>
+    <div class="winner-card">
+      <div class="wname">FRANK3</div>
+      <div class="wstatus">Activo en 2 conjuntos con resultados distintos: $607,09 (ámbar) en "GANADORES EVERGREEN" vs. $1.176,76 (rojo) en "EVERGREEN GENERAL". Mismo creativo, resultado distinto por conjunto/audiencia → la fatiga está en el conjunto, no necesariamente en el creativo.</div>
+    </div>
+    <div class="winner-card">
+      <div class="wname">AD25 (AD_25)</div>
+      <div class="wstatus">Activo · CPA $115,36 (verde). Sigue funcionando con fuerza, confirma su estatus de ganador validado.</div>
+    </div>
+    <div class="winner-card">
+      <div class="wname">AD12</div>
+      <div class="wstatus">No aparece entre las entidades ACTIVE de esta corrida — no está corriendo actualmente en la cuenta.</div>
+    </div>
+    <div class="winner-card">
+      <div class="wname">06 INM-V02</div>
+      <div class="wstatus">No aparece entre las entidades ACTIVE — el conjunto relacionado ("VIDEO 06 - V02/FEBRERO") está configurado ACTIVE pero su campaña padre está PAUSED (ver Bloque 1, problemas de entrega). No está entregando.</div>
+    </div>
+    <div class="winner-card">
+      <div class="wname">03 AD TX01</div>
+      <div class="wstatus">Quemado desde finales de julio (dato conocido, no error). Su reemplazo natural, la familia <b>ImgTicket</b>, está activa y corriendo en el conjunto ABIERTO de 🔴 INM · TIBIO + ABIERTO (ABT | 04/05/07/08 AD-ImgTicket01/02).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METODOLOGÍA / SALVEDADES ================= -->
+<footer id="metodologia">
+  <p><b>Metodología.</b> Compras = <code>offsite_conversion_fb_pixel_purchase</code>; CPA = gasto ÷ compras (nunca derivado dividiendo gasto entre "costo por resultado"). Leads = <code>lead</code>. Ventana fija <code>date_preset=last_7d</code>, atribución 7 días clic / 1 día vista — los datos siguen madurando hasta 7 días después de cada evento. Se recorrieron los tres niveles (campaña, conjunto, anuncio) filtrando <code>effective_status = ACTIVE</code> de forma independiente en cada nivel — el estado de los hijos no se infirió del padre, lo que expuso los 3 conjuntos "ACTIVE" con campaña padre PAUSED reportados en Bloque 1. Entidades agrupadas y dedupe por ID, nunca por nombre.</p>
+  <p><b>Salvedad Hotmart vs. Meta.</b> Hotmart es la venta real; las cifras de este tablero (compras, CPA) son la estimación atribuida por Meta y pueden diferir de las ventas reales registradas en Hotmart.</p>
+  <p><b>Reglas de cambio.</b> Este tablero presenta candidatos con su porqué — no redacta órdenes de cambio de presupuesto. Camilo aprueba toda decisión estratégica. Recordatorio operativo: máximo +20% por edición de presupuesto, y un solo cambio por conjunto cada 48–72 horas.</p>
+  <p><b>Ciclo.</b> Las inmersiones son eventos mensuales con semana 1 lenta (~3,7 compras/día) y semana 4 pico (~9,9 compras/día); el valle post-evento es normal. Compara siempre contra la misma fase de ciclos anteriores. Benchmarks: CPA histórico 3 años $384 MXN · Julio post-evento ~$847 MXN · CPL bueno histórico $9,70 (CPL $16–20 es caro). Los 3 CPL activos de esta corrida ($19,05 / $21,68 / $15,96) están en zona cara según ese benchmark.</p>
+  <p>Generado automáticamente por el conector MCP <code>mcp-meta</code> sobre la cuenta 464228364039681. Página sin indexar (<code>noindex, nofollow</code>).</p>
+</footer>
+
+</div>
+</body>
+</html>
