@@ -1,481 +1,1116 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Tablero de Control · Meta Ads · Héctor Hugo de la Peña</title>
+<title>Meta Ads - Inmersion</title>
 <style>
-  :root{
-    --bg: #f4f5f7;
-    --bg-elev: #ffffff;
-    --bg-elev2: #eef0f3;
-    --text: #1a1d23;
-    --text-dim: #55606e;
-    --text-faint: #8892a0;
-    --border: #dde1e7;
-    --accent: #2d5fe0;
-    --verde-bg: #e3f6ea; --verde-fg: #157347; --verde-bd:#9fdcb7;
-    --ambar-bg: #fff6dd; --ambar-fg: #92650a; --ambar-bd:#f3d98b;
-    --rojo-bg: #fde8e8; --rojo-fg: #b3261e; --rojo-bd:#f3aca8;
-    --gris-bg: #eceff2; --gris-fg: #5b6572; --gris-bd:#d3d8de;
-    --shadow: 0 1px 2px rgba(20,20,30,.06), 0 1px 8px rgba(20,20,30,.04);
-    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  :root {
+    --bg: #F5F5F7; --card-bg: #FFFFFF; --border: #E5E5E7;
+    --text: #1D1D1F; --text-secondary: #6E6E73; --accent: #0071E3;
+    --green: #34C759; --orange: #FF9500; --red: #FF3B30;
+    --radius: 16px; --shadow: 0 1px 2px rgba(0,0,0,.04);
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg: #14161b;
-      --bg-elev: #1c1f26;
-      --bg-elev2: #23262e;
-      --text: #e8eaee;
-      --text-dim: #a7afbc;
-      --text-faint: #737c8a;
-      --border: #30343d;
-      --accent: #7d9dff;
-      --verde-bg: #103322; --verde-fg: #4fd68a; --verde-bd:#1c5c3c;
-      --ambar-bg: #3a2c0c; --ambar-fg: #f0c15c; --ambar-bd:#634b16;
-      --rojo-bg: #3a1616; --rojo-fg: #ff8c85; --rojo-bd:#6b2321;
-      --gris-bg: #262a32; --gris-fg: #9aa3b0; --gris-bd:#383d47;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 2px 12px rgba(0,0,0,.25);
-    }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#000000; --card-bg:#1C1C1E; --border:#38383A; --text:#F5F5F7; --text-secondary:#98989D; }
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg); color:var(--text); font-family:var(--sans);
-    font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI Variable Text", "Segoe UI", Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap{max-width:1180px; margin:0 auto; padding:20px 16px 80px;}
-  a{color:var(--accent);}
-  h1{font-size:1.5rem; margin:0 0 4px;}
-  h2{font-size:1.2rem; margin:0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
-  h3{font-size:1rem; margin:28px 0 10px; color:var(--text);}
-  .subtitle{color:var(--text-dim); font-size:.92rem; margin:0 0 18px;}
-  .tag{
-    display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.04em;
-    text-transform:uppercase; padding:3px 9px; border-radius:99px; border:1px solid var(--border);
-    color:var(--text-dim); background:var(--bg-elev2);
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+  header.page-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 56px; flex-wrap: wrap; gap: 16px;
   }
-  header.top{
-    background:var(--bg-elev); border:1px solid var(--border); border-radius:14px;
-    padding:18px 20px; margin-bottom:18px; box-shadow:var(--shadow);
+  h1 { font-size: 28px; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .header-meta { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .live-indicator {
+    display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary);
+    letter-spacing: 0.02em; padding-top: 4px;
   }
-  .meta-row{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:10px; font-size:.85rem; color:var(--text-dim);}
-  .meta-row b{color:var(--text);}
-  .callout{
-    border-radius:12px; padding:14px 16px; margin:14px 0; font-size:.9rem; line-height:1.55;
-    border:1px solid var(--border);
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+  section { margin-bottom: 64px; }
+  h2 { font-size: 13px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;
+    letter-spacing: 0.06em; margin: 0 0 20px; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 40px; border-bottom: 1px solid var(--border); }
+  .tab-btn {
+    background: none; border: none; font-family: inherit; font-size: 15px; font-weight: 500;
+    color: var(--text-secondary); padding: 10px 18px; cursor: pointer; border-bottom: 2px solid transparent;
+    transition: color 200ms, border-color 200ms; margin-bottom: -1px;
   }
-  .callout.warn{ background:var(--ambar-bg); color:var(--ambar-fg); border-color:var(--ambar-bd); }
-  .callout.info{ background:var(--bg-elev2); color:var(--text-dim); border-color:var(--border); }
-  .callout.danger{ background:var(--rojo-bg); color:var(--rojo-fg); border-color:var(--rojo-bd); }
-  .callout b{color:inherit;}
-  section.block{
-    background:var(--bg-elev); border:1px solid var(--border); border-radius:14px;
-    padding:20px 20px 8px; margin-bottom:22px; box-shadow:var(--shadow);
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Cards grid */
+  .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .cards-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px; transition: transform 200ms;
   }
-  section.block > .block-head{
-    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
-    padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--border);
+  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .card-label { font-size: 12px; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .card-value { font-size: 34px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-bottom: 6px; }
+  .card-note { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+  .card-cmp { font-size: 12px; margin-top: 2px; }
+  .cmp { font-variant-numeric: tabular-nums; }
+  .cmp.up-good { color: var(--green); }
+  .cmp.up-bad { color: var(--red); }
+  .cmp.neutral { color: var(--text-secondary); }
+  .day-in-progress { font-size: 11px; color: var(--text-secondary); font-style: italic; }
+
+  /* Funnel */
+  .funnel-toggle { display: flex; gap: 8px; margin-bottom: 24px; }
+  .funnel-toggle button {
+    font-family: inherit; font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border);
+    background: var(--card-bg); color: var(--text-secondary); cursor: pointer; transition: all 200ms;
   }
-  .block-head .badge{
-    font-size:.72rem; font-weight:600; color:var(--text-faint); text-transform:none;
+  .funnel-toggle button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .funnel-view { display: none; }
+  .funnel-view.active { display: block; }
+  .funnel-stages { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  @media (max-width: 800px) { .funnel-stages { grid-template-columns: 1fr 1fr; } }
+  .funnel-stage {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 18px 16px; text-align: left;
   }
-  .card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:20px;}
-  .stat-card{
-    background:var(--bg-elev2); border:1px solid var(--border); border-radius:10px; padding:14px 16px;
+  .funnel-loss-wrap { min-height: 16px; }
+  .funnel-loss { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+  .funnel-bar-label { font-size: 12px; color: var(--text-secondary); letter-spacing: 0.03em; margin-bottom: 6px; }
+  .funnel-bar-value { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+  .funnel-bar-sub { font-size: 11px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .funnel-insight { margin-top: 20px; font-size: 14px; color: var(--text-secondary); }
+
+  /* Hourly chart */
+  .hourly-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 24px; overflow-x: auto;
   }
-  .stat-card .label{font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-faint); margin-bottom:6px;}
-  .stat-card .value{font-size:1.35rem; font-weight:700; font-variant-numeric:tabular-nums;}
-  .stat-card .sub{font-size:.78rem; color:var(--text-dim); margin-top:4px;}
-  .progress-bar{height:8px; background:var(--gris-bg); border-radius:99px; overflow:hidden; margin-top:8px;}
-  .progress-bar > div{height:100%; background:var(--accent); border-radius:99px;}
-  .table-scroll{overflow-x:auto; margin:0 0 22px; border:1px solid var(--border); border-radius:10px;}
-  table{border-collapse:collapse; width:100%; min-width:640px; font-size:.86rem;}
-  thead th{
-    text-align:left; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em;
-    color:var(--text-faint); background:var(--bg-elev2); padding:9px 12px; border-bottom:1px solid var(--border);
-    white-space:nowrap; position:sticky; top:0;
+  .hourly-chart { width: 100%; height: auto; color: var(--text); min-width: 480px; }
+  .hourly-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
+    font-size: 13px; color: var(--text-secondary); flex-wrap: wrap; gap: 8px; }
+  .hourly-legend { display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary); }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 14px; height: 2.5px; background: var(--accent); }
+  .legend-swatch.dashed { background: none; border-top: 1.5px dashed var(--text-secondary); }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  thead th { position: sticky; top: 0; background: var(--card-bg); text-align: left; font-size: 11px;
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+    padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  thead th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody td { padding: 0 16px; height: 48px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  tbody tr:last-child td { border-bottom: none; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  /* Alerts */
+  .alerts-list { list-style: none; margin: 0; padding: 0; }
+  .alerts-list li {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 16px 20px; margin-bottom: 10px; font-size: 14px; line-height: 1.5;
   }
-  tbody td{padding:9px 12px; border-bottom:1px solid var(--border); vertical-align:top; font-variant-numeric:tabular-nums;}
-  tbody tr:last-child td{border-bottom:none;}
-  tbody tr:hover{background:var(--bg-elev2);}
-  td.num, th.num{text-align:right;}
-  td.id, .idtxt{font-family:var(--mono); font-size:.72rem; color:var(--text-faint);}
-  .pill{
-    display:inline-flex; align-items:center; gap:5px; font-size:.72rem; font-weight:700;
-    padding:3px 9px; border-radius:99px; border:1px solid; white-space:nowrap;
+  .alerts-footnote { font-size: 13px; color: var(--text-secondary); margin-top: 12px; }
+
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
   }
-  .pill.verde{background:var(--verde-bg); color:var(--verde-fg); border-color:var(--verde-bd);}
-  .pill.ambar{background:var(--ambar-bg); color:var(--ambar-fg); border-color:var(--ambar-bd);}
-  .pill.rojo{background:var(--rojo-bg); color:var(--rojo-fg); border-color:var(--rojo-bd);}
-  .pill.gris{background:var(--gris-bg); color:var(--gris-fg); border-color:var(--gris-bd);}
-  .dot{width:7px; height:7px; border-radius:50%; background:currentColor; flex:none;}
-  .name-cell{font-weight:600; max-width:280px;}
-  .name-cell .campmeta{display:block; font-weight:400; color:var(--text-faint); font-size:.76rem; margin-top:2px;}
-  .flag-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
-  .flag-list li{
-    border:1px solid var(--border); border-left:4px solid var(--rojo-bd); border-radius:8px;
-    padding:10px 14px; background:var(--bg-elev2); font-size:.85rem;
-  }
-  .flag-list li.ambarborder{border-left-color:var(--ambar-bd);}
-  .flag-list li b{display:block; margin-bottom:2px;}
-  .flag-list li .idtxt{display:block; margin-top:3px;}
-  footer{
-    margin-top:30px; padding-top:18px; border-top:1px solid var(--border);
-    color:var(--text-faint); font-size:.78rem; line-height:1.7;
-  }
-  footer p{margin:6px 0;}
-  .toc{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
-  .toc a{
-    font-size:.78rem; font-weight:600; text-decoration:none; color:var(--text-dim);
-    background:var(--bg-elev2); border:1px solid var(--border); padding:6px 12px; border-radius:99px;
-  }
-  .toc a:hover{color:var(--accent); border-color:var(--accent);}
-  .winners-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;}
-  .winner-card{border:1px solid var(--border); border-radius:10px; padding:12px 14px; background:var(--bg-elev2);}
-  .winner-card .wname{font-weight:700; font-size:.95rem;}
-  .winner-card .wstatus{margin-top:6px; font-size:.82rem; color:var(--text-dim);}
-  code{font-family:var(--mono); background:var(--gris-bg); padding:1px 5px; border-radius:4px; font-size:.85em;}
-  ::selection{background:var(--accent); color:#fff;}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<header class="top">
-  <h1>Tablero de Control · Meta Ads</h1>
-  <p class="subtitle">Cuenta 464228364039681 (MXN) · Business Manager <b>Héctor Hugo de la Peña</b> · Producto: Inmersión 2 días ($7 / $17 USD vía Hotmart) → backend high-ticket $1.250 / $2.500 USD</p>
-  <div class="meta-row">
-    <span>🕐 Corrida: <b>2026-08-02 00:17 UTC</b> · <b>2026-08-01 19:17 Colombia (UTC-5)</b></span>
-    <span>📅 Ventana de datos: <b>últimos 7 días (date_preset last_7d)</b></span>
-    <span>🎯 Atribución: <b>7 días clic / 1 día vista</b> — los datos siguen madurando</span>
-  </div>
-  <div class="toc">
-    <a href="#vigilancia">↓ Bloque 1 · Vigilancia</a>
-    <a href="#decision">↓ Bloque 2 · Decisión</a>
-    <a href="#ganadores">↓ Ganadores validados</a>
-    <a href="#metodologia">↓ Metodología</a>
-  </div>
-</header>
+  <header class="page-header">
+    <div>
+      <h1>Meta Ads - Inmersion</h1>
+      <div class="header-meta">
+        Última actualización: 2 de agosto de 2026 · 00:03 hora Colombia (UTC-5)<br>
+        Próxima actualización: 07:10
+      </div>
+    </div>
+    <div class="live-indicator"><span class="live-dot"></span>Actualizado</div>
+  </header>
 
-<div class="callout warn">
-  <b>⚠️ Fecha de la inmersión de agosto NO confirmada.</b> Antes de diagnosticar problemas de landing o de creativo por bajo desempeño, considera que el arranque de ciclo depende de cuándo se anuncie/realice el evento. El arranque lento (semana 1 ≈ 3,7 compras/día) es normal en el ciclo — no es falla de embudo. Compara siempre contra la misma fase de ciclos anteriores, nunca contra la semana calendario previa.
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="ventas">VENTAS</button>
+    <button class="tab-btn" data-tab="leads">LEADS</button>
+    <button class="tab-btn" data-tab="trafico">TRÁFICO</button>
+  </nav>
+
+  <div id="tab-ventas" class="tab-panel active">
+
+    <section>
+      <h2>Hoy · Ventas</h2>
+      <div class="cards-grid">
+        <div class="card">
+      <div class="card-top"><span class="card-label">GASTO HOY</span></div>
+      <div class="card-value">$5,374</div>
+      
+      <div class="card-cmp"><span class="cmp up-good">▲ 10% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-good">▲ 11% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">COMPRAS HOY</span><span class="status-dot" style="background:#34C759"></span></div>
+      <div class="card-value">6</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▼ 50% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▼ 13% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CPA HOY</span><span class="status-dot" style="background:#FF3B30"></span></div>
+      <div class="card-value">$896</div>
+      <div class="card-note">Objetivo: menos de $600</div>
+      <div class="card-cmp"><span class="cmp up-bad">▲ 120% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▲ 27% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CTR DE ENLACE</span></div>
+      <div class="card-value">1.2%</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▼ 0.16pp vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▼ 0.04pp vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CPM</span></div>
+      <div class="card-value">$288</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▲ 2% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-good">▼ 5% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CLICS DE ENLACE</span></div>
+      <div class="card-value">219</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▼ 5% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-good">▲ 16% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">VISITAS A LANDING</span></div>
+      <div class="card-value">130</div>
+      
+      <div class="card-cmp"><span class="cmp up-good">▲ 6% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▼ 6% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CONVERSIÓN CLIC → COMPRA</span></div>
+      <div class="card-value">2.7%</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▼ 2.48pp vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▼ 0.89pp vs prom. 7d</span></div>
+    </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Embudo de ventas</h2>
+      <div class="funnel-toggle">
+        <button class="funnel-btn active" data-funnel="hoy">Hoy</button>
+        <button class="funnel-btn" data-funnel="d7">7 días</button>
+      </div>
+      <div id="funnel-hoy" class="funnel-view active">
+        <div class="funnel-stages">
+          <div class="funnel-stage">
+          <div class="funnel-loss-wrap"></div>
+          <div class="funnel-bar-label">Impresiones</div>
+          <div class="funnel-bar-value">18,668</div>
+          <div class="funnel-bar-sub">conv. — · costo acum. $0.29</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 99%</div></div>
+          <div class="funnel-bar-label">Clics de enlace</div>
+          <div class="funnel-bar-value">219</div>
+          <div class="funnel-bar-sub">conv. 1.2% · costo acum. $24.54</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 41%</div></div>
+          <div class="funnel-bar-label">Visitas a landing</div>
+          <div class="funnel-bar-value">130</div>
+          <div class="funnel-bar-sub">conv. 59.4% · costo acum. $41.34</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 83%</div></div>
+          <div class="funnel-bar-label">Checkout iniciado</div>
+          <div class="funnel-bar-value">22</div>
+          <div class="funnel-bar-sub">conv. 16.9% · costo acum. $244.29</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 73%</div></div>
+          <div class="funnel-bar-label">Compras</div>
+          <div class="funnel-bar-value">6</div>
+          <div class="funnel-bar-sub">conv. 27.3% · costo acum. $895.72</div>
+        </div>
+        </div>
+        <div class="funnel-insight">Hoy, la mayor pérdida absoluta está entre <strong>Impresiones</strong> y <strong>Clics de enlace</strong> (18,449 personas).</div>
+      </div>
+      <div id="funnel-d7" class="funnel-view">
+        <div class="funnel-stages">
+          <div class="funnel-stage">
+          <div class="funnel-loss-wrap"></div>
+          <div class="funnel-bar-label">Impresiones</div>
+          <div class="funnel-bar-value">109,724</div>
+          <div class="funnel-bar-sub">conv. — · costo acum. $0.31</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 99%</div></div>
+          <div class="funnel-bar-label">Clics de enlace</div>
+          <div class="funnel-bar-value">1,324</div>
+          <div class="funnel-bar-sub">conv. 1.2% · costo acum. $25.59</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 27%</div></div>
+          <div class="funnel-bar-label">Visitas a landing</div>
+          <div class="funnel-bar-value">966</div>
+          <div class="funnel-bar-sub">conv. 73.0% · costo acum. $35.08</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 86%</div></div>
+          <div class="funnel-bar-label">Checkout iniciado</div>
+          <div class="funnel-bar-value">137</div>
+          <div class="funnel-bar-sub">conv. 14.2% · costo acum. $247.32</div>
+        </div>
+<div class="funnel-stage">
+          <div class="funnel-loss-wrap"><div class="funnel-loss">se perdió 65%</div></div>
+          <div class="funnel-bar-label">Compras</div>
+          <div class="funnel-bar-value">48</div>
+          <div class="funnel-bar-sub">conv. 35.0% · costo acum. $705.89</div>
+        </div>
+        </div>
+        <div class="funnel-insight">En 7 días, la mayor pérdida absoluta está entre <strong>Impresiones</strong> y <strong>Clics de enlace</strong> (108,400 personas).</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Anuncios por categoría</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Anuncio</th><th>Categoría</th><th class="num">Gasto 7d</th><th class="num">Clics enlace</th>
+            <th class="num">Visitas landing</th><th class="num">Checkouts</th><th class="num">Compras</th>
+            <th class="num">CTR enlace</th><th class="num">CPA</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+      <td>TIB | 03 AD-TipoReelIncomodo</td>
+      <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>GANADOR</span></td>
+      <td class="num">$3,119</td>
+      <td class="num">130</td>
+      <td class="num">91</td>
+      <td class="num">26</td>
+      <td class="num">8</td>
+      <td class="num">1.1%</td>
+      <td class="num">$390</td>
+    </tr>
+<tr>
+      <td>AD05 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>GANADOR</span></td>
+      <td class="num">$2,113</td>
+      <td class="num">81</td>
+      <td class="num">66</td>
+      <td class="num">22</td>
+      <td class="num">9</td>
+      <td class="num">1.5%</td>
+      <td class="num">$235</td>
+    </tr>
+<tr>
+      <td>ABT | 08 AD-ImgTicket02</td>
+      <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>GANADOR</span></td>
+      <td class="num">$725</td>
+      <td class="num">35</td>
+      <td class="num">26</td>
+      <td class="num">6</td>
+      <td class="num">3</td>
+      <td class="num">1.6%</td>
+      <td class="num">$242</td>
+    </tr>
+<tr>
+      <td>FRANK3</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$3,643</td>
+      <td class="num">223</td>
+      <td class="num">182</td>
+      <td class="num">18</td>
+      <td class="num">6</td>
+      <td class="num">1.6%</td>
+      <td class="num">$607</td>
+    </tr>
+<tr>
+      <td>AD_27</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$3,569</td>
+      <td class="num">92</td>
+      <td class="num">79</td>
+      <td class="num">12</td>
+      <td class="num">4</td>
+      <td class="num">1.0%</td>
+      <td class="num">$892</td>
+    </tr>
+<tr>
+      <td>ABT | 07 AD-ImgTicket01</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$2,596</td>
+      <td class="num">91</td>
+      <td class="num">71</td>
+      <td class="num">7</td>
+      <td class="num">4</td>
+      <td class="num">1.0%</td>
+      <td class="num">$649</td>
+    </tr>
+<tr>
+      <td>AD_20</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$1,154</td>
+      <td class="num">51</td>
+      <td class="num">42</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td class="num">1.3%</td>
+      <td class="num">$1,154</td>
+    </tr>
+<tr>
+      <td>AD09 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$841</td>
+      <td class="num">33</td>
+      <td class="num">25</td>
+      <td class="num">3</td>
+      <td class="num">1</td>
+      <td class="num">0.9%</td>
+      <td class="num">$841</td>
+    </tr>
+<tr>
+      <td>01</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$578</td>
+      <td class="num">25</td>
+      <td class="num">17</td>
+      <td class="num">3</td>
+      <td class="num">1</td>
+      <td class="num">0.9%</td>
+      <td class="num">$578</td>
+    </tr>
+<tr>
+      <td>AD01 | REMARKETING · GANADORES AD-01</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$561</td>
+      <td class="num">7</td>
+      <td class="num">6</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td class="num">0.5%</td>
+      <td class="num">$561</td>
+    </tr>
+<tr>
+      <td>AD24</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$281</td>
+      <td class="num">11</td>
+      <td class="num">6</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1.1%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD04 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$231</td>
+      <td class="num">9</td>
+      <td class="num">7</td>
+      <td class="num">2</td>
+      <td class="num">0</td>
+      <td class="num">1.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD_25</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$231</td>
+      <td class="num">7</td>
+      <td class="num">4</td>
+      <td class="num">5</td>
+      <td class="num">2</td>
+      <td class="num">1.2%</td>
+      <td class="num">$115</td>
+    </tr>
+<tr>
+      <td>AD02 | CALIENTE · GANADORES AD-NoDormir</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$182</td>
+      <td class="num">14</td>
+      <td class="num">13</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">1.5%</td>
+      <td class="num">$182</td>
+    </tr>
+<tr>
+      <td>AD08</td>
+      <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>PROMETEDOR</span></td>
+      <td class="num">$117</td>
+      <td class="num">9</td>
+      <td class="num">7</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">3.0%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD_27</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE LANDING</span></td>
+      <td class="num">$2,783</td>
+      <td class="num">51</td>
+      <td class="num">33</td>
+      <td class="num">3</td>
+      <td class="num">2</td>
+      <td class="num">0.8%</td>
+      <td class="num">$1,392</td>
+    </tr>
+<tr>
+      <td>AD-17Jul - FRANK4</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE LANDING</span></td>
+      <td class="num">$568</td>
+      <td class="num">16</td>
+      <td class="num">8</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.9%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD03 | CALIENTE · GANADORES AD-NoDormir</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE LANDING</span></td>
+      <td class="num">$564</td>
+      <td class="num">17</td>
+      <td class="num">10</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD30 | 10Imagenes_test</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE LANDING</span></td>
+      <td class="num">$265</td>
+      <td class="num">26</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1.6%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD32 | test_vid02</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE LANDING</span></td>
+      <td class="num">$241</td>
+      <td class="num">15</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">1.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>FRANK3</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE CHECKOUT</span></td>
+      <td class="num">$2,354</td>
+      <td class="num">145</td>
+      <td class="num">111</td>
+      <td class="num">12</td>
+      <td class="num">2</td>
+      <td class="num">1.7%</td>
+      <td class="num">$1,177</td>
+    </tr>
+<tr>
+      <td>AD03 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE CHECKOUT</span></td>
+      <td class="num">$762</td>
+      <td class="num">26</td>
+      <td class="num">22</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1.3%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>01</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE CHECKOUT</span></td>
+      <td class="num">$581</td>
+      <td class="num">45</td>
+      <td class="num">31</td>
+      <td class="num">5</td>
+      <td class="num">1</td>
+      <td class="num">1.8%</td>
+      <td class="num">$581</td>
+    </tr>
+<tr>
+      <td>01</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE CHECKOUT</span></td>
+      <td class="num">$560</td>
+      <td class="num">19</td>
+      <td class="num">12</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1.2%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>01</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE CHECKOUT</span></td>
+      <td class="num">$557</td>
+      <td class="num">18</td>
+      <td class="num">14</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1.0%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 02 AD-TipoReelMiedo</td>
+      <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>PROBLEMA DE CHECKOUT</span></td>
+      <td class="num">$377</td>
+      <td class="num">18</td>
+      <td class="num">10</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1.3%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD01 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$689</td>
+      <td class="num">17</td>
+      <td class="num">13</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">1.2%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>V02_Junio</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$383</td>
+      <td class="num">7</td>
+      <td class="num">7</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.8%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD06 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$241</td>
+      <td class="num">4</td>
+      <td class="num">2</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.5%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD10 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$240</td>
+      <td class="num">4</td>
+      <td class="num">2</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.4%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD34 | test_vid04</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$238</td>
+      <td class="num">10</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">1.4%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD07 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$233</td>
+      <td class="num">4</td>
+      <td class="num">3</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.6%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD02 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$226</td>
+      <td class="num">5</td>
+      <td class="num">5</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD30 | 10Imagenes_test</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$226</td>
+      <td class="num">10</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">1.2%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD24 -1</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$223</td>
+      <td class="num">10</td>
+      <td class="num">9</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">2.1%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD33 | test_vid03</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$219</td>
+      <td class="num">5</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD08 | VID AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$215</td>
+      <td class="num">6</td>
+      <td class="num">6</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.8%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD24 -3</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$173</td>
+      <td class="num">3</td>
+      <td class="num">3</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD24 -2</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$130</td>
+      <td class="num">3</td>
+      <td class="num">3</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.9%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 05 AD-ImgTicket02</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$129</td>
+      <td class="num">4</td>
+      <td class="num">4</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD02 | REMARKETING · GANADORES AD-02</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$129</td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>V03_Junio</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$124</td>
+      <td class="num">4</td>
+      <td class="num">4</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.9%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 01 AD-HorizontalLargo</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$107</td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">0</td>
+      <td class="num">1</td>
+      <td class="num">0.6%</td>
+      <td class="num">$107</td>
+    </tr>
+<tr>
+      <td>AD03 | REMARKETING · GANADORES AD-03</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$90</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.7%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD_24</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$62</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">1</td>
+      <td class="num">1.1%</td>
+      <td class="num">$62</td>
+    </tr>
+<tr>
+      <td>ABT | 10 AD-TipoReelMiedo</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$58</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.5%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 04 AD-ImgTicket01</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$39</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.5%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>V05_Junio</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$38</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.6%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 06 AD-HorizontalLargo2</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$34</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">1.1%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 09 AD-TipoReelIncomodo</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$31</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">5.6%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>ABT | 03 AD-TipoReelIncomodo</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$28</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">1.2%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD06</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$23</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.0%</td>
+      <td class="num">—</td>
+    </tr>
+<tr>
+      <td>AD01 | CALIENTE · GANADORES AD-NoDormir</td>
+      <td><span class="badge" style="color:#6E6E73"><span class="badge-dot" style="background:#6E6E73"></span>SIN SEÑAL SUFICIENTE</span></td>
+      <td class="num">$1</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0</td>
+      <td class="num">0.0%</td>
+      <td class="num">—</td>
+    </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Campañas entregando</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Campaña</th><th>Estado</th><th class="num">Gasto hoy</th><th class="num">Compras hoy</th>
+            <th class="num">CPA 7d</th><th class="num">% presupuesto usado hoy</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+          <td>INM · TIBIO + ABIERTO</td>
+          <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>En aprendizaje</span></td>
+          <td class="num">$1,794</td>
+          <td class="num">2</td><td class="num">$453</td>
+          <td class="num">82%</td>
+        </tr>
+<tr>
+          <td>04.TESTEO INMERSION 03 FEB CREATIVOS</td>
+          <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>En aprendizaje</span></td>
+          <td class="num">$166</td>
+          <td class="num">1</td><td class="num">$1,138</td>
+          <td class="num">83%</td>
+        </tr>
+<tr>
+          <td>04.EVERGREEN INMERSION // GENERAL</td>
+          <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>En aprendizaje</span></td>
+          <td class="num">$652</td>
+          <td class="num">1</td><td class="num">$943</td>
+          <td class="num">77%</td>
+        </tr>
+<tr>
+          <td>ABO · INM · TEST CREATIVOS</td>
+          <td><span class="badge" style="color:#FF9500"><span class="badge-dot" style="background:#FF9500"></span>Con advertencia</span></td>
+          <td class="num">$2,221</td>
+          <td class="num">0</td><td class="num">$709</td>
+          <td class="num">82%</td>
+        </tr>
+<tr>
+          <td>ABO · INM AGO · GANADORES EVERGREEN</td>
+          <td><span class="badge" style="color:#0071E3"><span class="badge-dot" style="background:#0071E3"></span>En aprendizaje</span></td>
+          <td class="num">$542</td>
+          <td class="num">2</td><td class="num">$803</td>
+          <td class="num">90%</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="tab-leads" class="tab-panel">
+    <section>
+      <h2>Hoy · Leads</h2>
+      <div class="cards-grid">
+        <div class="card">
+      <div class="card-top"><span class="card-label">GASTO HOY</span></div>
+      <div class="card-value">$5,957</div>
+      
+      <div class="card-cmp"><span class="cmp up-good">▲ 26% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-good">▲ 226% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">LEADS HOY</span></div>
+      <div class="card-value">235</div>
+      
+      <div class="card-cmp"><span class="cmp up-good">▲ 6% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-good">▲ 147% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CPL HOY</span></div>
+      <div class="card-value">$25</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▲ 19% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-good">▲ 32% vs 7d</span></div>
+    </div>
+      </div>
+    </section>
+    <section>
+      <h2>Campañas entregando</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Campaña</th><th>Estado</th><th class="num">Gasto hoy</th><th class="num">% presupuesto usado hoy</th></tr></thead>
+          <tbody>
+            <tr>
+          <td>MASTERCLASS GRATIS - CDB</td>
+          <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>Entregando</span></td>
+          <td class="num">$1,461</td>
+          
+          <td class="num">81%</td>
+        </tr>
+<tr>
+          <td>Captación CDB - Test</td>
+          <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>Entregando</span></td>
+          <td class="num">$3,077</td>
+          
+          <td class="num">86%</td>
+        </tr>
+<tr>
+          <td>MASTERCLASS GRATIS - CDB - $1</td>
+          <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>Entregando</span></td>
+          <td class="num">$1,419</td>
+          
+          <td class="num">79%</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div id="tab-trafico" class="tab-panel">
+    <section>
+      <h2>Hoy · Tráfico</h2>
+      <div class="cards-grid">
+        <div class="card">
+      <div class="card-top"><span class="card-label">GASTO HOY</span></div>
+      <div class="card-value">$822</div>
+      
+      <div class="card-cmp"><span class="cmp up-bad">▼ 5% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▼ 9% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">VISITAS A LANDING HOY</span></div>
+      <div class="card-value">1</div>
+      
+      <div class="card-cmp"><span class="cmp up-good">▬ 0% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▼ 53% vs prom. 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">COSTO POR VISITA</span></div>
+      <div class="card-value">$822</div>
+      
+      <div class="card-cmp"><span class="cmp up-good">▼ 5% vs ayer</span></div>
+      <div class="card-cmp"><span class="cmp up-bad">▲ 95% vs 7d</span></div>
+    </div>
+<div class="card">
+      <div class="card-top"><span class="card-label">CTR DE ENLACE</span></div>
+      <div class="card-value">0.0%</div>
+      
+      <div class="card-cmp"><span class="cmp neutral">n/d</span></div>
+      <div class="card-cmp"><span class="cmp neutral">n/d</span></div>
+    </div>
+      </div>
+    </section>
+    <section>
+      <h2>Campañas entregando</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Campaña</th><th>Estado</th><th class="num">Gasto hoy</th><th class="num">% presupuesto usado hoy</th></tr></thead>
+          <tbody>
+            <tr>
+          <td>Follow Me Ads - Trafico</td>
+          <td><span class="badge" style="color:#34C759"><span class="badge-dot" style="background:#34C759"></span>Entregando</span></td>
+          <td class="num">$822</td>
+          
+          <td class="num">91%</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <h2>Gasto acumulado por hora (cuenta completa, hoy)</h2>
+    <div class="hourly-card">
+      <svg viewBox="0 0 720 220" class="hourly-chart" role="img" aria-label="Gasto acumulado por hora">
+  <line x1="44" y1="192.0" x2="704" y2="192.0" stroke="currentColor" stroke-opacity="0.08"/><text x="38" y="195.0" text-anchor="end" font-size="10" fill="currentColor" fill-opacity="0.45">$0.0k</text><line x1="44" y1="133.3" x2="704" y2="133.3" stroke="currentColor" stroke-opacity="0.08"/><text x="38" y="136.3" text-anchor="end" font-size="10" fill="currentColor" fill-opacity="0.45">$4.4k</text><line x1="44" y1="74.7" x2="704" y2="74.7" stroke="currentColor" stroke-opacity="0.08"/><text x="38" y="77.7" text-anchor="end" font-size="10" fill="currentColor" fill-opacity="0.45">$8.8k</text><line x1="44" y1="16.0" x2="704" y2="16.0" stroke="currentColor" stroke-opacity="0.08"/><text x="38" y="19.0" text-anchor="end" font-size="10" fill="currentColor" fill-opacity="0.45">$13.1k</text>
+  <path d="M 44.0,187.8 L 74.0,183.5 L 104.0,179.3 L 134.0,175.1 L 164.0,170.9 L 194.0,166.6 L 224.0,162.4 L 254.0,158.2 L 284.0,153.9 L 314.0,149.7 L 344.0,145.5 L 374.0,141.3 L 404.0,137.0 L 434.0,132.8 L 464.0,128.6 L 494.0,124.3 L 524.0,120.1 L 554.0,115.9 L 584.0,111.7 L 614.0,107.4 L 644.0,103.2 L 674.0,99.0 L 704.0,94.8" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <path d="M 44.0,187.9 L 74.0,185.7 L 104.0,184.5 L 134.0,183.8 L 164.0,182.9 L 194.0,180.9 L 224.0,172.5 L 254.0,155.6 L 284.0,139.0 L 314.0,125.2 L 344.0,114.9 L 374.0,106.3 L 404.0,98.9 L 434.0,92.0 L 464.0,86.7 L 494.0,80.8 L 524.0,76.0 L 554.0,70.9 L 584.0,64.7 L 614.0,57.3 L 644.0,48.9 L 674.0,38.6 L 704.0,29.0" fill="none" stroke="#0071E3" stroke-width="2.5"/>
+  <circle cx="704.0" cy="29.0" r="3.5" fill="#0071E3"/>
+  <circle cx="704.0" cy="22.0" r="4" fill="none" stroke="#0071E3" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <text x="44.0" y="214" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity="0.45">00h</text><text x="164.0" y="214" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity="0.45">04h</text><text x="284.0" y="214" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity="0.45">08h</text><text x="404.0" y="214" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity="0.45">12h</text><text x="524.0" y="214" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity="0.45">16h</text><text x="644.0" y="214" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity="0.45">20h</text>
+</svg>
+      <div class="hourly-footer">
+        <div class="hourly-legend">
+          <span class="legend-item"><span class="legend-swatch"></span>Gasto real</span>
+          <span class="legend-item"><span class="legend-swatch dashed"></span>Ritmo esperado (parejo)</span>
+        </div>
+        <span>Adelantado respecto al ritmo de los últimos 7 días</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Alertas</h2>
+    <ul class="alerts-list">
+      <li>El CPA de hoy ($896 MXN) está en zona roja, por encima del objetivo de $600.</li>
+<li>La campaña de test de creativos tiene advertencia de fatiga, CPA de 7 días en zona roja y cero compras hoy, con $2700 MXN/día comprometidos.</li>
+<li>Ningún conjunto de ventas alcanza viabilidad de aprendizaje completa; el mejor caso llega solo a 0.3 (necesitaría ~3.3x más presupuesto diario).</li>
+<li>La campaña de tráfico gastó más de $6,300 MXN en 7 días pero registra prácticamente cero visitas a landing: el tracking de clics de enlace parece roto.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Atribución de 7 días clic / 1 día visualización. Los datos de hoy siguen madurando y pueden ajustarse en las próximas horas.<br>
+    Meta reporta una estimación atribuida; la venta real se confirma en la pasarela de pago.
+  </footer>
+
 </div>
 
-<div class="callout info">
-  <b>El ROAS no decide nada en este negocio.</b> La inmersión se vende a pérdida a propósito (producto de entrada); el dinero está en el backend de high-ticket (~21% de compradores cierra, valor esperado ≈ $4.700 MXN/comprador). La única vara de este tablero es el <b>CPA</b>: verde &lt; $600 MXN, ámbar $600–$700, rojo &gt; $700. El enemigo no es el ROAS bajo — es <b>cero compras</b>. Ningún ROAS aparece como columna de decisión en este documento.
-</div>
-
-<!-- ================= BLOQUE 1 — VIGILANCIA ================= -->
-<section class="block" id="vigilancia">
-  <div class="block-head">
-    <h2>🔭 Bloque 1 — Vigilancia <span class="tag">se actualiza cada corrida</span></h2>
-    <span class="badge">Estado operativo al momento de esta corrida</span>
-  </div>
-
-  <h3>Ritmo de gasto vs. presupuesto configurado</h3>
-  <div class="card-grid">
-    <div class="stat-card">
-      <div class="label">Presupuesto/día configurado (suma daily_budget, conjuntos ACTIVE)</div>
-      <div class="value">$15.255,00 MXN</div>
-      <div class="sub">31 conjuntos activos en la cuenta</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Gasto real 7d ÷ 7 (promedio diario)</div>
-      <div class="value">$7.567,67 MXN</div>
-      <div class="sub">Gasto total 7d: $52.973,67 MXN</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Ritmo vs. presupuesto configurado</div>
-      <div class="value">49,6%</div>
-      <div class="progress-bar"><div style="width:49.6%"></div></div>
-      <div class="sub">Explicado por: 3 conjuntos "01Ago" recién lanzados sin gasto aún, y 3 conjuntos técnicamente ACTIVE cuya campaña padre está PAUSED (gasto $0). No es necesariamente subgasto real del embudo en marcha.</div>
-    </div>
-  </div>
-
-  <h3>Conjuntos de ventas encendidos con gasto y CERO compras en 7 días</h3>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Conjunto</th><th>Campaña</th><th class="num">Gasto 7d</th><th>Estado</th><th class="id">ID</th></tr></thead>
-      <tbody>
-        <tr><td class="name-cell">AD34 · NUEVOS DROPBOX · Vid04</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$237,97 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966567260456</td></tr>
-        <tr><td class="name-cell">AD33 · NUEVOS DROPBOX · Vid03</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$218,87 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966556600456</td></tr>
-        <tr><td class="name-cell">AD32 · NUEVOS DROPBOX · Vid02</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$240,43 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966531800456</td></tr>
-        <tr><td class="name-cell">AD31 · NUEVOS DROPBOX · Vid01</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$225,99 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966431360456</td></tr>
-        <tr><td class="name-cell">AD30 · NUEVOS DROPBOX · Imágenes</td><td>🔴 ABO · INM · TEST CREATIVOS</td><td class="num">$264,58 MXN</td><td><span class="pill gris"><span class="dot"></span>en aprendizaje</span></td><td class="id">120258966162940456</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="callout info" style="margin-top:-8px;">Los 5 conjuntos están dentro de la misma prueba de creativos (24Jul), en fase de aprendizaje, con gasto acumulado de ~$220–265 en 7 días — insuficiente todavía para exigir señal. No se cuentan aquí conjuntos de leads/tráfico (Masterclass, Captación, Follow Me) porque su objetivo no es la compra.</div>
-
-  <h3>Problemas de entrega</h3>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Conjunto</th><th>Campaña</th><th>Delivery</th><th>Detalle</th><th class="id">ID</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="name-cell">AD05 · NUEVOS DROPBOX</td>
-          <td>🔴 ABO · INM · TEST CREATIVOS</td>
-          <td><span class="pill ambar"><span class="dot"></span>warning</span></td>
-          <td>Fatiga de creativo (has_ad_creative_fatigue). Es el mejor CPA de la prueba ($234,80) — candidato a refresco de creativo, no a corte.</td>
-          <td class="id">120258807833550456</td>
-        </tr>
-        <tr>
-          <td class="name-cell">VIDEO 06 · V02/FEBRERO</td>
-          <td>🔴02.EVERGREEN INMERSION // GENERAL (campaña PAUSED)</td>
-          <td><span class="pill rojo"><span class="dot"></span>off</span></td>
-          <td>Configurado ACTIVE a nivel de conjunto pero la campaña padre está PAUSED — no entrega. Inconsistencia de estado a corregir (activar la campaña o pausar el conjunto).</td>
-          <td class="id">120255509771690456</td>
-        </tr>
-        <tr>
-          <td class="name-cell">PP (Tibio)</td>
-          <td>🔴CDB Inmersión Ventas (campaña PAUSED)</td>
-          <td><span class="pill rojo"><span class="dot"></span>off</span></td>
-          <td>Mismo caso: conjunto ACTIVE, campaña PAUSED.</td>
-          <td class="id">120254773800260456</td>
-        </tr>
-        <tr>
-          <td class="name-cell">28 VIDEO 2901 (01) · ESCALA · Copia</td>
-          <td>🔴02 TESTEOS FEBRERO MUNDO INMERSION (campaña PAUSED)</td>
-          <td><span class="pill rojo"><span class="dot"></span>off</span></td>
-          <td>Mismo caso: conjunto ACTIVE, campaña PAUSED.</td>
-          <td class="id">120252061675580456</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="callout info" style="margin-top:-8px;">17 de 31 conjuntos activos (55%) están en fase de aprendizaje (in_learning_phase) — ver detalle de fragmentación en Bloque 2.</div>
-
-  <h3>Auditoría de configuración</h3>
-  <ul class="flag-list">
-    <li>
-      <b>🚫 Ubicaciones no manuales / vacías (regla 1)</b>
-      Publisher platforms nulo o sin restringir a solo Facebook+Instagram:
-      <span class="idtxt">120258994638700456 — "01Ago® | Test Broad 10% LAL" (targeting vacío) · 🔴 ABO · INM · TEST CREATIVOS</span>
-      <span class="idtxt">120258994638690456 — "01Ago® | Test Broad 3% compradores" (targeting vacío) · 🔴 ABO · INM · TEST CREATIVOS</span>
-      <span class="idtxt">120258845729450456 — "Test Broad 3% compradores - 26Jul®" (targeting vacío) · 🔴04.EVERGREEN INMERSION // GENERAL</span>
-      <span class="idtxt">120255509771690456 — "VIDEO 06 - V02/FEBRERO" (targeting vacío; además campaña padre PAUSED)</span>
-    </li>
-    <li>
-      <b>🚫 Incluye plataformas no permitidas — Threads (regla 1)</b>
-      <span class="idtxt">120253228589540456 — "Broad - Captación - Ad 2 Webinar" · 🟡Captación CDB - Test (incluye facebook + instagram + threads)</span>
-      <span class="idtxt">120253228589530456 — "Broad - Captación - Ad 1 Webinar" · 🟡Captación CDB - Test (incluye facebook + instagram + threads)</span>
-    </li>
-    <li>
-      <b>🚫 optimization_goal = VALUE — error de configuración (regla 2)</b>
-      Meta persigue VIPs con ticket fijo y mata el volumen. Debe ser OFFSITE_CONVERSIONS.
-      <span class="idtxt">120258845729500456 — "Test Broad 03 Broad - compradores4% LAL 26Jul®" · 🔴04.EVERGREEN INMERSION // GENERAL</span>
-      <span class="idtxt">120258845729450456 — "Test Broad 3% compradores - 26Jul®" · 🔴04.EVERGREEN INMERSION // GENERAL</span>
-    </li>
-    <li class="ambarborder">
-      <b>✅ Exclusión "COMPRAS INMERSION 180D" (regla 3)</b>
-      Sin violaciones — los 31 conjuntos activos revisados la incluyen en excluded_custom_audiences.
-    </li>
-    <li>
-      <b>🚫 LAL 10% reactivado (agotado, no debe reactivarse) (regla 4)</b>
-      <span class="idtxt">120258994638700456 — "01Ago® | Test Broad 10% LAL" · Público: Lookalike (10%) StartFly HUGOMX PRINCIPAL · 🔴 ABO · INM · TEST CREATIVOS</span>
-    </li>
-    <li>
-      <b>🚫 LAL 4% compradores — público más caro y menos eficiente (regla 4)</b>
-      <span class="idtxt">120258994638710456 — "01Ago® | Test Broad 03 Broad - compradores4% LAL" · 🔴 ABO · INM · TEST CREATIVOS</span>
-      <span class="idtxt">120258845729500456 — "Test Broad 03 Broad - compradores4% LAL 26Jul®" · 🔴04.EVERGREEN INMERSION // GENERAL</span>
-      <span class="idtxt">120255509354020456 — "LOOK & LIKE + BROAD" · 🟡MASTERCLASS GRATIS - CDB - Exclusions</span>
-      <span class="idtxt">120253228518350456 — "LOOK & LIKE + BROAD" · 🟡MASTERCLASS GRATIS - CDB - $1</span>
-    </li>
-    <li>
-      <b>🚫 Test de creativos sobre el tope de $150/día por conjunto (regla 5)</b>
-      Campaña 🔴 ABO · INM · TEST CREATIVOS | 24Jul® — los 9 conjuntos activos están a $300/día, el doble del tope:
-      <span class="idtxt">120258994638710456, 120258994638700456, 120258994638690456, 120258966567260456, 120258966556600456, 120258966531800456, 120258966431360456, 120258966162940456, 120258807833550456 — todos $300,00 MXN/día</span>
-      Conjuntos "Test Broad" dentro de 🔴04.EVERGREEN INMERSION // GENERAL también sobre el tope:
-      <span class="idtxt">120258845729500456 — $200,00 MXN/día · 120258845729450456 — $245,00 MXN/día</span>
-    </li>
-    <li>
-      <b>🚫 Advantage+ Audience activo o rango 18-65 — rompe filtro de mujer profesional (regla 6)</b>
-      <span class="idtxt">120258994638700456, 120258994638690456, 120258991152030456, 120258966567260456, 120258966556600456, 120258966531800456, 120258966431360456, 120258966162940456, 120258901309690456, 120258897356500456, 120258845729450456, 120258807833550456 — 12 conjuntos con targeting_automation.advantage_audience = 1 (3 de ellos además con rango 18-65)</span>
-      La mayoría corresponde a la campaña de prueba de creativos 24Jul — coherente con ser "pruebas", pero rompe el filtro de audiencia objetivo mientras corren.
-    </li>
-  </ul>
-</section>
-
-<!-- ================= BLOQUE 2 — DECISIÓN ================= -->
-<section class="block" id="decision">
-  <div class="block-head">
-    <h2>🎯 Bloque 2 — Decisión <span class="tag">ventana fija de 7 días — no tomes decisiones con cambios intradía</span></h2>
-    <span class="badge">CPA es la única vara: verde &lt;$600 · ámbar $600–$700 · rojo &gt;$700</span>
-  </div>
-
-  <h3>Campañas ACTIVE</h3>
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr><th>Campaña</th><th class="num">Presup./día</th><th class="num">Gasto 7d</th><th class="num">Compras</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Frec.</th><th class="num">Conj.</th><th class="num">Anuncios</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="name-cell">🔴 INM · TIBIO + ABIERTO | 28Jul®<span class="campmeta">ventas</span></td><td class="num">$2.200,00</td><td class="num">$7.244,02</td><td class="num">16</td><td class="num"><span class="pill verde">$452,75</span></td><td class="num">3,86%</td><td class="num">1,78</td><td class="num">3</td><td class="num">16</td></tr>
-        <tr><td class="name-cell">🔴 ABO · INM · TEST CREATIVOS | 24Jul®<span class="campmeta">ventas · test creativos</span></td><td class="num">$2.700,00</td><td class="num">$8.506,63</td><td class="num">12</td><td class="num"><span class="pill ambar">$708,89</span></td><td class="num">2,02%</td><td class="num">2,94</td><td class="num">9</td><td class="num">9</td></tr>
-        <tr><td class="name-cell">🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®<span class="campmeta">ventas</span></td><td class="num">$845,00</td><td class="num">$9.428,93</td><td class="num">10</td><td class="num"><span class="pill ambar">$942,89</span></td><td class="num">2,58%</td><td class="num">1,80</td><td class="num">3</td><td class="num">5</td></tr>
-        <tr><td class="name-cell">🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul®<span class="campmeta">ventas</span></td><td class="num">$600,00</td><td class="num">$6.425,97</td><td class="num">8</td><td class="num"><span class="pill rojo">$803,25</span></td><td class="num">3,45%</td><td class="num">1,51</td><td class="num">1</td><td class="num">1</td></tr>
-        <tr><td class="name-cell">🔴04.TESTEO INMERSION 03 FEB CREATIVOS - 26Jul®<span class="campmeta">ventas · test creativos</span></td><td class="num">$200,00</td><td class="num">$2.276,46</td><td class="num">2</td><td class="num"><span class="pill rojo">$1.138,23</span></td><td class="num">1,92%</td><td class="num">2,11</td><td class="num">2</td><td class="num">2</td></tr>
-        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - Exclusions<span class="campmeta">leads (funnel frontal, no ventas)</span></td><td class="num">$1.800,00</td><td class="num">$3.372,47</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,01%</td><td class="num">1,18</td><td class="num">1</td><td class="num">3</td></tr>
-        <tr><td class="name-cell">🟡Captación CDB - Test<span class="campmeta">leads (funnel frontal, no ventas)</span></td><td class="num">$3.600,00</td><td class="num">$6.090,63</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,32%</td><td class="num">1,30</td><td class="num">2</td><td class="num">2</td></tr>
-        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - $1<span class="campmeta">leads (funnel frontal, no ventas)</span></td><td class="num">$1.800,00</td><td class="num">$3.318,69</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,50%</td><td class="num">1,25</td><td class="num">1</td><td class="num">3</td></tr>
-        <tr><td class="name-cell">🟢 Follow Me Ads - Trafico<span class="campmeta">tráfico (no ventas)</span></td><td class="num">$900,00</td><td class="num">$6.309,87</td><td class="num">0*</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,73%</td><td class="num">1,33</td><td class="num">6</td><td class="num">24</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="callout info" style="margin-top:-8px;">*Estas 3 campañas optimizan a <b>leads</b>, no a compra (columna "Compras" = 0 por diseño, no es una alerta). CPA global de las 5 campañas de ventas: <b>$705,88 MXN</b> sobre 48 compras — justo por encima del techo de $700, y por debajo del benchmark de julio post-evento (~$847). Benchmark histórico 3 años: $384.</div>
-
-  <h3>Conjuntos ACTIVE de ventas — ordenados por CPA ascendente</h3>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Semáforo</th><th>Conjunto</th><th class="num">Presup./día</th><th class="num">Gasto 7d</th><th class="num">Compras</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Frec.</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">AD05 · NUEVOS DROPBOX<span class="campmeta">🔴 ABO TEST CREATIVOS · con fatiga de creativo</span></td><td class="num">$300,00</td><td class="num">$2.113,18</td><td class="num">9</td><td class="num">$234,80</td><td class="num">2,48%</td><td class="num">2,09</td></tr>
-        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">Test Broad 3% compradores<span class="campmeta">🔴 EVERGREEN GENERAL · goal VALUE (config a corregir)</span></td><td class="num">$245,00</td><td class="num">$1.446,49</td><td class="num">4</td><td class="num">$361,62</td><td class="num">2,26%</td><td class="num">1,75</td></tr>
-        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">TIBIO · VIDEO THRUPLAY 365D<span class="campmeta">🔴 INM TIBIO+ABIERTO</span></td><td class="num">$800,00</td><td class="num">$3.118,58</td><td class="num">8</td><td class="num">$389,82</td><td class="num">3,09%</td><td class="num">2,17</td></tr>
-        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">ABIERTO · VIDEO THRUPLAY 365D<span class="campmeta">🔴 INM TIBIO+ABIERTO · familia ImgTicket activa aquí</span></td><td class="num">$1.100,00</td><td class="num">$4.125,44</td><td class="num">8</td><td class="num">$515,68</td><td class="num">4,48%</td><td class="num">1,48</td></tr>
-        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">49 (06) CARRUSELL feb - Copia<span class="campmeta">🔴 TESTEO INM 03FEB</span></td><td class="num">$100,00</td><td class="num">$578,18</td><td class="num">1</td><td class="num">$578,18</td><td class="num">1,30%</td><td class="num">1,52</td></tr>
-        <tr><td><span class="pill verde"><span class="dot"></span>verde</span></td><td class="name-cell">10 (06) CARRUSELL feb<span class="campmeta">🔴 TESTEO INM 03FEB</span></td><td class="num">$100,00</td><td class="num">$581,43</td><td class="num">1</td><td class="num">$581,43</td><td class="num">2,13%</td><td class="num">1,84</td></tr>
-        <tr><td><span class="pill ambar"><span class="dot"></span>ámbar</span></td><td class="name-cell">ABO · INM AGO · FRANK3 23Jul®<span class="campmeta">🔴 GANADORES EVERGREEN · ganador validado</span></td><td class="num">$600,00</td><td class="num">$3.642,53</td><td class="num">6</td><td class="num">$607,09</td><td class="num">4,17%</td><td class="num">1,26</td></tr>
-        <tr><td><span class="pill rojo"><span class="dot"></span>rojo</span></td><td class="name-cell">Test Broad 03 · compradores 4% LAL<span class="campmeta">🔴 EVERGREEN GENERAL · goal VALUE + audiencia LAL4% (config a corregir)</span></td><td class="num">$200,00</td><td class="num">$3.569,48</td><td class="num">4</td><td class="num">$892,37</td><td class="num">1,87%</td><td class="num">1,51</td></tr>
-        <tr><td><span class="pill rojo"><span class="dot"></span>rojo</span></td><td class="name-cell">FRANK3 - 26Jul®<span class="campmeta">🔴 EVERGREEN GENERAL · mismo creativo que arriba, aquí con fatiga</span></td><td class="num">$400,00</td><td class="num">$2.353,51</td><td class="num">2</td><td class="num">$1.176,76</td><td class="num">4,01%</td><td class="num">1,14</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD34 · NUEVOS DROPBOX · Vid04<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$237,97</td><td class="num">0</td><td class="num">—</td><td class="num">2,04%</td><td class="num">1,30</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD33 · NUEVOS DROPBOX · Vid03<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$218,87</td><td class="num">0</td><td class="num">—</td><td class="num">1,22%</td><td class="num">1,29</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD32 · NUEVOS DROPBOX · Vid02<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$240,43</td><td class="num">0</td><td class="num">—</td><td class="num">2,39%</td><td class="num">1,28</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD31 · NUEVOS DROPBOX · Vid01<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$225,99</td><td class="num">0</td><td class="num">—</td><td class="num">1,96%</td><td class="num">1,28</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin datos</span></td><td class="name-cell">AD30 · NUEVOS DROPBOX · Imágenes<span class="campmeta">🔴 ABO TEST CREATIVOS · 0 compras, en aprendizaje</span></td><td class="num">$300,00</td><td class="num">$264,58</td><td class="num">0</td><td class="num">—</td><td class="num">4,69%</td><td class="num">1,59</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · Test Broad 03 · 4% LAL<span class="campmeta">🔴 ABO TEST CREATIVOS · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · Test Broad 10% LAL<span class="campmeta">🔴 ABO TEST CREATIVOS · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · Test Broad 3% compradores<span class="campmeta">🔴 ABO TEST CREATIVOS · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-        <tr><td><span class="pill gris"><span class="dot"></span>sin gasto</span></td><td class="name-cell">01Ago® · RMK · Interesados NO Compraron<span class="campmeta">🔴 INM TIBIO+ABIERTO · recién lanzado, sin gasto aún</span></td><td class="num">$300,00</td><td class="num">$0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>Anuncios ACTIVE con gasto &gt; $100 MXN — ordenados por CPA</h3>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Anuncio</th><th class="num">Gasto 7d</th><th class="num">Compras</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Frec.</th><th>Delivery</th><th class="id">ID</th></tr></thead>
-      <tbody>
-        <tr><td class="name-cell">ABT | 01 AD-HorizontalLargo</td><td class="num">$107,28</td><td class="num">1</td><td class="num"><span class="pill verde">$107,28</span></td><td class="num">3,81%</td><td class="num">1,05</td><td>en aprendizaje</td><td class="id">120258901309670456</td></tr>
-        <tr><td class="name-cell">AD_25<span class="campmeta">ganador validado</span></td><td class="num">$230,73</td><td class="num">2</td><td class="num"><span class="pill verde">$115,36</span></td><td class="num">1,37%</td><td class="num">1,21</td><td>en aprendizaje</td><td class="id">120258845729660456</td></tr>
-        <tr><td class="name-cell">AD05 | VID AD-NoDormir</td><td class="num">$2.113,18</td><td class="num">9</td><td class="num"><span class="pill verde">$234,80</span></td><td class="num">2,48%</td><td class="num">2,09</td><td><span class="pill ambar">fatiga creativa</span></td><td class="id">120258807833600456</td></tr>
-        <tr><td class="name-cell">ABT | 08 AD-ImgTicket02</td><td class="num">$725,26</td><td class="num">3</td><td class="num"><span class="pill verde">$241,75</span></td><td class="num">5,25%</td><td class="num">1,20</td><td>en aprendizaje</td><td class="id">120258901313570456</td></tr>
-        <tr><td class="name-cell">TIB | 03 AD-TipoReelIncomodo</td><td class="num">$3.118,58</td><td class="num">8</td><td class="num"><span class="pill verde">$389,82</span></td><td class="num">3,09%</td><td class="num">2,17</td><td>en aprendizaje</td><td class="id">120258900896980456</td></tr>
-        <tr><td class="name-cell">01 (Carrusell feb, copia)</td><td class="num">$578,18</td><td class="num">1</td><td class="num"><span class="pill verde">$578,18</span></td><td class="num">1,30%</td><td class="num">1,52</td><td>en aprendizaje</td><td class="id">120258846320500456</td></tr>
-        <tr><td class="name-cell">01 (Carrusell feb)</td><td class="num">$581,43</td><td class="num">1</td><td class="num"><span class="pill verde">$581,43</span></td><td class="num">2,13%</td><td class="num">1,84</td><td>en aprendizaje</td><td class="id">120258846320490456</td></tr>
-        <tr><td class="name-cell">FRANK3_23Jul®<span class="campmeta">ganador validado</span></td><td class="num">$3.642,53</td><td class="num">6</td><td class="num"><span class="pill ambar">$607,09</span></td><td class="num">4,17%</td><td class="num">1,26</td><td>en aprendizaje</td><td class="id">120258781767920456</td></tr>
-        <tr><td class="name-cell">ABT | 07 AD-ImgTicket01</td><td class="num">$2.596,30</td><td class="num">4</td><td class="num"><span class="pill ambar">$649,08</span></td><td class="num">4,65%</td><td class="num">1,39</td><td>en aprendizaje</td><td class="id">120258901313560456</td></tr>
-        <tr><td class="name-cell">AD_27<span class="campmeta">ganador validado — señal de fatiga</span></td><td class="num">$3.569,48</td><td class="num">4</td><td class="num"><span class="pill rojo">$892,37</span></td><td class="num">1,87%</td><td class="num">1,51</td><td>en aprendizaje</td><td class="id">120258845729060456</td></tr>
-        <tr><td class="name-cell">AD_20</td><td class="num">$1.154,07</td><td class="num">1</td><td class="num"><span class="pill rojo">$1.154,07</span></td><td class="num">2,35%</td><td class="num">1,66</td><td>en aprendizaje</td><td class="id">120258845729670456</td></tr>
-        <tr><td class="name-cell">FRANK3<span class="campmeta">ganador validado — señal de fatiga en este conjunto</span></td><td class="num">$2.353,51</td><td class="num">2</td><td class="num"><span class="pill rojo">$1.176,76</span></td><td class="num">4,01%</td><td class="num">1,14</td><td>en aprendizaje</td><td class="id">120258845729720456</td></tr>
-        <tr><td class="name-cell">AD012<span class="campmeta">leads, no ventas</span></td><td class="num">$3.340,74</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,00%</td><td class="num">1,18</td><td>activo</td><td class="id">120255509354010456</td></tr>
-        <tr><td class="name-cell">AD012<span class="campmeta">leads, no ventas</span></td><td class="num">$3.269,99</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,49%</td><td class="num">1,24</td><td>activo</td><td class="id">120253228518420456</td></tr>
-        <tr><td class="name-cell">Ad 2 - Webinar<span class="campmeta">leads, no ventas</span></td><td class="num">$3.106,78</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,44%</td><td class="num">1,21</td><td>activo</td><td class="id">120253228589460456</td></tr>
-        <tr><td class="name-cell">Ad 1 - Webinar<span class="campmeta">leads, no ventas</span></td><td class="num">$2.983,85</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">3,22%</td><td class="num">1,16</td><td>activo</td><td class="id">120253228589440456</td></tr>
-        <tr><td class="name-cell">V3 Cancún ×3<span class="campmeta">tráfico, no ventas</span></td><td class="num">$1.056,69 / $1.051,34 / $1.049,43</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,68–3,15%</td><td class="num">1,14–1,18</td><td>activo</td><td class="id">120254792748940456 / …</td></tr>
-        <tr><td class="name-cell">Storie 1/2/3 (varias)<span class="campmeta">tráfico, no ventas</span></td><td class="num">$195–$810</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,3–3,7%</td><td class="num">1,12–1,24</td><td>activo</td><td class="id">ver campaña Follow Me Ads</td></tr>
-        <tr><td class="name-cell">ABT | 02 AD-TipoReelMiedo</td><td class="num">$377,23</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">4,55%</td><td class="num">1,12</td><td>en aprendizaje</td><td class="id">120258901309720456</td></tr>
-        <tr><td class="name-cell">AD30 | 10Imagenes_test (24Jul)</td><td class="num">$264,58</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">4,69%</td><td class="num">1,59</td><td>en aprendizaje</td><td class="id">120258966162950456</td></tr>
-        <tr><td class="name-cell">AD32 | test_vid02</td><td class="num">$240,43</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,39%</td><td class="num">1,28</td><td>en aprendizaje</td><td class="id">120258966531810456</td></tr>
-        <tr><td class="name-cell">AD34 | test_vid04</td><td class="num">$237,97</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">2,04%</td><td class="num">1,30</td><td>en aprendizaje</td><td class="id">120258966567270456</td></tr>
-        <tr><td class="name-cell">AD30 | 10Imagenes_test (31Jul)</td><td class="num">$225,99</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,96%</td><td class="num">1,28</td><td>en aprendizaje</td><td class="id">120258966431350456</td></tr>
-        <tr><td class="name-cell">AD33 | test_vid03</td><td class="num">$218,87</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,22%</td><td class="num">1,29</td><td>en aprendizaje</td><td class="id">120258966556590456</td></tr>
-        <tr><td class="name-cell">ABT | 05 AD-ImgTicket02</td><td class="num">$129,49</td><td class="num">0</td><td class="num"><span class="pill gris">N/D</span></td><td class="num">1,99%</td><td class="num">1,13</td><td>en aprendizaje</td><td class="id">120258901309700456</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>Brecha por campaña: gasto de campaña vs. suma de conjuntos encendidos</h3>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Campaña</th><th class="num">Gasto campaña 7d</th><th class="num">Suma conjuntos activos 7d</th><th class="num">Brecha</th><th class="num">Brecha %</th></tr></thead>
-      <tbody>
-        <tr><td class="name-cell">🔴 ABO · INM · TEST CREATIVOS | 24Jul®</td><td class="num">$8.506,63</td><td class="num">$3.301,02</td><td class="num">$5.205,61</td><td class="num"><span class="pill rojo">61,2%</span></td></tr>
-        <tr><td class="name-cell">🔴 ABO · INM AGO · GANADORES EVERGREEN</td><td class="num">$6.425,97</td><td class="num">$3.642,53</td><td class="num">$2.783,44</td><td class="num"><span class="pill ambar">43,3%</span></td></tr>
-        <tr><td class="name-cell">🔴04.TESTEO INMERSION 03 FEB CREATIVOS</td><td class="num">$2.276,46</td><td class="num">$1.159,61</td><td class="num">$1.116,85</td><td class="num"><span class="pill ambar">49,1%</span></td></tr>
-        <tr><td class="name-cell">🔴04.EVERGREEN INMERSION // GENERAL</td><td class="num">$9.428,93</td><td class="num">$7.369,48</td><td class="num">$2.059,45</td><td class="num"><span class="pill ambar">21,8%</span></td></tr>
-        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - Exclusions</td><td class="num">$3.372,47</td><td class="num">$3.345,03</td><td class="num">$27,44</td><td class="num"><span class="pill verde">0,8%</span></td></tr>
-        <tr><td class="name-cell">🔴 INM · TIBIO + ABIERTO</td><td class="num">$7.244,02</td><td class="num">$7.244,02</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
-        <tr><td class="name-cell">🟢 Follow Me Ads - Trafico</td><td class="num">$6.309,87</td><td class="num">$6.309,87</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
-        <tr><td class="name-cell">🟡Captación CDB - Test</td><td class="num">$6.090,63</td><td class="num">$6.090,63</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
-        <tr><td class="name-cell">🟡MASTERCLASS GRATIS - CDB - $1</td><td class="num">$3.318,69</td><td class="num">$3.318,69</td><td class="num">$0,00</td><td class="num"><span class="pill verde">0,0%</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="callout info" style="margin-top:-8px;">La brecha de las 4 campañas de ventas con test/aprendizaje activo (61,2% / 49,1% / 43,3% / 21,8%) viene de conjuntos ya apagados dentro de esas campañas — contamina el CPA/CTR promedio a nivel campaña. Usa siempre las tablas de conjunto y anuncio para decisiones, no el promedio de campaña.</div>
-
-  <h3>Fragmentación</h3>
-  <div class="card-grid">
-    <div class="stat-card">
-      <div class="label">Conjuntos en fase de aprendizaje</div>
-      <div class="value">17 / 31</div>
-      <div class="sub">55% de los conjuntos activos de la cuenta</div>
-    </div>
-  </div>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Conjunto de ventas</th><th class="num">Presup./día</th><th class="num">CPA</th><th class="num">Viabilidad = (presup×7)/(50×CPA)</th><th>Lectura</th></tr></thead>
-      <tbody>
-        <tr><td class="name-cell">AD05 · NUEVOS DROPBOX</td><td class="num">$300,00</td><td class="num">$234,80</td><td class="num">0,18</td><td><span class="pill rojo">&lt;1 · no alcanza 50 compras/sem. a este presupuesto</span></td></tr>
-        <tr><td class="name-cell">Test Broad 3% compradores (EVERGREEN)</td><td class="num">$245,00</td><td class="num">$361,62</td><td class="num">0,09</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">TIBIO · VIDEO THRUPLAY</td><td class="num">$800,00</td><td class="num">$389,82</td><td class="num">0,29</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">ABIERTO · VIDEO THRUPLAY</td><td class="num">$1.100,00</td><td class="num">$515,68</td><td class="num">0,30</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">49 (06) CARRUSELL feb - Copia</td><td class="num">$100,00</td><td class="num">$578,18</td><td class="num">0,02</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">10 (06) CARRUSELL feb</td><td class="num">$100,00</td><td class="num">$581,43</td><td class="num">0,02</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">ABO · INM AGO · FRANK3</td><td class="num">$600,00</td><td class="num">$607,09</td><td class="num">0,14</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">Test Broad 03 · 4% LAL (EVERGREEN)</td><td class="num">$200,00</td><td class="num">$892,37</td><td class="num">0,03</td><td><span class="pill rojo">&lt;1</span></td></tr>
-        <tr><td class="name-cell">FRANK3 (EVERGREEN)</td><td class="num">$400,00</td><td class="num">$1.176,76</td><td class="num">0,05</td><td><span class="pill rojo">&lt;1</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="callout warn" style="margin-top:-8px;">Los 9 conjuntos de ventas con CPA calculable dan viabilidad &lt;1 bajo la fórmula estándar de 50 conversiones/semana para graduarse de aprendizaje. En la práctica, varios ya están entregando fuera de "in_learning_phase" (p. ej. AD05 pasó a fatiga con solo 9 compras), así que Meta no siempre exige el umbral estricto — pero el dato confirma que, a los presupuestos actuales, ningún conjunto de ventas está dimensionado para salir de aprendizaje por volumen puro. Esto es lectura de fragmentación, no una orden de subir presupuesto — la decisión de escalar es de Camilo.</div>
-</section>
-
-<!-- ================= GANADORES VALIDADOS ================= -->
-<section class="block" id="ganadores">
-  <div class="block-head">
-    <h2>🏆 Ganadores validados en 3+ ciclos — fatiga vs. "nunca funcionó"</h2>
-  </div>
-  <div class="winners-grid">
-    <div class="winner-card">
-      <div class="wname">AD_27</div>
-      <div class="wstatus">Activo · CPA $892,37 (rojo). Está por encima del techo <b>en este conjunto</b> — lectura: <b>fatiga</b>, candidato a descanso/refresco, no a declarar "no funciona".</div>
-    </div>
-    <div class="winner-card">
-      <div class="wname">FRANK3</div>
-      <div class="wstatus">Activo en 2 conjuntos con resultados distintos: $607,09 (ámbar) en "GANADORES EVERGREEN" vs. $1.176,76 (rojo) en "EVERGREEN GENERAL". Mismo creativo, resultado distinto por conjunto/audiencia → la fatiga está en el conjunto, no necesariamente en el creativo.</div>
-    </div>
-    <div class="winner-card">
-      <div class="wname">AD25 (AD_25)</div>
-      <div class="wstatus">Activo · CPA $115,36 (verde). Sigue funcionando con fuerza, confirma su estatus de ganador validado.</div>
-    </div>
-    <div class="winner-card">
-      <div class="wname">AD12</div>
-      <div class="wstatus">No aparece entre las entidades ACTIVE de esta corrida — no está corriendo actualmente en la cuenta.</div>
-    </div>
-    <div class="winner-card">
-      <div class="wname">06 INM-V02</div>
-      <div class="wstatus">No aparece entre las entidades ACTIVE — el conjunto relacionado ("VIDEO 06 - V02/FEBRERO") está configurado ACTIVE pero su campaña padre está PAUSED (ver Bloque 1, problemas de entrega). No está entregando.</div>
-    </div>
-    <div class="winner-card">
-      <div class="wname">03 AD TX01</div>
-      <div class="wstatus">Quemado desde finales de julio (dato conocido, no error). Su reemplazo natural, la familia <b>ImgTicket</b>, está activa y corriendo en el conjunto ABIERTO de 🔴 INM · TIBIO + ABIERTO (ABT | 04/05/07/08 AD-ImgTicket01/02).</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= METODOLOGÍA / SALVEDADES ================= -->
-<footer id="metodologia">
-  <p><b>Metodología.</b> Compras = <code>offsite_conversion_fb_pixel_purchase</code>; CPA = gasto ÷ compras (nunca derivado dividiendo gasto entre "costo por resultado"). Leads = <code>lead</code>. Ventana fija <code>date_preset=last_7d</code>, atribución 7 días clic / 1 día vista — los datos siguen madurando hasta 7 días después de cada evento. Se recorrieron los tres niveles (campaña, conjunto, anuncio) filtrando <code>effective_status = ACTIVE</code> de forma independiente en cada nivel — el estado de los hijos no se infirió del padre, lo que expuso los 3 conjuntos "ACTIVE" con campaña padre PAUSED reportados en Bloque 1. Entidades agrupadas y dedupe por ID, nunca por nombre.</p>
-  <p><b>Salvedad Hotmart vs. Meta.</b> Hotmart es la venta real; las cifras de este tablero (compras, CPA) son la estimación atribuida por Meta y pueden diferir de las ventas reales registradas en Hotmart.</p>
-  <p><b>Reglas de cambio.</b> Este tablero presenta candidatos con su porqué — no redacta órdenes de cambio de presupuesto. Camilo aprueba toda decisión estratégica. Recordatorio operativo: máximo +20% por edición de presupuesto, y un solo cambio por conjunto cada 48–72 horas.</p>
-  <p><b>Ciclo.</b> Las inmersiones son eventos mensuales con semana 1 lenta (~3,7 compras/día) y semana 4 pico (~9,9 compras/día); el valle post-evento es normal. Compara siempre contra la misma fase de ciclos anteriores. Benchmarks: CPA histórico 3 años $384 MXN · Julio post-evento ~$847 MXN · CPL bueno histórico $9,70 (CPL $16–20 es caro). Los 3 CPL activos de esta corrida ($19,05 / $21,68 / $15,96) están en zona cara según ese benchmark.</p>
-  <p>Generado automáticamente por el conector MCP <code>mcp-meta</code> sobre la cuenta 464228364039681. Página sin indexar (<code>noindex, nofollow</code>).</p>
-</footer>
-
-</div>
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.funnel-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.funnel-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.funnel-view').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('funnel-' + btn.dataset.funnel).classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
