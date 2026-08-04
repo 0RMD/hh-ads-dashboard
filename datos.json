@@ -1,0 +1,30 @@
+{
+  "generado": {
+    "utc": "2026-08-04T12:20:09Z",
+    "cuenta_local": "2026-08-04 06:20",
+    "zona": "GMT-6",
+    "proxima_actualizacion": "13:10",
+    "horas_transcurridas_dia_cuenta": 6
+  },
+  "ciclo": {
+    "nombre": "agosto",
+    "dia": 18,
+    "duracion": 23,
+    "evento_inicio": "2026-08-08",
+    "evento_fin": "2026-08-09",
+    "dias_para_evento": 4,
+    "ciclo_anterior": "julio"
+  },
+  "inmersiones": [
+    {"ciclo": "enero", "evento_inicio": "2026-01-24", "evento_fin": "2026-01-25"},
+    {"ciclo": "febrero", "evento_inicio": "2026-02-21", "evento_fin": "2026-02-22"},
+    {"ciclo": "marzo", "evento_inicio": "2026-03-21", "evento_fin": "2026-03-22"},
+    {"ciclo": "abril", "evento_inicio": "2026-04-11", "evento_fin": "2026-04-12"},
+    {"ciclo": "mayo-1", "evento_inicio": "2026-05-02", "evento_fin": "2026-05-03"},
+    {"ciclo": "mayo-2", "evento_inicio": "2026-05-30", "evento_fin": "2026-05-31"},
+    {"ciclo": "junio", "evento_inicio": "2026-06-20", "evento_fin": "2026-06-21"},
+    {"ciclo": "julio", "evento_inicio": "2026-07-18", "evento_fin": "2026-07-19"},
+    {"ciclo": "agosto", "evento_inicio": "2026-08-08", "evento_fin": "2026-08-09"}
+  ],
+  "PLACEHOLDER": true
+}
