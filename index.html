@@ -5,581 +5,867 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Meta Ads · Inmersión</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root{
-  --bg:#FFFFFF; --card:#FAFAF9; --ink:#0A0A0A; --ink2:#52525B; --hair:#E7E5E4;
-  --green:#0CA30C; --amber:#FAB219; --red:#D03B3B;
-  --ventas:#D03B3B; --leads:#FAB219; --seguidores:#0CA30C;
+  --bg:#FFFFFF; --surface:#FAFAF9; --ink:#0A0A0A; --dim:#52525B; --hair:#E7E5E4;
+  --faint:#71717A; --ghost:#DEDCD9; --fill:#3F3F46; --grid:#F2F1EF;
+  --verde:#0CA30C; --ambar:#B57A00; --rojo:#C0362F;
 }
-@media (prefers-color-scheme: dark){
-  :root{ --bg:#0A0A0A; --card:#151513; --ink:#FAFAF9; --ink2:#A3A39C; --hair:#2A2A27; }
+:root[data-tema="oscuro"]{
+  --bg:#0C0C0E; --surface:#18181B; --ink:#FAFAF9; --dim:#B4B4BB; --hair:#2B2B31;
+  --faint:#9A9AA3; --ghost:#33333A; --fill:#E4E4E7; --grid:#1E1E23;
+  --verde:#4ACF5E; --ambar:#F7C24B; --rojo:#F26D71;
 }
-:root[data-theme="dark"]{ --bg:#0A0A0A; --card:#151513; --ink:#FAFAF9; --ink2:#A3A39C; --hair:#2A2A27; }
-:root[data-theme="light"]{ --bg:#FFFFFF; --card:#FAFAF9; --ink:#0A0A0A; --ink2:#52525B; --hair:#E7E5E4; }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-  -webkit-font-smoothing:antialiased;}
-.num{font-variant-numeric:tabular-nums lining-nums;}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 90px;}
-header.top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;
-  padding-bottom:16px;border-bottom:0.5px solid var(--hair);margin-bottom:28px;}
-header.top h1{font-size:20px;font-weight:500;margin:0;letter-spacing:-0.01em;}
-header.top .meta{font-size:12px;color:var(--ink2);}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:middle;}
-label.lbl{font-size:12px;color:var(--ink2);font-weight:400;}
-.hero{font-size:52px;font-weight:500;letter-spacing:-0.02em;line-height:1.05;}
-.sec-title{font-size:26px;font-weight:500;letter-spacing:-0.01em;margin:0 0 4px;}
-.body13{font-size:13px;}
-.chip-row{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
-.chip{font:inherit;font-size:13px;padding:6px 14px;border-radius:20px;border:0.5px solid var(--hair);
-  background:transparent;color:var(--ink2);cursor:pointer;}
-.chip.active{background:var(--ink);color:var(--bg);border-color:var(--ink);}
-.indicators{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:18px;
-  border-top:0.5px solid var(--hair);border-bottom:0.5px solid var(--hair);}
-.indicators .ind{padding:16px 18px;border-left:0.5px solid var(--hair);}
-.indicators .ind:first-child{border-left:none;}
-@media (max-width:760px){.indicators{grid-template-columns:1fr 1fr;} .indicators .ind:nth-child(3){border-left:none;}}
-.ind .lbl{display:block;margin-bottom:6px;}
-.ind .v{font-size:26px;font-weight:500;letter-spacing:-0.01em;}
-.ind .delta{font-size:12px;color:var(--ink2);margin-top:4px;}
-.ind .delta.flag{color:var(--red);}
-canvas{max-width:100%;}
-.chart-wrap{border-bottom:0.5px solid var(--hair);padding-bottom:4px;}
-.cpa-wrap{margin-top:2px;}
-section{margin:44px 0;}
-.tabs{display:flex;gap:22px;border-bottom:0.5px solid var(--hair);margin-bottom:28px;}
-.tab-btn{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--ink2);
-  padding:10px 2px 12px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-0.5px;}
-.tab-btn.active{color:var(--ink);border-bottom-color:currentColor;}
-.tab-panel{display:none;} .tab-panel.active{display:block;}
-.therm-section{padding:20px 0 22px;border-bottom:0.5px solid var(--hair);}
-.therm-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-.therm-num{font-size:52px;font-weight:500;letter-spacing:-0.02em;}
-.therm-bar{position:relative;height:10px;border-radius:5px;flex:1;min-width:220px;
-  background:linear-gradient(to right,
-    rgba(12,163,12,0.3) 0 50%, rgba(250,178,25,0.3) 50% 58.3%, rgba(208,59,59,0.3) 58.3% 100%);}
-.therm-marker{position:absolute;top:-4px;width:2px;height:18px;background:var(--ink);}
-.therm-median{font-size:12px;color:var(--ink2);margin-top:8px;}
-.therm-vs-yest{font-size:12px;color:var(--ink2);margin-top:4px;}
-.attn-strip{display:flex;gap:28px;flex-wrap:wrap;color:var(--ink2);font-size:13px;}
-.attn-strip b{color:var(--ink);font-weight:500;}
-.attn-section{padding:14px 0 22px;border-bottom:0.5px solid var(--hair);margin-bottom:28px;}
-.escalera{display:flex;flex-direction:column;gap:14px;}
-.esc-row{display:grid;grid-template-columns:110px 1fr 90px;align-items:center;gap:10px;}
-.esc-track{position:relative;height:8px;background:transparent;}
-.esc-ghost{position:absolute;left:0;top:0;height:8px;border-radius:4px;background:var(--hair);}
-.esc-bar{position:absolute;left:0;top:0;height:8px;border-radius:4px;background:var(--ink);}
-.esc-note{font-size:13px;color:var(--ink2);margin-top:4px;}
-.conv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:0.5px solid var(--hair);}
-.conv-cards .cc{padding:16px 4px 4px;border-left:0.5px solid var(--hair);}
-.conv-cards .cc:first-child{border-left:none;}
-@media (max-width:700px){.conv-cards{grid-template-columns:1fr;} .conv-cards .cc{border-left:none;border-top:0.5px solid var(--hair);}}
-.conv-cards .rate{font-size:34px;font-weight:500;}
-.conv-cards .rate.amber{color:var(--amber);}
-.conv-cards .cnt{font-size:12px;color:var(--ink2);margin-top:4px;}
-table{width:100%;border-collapse:collapse;}
-th{text-align:left;font-size:12px;font-weight:400;color:var(--ink2);padding:9px 10px;
-  border-bottom:0.5px solid var(--hair);}
-th.n,td.n{text-align:right;}
-td{padding:9px 10px;font-size:13px;border-bottom:0.5px solid var(--hair);}
-.tbl-wrap{overflow-x:auto;}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;}
-.alerts{list-style:none;margin:0;padding:0;}
-.alerts li{padding:14px 0;border-top:0.5px solid var(--hair);font-size:14px;line-height:1.5;}
-.heat-table{border-collapse:collapse;font-size:10px;}
-.heat-table td{width:16px;height:14px;padding:0;border:none;}
-.heat-table th{font-size:9px;color:var(--ink2);font-weight:400;padding:0 2px;}
-.budget-bar{display:flex;height:28px;border-radius:4px;overflow:hidden;}
-.budget-bar .seg{height:100%;}
-.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--ink2);}
-.legend .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-.collapsed-btn{font:inherit;font-size:13px;color:var(--ink2);background:none;border:0.5px solid var(--hair);
-  border-radius:6px;padding:6px 12px;cursor:pointer;margin-top:8px;}
-.simple-hero-row{display:flex;gap:36px;flex-wrap:wrap;align-items:flex-end;margin-bottom:20px;}
-.simple-hero{}
-.simple-hero .v{font-size:52px;font-weight:500;letter-spacing:-0.02em;}
-.simple-hero .lbl{display:block;margin-bottom:4px;}
-.secondary-row{display:flex;gap:36px;flex-wrap:wrap;color:var(--ink2);font-size:13px;margin-bottom:10px;}
-.secondary-row b{color:var(--ink);font-size:16px;font-weight:500;}
-footer{margin-top:56px;padding-top:18px;border-top:0.5px solid var(--hair);font-size:12px;color:var(--ink2);line-height:1.7;}
-a{color:inherit;}
-.mono-note{font-size:12px;color:var(--ink2);font-style:italic;}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,system-ui,sans-serif;
+  font-size:13px;line-height:1.5;font-variant-numeric:tabular-nums lining-nums;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1140px;margin:0 auto;padding:22px 20px 80px}
+.lbl{font-size:12px;color:var(--dim);text-transform:lowercase}
+.sub,.delta{font-size:12px;color:var(--dim)}
+h2{font-size:15px;font-weight:500;margin:0;letter-spacing:-.01em}
+section{padding:22px 0;border-top:.5px solid var(--hair)}
+.shead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.shead .sub{margin-left:auto}
+header{padding-bottom:14px}
+.htop{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.htitle{font-size:17px;font-weight:500;letter-spacing:-.01em}
+.hmeta,.hdiff{font-size:12px;color:var(--dim);margin-top:3px}
+.hright{margin-left:auto;display:flex;align-items:center;gap:14px}
+.status{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dim)}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none;background:var(--faint)}
+#status-dot.demo{background:#64748B}
+.controls{display:flex;gap:18px;flex-wrap:wrap;align-items:center;padding:12px 0 0}
+.grp{display:flex;gap:4px;flex-wrap:wrap}
+button.f{font:inherit;font-size:12px;color:var(--dim);background:transparent;border:.5px solid var(--hair);
+  border-radius:7px;padding:5px 11px;cursor:pointer;transition:background .18s ease,color .18s ease}
+button.f:hover:not(:disabled){background:var(--surface)}
+button.f[aria-pressed="true"]{background:var(--surface);color:var(--ink);border-color:var(--faint)}
+button.f:disabled{opacity:.4;cursor:not-allowed}
+button.f:focus-visible,.drow:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tgl{font:inherit;font-size:12px;color:var(--dim);background:transparent;border:.5px solid var(--hair);
+  border-radius:7px;padding:5px 10px;cursor:pointer}
+#ejecutivo{border-top:none;padding-top:18px}
+.top{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;align-items:start}
+.col-izq{display:flex;flex-direction:column;gap:22px;min-width:0}
+.col-der{display:flex;flex-direction:column;gap:10px;min-width:0}
+.ver{display:flex;gap:14px;align-items:stretch}
+.ver-bar{width:3px;border-radius:2px;background:var(--faint);flex:none}
+.ver-txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ver-l1,.ver-l2{font-size:23px;font-weight:500;letter-spacing:-.015em;line-height:1.28}
+.ver-causa{font-size:13px;color:var(--dim);margin-top:2px}
+.ancla{display:none;font-size:12px;color:var(--dim);background:var(--surface);border:.5px solid var(--hair);
+  border-radius:8px;padding:9px 12px;text-decoration:none;margin-top:4px}
+.ancla b{color:var(--ink);font-weight:500}
+.m-wrap{display:flex;flex-direction:column;gap:5px;min-width:0}
+.m-num{font-size:40px;font-weight:500;letter-spacing:-.02em;line-height:1.04}
+.termo-min{margin-top:6px;max-width:340px}
+.bar7{position:relative;height:7px;border-radius:4px;overflow:hidden;background:var(--surface)}
+.bar7 i{position:absolute;top:0;bottom:0;display:block}
+.zona-verde{background:color-mix(in srgb, var(--verde) 28%, var(--surface))}
+.zona-ambar{background:color-mix(in srgb, var(--ambar) 30%, var(--surface))}
+.zona-roja{background:color-mix(in srgb, var(--rojo) 25%, var(--surface))}
+:root[data-tema="oscuro"] .zona-verde{background:color-mix(in srgb, var(--verde) 34%, var(--surface))}
+:root[data-tema="oscuro"] .zona-ambar{background:color-mix(in srgb, var(--ambar) 36%, var(--surface))}
+:root[data-tema="oscuro"] .zona-roja{background:color-mix(in srgb, var(--rojo) 32%, var(--surface))}
+.mark{position:absolute;top:-3px;width:2px;height:13px;background:var(--ink);border-radius:1px}
+.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--faint);margin-top:5px;gap:6px}
+.big-num{font-size:30px;font-weight:500;letter-spacing:-.02em;line-height:1.06}
+.cmp{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.cmprow{display:grid;grid-template-columns:64px 1fr 46px;gap:9px;align-items:center;font-size:12px;color:var(--dim)}
+.cmprow.now{color:var(--ink)}
+.cmptrack{height:8px;background:var(--surface);border-radius:4px;overflow:hidden}
+.cmptrack i{display:block;height:100%;background:var(--ghost)}
+.cmprow.now .cmptrack i{background:var(--fill)}
+.cmpval{text-align:right}
+.apoyo{display:flex;gap:26px;flex-wrap:wrap;font-size:12px;color:var(--dim);
+  margin-top:26px;padding-top:16px;border-top:.5px solid var(--hair)}
+.apoyo b{color:var(--ink);font-weight:500}
+.dec{display:flex;flex-direction:column}
+.drow{display:grid;grid-template-columns:3px 1fr auto;gap:14px;align-items:center;
+  padding:14px 0;border-bottom:.5px solid var(--hair);cursor:pointer}
+.drow:last-child{border-bottom:none}
+.dbar{width:3px;height:100%;min-height:34px;border-radius:2px;background:var(--faint)}
+.dtit{font-size:14px;font-weight:500;line-height:1.35}
+.dres{font-size:13px;color:var(--dim);margin-top:3px}
+.dmas-txt{font-size:13px;color:var(--dim);margin-top:8px;border-left:2px solid var(--hair);padding:6px 0 6px 10px;display:none}
+.drow.open .dmas-txt{display:block}
+.dmoney{text-align:right;white-space:nowrap}
+.dmoney .v{font-size:17px;font-weight:500}
+.dmoney .u{font-size:11px;color:var(--faint);display:block;margin-top:2px}
+.dvacio{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--dim);padding:6px 0}
+.verdet{font:inherit;font-size:12px;color:var(--dim);background:transparent;border:.5px solid var(--hair);
+  border-radius:7px;padding:7px 13px;cursor:pointer}
+#detalle.cerrado{display:none}
+#nivel2 h2{font-size:16px;font-weight:600}
+.ciclo-txt{font-size:12px;color:var(--dim)}
+.big-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.cbox{position:relative;width:100%}
+.h-acum{height:190px} .h-cpa{height:72px} .h-ritmo{height:150px}
+.h-tend{height:240px} .h-tendcpa{height:72px} .h-matriz{height:300px}
+canvas{display:block}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.paso .r{font-size:26px;font-weight:500}
+.ladder{display:flex;flex-direction:column;gap:11px}
+.lrow{display:grid;grid-template-columns:118px 1fr 92px;gap:12px;align-items:center}
+.ltrack{position:relative;height:14px;background:var(--surface);border-radius:3px;overflow:hidden}
+.lghost{position:absolute;inset:0;width:0;background:var(--ghost)}
+.lfill{position:absolute;inset:0;width:0;background:var(--fill);border-radius:3px}
+.lval{text-align:right}
+.tscroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:13px}
+th{font-size:12px;font-weight:500;color:var(--dim);text-align:left;padding:0 10px 8px;
+  border-bottom:.5px solid var(--hair);position:sticky;top:0;background:var(--bg);white-space:nowrap}
+td{padding:13px 10px;border-bottom:.5px solid var(--hair);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;white-space:nowrap}
+.mini{position:relative;height:3px;background:var(--surface);border-radius:2px;margin-top:5px}
+.mini i{position:absolute;inset:0;width:0;background:var(--fill);border-radius:2px;display:block}
+.cat{font-size:12px;color:var(--dim);white-space:nowrap}
+.nm{font-weight:500} .cj{font-size:12px;color:var(--faint)}
+.more{font:inherit;font-size:12px;color:var(--dim);background:transparent;border:.5px solid var(--hair);
+  border-radius:7px;padding:6px 12px;cursor:pointer;margin-top:12px}
+.heat-scroll{overflow-x:auto}
+.heat{display:grid;grid-template-columns:38px repeat(24,minmax(11px,1fr));gap:2px;align-items:center;min-width:480px}
+.heat .hl{font-size:12px;color:var(--dim);text-align:right;padding-right:6px}
+.heat .hc{height:20px;border-radius:2px;background:var(--surface)}
+.heat .hh{font-size:11px;color:var(--faint);text-align:center}
+.stack{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--surface)}
+.stack i{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:11px;font-size:12px;color:var(--dim)}
+.leg span{display:flex;align-items:center;gap:6px}
+.sw{width:9px;height:9px;border-radius:2px;display:inline-block}
+.empty{font-size:12px;color:var(--faint);padding:8px 0}
+footer{border-top:.5px solid var(--hair);margin-top:8px;padding-top:16px;font-size:12px;color:var(--faint);
+  display:flex;flex-direction:column;gap:4px}
+.hide{display:none !important}
+@media (max-width:900px){ .top{grid-template-columns:1fr;gap:26px} }
+@media (max-width:720px){
+  #nivel2 .shead{flex-direction:column;align-items:flex-start;gap:4px}
+  #nivel2 .shead .sub{margin-left:0}
+  .pasos{grid-template-columns:1fr}
+  .wrap{padding:16px 14px 60px}
+  .m-num{font-size:34px} .big-num{font-size:26px} .ver-l1,.ver-l2{font-size:19px}
+  .h-acum{height:170px}
+  .ancla{display:block}
+  .lrow{grid-template-columns:92px 1fr 84px}
+  .drow{grid-template-columns:3px 1fr;gap:12px}
+  .dmoney{text-align:left;margin-top:6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="top">
-    <h1>Meta Ads</h1>
-    <span class="meta num">Hoy · 09:40 · zona de la cuenta (GMT-6)</span>
+  <header>
+    <div class="htop">
+      <div>
+        <div class="htitle">Meta Ads · Inmersión</div>
+        <div class="hmeta" id="meta-linea">cargando…</div>
+        <div class="hdiff hide" id="meta-diff"></div>
+      </div>
+      <div class="hright">
+        <div class="status"><span class="dot" id="status-dot"></span><span id="status-txt">Actualizado</span></div>
+        <button class="tgl" id="btn-tema" type="button">modo oscuro</button>
+      </div>
+    </div>
+    <div class="controls">
+      <span class="ciclo-txt" id="ciclo-txt"></span>
+      <div class="grp" id="grp-pilar" role="group" aria-label="Pilar"></div>
+    </div>
   </header>
 
-  
-<section>
-  <div class="chip-row" id="chartTabs">
-    <button class="chip active" data-view="inmersion">Inmersión</button>
-    <button class="chip" data-view="mes">Mes</button>
-    <button class="chip" data-view="semana">Semana</button>
-    <button class="chip" data-view="3dias">3 días</button>
-    <button class="chip" data-view="dia">Día</button>
-  </div>
-  <div class="indicators">
-    <div class="ind"><span class="lbl">compras</span>
-      <div class="v num">76</div>
-      <div class="delta num">-23% vs mismo punto del ciclo anterior</div></div>
-    <div class="ind"><span class="lbl">costo por compra</span>
-      <div class="v num flag">$899</div>
-      <div class="delta num">techo de referencia $600</div></div>
-    <div class="ind"><span class="lbl">inversión acumulada del período</span>
-      <div class="v num">$68,360</div>
-      <div class="delta num">ciclo agosto</div></div>
-    <div class="ind"><span class="lbl">días para la inmersión</span>
-      <div class="v num">6</div>
-      <div class="delta num">confirmada · 8-9 ago</div></div>
-  </div>
-  <div class="chart-wrap"><canvas id="mainChart" height="230"></canvas></div>
-  <div class="cpa-wrap"><canvas id="cpaChart" height="70"></canvas></div>
-</section>
-
-<section class="therm-section">
-  <p class="sec-title" style="margin-bottom:18px;"><span class="dot" style="background:#D03B3B"></span>costo por compra</p>
-  <div class="therm-row">
-    <div class="therm-num num" style="color:#D03B3B">$748</div>
-    <div class="therm-bar"><div class="therm-marker" style="left:62.3%"></div></div>
-  </div>
-  <div class="therm-median num">mediana 30 días: $662</div>
-  <div class="therm-vs-yest num">$2,365 vs $2,320 ayer a esta hora (+2%) · 3 vs 5 compras vs ayer a esta hora</div>
-</section>
-
-<section class="attn-section">
-  <div class="attn-strip body13">
-    <span>cpm <b class="num">$304.74</b></span>
-    <span>frecuencia <b class="num">2.06</b></span>
-    <span>impresiones <b class="num">117,842</b></span>
-    <span>alcance <b class="num">60,495</b></span>
-  </div>
-</section>
-
-  <nav class="tabs">
-    <button class="tab-btn active" data-tab="ventas"><span class="dot" style="background:#D03B3B"></span>ventas</button>
-    <button class="tab-btn" data-tab="leads"><span class="dot" style="background:#FAB219"></span>leads</button>
-    <button class="tab-btn" data-tab="seguidores"><span class="dot" style="background:#0CA30C"></span>seguidores</button>
-  </nav>
-
-  
-<div id="tab-ventas" class="tab-panel active">
-
-<section>
-  <p class="sec-title">escalera de costos</p>
-<div class="escalera"><div class="esc-row"><label class="lbl">por clic</label>
-      <div class="esc-track"><div class="esc-ghost" style="width:3.7%"></div><div class="esc-bar" style="width:3.3%"></div></div>
-      <div class="num" style="text-align:right;">$25.01</div></div><div class="esc-row"><label class="lbl">por visita</label>
-      <div class="esc-track"><div class="esc-ghost" style="width:5.4%"></div><div class="esc-bar" style="width:4.8%"></div></div>
-      <div class="num" style="text-align:right;">$35.56</div></div><div class="esc-row"><label class="lbl">por checkout</label>
-      <div class="esc-track"><div class="esc-ghost" style="width:22.1%"></div><div class="esc-bar" style="width:32.9%"></div></div>
-      <div class="num" style="text-align:right;">$245.97</div></div><div class="esc-row"><label class="lbl">por compra</label>
-      <div class="esc-track"><div class="esc-ghost" style="width:88.5%"></div><div class="esc-bar" style="width:100.0%"></div></div>
-      <div class="num" style="text-align:right;">$748.15</div></div></div>
-  <p class="esc-note">El salto más grande está entre <b>por visita</b> y <b>por checkout</b>: el costo se multiplica ×6.9. Ahí se concentra la fuga de presupuesto. <span class="mono-note">barra tenue = mediana de 30 días</span></p>
-</section>
-
-<section>
-  <p class="sec-title">conversión por paso</p>
-  <div class="conv-cards">
-    <div class="cc"><div class="rate num amber">70.3%</div>
-      <div class="cnt">clic → visita · banda 80-90% · <span class="num">1,010</span> visitas</div></div>
-    <div class="cc"><div class="rate num ">14.5%</div>
-      <div class="cnt">visita → checkout · banda 12-20% · <span class="num">146</span> checkouts</div></div>
-    <div class="cc"><div class="rate num amber">32.9%</div>
-      <div class="cnt">checkout → compra · banda 40-60% · <span class="num">48</span> compras</div></div>
-  </div>
-</section>
-
-<section>
-  <p class="sec-title">ritmo del día</p>
-  <p class="mono-note" style="margin:0 0 4px;">comparación: mismo día de la semana anterior · corte a las 09:40 hora de la cuenta</p>
-  <p class="mono-note num" style="margin:0 0 10px;">gasto ventas hoy $2,365 vs $2,320 ayer a esta hora (+2%) · 3 vs 5 compras vs ayer a esta hora</p>
-  <div class="chart-wrap"><canvas id="ritmoChart" height="150"></canvas></div>
-</section>
-
-<section>
-  <p class="sec-title">tendencia</p>
-  <div class="chip-row" id="trendTabs">
-    <button class="chip active" data-trend="7d">7 días</button>
-    <button class="chip" data-trend="30d">30 días</button>
-    <button class="chip" data-trend="90d">90 días</button>
-    <button class="chip" data-trend="6m">6 meses</button>
-  </div>
-  <div class="chart-wrap"><canvas id="trendChart" height="180"></canvas></div>
-  <div class="attn-strip body13" style="margin-top:16px;">
-    <span>2026-03 <b class="num">$106,214</b></span><span>2026-04 <b class="num">$107,172</b></span><span>2026-05 <b class="num">$31,493</b></span><span>2026-06 <b class="num">$108,876</b></span><span>2026-07 <b class="num">$169,211</b></span><span>2026-08 <b class="num">$7,626</b></span>
-  </div>
-  <div class="attn-strip body13" style="margin-top:8px;">
-    <span>2026-Q1 <b class="num">$170,555</b></span><span>2026-Q2 <b class="num">$247,542</b></span><span>2026-Q3 <b class="num">$176,837</b></span>
-  </div>
-</section>
-
-<section>
-  <p class="sec-title">matriz de anuncios</p>
-  <p class="mono-note" style="margin:0 0 10px;">dispersión: gasto 7 días (x) vs costo por compra (y) · tamaño = compras · regla en $600</p>
-  <div class="chart-wrap"><canvas id="matrixChart" height="220"></canvas></div>
-  <div class="tbl-wrap" style="margin-top:20px;">
-    <table><thead><tr><th>anuncio</th><th class="n">gasto 7d</th><th class="n">costo por compra</th><th class="n">compras</th></tr></thead>
-    <tbody><tr><td>FRANK3_23Jul®<div style="height:3px;background:#FAB219;opacity:.5;width:100%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$3,930</td>
-      <td class="n num" style="color:#FAB219">$655</td>
-      <td class="n num">6</td></tr><tr><td>TIB | 03 AD-TipoReelIncomodo | 28Jul®<div style="height:3px;background:#0CA30C;opacity:.5;width:95%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$3,738</td>
-      <td class="n num" style="color:#0CA30C">$467</td>
-      <td class="n num">8</td></tr><tr><td>AD_27<div style="height:3px;background:#D03B3B;opacity:.5;width:94%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$3,709</td>
-      <td class="n num" style="color:#D03B3B">$927</td>
-      <td class="n num">4</td></tr><tr><td>ABT | 07 AD-ImgTicket01 | 28Jul®<div style="height:3px;background:#D03B3B;opacity:.5;width:83%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$3,267</td>
-      <td class="n num" style="color:#D03B3B">$817</td>
-      <td class="n num">4</td></tr><tr><td>FRANK3<div style="height:3px;background:#D03B3B;opacity:.5;width:69%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$2,692</td>
-      <td class="n num" style="color:#D03B3B">$897</td>
-      <td class="n num">3</td></tr><tr><td>AD_27_23Jul®<div style="height:3px;background:#D03B3B;opacity:.5;width:60%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$2,343</td>
-      <td class="n num" style="color:#D03B3B">$2,343</td>
-      <td class="n num">1</td></tr><tr><td>AD05 | VID AD-NoDormir | 24Jul®<div style="height:3px;background:#0CA30C;opacity:.5;width:53%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$2,091</td>
-      <td class="n num" style="color:#0CA30C">$261</td>
-      <td class="n num">8</td></tr><tr><td>AD_20<div style="height:3px;background:#D03B3B;opacity:.5;width:33%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$1,311</td>
-      <td class="n num" style="color:#D03B3B">$1,311</td>
-      <td class="n num">1</td></tr><tr><td>ABT | 08 AD-ImgTicket02 | 28Jul®<div style="height:3px;background:#0CA30C;opacity:.5;width:27%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$1,076</td>
-      <td class="n num" style="color:#0CA30C">$215</td>
-      <td class="n num">5</td></tr><tr><td>01<div style="height:3px;background:#FAB219;opacity:.5;width:17%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$671</td>
-      <td class="n num" style="color:#FAB219">$671</td>
-      <td class="n num">1</td></tr><tr><td>01<div style="height:3px;background:#0CA30C;opacity:.5;width:17%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$663</td>
-      <td class="n num" style="color:#0CA30C">$332</td>
-      <td class="n num">2</td></tr><tr><td>AD09 | VID AD-NoDormir | 24Jul®<div style="height:3px;background:#52525B;opacity:.5;width:15%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$576</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD-17Jul - FRANK4 ®<div style="height:3px;background:#52525B;opacity:.5;width:14%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$568</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>01<div style="height:3px;background:#52525B;opacity:.5;width:14%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$560</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>01<div style="height:3px;background:#52525B;opacity:.5;width:14%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$557</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD30 | 10Imagenes_test  | 31Jul®<div style="height:3px;background:#52525B;opacity:.5;width:13%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$523</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD34 | test_vid04  | 31Jul®<div style="height:3px;background:#52525B;opacity:.5;width:13%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$523</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD33 | test_vid03  | 31Jul®<div style="height:3px;background:#52525B;opacity:.5;width:13%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$523</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD30 | 10Imagenes_test  | 24Jul®<div style="height:3px;background:#52525B;opacity:.5;width:13%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$522</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD32 | test_vid02  | 31Jul®<div style="height:3px;background:#52525B;opacity:.5;width:13%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$521</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD03 | VID AD-NoDormir | 24Jul®<div style="height:3px;background:#52525B;opacity:.5;width:12%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$490</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD01 | VID AD-NoDormir | 24Jul®<div style="height:3px;background:#52525B;opacity:.5;width:11%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$444</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD03 | CALIENTE · GANADORES AD-NoDormir | 24Jul®<div style="height:3px;background:#52525B;opacity:.5;width:11%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$433</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD01 | REMARKETING · GANADORES AD-01 | 24Jul®<div style="height:3px;background:#0CA30C;opacity:.5;width:11%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$432</td>
-      <td class="n num" style="color:#0CA30C">$432</td>
-      <td class="n num">1</td></tr><tr><td>V02_Junio<div style="height:3px;background:#52525B;opacity:.5;width:10%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$383</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>ABT | 02 AD-TipoReelMiedo | 28Jul®<div style="height:3px;background:#52525B;opacity:.5;width:10%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$379</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD24<div style="height:3px;background:#52525B;opacity:.5;width:7%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$281</td>
-      <td class="n num" style="color:#52525B">—</td>
-      <td class="n num">0</td></tr><tr><td>AD_25<div style="height:3px;background:#0CA30C;opacity:.5;width:7%;margin-top:4px;border-radius:2px;"></div></td>
-      <td class="n num">$274</td>
-      <td class="n num" style="color:#0CA30C">$137</td>
-      <td class="n num">2</td></tr></tbody></table>
-  </div>
-  <button class="collapsed-btn" id="belowBtn">+ 23 anuncios con menos de $250 en 7 días</button>
-</section>
-<div id="belowTable" style="display:none;margin-top:10px;" class="tbl-wrap">
-  <table><thead><tr><th>anuncio</th><th class="n">gasto 7d</th><th class="n">compras</th></tr></thead>
-  <tbody><tr><td>AD24 -1</td><td class='n num'>$223</td><td class='n num'>0</td></tr><tr><td>RMK-AD_03 | 06Jul ®</td><td class='n num'>$222</td><td class='n num'>0</td></tr><tr><td>AD_27</td><td class='n num'>$221</td><td class='n num'>0</td></tr><tr><td>AD_20_02Agosto</td><td class='n num'>$220</td><td class='n num'>0</td></tr><tr><td>V01Agosto</td><td class='n num'>$216</td><td class='n num'>0</td></tr><tr><td>AD24 -3</td><td class='n num'>$173</td><td class='n num'>0</td></tr><tr><td>ABT | 05 AD-ImgTicket02 | 28Jul®</td><td class='n num'>$131</td><td class='n num'>0</td></tr><tr><td>AD24 -2</td><td class='n num'>$130</td><td class='n num'>0</td></tr><tr><td>V03_Junio</td><td class='n num'>$124</td><td class='n num'>0</td></tr><tr><td>AD08</td><td class='n num'>$117</td><td class='n num'>0</td></tr><tr><td>ABT | 01 AD-HorizontalLargo | 28Jul®</td><td class='n num'>$107</td><td class='n num'>1</td></tr><tr><td>AD02 | CALIENTE · GANADORES AD-NoDormir | 24Jul® - Copia</td><td class='n num'>$93</td><td class='n num'>0</td></tr><tr><td>AD02 | REMARKETING · GANADORES AD-02 | 24Jul®</td><td class='n num'>$80</td><td class='n num'>0</td></tr><tr><td>AD_24</td><td class='n num'>$62</td><td class='n num'>1</td></tr><tr><td>AD03 | REMARKETING · GANADORES AD-03 | 24Jul®</td><td class='n num'>$59</td><td class='n num'>0</td></tr><tr><td>ABT | 10 AD-TipoReelMiedo | 28Jul®</td><td class='n num'>$58</td><td class='n num'>0</td></tr><tr><td>ABT | 04 AD-ImgTicket01 | 28Jul®</td><td class='n num'>$39</td><td class='n num'>0</td></tr><tr><td>V05_Junio</td><td class='n num'>$38</td><td class='n num'>0</td></tr><tr><td>ABT | 06 AD-HorizontalLargo2 | 28Jul®</td><td class='n num'>$34</td><td class='n num'>0</td></tr><tr><td>ABT | 09 AD-TipoReelIncomodo | 28Jul®</td><td class='n num'>$31</td><td class='n num'>0</td></tr><tr><td>ABT | 03 AD-TipoReelIncomodo | 28Jul®</td><td class='n num'>$30</td><td class='n num'>0</td></tr><tr><td>AD06</td><td class='n num'>$23</td><td class='n num'>0</td></tr><tr><td>AD01 | CALIENTE · GANADORES AD-NoDormir | 24Jul®</td><td class='n num'>$0</td><td class='n num'>0</td></tr></tbody></table></div>
-<section>
-  <p class="sec-title">campañas y conjuntos encendidos</p>
-  <p class="mono-note" style="margin:0 0 10px;">28 conjuntos activos entregando · 0 activos sin entrega</p>
-  <div class="tbl-wrap"><table><thead><tr><th>campaña</th><th>estado</th><th class="n">gasto 7d</th><th>resultado</th></tr></thead>
-  <tbody><tr><td><span class="dot" style="background:#D03B3B"></span>🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$10,108</td><td class="n">11 compras</td></tr><tr><td><span class="dot" style="background:#FAB219"></span>🟡Captación CDB - Test</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$9,310</td><td class="n">394 leads</td></tr><tr><td><span class="dot" style="background:#D03B3B"></span>🔴 INM · TIBIO + ABIERTO | 28Jul®</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$9,112</td><td class="n">18 compras</td></tr><tr><td><span class="dot" style="background:#D03B3B"></span>🔴 ABO · INM · TEST CREATIVOS | 24Jul®</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$7,967</td><td class="n">9 compras</td></tr><tr><td><span class="dot" style="background:#0CA30C"></span>🟢 Follow Me Ads - Trafico</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$6,300</td><td class="n"></td></tr><tr><td><span class="dot" style="background:#D03B3B"></span>🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$6,274</td><td class="n">7 compras</td></tr><tr><td><span class="dot" style="background:#FAB219"></span>🟡MASTERCLASS GRATIS - CDB - Exclusions</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$4,919</td><td class="n">247 leads</td></tr><tr><td><span class="dot" style="background:#FAB219"></span>🟡MASTERCLASS GRATIS - CDB - $1</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$4,889</td><td class="n">289 leads</td></tr><tr><td><span class="dot" style="background:#D03B3B"></span>🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$2,451</td><td class="n">3 compras</td></tr></tbody></table></div>
-</section>
-
-<section>
-  <p class="sec-title">alertas</p>
-  <ul class="alerts"><li>El CPA de ventas de 7 dias ($748) esta en zona roja, por encima de 700. Mediana de 30 dias: $662.</li><li>11 conjuntos de ventas con compras no alcanzan viabilidad de aprendizaje (menos de 0.3 compras/dia); el peor caso es '01Ago® | Test Broad 03 Broad - compradores4% LAL' con 0.00.</li><li>9 conjuntos de test de creativos superan $150/dia (regla interna), sumando $2,700/dia en fase de prueba.</li></ul>
-</section>
-
-<section>
-  <p class="sec-title">mapa de calor · compras por hora</p>
-  <p class="mono-note" style="margin:0 0 10px;">promedio de compras por día de la semana × hora, últimas 8 semanas</p>
-  <div class="tbl-wrap"><table class="heat-table"><tbody><tr><th>Lun</th><td style="background:rgb(242,215,214)" title="Lun 00h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 05h: 0.0 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Lun 06h: 0.4 compras (prom.)"></td><td style="background:rgb(234,181,180)" title="Lun 07h: 0.5 compras (prom.)"></td><td style="background:rgb(242,215,214)" title="Lun 08h: 0.2 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Lun 09h: 0.4 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Lun 10h: 0.4 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Lun 11h: 0.4 compras (prom.)"></td><td style="background:rgb(223,129,129)" title="Lun 12h: 0.8 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 13h: 0.0 compras (prom.)"></td><td style="background:rgb(242,215,214)" title="Lun 14h: 0.2 compras (prom.)"></td><td style="background:rgb(234,181,180)" title="Lun 15h: 0.5 compras (prom.)"></td><td style="background:rgb(246,232,231)" title="Lun 16h: 0.1 compras (prom.)"></td><td style="background:rgb(242,215,214)" title="Lun 17h: 0.2 compras (prom.)"></td><td style="background:rgb(242,215,214)" title="Lun 18h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 19h: 0.0 compras (prom.)"></td><td style="background:rgb(246,232,231)" title="Lun 20h: 0.1 compras (prom.)"></td><td style="background:rgb(246,232,231)" title="Lun 21h: 0.1 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Lun 22h: 0.0 compras (prom.)"></td><td style="background:rgb(234,181,180)" title="Lun 23h: 0.5 compras (prom.)"></td></tr><tr><th>Mar</th><td style="background:rgb(238,198,197)" title="Mar 00h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 05h: 0.0 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Mar 06h: 0.6 compras (prom.)"></td><td style="background:rgb(226,145,144)" title="Mar 07h: 0.7 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Mar 08h: 0.4 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Mar 09h: 0.6 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Mar 10h: 0.6 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Mar 11h: 0.6 compras (prom.)"></td><td style="background:rgb(209,67,67)" title="Mar 12h: 1.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 13h: 0.0 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Mar 14h: 0.4 compras (prom.)"></td><td style="background:rgb(226,145,144)" title="Mar 15h: 0.7 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Mar 16h: 0.2 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Mar 17h: 0.4 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Mar 18h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 19h: 0.0 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Mar 20h: 0.2 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Mar 21h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mar 22h: 0.0 compras (prom.)"></td><td style="background:rgb(226,145,144)" title="Mar 23h: 0.7 compras (prom.)"></td></tr><tr><th>Mié</th><td style="background:rgb(239,204,203)" title="Mié 00h: 0.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 05h: 0.0 compras (prom.)"></td><td style="background:rgb(234,179,179)" title="Mié 06h: 0.5 compras (prom.)"></td><td style="background:rgb(229,156,156)" title="Mié 07h: 0.7 compras (prom.)"></td><td style="background:rgb(239,204,203)" title="Mié 08h: 0.3 compras (prom.)"></td><td style="background:rgb(234,179,179)" title="Mié 09h: 0.5 compras (prom.)"></td><td style="background:rgb(234,179,179)" title="Mié 10h: 0.5 compras (prom.)"></td><td style="background:rgb(234,179,179)" title="Mié 11h: 0.5 compras (prom.)"></td><td style="background:rgb(214,87,87)" title="Mié 12h: 1.1 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 13h: 0.0 compras (prom.)"></td><td style="background:rgb(239,204,203)" title="Mié 14h: 0.3 compras (prom.)"></td><td style="background:rgb(229,156,156)" title="Mié 15h: 0.7 compras (prom.)"></td><td style="background:rgb(244,227,226)" title="Mié 16h: 0.2 compras (prom.)"></td><td style="background:rgb(239,204,203)" title="Mié 17h: 0.3 compras (prom.)"></td><td style="background:rgb(239,204,203)" title="Mié 18h: 0.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 19h: 0.0 compras (prom.)"></td><td style="background:rgb(244,227,226)" title="Mié 20h: 0.2 compras (prom.)"></td><td style="background:rgb(244,227,226)" title="Mié 21h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Mié 22h: 0.0 compras (prom.)"></td><td style="background:rgb(229,156,156)" title="Mié 23h: 0.7 compras (prom.)"></td></tr><tr><th>Jue</th><td style="background:rgb(238,195,194)" title="Jue 00h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 05h: 0.0 compras (prom.)"></td><td style="background:rgb(232,168,167)" title="Jue 06h: 0.6 compras (prom.)"></td><td style="background:rgb(226,140,140)" title="Jue 07h: 0.8 compras (prom.)"></td><td style="background:rgb(238,195,194)" title="Jue 08h: 0.4 compras (prom.)"></td><td style="background:rgb(232,168,167)" title="Jue 09h: 0.6 compras (prom.)"></td><td style="background:rgb(232,168,167)" title="Jue 10h: 0.6 compras (prom.)"></td><td style="background:rgb(232,168,167)" title="Jue 11h: 0.6 compras (prom.)"></td><td style="background:rgb(208,59,59)" title="Jue 12h: 1.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 13h: 0.0 compras (prom.)"></td><td style="background:rgb(238,195,194)" title="Jue 14h: 0.4 compras (prom.)"></td><td style="background:rgb(226,140,140)" title="Jue 15h: 0.8 compras (prom.)"></td><td style="background:rgb(244,222,221)" title="Jue 16h: 0.2 compras (prom.)"></td><td style="background:rgb(238,195,194)" title="Jue 17h: 0.4 compras (prom.)"></td><td style="background:rgb(238,195,194)" title="Jue 18h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 19h: 0.0 compras (prom.)"></td><td style="background:rgb(244,222,221)" title="Jue 20h: 0.2 compras (prom.)"></td><td style="background:rgb(244,222,221)" title="Jue 21h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Jue 22h: 0.0 compras (prom.)"></td><td style="background:rgb(226,140,140)" title="Jue 23h: 0.8 compras (prom.)"></td></tr><tr><th>Vie</th><td style="background:rgb(238,198,197)" title="Vie 00h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 05h: 0.0 compras (prom.)"></td><td style="background:rgb(232,172,171)" title="Vie 06h: 0.5 compras (prom.)"></td><td style="background:rgb(227,146,146)" title="Vie 07h: 0.7 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Vie 08h: 0.4 compras (prom.)"></td><td style="background:rgb(232,172,171)" title="Vie 09h: 0.5 compras (prom.)"></td><td style="background:rgb(232,172,171)" title="Vie 10h: 0.5 compras (prom.)"></td><td style="background:rgb(232,172,171)" title="Vie 11h: 0.5 compras (prom.)"></td><td style="background:rgb(210,70,70)" title="Vie 12h: 1.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 13h: 0.0 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Vie 14h: 0.4 compras (prom.)"></td><td style="background:rgb(227,146,146)" title="Vie 15h: 0.7 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Vie 16h: 0.2 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Vie 17h: 0.4 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Vie 18h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 19h: 0.0 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Vie 20h: 0.2 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Vie 21h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Vie 22h: 0.0 compras (prom.)"></td><td style="background:rgb(227,146,146)" title="Vie 23h: 0.7 compras (prom.)"></td></tr><tr><th>Sáb</th><td style="background:rgb(240,206,206)" title="Sáb 00h: 0.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 05h: 0.0 compras (prom.)"></td><td style="background:rgb(235,185,184)" title="Sáb 06h: 0.5 compras (prom.)"></td><td style="background:rgb(231,163,163)" title="Sáb 07h: 0.6 compras (prom.)"></td><td style="background:rgb(240,206,206)" title="Sáb 08h: 0.3 compras (prom.)"></td><td style="background:rgb(235,185,184)" title="Sáb 09h: 0.5 compras (prom.)"></td><td style="background:rgb(235,185,184)" title="Sáb 10h: 0.5 compras (prom.)"></td><td style="background:rgb(235,185,184)" title="Sáb 11h: 0.5 compras (prom.)"></td><td style="background:rgb(216,99,99)" title="Sáb 12h: 1.1 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 13h: 0.0 compras (prom.)"></td><td style="background:rgb(240,206,206)" title="Sáb 14h: 0.3 compras (prom.)"></td><td style="background:rgb(231,163,163)" title="Sáb 15h: 0.6 compras (prom.)"></td><td style="background:rgb(245,228,227)" title="Sáb 16h: 0.1 compras (prom.)"></td><td style="background:rgb(240,206,206)" title="Sáb 17h: 0.3 compras (prom.)"></td><td style="background:rgb(240,206,206)" title="Sáb 18h: 0.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 19h: 0.0 compras (prom.)"></td><td style="background:rgb(245,228,227)" title="Sáb 20h: 0.1 compras (prom.)"></td><td style="background:rgb(245,228,227)" title="Sáb 21h: 0.1 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Sáb 22h: 0.0 compras (prom.)"></td><td style="background:rgb(231,163,163)" title="Sáb 23h: 0.6 compras (prom.)"></td></tr><tr><th>Dom</th><td style="background:rgb(238,198,197)" title="Dom 00h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 01h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 02h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 03h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 04h: 0.0 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 05h: 0.0 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Dom 06h: 0.6 compras (prom.)"></td><td style="background:rgb(226,145,144)" title="Dom 07h: 0.7 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Dom 08h: 0.4 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Dom 09h: 0.6 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Dom 10h: 0.6 compras (prom.)"></td><td style="background:rgb(232,171,170)" title="Dom 11h: 0.6 compras (prom.)"></td><td style="background:rgb(209,67,67)" title="Dom 12h: 1.3 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 13h: 0.0 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Dom 14h: 0.4 compras (prom.)"></td><td style="background:rgb(226,145,144)" title="Dom 15h: 0.7 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Dom 16h: 0.2 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Dom 17h: 0.4 compras (prom.)"></td><td style="background:rgb(238,198,197)" title="Dom 18h: 0.4 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 19h: 0.0 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Dom 20h: 0.2 compras (prom.)"></td><td style="background:rgb(244,224,223)" title="Dom 21h: 0.2 compras (prom.)"></td><td style="background:rgb(250,250,249)" title="Dom 22h: 0.0 compras (prom.)"></td><td style="background:rgb(226,145,144)" title="Dom 23h: 0.7 compras (prom.)"></td></tr></tbody></table></div>
-</section>
-
-<section>
-  <p class="sec-title">distribución de presupuesto</p>
-  <p class="mono-note" style="margin:0 0 8px;">gasto 7 días por pilar, y dentro de ventas por campaña</p>
-  <div class="budget-bar"><div class="seg" style="width:58.56%;background:#D03B3B"></div><div class="seg" style="width:31.17%;background:#FAB219"></div><div class="seg" style="width:10.27%;background:#0CA30C"></div></div>
-  <div class="legend"><span><span class="sw" style="background:#D03B3B"></span>ventas $35,907 (59%)</span><span><span class="sw" style="background:#FAB219"></span>leads $19,114 (31%)</span><span><span class="sw" style="background:#0CA30C"></span>seguidores $6,300 (10%)</span></div>
-  <div class="budget-bar" style="margin-top:14px;"><div class="seg" style="width:28.15%;background:#D03B3B;opacity:0.95"></div><div class="seg" style="width:25.37%;background:#D03B3B;opacity:0.83"></div><div class="seg" style="width:22.18%;background:#D03B3B;opacity:0.71"></div><div class="seg" style="width:17.47%;background:#D03B3B;opacity:0.59"></div><div class="seg" style="width:6.82%;background:#D03B3B;opacity:0.47"></div></div>
-</section>
-
-</div>
-
-  
-<div id="tab-leads" class="tab-panel">
-  <div class="simple-hero-row">
-    <div class="simple-hero"><span class="lbl">costo por lead</span><div class="v num" style="color:#52525B">$20.56</div></div>
-  </div>
-  <div class="secondary-row">
-    <span>leads 7d <b class="num">930</b></span>
-    <span>gasto 7d <b class="num">$19,119</b></span>
-    <span>ctr enlace <b class="num">1.46%</b></span>
-    <span>caro (ref. $16–20)</span>
-  </div>
-  <section><p class="sec-title">campañas y conjuntos encendidos</p>
-    <div class="tbl-wrap"><table><thead><tr><th>campaña</th><th>estado</th><th class="n">gasto 7d</th><th>resultado</th></tr></thead>
-    <tbody><tr><td><span class="dot" style="background:#FAB219"></span>🟡Captación CDB - Test</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$9,310</td><td class="n">394 leads</td></tr><tr><td><span class="dot" style="background:#FAB219"></span>🟡MASTERCLASS GRATIS - CDB - Exclusions</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$4,919</td><td class="n">247 leads</td></tr><tr><td><span class="dot" style="background:#FAB219"></span>🟡MASTERCLASS GRATIS - CDB - $1</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$4,889</td><td class="n">289 leads</td></tr></tbody></table></div>
+  <section id="ejecutivo">
+    <div class="top">
+      <div class="col-izq">
+        <div class="ver">
+          <div class="ver-bar" id="ver-bar"></div>
+          <div class="ver-txt">
+            <div class="ver-l1" id="ver-l1">—</div>
+            <div class="ver-l2" id="ver-l2"></div>
+            <div class="ver-causa" id="ver-causa"></div>
+          </div>
+        </div>
+        <a class="ancla" id="ancla" href="#nivel2"></a>
+        <div class="m-wrap" id="m-costo">
+          <span class="lbl" id="m1-lbl">costo</span>
+          <span class="m-num" id="m1-num">—</span>
+          <div class="termo-min" id="termo-min">
+            <div class="bar7" id="termo-bar"></div>
+            <div class="scale" id="termo-scale"></div>
+          </div>
+          <span class="delta" id="m1-sub"></span>
+        </div>
+      </div>
+      <div class="col-der">
+        <span class="lbl" id="m2-lbl">resultados del ciclo</span>
+        <div class="big-row"><span class="big-num" id="m2-num">—</span><span class="delta" id="m2-delta"></span></div>
+        <div class="cbox h-acum"><canvas id="c-acum"></canvas></div>
+        <div class="cmp" id="cmp"></div>
+      </div>
+    </div>
+    <div class="apoyo" id="apoyo"></div>
   </section>
-  <section><p class="sec-title">alertas</p>
-    <ul class="alerts"><li>El CPL de 7 dias ($20.56) esta en la zona cara de referencia ($16-20); el bueno de referencia es $9.70.</li></ul>
-  </section>
-</div>
 
-  
-<div id="tab-seguidores" class="tab-panel">
-  <div class="simple-hero-row">
-    <div class="simple-hero"><span class="lbl">costo por visita al perfil</span><div class="v num">$1.07</div></div>
-  </div>
-  <div class="secondary-row">
-    <span>visitas al perfil 7d <b class="num">5,884</b></span>
-    <span>gasto 7d <b class="num">$6,300</b></span>
-    <span>referencia Stories $0.57–0.95 · Feed $2.93–3.27</span>
-  </div>
-  <section><p class="sec-title">campañas y conjuntos encendidos</p>
-    <div class="tbl-wrap"><table><thead><tr><th>campaña</th><th>estado</th><th class="n">gasto 7d</th><th>resultado</th></tr></thead>
-    <tbody><tr><td><span class="dot" style="background:#0CA30C"></span>🟢 Follow Me Ads - Trafico</td>
-      <td><span class="badge"><span class="dot" style="background:#0CA30C"></span>entregando</span></td>
-      <td class="n num">$6,300</td><td class="n"></td></tr></tbody></table></div>
+  <section id="nivel2">
+    <div class="shead"><h2>Decisiones de hoy</h2><span class="sub">ordenadas por dinero implicado en 7 días</span></div>
+    <div class="dec" id="dec"></div>
+    <button class="more hide" id="dec-mas"></button>
   </section>
-  <section><p class="sec-title">alertas</p>
-    <ul class="alerts"><li>Sin alertas activas en seguidores.</li></ul>
-  </section>
-</div>
 
+  <section style="padding:18px 0">
+    <button class="verdet" id="btn-detalle" type="button" aria-expanded="false">Ver evidencia y diagnóstico</button>
+  </section>
+
+  <div id="detalle" class="cerrado">
+    <section style="padding-bottom:6px">
+      <h2 style="font-size:16px">Evidencia y diagnóstico</h2>
+      <div class="sub" style="margin-top:5px">Datos que respaldan el veredicto y las decisiones anteriores.</div>
+    </section>
+    <section id="sec-cpa">
+      <div class="shead"><h2 id="t-cpa">Costo, día a día</h2><span class="sub" id="s-cpa"></span></div>
+      <div class="cbox h-cpa"><canvas id="c-cpa"></canvas></div>
+    </section>
+    <section id="sec-escalera">
+      <div class="shead"><h2>Escalera de costos</h2><span class="sub">7 días · barra tenue = mediana de 30 días</span></div>
+      <div class="ladder" id="ladder"></div>
+      <div class="sub" id="salto" style="margin-top:12px"></div>
+    </section>
+    <section id="sec-pasos">
+      <div class="shead"><h2>Conversión por paso</h2><span class="sub">últimos 7 días</span></div>
+      <div class="pasos" id="pasos"></div>
+    </section>
+    <section id="sec-ritmo">
+      <div class="shead"><h2>Ritmo del día</h2><span class="sub">vs. el mismo día de la semana pasada</span></div>
+      <div class="cbox h-ritmo" id="ritmo-box"><canvas id="c-ritmo"></canvas></div>
+      <div class="empty hide" id="ritmo-vacio"></div>
+    </section>
+    <section id="sec-tend">
+      <div class="shead"><h2>Tendencia</h2><span class="sub" id="s-tend"></span></div>
+      <div class="cbox h-tend"><canvas id="c-tend"></canvas></div>
+      <div class="cbox h-tendcpa" style="margin-top:6px"><canvas id="c-tendcpa"></canvas></div>
+      <div class="apoyo" id="totales" style="margin-top:18px"></div>
+    </section>
+    <section id="sec-matriz">
+      <div class="shead"><h2>Matriz de anuncios</h2><span class="sub">7 días · tamaño = compras</span></div>
+      <div class="cbox h-matriz"><canvas id="c-matriz"></canvas></div>
+    </section>
+    <section id="sec-tabla">
+      <div class="shead"><h2>Anuncios</h2><span class="sub">7 días · agrupados por anuncio</span></div>
+      <div class="tscroll"><table id="t-ads"><thead></thead><tbody></tbody></table></div>
+      <button class="more hide" id="btn-mas"></button>
+    </section>
+    <section id="sec-camp">
+      <div class="shead"><h2>Campañas encendidas</h2><span class="sub">gasto de hoy · costo de 7 días</span></div>
+      <div class="tscroll"><table id="t-camp"><thead></thead><tbody></tbody></table></div>
+    </section>
+    <section id="sec-heat">
+      <div class="shead"><h2>Compras por día y hora</h2><span class="sub">últimos 7 días</span></div>
+      <div class="heat-scroll"><div class="heat" id="heat"></div></div>
+    </section>
+    <section id="sec-pres">
+      <div class="shead"><h2>Distribución de presupuesto</h2><span class="sub">diario configurado</span></div>
+      <div class="stack" id="stack"></div>
+      <div class="leg" id="stack-leg"></div>
+    </section>
+  </div>
 
   <footer>
-    Atribución de 7 días clic / 1 día visualización. El día en curso se etiqueta parcial y puede ajustarse en las próximas horas.<br>
-    Meta reporta una estimación atribuida; la venta o lead real se confirma en la fuente correspondiente.
+    <span>Los datos del día en curso están incompletos y siguen madurando: la atribución es de 7 días por clic y 1 día por visualización.</span>
+    <span>Las cifras provienen de Meta y son una estimación atribuida; la venta real se confirma en la pasarela de pago.</span>
+    <span>Los montos de cada decisión son el dinero implicado en el problema, no un ingreso recuperable.</span>
+    <span id="pie-gen"></span>
   </footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-const CHART_DATA = {"inmersion": {"labels": ["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15", "d16", "d17", "d18", "d19", "d20", "d21"], "current": [5.0, 9.0, 13.0, 16.0, 19.0, 25.0, 29.0, 32.0, 40.0, 49.0, 55.0, 67.0, 73.0, 76.0, null, null, null, null, null, null, null], "previous": [2.0, 7.0, 14.0, 20.0, 23.0, 27.0, 32.0, 33.0, 40.0, 50.0, 63.0, 71.0, 81.0, 99.0, 110.0, 125.0, 133.0, 146.0, 154.0, 157.0, 174.0], "cur_cpa": [1309.22, 1617.52, 1417.21, 1275.62, 1294.24, 1162.02, 1221.58, 1286.35, 1171.5, 1055.66, 1015.29, 906.47, 908.31, 899.47, null, null, null, null, null, null, null], "event_idx": 19, "event_confirmed": true}, "mes": {"labels": ["semana 1"], "current": [9.0], "previous": [23.0], "cur_cpa": [847.3]}, "semana": {"labels": ["27 Jul", "28 Jul", "29 Jul", "30 Jul", "31 Jul", "01 Aug", "02 Aug"], "current": [3.0, 11.0, 20.0, 26.0, 38.0, 44.0, 47.0], "previous": [5.0, 9.0, 13.0, 16.0, 19.0, 25.0, 29.0], "cur_cpa": [1912.36, 1039.45, 815.06, 785.19, 666.0, 701.84, 700.71]}, "3dias": {"labels": ["31 Jul", "01 Aug", "02 Aug"], "current": [12.0, 18.0, 21.0], "previous": [8.0, 17.0, 23.0], "cur_cpa": [407.74, 581.43, 596.12]}, "dia": {"labels": ["00h", "01h", "02h", "03h", "04h", "05h", "06h", "07h", "08h", "09h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", "17h", "18h", "19h", "20h", "21h", "22h", "23h"], "current": [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 2.0, 3.0, 3.0, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "previous": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0], "cur_cpa": [null, null, null, null, null, 418.35, 742.43, 685.74, 685.07, 788.28, null, null, null, null, null, null, null, null, null, null, null, null, null, null]}};
-const RITMO = {"hours": ["00h", "01h", "02h", "03h", "04h", "05h", "06h", "07h", "08h", "09h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", "17h", "18h", "19h", "20h", "21h", "22h", "23h"], "today": [116.77, 186.44, 225.13, 258.66, 303.97, 418.35, 742.43, 1371.48, 2055.21, 2364.83, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "lastweek": [76.35, 92.32, 100.91, 103.26, 139.64, 182.46, 348.46, 1043.2, 1773.5, 2327.85, 2741.65, 3074.82, 3476.92, 3726.29, 3918.43, 4080.08, 4275.07, 4490.01, 4673.84, 4858.08, 5081.48, 5333.67, 5333.67, 5333.67], "purchases_lastweek": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]};
-const MATRIX = [{"x": 3930.44, "y": 655.07, "r": 6.0, "name": "FRANK3_23Jul\u00ae"}, {"x": 3738.34, "y": 467.29, "r": 8.0, "name": "TIB | 03 AD-TipoReelIncomodo | 28Jul\u00ae"}, {"x": 3709.12, "y": 927.28, "r": 4.0, "name": "AD_27"}, {"x": 3267.28, "y": 816.82, "r": 4.0, "name": "ABT | 07 AD-ImgTicket01 | 28Jul\u00ae"}, {"x": 2692.44, "y": 897.48, "r": 3.0, "name": "FRANK3"}, {"x": 2343.31, "y": 2343.31, "r": 1.0, "name": "AD_27_23Jul\u00ae"}, {"x": 2091.48, "y": 261.44, "r": 8.0, "name": "AD05 | VID AD-NoDormir | 24Jul\u00ae"}, {"x": 1311.47, "y": 1311.47, "r": 1.0, "name": "AD_20"}, {"x": 1075.99, "y": 215.2, "r": 5.0, "name": "ABT | 08 AD-ImgTicket02 | 28Jul\u00ae"}, {"x": 670.63, "y": 670.63, "r": 1.0, "name": "01"}, {"x": 663.05, "y": 331.52, "r": 2.0, "name": "01"}, {"x": 576.46, "y": 0, "r": 0.0, "name": "AD09 | VID AD-NoDormir | 24Jul\u00ae"}, {"x": 568.15, "y": 0, "r": 0.0, "name": "AD-17Jul - FRANK4 \u00ae"}, {"x": 559.64, "y": 0, "r": 0.0, "name": "01"}, {"x": 557.21, "y": 0, "r": 0.0, "name": "01"}, {"x": 523.21, "y": 0, "r": 0.0, "name": "AD30 | 10Imagenes_test  | 31Jul\u00ae"}, {"x": 523.17, "y": 0, "r": 0.0, "name": "AD34 | test_vid04  | 31Jul\u00ae"}, {"x": 522.87, "y": 0, "r": 0.0, "name": "AD33 | test_vid03  | 31Jul\u00ae"}, {"x": 521.61, "y": 0, "r": 0.0, "name": "AD30 | 10Imagenes_test  | 24Jul\u00ae"}, {"x": 520.76, "y": 0, "r": 0.0, "name": "AD32 | test_vid02  | 31Jul\u00ae"}, {"x": 489.96, "y": 0, "r": 0.0, "name": "AD03 | VID AD-NoDormir | 24Jul\u00ae"}, {"x": 444.15, "y": 0, "r": 0.0, "name": "AD01 | VID AD-NoDormir | 24Jul\u00ae"}, {"x": 433.1, "y": 0, "r": 0.0, "name": "AD03 | CALIENTE \u00b7 GANADORES AD-NoDormir | 24Jul\u00ae"}, {"x": 431.75, "y": 431.75, "r": 1.0, "name": "AD01 | REMARKETING \u00b7 GANADORES AD-01 | 24Jul\u00ae"}, {"x": 382.61, "y": 0, "r": 0.0, "name": "V02_Junio"}, {"x": 378.71, "y": 0, "r": 0.0, "name": "ABT | 02 AD-TipoReelMiedo | 28Jul\u00ae"}, {"x": 280.8, "y": 0, "r": 0.0, "name": "AD24"}, {"x": 273.7, "y": 136.85, "r": 2.0, "name": "AD_25"}];
-const TREND_DATA = {"7d": [{"date": "2026-07-27", "spend": 5737.09, "purchases": 3.0, "cpa": 1912.36}, {"date": "2026-07-28", "spend": 5696.86, "purchases": 8.0, "cpa": 712.11}, {"date": "2026-07-29", "spend": 4867.31, "purchases": 9.0, "cpa": 540.81}, {"date": "2026-07-30", "spend": 4113.74, "purchases": 6.0, "cpa": 685.62}, {"date": "2026-07-31", "spend": 4892.85, "purchases": 12.0, "cpa": 407.74}, {"date": "2026-08-01", "spend": 5572.91, "purchases": 6.0, "cpa": 928.82}, {"date": "2026-08-02", "spend": 2052.83, "purchases": 3.0, "cpa": 684.28}], "30d": [{"date": "2026-07-04", "spend": 4937.16, "purchases": 10.0, "cpa": 493.72}, {"date": "2026-07-05", "spend": 5715.32, "purchases": 18.0, "cpa": 317.52}, {"date": "2026-07-06", "spend": 6306.69, "purchases": 11.0, "cpa": 573.34}, {"date": "2026-07-07", "spend": 6173.36, "purchases": 15.0, "cpa": 411.56}, {"date": "2026-07-08", "spend": 5774.7, "purchases": 8.0, "cpa": 721.84}, {"date": "2026-07-09", "spend": 5148.45, "purchases": 13.0, "cpa": 396.03}, {"date": "2026-07-10", "spend": 4969.4, "purchases": 8.0, "cpa": 621.17}, {"date": "2026-07-11", "spend": 4093.14, "purchases": 3.0, "cpa": 1364.38}, {"date": "2026-07-12", "spend": 5724.78, "purchases": 17.0, "cpa": 336.75}, {"date": "2026-07-13", "spend": 5355.97, "purchases": 9.0, "cpa": 595.11}, {"date": "2026-07-14", "spend": 4779.61, "purchases": 10.0, "cpa": 477.96}, {"date": "2026-07-15", "spend": 6900.68, "purchases": 10.0, "cpa": 690.07}, {"date": "2026-07-16", "spend": 7258.54, "purchases": 14.0, "cpa": 518.47}, {"date": "2026-07-17", "spend": 7531.06, "purchases": 17.0, "cpa": 443.0}, {"date": "2026-07-18", "spend": 6114.57, "purchases": 10.0, "cpa": 611.46}, {"date": "2026-07-19", "spend": 7801.26, "purchases": 7.0, "cpa": 1114.47}, {"date": "2026-07-20", "spend": 6546.12, "purchases": 5.0, "cpa": 1309.22}, {"date": "2026-07-21", "spend": 8011.56, "purchases": 4.0, "cpa": 2002.89}, {"date": "2026-07-22", "spend": 3866.06, "purchases": 4.0, "cpa": 966.51}, {"date": "2026-07-23", "spend": 1986.21, "purchases": 3.0, "cpa": 662.07}, {"date": "2026-07-24", "spend": 4180.66, "purchases": 3.0, "cpa": 1393.55}, {"date": "2026-07-25", "spend": 4459.99, "purchases": 6.0, "cpa": 743.33}, {"date": "2026-07-26", "spend": 6375.36, "purchases": 4.0, "cpa": 1593.84}, {"date": "2026-07-27", "spend": 5737.09, "purchases": 3.0, "cpa": 1912.36}, {"date": "2026-07-28", "spend": 5696.86, "purchases": 8.0, "cpa": 712.11}, {"date": "2026-07-29", "spend": 4867.31, "purchases": 9.0, "cpa": 540.81}, {"date": "2026-07-30", "spend": 4113.74, "purchases": 6.0, "cpa": 685.62}, {"date": "2026-07-31", "spend": 4892.85, "purchases": 12.0, "cpa": 407.74}, {"date": "2026-08-01", "spend": 5572.91, "purchases": 6.0, "cpa": 928.82}, {"date": "2026-08-02", "spend": 2052.83, "purchases": 3.0, "cpa": 684.28}], "90d": [{"date": "04 May", "spend": 0.0, "purchases": 0.0, "cpa": null}, {"date": "11 May", "spend": 244.21, "purchases": 0.0, "cpa": null}, {"date": "18 May", "spend": 11422.12, "purchases": 17.0, "cpa": 671.89}, {"date": "25 May", "spend": 14269.29, "purchases": 44.0, "cpa": 324.3}, {"date": "01 Jun", "spend": 16003.41, "purchases": 19.0, "cpa": 842.28}, {"date": "08 Jun", "spend": 26057.12, "purchases": 41.0, "cpa": 635.54}, {"date": "15 Jun", "spend": 27396.37, "purchases": 43.0, "cpa": 637.12}, {"date": "22 Jun", "spend": 29443.55, "purchases": 32.0, "cpa": 920.11}, {"date": "29 Jun", "spend": 34521.34, "purchases": 67.0, "cpa": 515.24}, {"date": "06 Jul", "spend": 38190.52, "purchases": 75.0, "cpa": 509.21}, {"date": "13 Jul", "spend": 45741.69, "purchases": 77.0, "cpa": 594.05}, {"date": "20 Jul", "spend": 35425.96, "purchases": 29.0, "cpa": 1221.58}, {"date": "27 Jul", "spend": 32933.59, "purchases": 47.0, "cpa": 700.71}], "6m": [{"date": "02 Feb", "spend": 32003.18, "purchases": 52.0, "cpa": 615.45}, {"date": "09 Feb", "spend": 24238.84, "purchases": 45.0, "cpa": 538.64}, {"date": "16 Feb", "spend": 2253.52, "purchases": 6.0, "cpa": 375.59}, {"date": "23 Feb", "spend": 6930.36, "purchases": 16.0, "cpa": 433.15}, {"date": "02 Mar", "spend": 16600.41, "purchases": 44.0, "cpa": 377.28}, {"date": "09 Mar", "spend": 28684.61, "purchases": 56.0, "cpa": 512.23}, {"date": "16 Mar", "spend": 23903.71, "purchases": 47.0, "cpa": 508.59}, {"date": "23 Mar", "spend": 29384.38, "purchases": 51.0, "cpa": 576.16}, {"date": "30 Mar", "spend": 16771.81, "purchases": 37.0, "cpa": 453.29}, {"date": "06 Apr", "spend": 19966.91, "purchases": 57.0, "cpa": 350.3}, {"date": "13 Apr", "spend": 23330.32, "purchases": 29.0, "cpa": 804.49}, {"date": "20 Apr", "spend": 30681.64, "purchases": 39.0, "cpa": 786.71}, {"date": "27 Apr", "spend": 28535.1, "purchases": 47.0, "cpa": 607.13}, {"date": "04 May", "spend": 0.0, "purchases": 0.0, "cpa": null}, {"date": "11 May", "spend": 244.21, "purchases": 0.0, "cpa": null}, {"date": "18 May", "spend": 11422.12, "purchases": 17.0, "cpa": 671.89}, {"date": "25 May", "spend": 14269.29, "purchases": 44.0, "cpa": 324.3}, {"date": "01 Jun", "spend": 16003.41, "purchases": 19.0, "cpa": 842.28}, {"date": "08 Jun", "spend": 26057.12, "purchases": 41.0, "cpa": 635.54}, {"date": "15 Jun", "spend": 27396.37, "purchases": 43.0, "cpa": 637.12}, {"date": "22 Jun", "spend": 29443.55, "purchases": 32.0, "cpa": 920.11}, {"date": "29 Jun", "spend": 34521.34, "purchases": 67.0, "cpa": 515.24}, {"date": "06 Jul", "spend": 38190.52, "purchases": 75.0, "cpa": 509.21}, {"date": "13 Jul", "spend": 45741.69, "purchases": 77.0, "cpa": 594.05}, {"date": "20 Jul", "spend": 35425.96, "purchases": 29.0, "cpa": 1221.58}, {"date": "27 Jul", "spend": 32933.59, "purchases": 47.0, "cpa": 700.71}]};
-const CONFIRMED_EVENTS = ["2026-01-24", "2026-02-21", "2026-03-21", "2026-04-11", "2026-05-02", "2026-05-30", "2026-06-20", "2026-07-18", "2026-08-08"];
-const inkColor = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#0A0A0A';
+(function(){
+"use strict";
 
-function fmtMoney(v){ if(v===null||v===undefined) return '—'; return '$'+Math.round(v).toLocaleString('es-MX'); }
+var CONFIG={ moneda:"MXN", simbolo:"$", sepMiles:".", sepDecimal:"," };
 
-// ---- tabs ----
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
-  });
-});
+/* Clave interna estable · etiqueta visible libre. Si renombran la campaña
+   "Follow Me Ads", la clave `seguidores` no cambia. */
+var PILARES=[ {clave:"ventas",etiqueta:"ventas"},
+              {clave:"seguidores",etiqueta:"follow me ads"},
+              {clave:"leads",etiqueta:"inmersión semanal"} ];
 
-// ---- main + cpa chart ----
-let mainChart, cpaChart;
-const eventLinePlugin = {
-  id: 'eventLinePlugin',
-  afterDatasetsDraw(chart){
-    const idx = chart.config._eventIdx;
-    if(idx===undefined||idx===null) return;
-    const meta = chart.getDatasetMeta(0);
-    if(!meta.data[idx]) return;
-    const x = meta.data[idx].x;
-    const {top,bottom} = chart.chartArea;
-    const ctx = chart.ctx;
-    ctx.save();
-    ctx.strokeStyle = chart.config._eventConfirmed ? '#D03B3B' : '#A3A39C';
-    ctx.globalAlpha = chart.config._eventConfirmed ? 0.6 : 0.35;
-    ctx.setLineDash(chart.config._eventConfirmed ? [] : [3,3]);
-    ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(x, top); ctx.lineTo(x, bottom); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = ctx.strokeStyle; ctx.globalAlpha=1; ctx.font = '11px -apple-system,sans-serif';
-    ctx.fillText(chart.config._eventConfirmed ? 'evento' : 'fecha tentativa', x+4, top+12);
-    ctx.restore();
-  }
+var EXECUTIVE_CONFIG={
+  ventas:{ costoClave:"cpa", etiquetaCosto:"costo por compra · 7 días", nombreCosto:"CPA",
+    etiquetaResultado:"compras del ciclo", sustantivo:"compras",
+    banda:{objetivo:600,critico:700,max:1200},
+    embudo:{clic_visita:[80,90],visita_checkout:[12,20],checkout_compra:[40,60]},
+    delta:{rojo:-15,ambar:-5}, frecuenciaFatiga:2.0, gastoSinVenta:800, testMaxDia:150, decimalesCosto:0 },
+  seguidores:{ costoClave:"costo_por_visita", etiquetaCosto:"costo por visita al perfil · 7 días",
+    nombreCosto:"costo por visita", etiquetaResultado:"visitas al perfil del ciclo", sustantivo:"visitas al perfil",
+    bandas:{stories:[0.57,0.95],feed:[2.93,3.27]}, delta:{rojo:-20,ambar:-8}, decimalesCosto:2 },
+  leads:{ costoClave:"cpl", etiquetaCosto:"costo por registro · 7 días", nombreCosto:"costo por registro",
+    etiquetaResultado:"registros del ciclo", sustantivo:"registros",
+    banda:{objetivo:9.70,critico:16}, delta:{rojo:-20,ambar:-8}, decimalesCosto:2 },
+  maxIssuesRojos:3
 };
+var BLANCA=["ver-bar","dbar","m1-num","status-dot","zona-verde","zona-ambar","zona-roja","fuera"];
 
-function renderMain(view){
-  const d = CHART_DATA[view];
-  if(mainChart) mainChart.destroy();
-  if(cpaChart) cpaChart.destroy();
-  const ctx = document.getElementById('mainChart').getContext('2d');
-  mainChart = new Chart(ctx, {
-    type:'line',
-    data:{labels:d.labels, datasets:[
-      {label:'ciclo actual', data:d.current, borderColor:'#2a78d6', backgroundColor:'rgba(42,120,214,0.08)', fill:true, borderWidth:2, pointRadius:0, spanGaps:false, tension:0.15},
-      {label:'ciclo anterior', data:d.previous, borderColor:'#898781', borderDash:[4,4], fill:false, borderWidth:1.5, pointRadius:0, tension:0.15},
-    ]},
-    options:{
-      responsive:true, interaction:{mode:'index', intersect:false},
-      plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=> (c.dataset.label+': '+fmtMoney(c.parsed.y).replace('$','')+' compras')}}},
-      scales:{ x:{grid:{display:false}, ticks:{color:'#898781', font:{size:11}}},
-                y:{grid:{color:'rgba(0,0,0,0.05)'}, ticks:{color:'#898781', font:{size:11}}} },
-    },
-    plugins:[eventLinePlugin]
-  });
-  mainChart.config._eventIdx = view==='inmersion' ? d.event_idx : undefined;
-  mainChart.config._eventConfirmed = d.event_confirmed;
-  mainChart.update();
-  const ctx2 = document.getElementById('cpaChart').getContext('2d');
-  cpaChart = new Chart(ctx2, {
-    type:'line',
-    data:{labels:d.labels, datasets:[
-      {label:'CPA acumulado', data:d.cur_cpa, borderColor:'#0A0A0A', borderWidth:2, pointRadius:0, spanGaps:false},
-    ]},
-    options:{ responsive:true, interaction:{mode:'index', intersect:false},
-      plugins:{legend:{display:false}},
-      scales:{ x:{display:false}, y:{grid:{display:false}, ticks:{color:'#898781', font:{size:10}, callback:v=>fmtMoney(v)}} },
-      elements:{line:{tension:0.15}},
-    },
-    plugins:[{id:'rule600', afterDraw(chart){
-      const y = chart.scales.y.getPixelForValue(600);
-      const {left,right} = chart.chartArea; const ctx = chart.ctx;
-      ctx.save(); ctx.strokeStyle='#D03B3B'; ctx.globalAlpha=0.4; ctx.setLineDash([3,3]);
-      ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke(); ctx.restore();
-    }}]
-  });
+function safeNumber(v){ if(v===null||v===undefined||v==="") return null;
+  var n=typeof v==="number"?v:Number(String(v).replace(/[^\d.,-]/g,"").replace(/\.(?=\d{3}\b)/g,"").replace(",","."));
+  return isFinite(n)?n:null; }
+function safeDivide(a,b){ a=safeNumber(a); b=safeNumber(b);
+  if(a===null||b===null||b===0) return null; var r=a/b; return isFinite(r)?r:null; }
+function safePercent(a,b){ var r=safeDivide(a,b); return r===null?null:r*100; }
+function agrupar(n,dec){ var neg=n<0; n=Math.abs(n); var p=n.toFixed(dec).split(".");
+  p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,CONFIG.sepMiles);
+  return (neg?"−":"")+p[0]+(dec>0?CONFIG.sepDecimal+p[1]:""); }
+function formatCurrency(v,dec){ var n=safeNumber(v); return n===null?"—":CONFIG.simbolo+agrupar(n,dec||0); }
+function formatPercent(v,dec){ var n=safeNumber(v); return n===null?"—":agrupar(n,dec==null?1:dec)+"%"; }
+function formatInt(v){ var n=safeNumber(v); return n===null?"—":agrupar(Math.round(n),0); }
+function formatDec(v,d){ var n=safeNumber(v); return n===null?"—":agrupar(n,d==null?2:d); }
+var SIN_REF="sin referencia comparable";
+function fueraDeBanda(v,b){ v=safeNumber(v); return (v!==null&&b)?(v<b[0]||v>b[1]):false; }
+var $=function(id){ return document.getElementById(id); };
+function show(el,on){ if(el) el.classList.toggle("hide",!on); }
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+var COLOR={roja:"var(--rojo)",ambar:"var(--ambar)",verde:"var(--verde)",gris:"var(--faint)"};
+
+function buildExecutiveModel(data,pillar){
+  var cfg=EXECUTIVE_CONFIG[pillar];
+  if(!cfg){ return { veredicto:{estado:"gris",l1:"Pilar no reconocido: "+pillar,l2:"",causa:"",issueId:null},
+    metricasPrincipales:{costo:null,resultado:null,delta:null,banda:null,acumActual:null,acumAnterior:null,medianaCosto:null},
+    apoyo:{inversion:null,cpm:null,frecuencia:null,alcance:null}, decisiones:[], tasas:{}, cfg:{} }; }
+  var P=((data.pilares||{})[pillar])||{};
+  var k=P.kpi||{},t=P.termometro||{},a=P.atencion||{},c=data.ciclo||{};
+  var e=P.embudo_7d||{},conj=P.conjuntos||[],ads=P.anuncios||[],s=(P.series||{}).acumulado||{};
+  var b=cfg.banda;
+
+  var costo = pillar==="ventas"?safeNumber(t.cpa_7d):pillar==="leads"?safeNumber(k.cpl):safeNumber(k.costo_por_visita);
+
+  /* FUENTE ÚNICA: resultado, previo y delta salen de la MISMA serie y del MISMO índice.
+     Comparar el día 16 contra el cierre completo del ciclo anterior produce deltas imposibles. */
+  var serieA=(s.actual||[]), serieP=(s.anterior||[]);
+  var idx=serieA.length-1;
+  var resultado = idx>=0 ? safeNumber(serieA[idx]) : null;
+  var previo    = (idx>=0 && serieP.length>idx) ? safeNumber(serieP[idx]) : null;
+  var delta     = (previo!==null && previo>0 && resultado!==null) ? ((resultado-previo)/previo)*100 : null;
+
+  /* guardia de consistencia: si el JSON trae el KPI aparte, se avisa y se ignora */
+  var kpiDirecto = pillar==="ventas"?safeNumber(k.compras):pillar==="leads"?safeNumber(k.leads):safeNumber(k.visitas_perfil);
+  if(resultado===null && kpiDirecto!==null) resultado=kpiDirecto;
+  else if(kpiDirecto!==null && resultado!==null && kpiDirecto!==resultado)
+    console.error("Inconsistencia en "+pillar+": kpi="+kpiDirecto+" pero la serie termina en "+resultado
+      +". Se usa la serie. Revisar la rutina que genera datos.json.");
+  var tasas={ clic_visita:safePercent(e.visitas,e.clics), visita_checkout:safePercent(e.checkouts,e.visitas),
+              checkout_compra:safePercent(e.compras,e.checkouts) };
+
+  var estado="verde";
+  if(b){ if((costo!==null&&costo>b.critico)||(delta!==null&&cfg.delta&&delta<cfg.delta.rojo)) estado="roja";
+         else if((costo!==null&&costo>b.objetivo)||(delta!==null&&cfg.delta&&delta<cfg.delta.ambar)) estado="ambar"; }
+  else if(pillar==="seguidores"){ var ub=P.ubicacion_predominante;
+    if(ub&&cfg.bandas[ub]&&costo!==null&&costo>cfg.bandas[ub][1]) estado="ambar"; }
+
+  var partes=[];
+  if(safeNumber(c.dias_para_evento)!==null) partes.push("Faltan "+formatInt(c.dias_para_evento)+" días.");
+  if(delta!==null) partes.push("Vas "+formatPercent(Math.abs(delta),0)+" por "+(delta<0?"debajo":"encima")+" "+(c.ciclo_anterior?("de "+c.ciclo_anterior):"del ciclo anterior")+".");
+  else partes.push("Sin referencia comparable contra el ciclo anterior.");
+  var l1=partes.join(" "), l2="";
+  if(costo!==null&&b){
+    if(costo>b.critico) l2="El "+cfg.nombreCosto+" pasó el límite crítico: "+formatCurrency(costo,cfg.decimalesCosto)+" contra "+formatCurrency(b.critico,cfg.decimalesCosto)+".";
+    else if(costo>b.objetivo) l2="El "+cfg.nombreCosto+" entró en vigilancia: "+formatCurrency(costo,cfg.decimalesCosto)+" contra un objetivo de "+formatCurrency(b.objetivo,cfg.decimalesCosto)+".";
+    else l2="El "+cfg.nombreCosto+" está en objetivo: "+formatCurrency(costo,cfg.decimalesCosto)+" contra "+formatCurrency(b.objetivo,cfg.decimalesCosto)+".";
+  } else if(costo!==null) l2="El "+cfg.nombreCosto+" está en "+formatCurrency(costo,cfg.decimalesCosto)+".";
+
+  var causa="", issueId=null;
+  if(pillar==="ventas"){
+    if(tasas.checkout_compra!==null&&tasas.checkout_compra<cfg.embudo.checkout_compra[0]&&safeNumber(e.checkouts)){
+      issueId="embudo_checkout";
+      causa="La mayor pérdida está en checkout: "+formatInt(e.checkouts-e.compras)+" de "+formatInt(e.checkouts)+" procesos no cerraron.";
+    } else if(tasas.clic_visita!==null&&tasas.clic_visita<cfg.embudo.clic_visita[0]&&safeNumber(e.clics)){
+      issueId="embudo_landing";
+      causa="Hay una brecha de "+formatInt(e.clics-e.visitas)+" usuarios entre los clics registrados y las visitas a la página.";
+    } else if(costo!==null&&safeNumber(t.mediana_30d)&&costo>safeNumber(t.mediana_30d)*1.15){
+      issueId="costo_sobre_mediana";
+      causa="El costo está "+formatPercent((costo/safeNumber(t.mediana_30d)-1)*100,0)+" por encima de la mediana de 30 días.";
+    } else causa="Sin fugas visibles en el embudo.";
+  } else if(pillar==="seguidores"){
+    var u2=P.ubicacion_predominante;
+    causa=(u2&&cfg.bandas[u2])?("Referencia de "+u2+": "+formatCurrency(cfg.bandas[u2][0],2)+" a "+formatCurrency(cfg.bandas[u2][1],2)+".")
+        :"No se conoce la ubicación predominante, así que no se aplica banda de referencia.";
+    if(estado!=="verde") issueId="costo_perfil";
+  } else {
+    causa=(costo!==null&&b&&costo>b.critico)?("Por encima del límite crítico de "+formatCurrency(b.critico,2)+"."):"Dentro de la referencia.";
+    if(estado!=="verde") issueId="cpl_alto";
+  }
+
+  var D=[], UNI={desperdicio:"gasto sin retorno · 7 días",sobrecosto:"sobrecosto · 7 días",oportunidad:"dinero implicado · 7 días"};
+  function push(d){ if(d&&safeNumber(d.monto_7d)!==null&&safeNumber(d.monto_7d)>0) D.push(d); }
+
+  if(pillar==="ventas"){
+    var cCk=safeDivide(e.gasto,e.checkouts);
+    if(cCk!==null&&tasas.checkout_compra!==null&&tasas.checkout_compra<cfg.embudo.checkout_compra[0]){
+      var perd=Math.max(safeNumber(e.checkouts)-safeNumber(e.compras),0);
+      var cpaB=safeDivide(e.gasto,safeNumber(e.checkouts)*(cfg.embudo.checkout_compra[0]/100));
+      push({id:"fuga_checkout",issueId:"embudo_checkout",severidad:"roja",pilar:pillar,sourceId:"embudo_7d",tipo:"oportunidad",
+        titulo:"Revisar el checkout primero",
+        resumen:"Cierra "+formatPercent(tasas.checkout_compra)+" contra banda de "+cfg.embudo.checkout_compra[0]+"–"+cfg.embudo.checkout_compra[1]+"%.",
+        detalle:"Hecho: "+formatInt(perd)+" de "+formatInt(e.checkouts)+" checkouts no terminaron en compra. Interpretación: el problema aparece con intención de pago ya declarada. "
+          +(cpaB!==null?"Llevarlo al piso de la banda dejaría el CPA en "+formatCurrency(cpaB)+". ":"")+"Acción sugerida: revisar precio, confianza y fricción de la pasarela.",
+        monto_7d:perd*cCk,unidad:UNI.oportunidad});
+    }
+    var cCl=safeDivide(e.gasto,e.clics);
+    if(cCl!==null&&tasas.clic_visita!==null&&tasas.clic_visita<cfg.embudo.clic_visita[0]){
+      var pd=Math.max(safeNumber(e.clics)-safeNumber(e.visitas),0);
+      push({id:"fuga_landing",issueId:"embudo_landing",severidad:"ambar",pilar:pillar,sourceId:"embudo_7d",tipo:"oportunidad",
+        titulo:"Medir la carga de la página de destino",
+        resumen:"Llega "+formatPercent(tasas.clic_visita)+" de los clics, contra banda de "+cfg.embudo.clic_visita[0]+"–"+cfg.embudo.clic_visita[1]+"%.",
+        detalle:"Hecho: brecha de "+formatInt(pd)+" usuarios entre clics y visitas. Interpretación: lentitud, redirect roto o clics accidentales. Acción sugerida: medir tiempo de carga y verificar el destino.",
+        monto_7d:pd*cCl,unidad:UNI.oportunidad});
+    }
+    var quema=conj.filter(function(x){return safeNumber(x.gasto)>cfg.gastoSinVenta&&!(safeNumber(x.compras)>0);});
+    if(quema.length) push({id:"quemando",issueId:"gasto_sin_venta",severidad:"roja",pilar:pillar,sourceId:"conjuntos",tipo:"desperdicio",
+      titulo:"Revisar "+quema.length+(quema.length===1?" conjunto sin ventas":" conjuntos sin ventas"),
+      resumen:quema.map(function(x){return x.nombre;}).slice(0,2).join(" · ")+(quema.length>2?" y "+(quema.length-2)+" más":"")+".",
+      detalle:"Hecho: superan "+formatCurrency(cfg.gastoSinVenta)+" en 7 días sin compra atribuida. Interpretación: falta de señal o público equivocado. Acción sugerida: contrastar checkouts antes de pausar.",
+      monto_7d:quema.reduce(function(s2,x){return s2+(safeNumber(x.gasto)||0);},0),unidad:UNI.desperdicio});
+    var exc=conj.filter(function(x){return x.es_test&&safeNumber(x.presupuesto)>cfg.testMaxDia;});
+    if(exc.length) push({id:"test_exceso",issueId:"test_presupuesto",severidad:"ambar",pilar:pillar,sourceId:"conjuntos",tipo:"sobrecosto",
+      titulo:"Bajar el presupuesto de "+exc.length+" conjuntos de test",
+      resumen:"Están por encima de "+formatCurrency(cfg.testMaxDia)+" diarios, que es la regla interna.",
+      detalle:"Hecho: "+exc.length+" conjuntos de prueba superan el tope. Interpretación: el exceso proyectado a una semana es el monto de la derecha. Acción sugerida: reasignar sin perder la prueba.",
+      monto_7d:exc.reduce(function(s2,x){return s2+Math.max(safeNumber(x.presupuesto)-cfg.testMaxDia,0)*7;},0),unidad:UNI.sobrecosto});
+    var cpas=ads.map(function(x){return safeNumber(x.cpa);}).filter(function(v){return v!==null;}).sort(function(p,q){return p-q;});
+    var medCpa=cpas.length?cpas[Math.floor(cpas.length/2)]:null;
+    ads.filter(function(x){var cp=safeNumber(x.cpa),g=safeNumber(x.gasto);
+        return (cp!==null&&cp>cfg.banda.critico)||(g!==null&&g>cfg.gastoSinVenta&&!(safeNumber(x.compras)>0));})
+      .sort(function(p,q){return (safeNumber(q.gasto)||0)-(safeNumber(p.gasto)||0);}).slice(0,2)
+      .forEach(function(x){
+        var cp=safeNumber(x.cpa),g=safeNumber(x.gasto)||0,co=safeNumber(x.compras)||0;
+        var monto=co>0?Math.max(g-co*cfg.banda.objetivo,0):g;
+        var det="Hecho: "+(cp!==null?("CPA de "+formatCurrency(cp)+" contra un límite crítico de "+formatCurrency(cfg.banda.critico)+"."):"")
+          +(co>0?(" Generó "+formatInt(co)+" compras; al objetivo habrían costado "+formatCurrency(co*cfg.banda.objetivo)+"."):" No registró compras.");
+        var herm=ads.filter(function(y){var yc=safeNumber(y.cpa);
+          return y.conjunto===x.conjunto&&y.id!==x.id&&yc!==null&&medCpa!==null&&yc<medCpa;})
+          .sort(function(p,q){return safeNumber(p.cpa)-safeNumber(q.cpa);})[0];
+        if(herm) det+=" Interpretación: comparte conjunto con "+herm.nombre+", que va a "+formatCurrency(herm.cpa)+" y recibe poca entrega.";
+        det+=" Acción sugerida: contrastar con su volumen antes de pausar.";
+        push({id:"sangra_"+x.id,issueId:"anuncio_"+x.id,severidad:"roja",pilar:pillar,sourceId:"anuncios",
+          tipo:co>0?"oportunidad":"desperdicio",
+          titulo:"Revisar “"+x.nombre+"” antes de seguir invirtiendo",
+          resumen:(cp!==null?("CPA "+formatCurrency(cp)+" contra límite de "+formatCurrency(cfg.banda.critico)+"."):("Sin compras con "+formatCurrency(g)+" de gasto.")),
+          detalle:det,monto_7d:monto,unidad:co>0?UNI.oportunidad:UNI.desperdicio});
+      });
+    var medCpm=safeNumber(a.mediana_cpm_30d);
+    if(medCpm!==null) conj.filter(function(x){return safeNumber(x.frecuencia)>cfg.frecuenciaFatiga&&safeNumber(x.cpm)>medCpm;})
+      .slice(0,1).forEach(function(x){
+        push({id:"fatiga_"+x.id,issueId:"fatiga_"+x.id,severidad:"ambar",pilar:pillar,sourceId:"conjuntos",tipo:"sobrecosto",
+          titulo:"Renovar el creativo de “"+x.nombre+"”",
+          resumen:"Frecuencia "+formatDec(x.frecuencia)+" y CPM "+formatCurrency(x.cpm,2)+", por encima de la mediana.",
+          detalle:"Hecho: el público lo ha visto muchas veces y el CPM subió. Interpretación: señal de fatiga. Acción sugerida: renovar antes de darle más presupuesto.",
+          monto_7d:safeNumber(x.gasto),unidad:UNI.sobrecosto});
+      });
+  } else if(pillar==="leads"){
+    if(costo!==null&&b&&costo>b.critico&&safeNumber(k.leads)>0)
+      push({id:"cpl_alto",issueId:"cpl_alto",severidad:"ambar",pilar:pillar,sourceId:"kpi",tipo:"sobrecosto",
+        titulo:"Revisar públicos y creativos de captación",
+        resumen:"Costo por registro en "+formatCurrency(costo,2)+" contra un objetivo de "+formatCurrency(b.objetivo,2)+".",
+        detalle:"Hecho: el sobrecosto por encima del objetivo, multiplicado por los registros del período, es el monto de la derecha. Acción sugerida: revisar segmentación y mensaje.",
+        monto_7d:(costo-b.objetivo)*safeNumber(k.leads),unidad:UNI.sobrecosto});
+  }
+  D.sort(function(p,q){return safeNumber(q.monto_7d)-safeNumber(p.monto_7d);});
+
+  return { veredicto:{estado:estado,l1:l1,l2:l2,causa:causa,issueId:issueId},
+    metricasPrincipales:{costo:costo,etiquetaCosto:cfg.etiquetaCosto,decimalesCosto:cfg.decimalesCosto,
+      resultado:resultado,etiquetaResultado:cfg.etiquetaResultado,delta:delta,banda:b,nombreCosto:cfg.nombreCosto,
+      acumActual:resultado, acumAnterior:previo,
+      medianaCosto:safeNumber(t.mediana_30d)},
+    apoyo:{inversion:safeNumber(k.inversion),cpm:safeNumber(a.cpm),frecuencia:safeNumber(a.frecuencia),alcance:safeNumber(a.alcance)},
+    decisiones:D,tasas:tasas,cfg:cfg };
 }
-renderMain('inmersion');
-document.querySelectorAll('#chartTabs .chip').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('#chartTabs .chip').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active'); renderMain(btn.dataset.view);
-  });
-});
 
-// ---- ritmo chart ----
-new Chart(document.getElementById('ritmoChart').getContext('2d'), {
-  type:'line',
-  data:{labels:RITMO.hours, datasets:[
-    {label:'hoy', data:RITMO.today, borderColor:'#2a78d6', borderWidth:2, pointRadius:0},
-    {label:'semana anterior (mismo día)', data:RITMO.lastweek, borderColor:'#898781', borderDash:[4,4], borderWidth:1.5, pointRadius:0},
-  ]},
-  options:{ responsive:true, interaction:{mode:'index', intersect:false},
-    plugins:{legend:{display:false}},
-    scales:{ x:{grid:{display:false}, ticks:{color:'#898781', font:{size:11}}},
-              y:{ticks:{color:'#898781', font:{size:11}, callback:v=>fmtMoney(v)}, grid:{color:'rgba(0,0,0,0.05)'}} } }
-});
+var CH=[],DATA=null,RANGO="inmersion",PILAR="ventas",VER_TODOS=false,VER_DEC=false,MODELO=null;
+function tema(){ return document.documentElement.getAttribute("data-tema")==="oscuro"?"oscuro":"claro"; }
+function paleta(){ return {grid:css("--grid"),hair:css("--hair"),tick:css("--faint"),ink:css("--ink"),
+  ghost:css("--ghost"),fill:css("--fill"),dim:css("--dim"),bg:css("--bg")}; }
+function baseOpts(extra){ var p=paleta();
+  return Object.assign({responsive:true,maintainAspectRatio:false,animation:{duration:180},
+    interaction:{mode:"index",intersect:false},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:p.ink,titleColor:p.bg,bodyColor:p.bg,
+      padding:9,cornerRadius:6,displayColors:false,titleFont:{size:11,weight:"400"},bodyFont:{size:12}}},
+    scales:{x:{grid:{display:false},border:{color:p.hair},ticks:{color:p.tick,font:{size:11},maxRotation:0,autoSkipPadding:14}},
+      y:{grid:{color:p.grid,drawTicks:false},border:{display:false},ticks:{color:p.tick,font:{size:11},padding:6}}}},extra||{}); }
+function draw(id,cfg){ var el=$(id); if(!el) return null;
+  var prev=(Chart.getChart?Chart.getChart(el):null); if(prev){try{prev.destroy();}catch(e){}}
+  var c=new Chart(el.getContext("2d"),cfg); CH.push(c); return c; }
+function clearCharts(){ CH.forEach(function(c){try{c.destroy();}catch(e){}}); CH=[]; }
+function refLine(v){ return {id:"ref"+v,afterDatasetsDraw:function(c){
+  var p=paleta(),y=c.scales.y,x=c.scales.x,g=c.ctx,py=y.getPixelForValue(v);
+  if(py<y.top||py>y.bottom) return;
+  g.save();g.strokeStyle=p.tick;g.setLineDash([3,3]);g.lineWidth=1;
+  g.beginPath();g.moveTo(x.left,py);g.lineTo(x.right,py);g.stroke();g.restore();}}; }
 
-// ---- trend chart ----
-let trendChart;
-function renderTrend(key){
-  const rows = TREND_DATA[key];
-  if(trendChart) trendChart.destroy();
-  const ctx = document.getElementById('trendChart').getContext('2d');
-  trendChart = new Chart(ctx, {
-    data:{labels:rows.map(r=>r.date), datasets:[
-      {type:'bar', label:'gasto', data:rows.map(r=>r.spend), backgroundColor:'rgba(10,10,10,0.12)', yAxisID:'y'},
-      {type:'line', label:'CPA', data:rows.map(r=>r.cpa), borderColor:'#0A0A0A', borderWidth:2, pointRadius:0, yAxisID:'y1', spanGaps:true},
-    ]},
-    options:{ responsive:true, interaction:{mode:'index', intersect:false},
-      plugins:{legend:{display:false}},
-      scales:{ x:{grid:{display:false}, ticks:{color:'#898781', font:{size:10}}},
-                y:{position:'left', ticks:{color:'#898781', font:{size:10}, callback:v=>fmtMoney(v)}},
-                y1:{position:'right', grid:{display:false}, ticks:{color:'#898781', font:{size:10}, callback:v=>fmtMoney(v)}} } },
-    plugins:[{id:'rule600b', afterDraw(chart){
-      const y = chart.scales.y1.getPixelForValue(600);
-      const {left,right} = chart.chartArea; const ctx = chart.ctx;
-      ctx.save(); ctx.strokeStyle='#D03B3B'; ctx.globalAlpha=0.4; ctx.setLineDash([3,3]);
-      ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke(); ctx.restore();
-    }}]
-  });
+function pintarEjecutivo(M){
+  $("ver-bar").style.background=COLOR[M.veredicto.estado]||COLOR.gris;
+  $("ver-l1").textContent=M.veredicto.l1||"—";
+  $("ver-l2").textContent=M.veredicto.l2||"";
+  $("ver-causa").textContent=M.veredicto.causa||"";
+  var m=M.metricasPrincipales;
+  show($("m-costo"),m.costo!==null);
+  $("m1-lbl").textContent=m.etiquetaCosto||"costo";
+  var n1=$("m1-num"); n1.textContent=formatCurrency(m.costo,m.decimalesCosto);
+  n1.style.color=(m.banda&&m.costo!==null&&m.costo>m.banda.critico)?"var(--rojo)":"";
+  show($("termo-min"),!!(m.banda&&m.costo!==null&&m.banda.max));
+  if(m.banda&&m.costo!==null&&m.banda.max){
+    var pO=m.banda.objetivo/m.banda.max*100,pC=m.banda.critico/m.banda.max*100;
+    $("termo-bar").innerHTML='<i class="zona-verde" style="left:0;width:'+pO+'%"></i>'
+      +'<i class="zona-ambar" style="left:'+pO+'%;width:'+(pC-pO)+'%"></i>'
+      +'<i class="zona-roja" style="left:'+pC+'%;right:0"></i>'
+      +'<span class="mark" style="left:'+Math.max(0,Math.min(100,m.costo/m.banda.max*100))+'%"></span>';
+    $("termo-scale").innerHTML="<span>"+formatCurrency(0)+"</span><span>objetivo "+formatCurrency(m.banda.objetivo,m.decimalesCosto)
+      +"</span><span>límite "+formatCurrency(m.banda.critico,m.decimalesCosto)+"</span>";
+  }
+  $("m1-sub").textContent=m.medianaCosto!==null?("mediana de 30 días: "+formatCurrency(m.medianaCosto,m.decimalesCosto)):"";
+  $("m2-lbl").textContent=m.etiquetaResultado||"resultados del ciclo";
+  $("m2-num").textContent=formatInt(m.resultado);
+  var dEl=$("m2-delta"), cAn=(DATA.ciclo||{}).ciclo_anterior;
+  if(m.delta===null){ dEl.textContent=""; dEl.className="delta"; }
+  else{
+    dEl.textContent=(m.delta<0?"−":"+")+formatPercent(Math.abs(m.delta),0)+(cAn?(" vs "+cAn):"");
+    dEl.className="delta"+(m.delta<-15?" rojo":(m.delta<-5?" ambar":""));
+  }
+  var cA=(DATA.ciclo||{}).ciclo_anterior||"anterior",cmp=$("cmp");
+  if(m.acumActual!==null&&m.acumAnterior!==null&&(m.acumActual||m.acumAnterior)){
+    var mx=Math.max(m.acumActual,m.acumAnterior)||1;
+    cmp.innerHTML='<div class="cmprow now"><span>actual</span><span class="cmptrack"><i style="width:'+(m.acumActual/mx*100)+'%"></i></span><span class="cmpval">'+formatInt(m.acumActual)+'</span></div>'
+      +'<div class="cmprow"><span>'+cA+'</span><span class="cmptrack"><i style="width:'+(m.acumAnterior/mx*100)+'%"></i></span><span class="cmpval">'+formatInt(m.acumAnterior)+'</span></div>';
+    show(cmp,true);
+  } else show(cmp,false);
+  var host=$("apoyo"); host.innerHTML="";
+  [["inversión del ciclo",formatCurrency(M.apoyo.inversion)],["cpm",formatCurrency(M.apoyo.cpm,2)],
+   ["frecuencia",formatDec(M.apoyo.frecuencia)],["alcance",formatInt(M.apoyo.alcance)]].forEach(function(p){
+     if(p[1]==="—") return; var sp=document.createElement("span"); sp.innerHTML=p[0]+" <b>"+p[1]+"</b>"; host.appendChild(sp);});
+  show(host,host.children.length>0);
+  var pri=M.decisiones[0];
+  $("ancla").innerHTML=pri?("<b>"+M.decisiones.length+(M.decisiones.length===1?" decisión":" decisiones")+"</b> · "+formatCurrency(pri.monto_7d)+" en la principal")
+    :"<b>Sin decisiones pendientes</b>";
 }
-renderTrend('7d');
-document.querySelectorAll('#trendTabs .chip').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('#trendTabs .chip').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active'); renderTrend(btn.dataset.trend);
+
+function pintarDecisiones(M){
+  var host=$("dec"); host.innerHTML="";
+  if(!M.decisiones.length){
+    host.innerHTML='<div class="dvacio"><span class="dot" style="background:var(--verde)"></span><span>Sin decisiones pendientes. Todo dentro de banda.</span></div>';
+    show($("dec-mas"),false); return;
+  }
+  var vis=VER_DEC?M.decisiones:M.decisiones.slice(0,4);
+  vis.forEach(function(d){
+    var row=document.createElement("div"); row.className="drow"; row.tabIndex=0;
+    row.innerHTML='<span class="dbar" style="background:'+(COLOR[d.severidad]||COLOR.gris)+'"></span>'
+      +'<div><div class="dtit">'+d.titulo+'</div><div class="dres">'+(d.resumen||"")+" "+formatCurrency(d.monto_7d)+' en 7 días.</div>'
+      +'<div class="dmas-txt">'+(d.detalle||"")+'</div></div>'
+      +'<div class="dmoney"><span class="v">'+formatCurrency(d.monto_7d)+'</span><span class="u">'+(d.unidad||"")+'</span></div>';
+    function tog(){ row.classList.toggle("open"); }
+    row.addEventListener("click",tog);
+    row.addEventListener("keydown",function(ev){ if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();tog();} });
+    host.appendChild(row);
   });
-});
+  var b=$("dec-mas"); show(b,M.decisiones.length>4);
+  b.textContent=VER_DEC?"ver menos":("ver el resto ("+(M.decisiones.length-4)+")");
+}
 
-// ---- matrix chart ----
-new Chart(document.getElementById('matrixChart').getContext('2d'), {
-  type:'bubble',
-  data:{datasets:[{label:'anuncios', data:MATRIX.map(p=>({x:p.x,y:p.y,r:Math.max(3,Math.min(20,p.r*2))})), backgroundColor:'rgba(42,120,214,0.35)'}]},
-  options:{ responsive:true,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>{
-      const p = MATRIX[c.dataIndex]; return p.name+': '+fmtMoney(p.x)+' · CPA '+fmtMoney(p.y);
-    }}}},
-    scales:{ x:{title:{display:true,text:'gasto 7d',color:'#898781',font:{size:11}}, ticks:{color:'#898781',font:{size:10}}},
-              y:{title:{display:true,text:'costo por compra',color:'#898781',font:{size:11}}, ticks:{color:'#898781',font:{size:10}}} } },
-  plugins:[{id:'rule600c', afterDraw(chart){
-    if(!chart.scales.y) return;
-    const y = chart.scales.y.getPixelForValue(600);
-    const {left,right} = chart.chartArea; const ctx = chart.ctx;
-    ctx.save(); ctx.strokeStyle='#D03B3B'; ctx.globalAlpha=0.4; ctx.setLineDash([3,3]);
-    ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke(); ctx.restore();
-  }}]
-});
+function auditarColor(M){
+  var ids=new Set(M.decisiones.filter(function(d){return d.severidad==="roja";}).map(function(d){return d.issueId||d.id;}));
+  if(M.veredicto.estado==="roja"&&M.veredicto.issueId) ids.add(M.veredicto.issueId);
+  if(ids.size>EXECUTIVE_CONFIG.maxIssuesRojos)
+    console.warn("Hay más de tres problemas críticos únicos ("+ids.size+"). Revisar la calibración de los umbrales.",Array.from(ids));
+  var fuera=[];
+  Array.prototype.forEach.call(document.querySelectorAll(".wrap [style]"),function(el){
+    var st=el.getAttribute("style")||"";
+    if(!/var\(--rojo|var\(--ambar/.test(st)) return;
+    var ok=BLANCA.some(function(k){ return el.id===k||el.classList.contains(k); });
+    if(!ok) fuera.push(el);
+  });
+  if(fuera.length) console.warn("Color de alarma fuera de la lista blanca en "+fuera.length+" elemento(s).",fuera.slice(0,8));
+}
 
-document.getElementById('belowBtn').addEventListener('click', ()=>{
-  const t = document.getElementById('belowTable');
-  t.style.display = t.style.display==='none' ? 'block' : 'none';
-});
+function acumulado(P,M){
+  var s=(P.series||{}).acumulado,p=paleta();
+  if(!s||!s.labels||!s.labels.length) return;
+  var labels=s.labels.slice(); if(labels.length) labels[labels.length-1]="hoy";
+  var ds=[{data:s.actual||[],borderColor:p.ink,borderWidth:2,fill:false,pointRadius:0,tension:.25}];
+  if(s.anterior&&s.anterior.length) ds.push({data:s.anterior,borderColor:p.tick,borderWidth:1.5,borderDash:[4,4],fill:false,pointRadius:0,tension:.25});
+  var marca=(s.evento_en_label&&s.labels.indexOf(s.evento_en_label)>=0)?[s.labels.indexOf(s.evento_en_label)]:[];
+  draw("c-acum",{type:"line",data:{labels:labels,datasets:ds},
+    options:baseOpts({scales:{
+      x:{grid:{display:false},border:{color:p.hair},ticks:{color:p.tick,font:{size:11},maxRotation:0,autoSkip:false,
+         callback:function(v,i,t){
+           var ult=t.length-1, paso=Math.max(1,Math.ceil(t.length/8));
+           if(i===0||i===ult||i%paso===0) return this.getLabelForValue(v);
+           return ""; }}},
+      y:{beginAtZero:true,grid:{color:p.grid,drawTicks:false},border:{display:false},ticks:{color:p.tick,font:{size:11},padding:6,maxTicksLimit:4}}}}),
+    plugins:[{id:"ev",afterDatasetsDraw:function(ch){ if(!marca.length) return;
+      var x=ch.scales.x,y=ch.scales.y,g=ch.ctx;
+      marca.forEach(function(i){ var px=x.getPixelForValue(i);
+        g.save();g.strokeStyle=p.ink;g.globalAlpha=.6;g.lineWidth=1.5;
+        g.beginPath();g.moveTo(px,y.top);g.lineTo(px,y.bottom);g.stroke();
+        g.globalAlpha=1;g.fillStyle=p.dim;g.font="10px -apple-system,system-ui,sans-serif";
+        g.fillText("evento",px+4,y.top+10);g.restore();});}}]});
+  var cpa=(P.series||{}).cpa_diario;
+  show($("sec-cpa"),!!(cpa&&cpa.length));
+  if(cpa&&cpa.length){
+    $("t-cpa").textContent=(M.metricasPrincipales.nombreCosto||"costo")+", día a día";
+    $("s-cpa").textContent=M.metricasPrincipales.banda?("objetivo "+formatCurrency(M.metricasPrincipales.banda.objetivo,M.metricasPrincipales.decimalesCosto)):"";
+    draw("c-cpa",{type:"line",data:{labels:labels,datasets:[{data:cpa,borderColor:p.fill,borderWidth:2,fill:false,pointRadius:0,tension:.25}]},
+      options:baseOpts({scales:{x:{display:false,grid:{display:false}},
+        y:{grid:{color:p.grid,drawTicks:false},border:{display:false},
+           ticks:{color:p.tick,font:{size:10},padding:4,maxTicksLimit:3,callback:function(v){return formatCurrency(v);}}}}}),
+      plugins:M.metricasPrincipales.banda?[refLine(M.metricasPrincipales.banda.objetivo)]:[]});
+  }
+}
+
+function escalera(P,M){
+  var esV=(PILAR==="ventas"); show($("sec-escalera"),esV); show($("sec-pasos"),esV); if(!esV) return;
+  var e=P.escalera_7d||{},a=e.actual||{},m=e.mediana_30d||{};
+  var filas=[["por clic","por_clic"],["por visita","por_visita"],["por checkout","por_checkout"],["por compra","por_compra"]];
+  var mx=0; filas.forEach(function(f){mx=Math.max(mx,safeNumber(a[f[1]])||0,safeNumber(m[f[1]])||0);});
+  var host=$("ladder"); host.innerHTML="";
+  filas.forEach(function(f){ var va=safeNumber(a[f[1]])||0,vm=safeNumber(m[f[1]])||0,r=document.createElement("div"); r.className="lrow";
+    r.innerHTML='<span class="lbl">'+f[0]+'</span><span class="ltrack"><i class="lghost" style="width:'+(mx?vm/mx*100:0)+'%"></i>'
+      +'<i class="lfill" style="width:'+(mx?va/mx*100:0)+'%"></i></span><span class="lval">'+formatCurrency(va,2)+'</span>';
+    host.appendChild(r);});
+  var orden=["por_clic","por_visita","por_checkout","por_compra"],
+      nom={por_clic:"clic",por_visita:"visita",por_checkout:"checkout",por_compra:"compra"},mej=null;
+  for(var i=1;i<orden.length;i++){ var f2=safeDivide(a[orden[i]],a[orden[i-1]]);
+    if(f2!==null&&(!mej||f2>mej.f)) mej={f:f2,de:nom[orden[i-1]],a:nom[orden[i]]}; }
+  $("salto").textContent=mej?("El salto más grande está entre "+mej.de+" y "+mej.a+": multiplica por "+formatDec(mej.f,1)+"."):"";
+  var t=M.tasas,e7=P.embudo_7d||{},cfg=M.cfg.embudo||{};
+  var pasos=[{l:"clic → visita",v:t.clic_visita,n:e7.visitas,d:e7.clics,b:cfg.clic_visita},
+             {l:"visita → checkout",v:t.visita_checkout,n:e7.checkouts,d:e7.visitas,b:cfg.visita_checkout},
+             {l:"checkout → compra",v:t.checkout_compra,n:e7.compras,d:e7.checkouts,b:cfg.checkout_compra}];
+  var ph=$("pasos"); ph.innerHTML="";
+  pasos.forEach(function(p2){ if(!p2.b) return;
+    var out=fueraDeBanda(p2.v,p2.b),d=document.createElement("div"); d.className="paso";
+    d.innerHTML='<span class="lbl">'+p2.l+'</span>'
+      +'<div class="r">'+(p2.v===null?"—":formatPercent(p2.v))+(out?' <span class="fuera" title="fuera de banda"></span>':'')+'</div>'
+      +'<span class="delta">'+formatInt(p2.n)+' de '+formatInt(p2.d)+' · banda '+p2.b[0]+'–'+p2.b[1]+'%</span>';
+    ph.appendChild(d);});
+}
+
+function ritmo(P){
+  var r=(P.series||{}).ritmo_dia,h=safeNumber((DATA.generado||{}).horas_transcurridas_dia_cuenta),p=paleta();
+  if((h!==null&&h<3)||!r||!r.horas||!r.horas.length){
+    show($("ritmo-box"),false); show($("ritmo-vacio"),true);
+    var g=r&&r.gasto_acum?r.gasto_acum[r.gasto_acum.length-1]:null,gp=r&&r.gasto_semana_pasada?r.gasto_semana_pasada[r.gasto_semana_pasada.length-1]:null;
+    $("ritmo-vacio").textContent="La jornada apenas empieza"+(h!==null?" ("+formatInt(h)+" h)":"")+". Gasto "+formatCurrency(g)
+      +(gp!==null&&gp!==undefined?" frente a "+formatCurrency(gp)+" a esta hora la semana pasada":"")+"."; return;
+  }
+  show($("ritmo-box"),true); show($("ritmo-vacio"),false);
+  var ds=[{type:"line",data:r.gasto_acum,borderColor:p.ink,borderWidth:2,fill:false,pointRadius:0,tension:.2}];
+  if(r.gasto_semana_pasada&&r.gasto_semana_pasada.length)
+    ds.push({type:"line",data:r.gasto_semana_pasada,borderColor:p.tick,borderWidth:1.5,borderDash:[4,4],fill:false,pointRadius:0,tension:.2});
+  if(r.compras_por_hora&&r.compras_por_hora.length)
+    ds.push({type:"scatter",data:r.compras_por_hora.map(function(v,i){return v?r.gasto_acum[i]:null;}),
+      borderColor:p.fill,backgroundColor:p.fill,pointRadius:3,showLine:false});
+  draw("c-ritmo",{data:{labels:r.horas.map(function(x){return String(x).padStart(2,"0")+"h";}),datasets:ds},
+    options:baseOpts({scales:{x:{grid:{display:false},border:{color:p.hair},ticks:{color:p.tick,font:{size:11},maxRotation:0,autoSkipPadding:18}},
+      y:{beginAtZero:true,grid:{color:p.grid,drawTicks:false},border:{display:false},
+         ticks:{color:p.tick,font:{size:11},padding:6,maxTicksLimit:4,callback:function(v){return formatCurrency(v);}}}}})});
+}
+
+function tendencia(P,M){
+  var t=(P.series||{}).tendencia,p=paleta();
+  $("s-tend").textContent=t&&t.granularidad?("agregación "+t.granularidad):"";
+  show($("sec-tend"),!!(t&&t.labels&&t.labels.length)); if(!t||!t.labels||!t.labels.length) return;
+  var costo=t.cpa||t.cpl||t.costo||[],ev=[];
+  (DATA.inmersiones||[]).forEach(function(im){var i=t.labels.indexOf(im.evento_inicio); if(i>=0) ev.push(i);});
+  draw("c-tend",{type:"bar",data:{labels:t.labels,datasets:[{data:t.gasto||[],backgroundColor:p.ghost,borderRadius:2,borderSkipped:false}]},
+    options:baseOpts({scales:{x:{grid:{display:false},border:{color:p.hair},ticks:{color:p.tick,font:{size:11},maxRotation:0,autoSkipPadding:16}},
+      y:{beginAtZero:true,grid:{color:p.grid,drawTicks:false},border:{display:false},
+         ticks:{color:p.tick,font:{size:11},padding:6,maxTicksLimit:4,callback:function(v){return formatCurrency(v);}}}}}),
+    plugins:[{id:"ev2",afterDatasetsDraw:function(c){ if(!ev.length) return;
+      var x=c.scales.x,y=c.scales.y,g=c.ctx;
+      ev.forEach(function(i){var px=x.getPixelForValue(i);
+        g.save();g.strokeStyle=p.ink;g.globalAlpha=.6;g.lineWidth=1.5;
+        g.beginPath();g.moveTo(px,y.top);g.lineTo(px,y.bottom);g.stroke();
+        g.globalAlpha=1;g.fillStyle=p.dim;g.font="10px -apple-system,system-ui,sans-serif";
+        g.fillText("evento",px+4,y.top+10);g.restore();});}}]});
+  if(costo.length) draw("c-tendcpa",{type:"line",data:{labels:t.labels,datasets:[{data:costo,borderColor:p.fill,borderWidth:2,fill:false,pointRadius:0,tension:.2}]},
+    options:baseOpts({scales:{x:{display:false,grid:{display:false}},
+      y:{grid:{color:p.grid,drawTicks:false},border:{display:false},
+         ticks:{color:p.tick,font:{size:10},padding:4,maxTicksLimit:3,callback:function(v){return formatCurrency(v);}}}}}),
+    plugins:M.metricasPrincipales.banda?[refLine(M.metricasPrincipales.banda.objetivo)]:[]});
+  var tot=P.totales||{},host=$("totales"); host.innerHTML="";
+  Object.keys(tot).forEach(function(k){var s=document.createElement("span");s.innerHTML=k+" <b>"+formatCurrency(tot[k])+"</b>";host.appendChild(s);});
+  show(host,host.children.length>0);
+}
+
+var CAT={ganador:"ganador",prometedor:"prometedor",landing:"problema de landing",
+  checkout:"problema de checkout",sin_senal:"sin señal suficiente",detener:"candidato a detener"};
+
+function matriz(P,M){
+  var ads=(P.anuncios||[]).filter(function(a){return safeNumber(a.gasto)>0;}),esV=(PILAR==="ventas"),p=paleta();
+  show($("sec-matriz"),esV&&ads.length>0); if(!esV||!ads.length) return;
+  var pts=ads.filter(function(a){return safeNumber(a.cpa)!==null;}).map(function(a){
+    return {x:safeNumber(a.gasto),y:safeNumber(a.cpa),r:Math.max(4,Math.min(18,4+(safeNumber(a.compras)||0)*1.6)),
+      nm:a.nombre,cj:a.conjunto,co:safeNumber(a.compras)};});
+  if(!pts.length){ show($("sec-matriz"),false); return; }
+  draw("c-matriz",{type:"bubble",data:{datasets:[{data:pts,backgroundColor:p.ghost,borderColor:p.fill,borderWidth:1}]},
+    options:baseOpts({plugins:{legend:{display:false},tooltip:{backgroundColor:p.ink,titleColor:p.bg,bodyColor:p.bg,padding:9,cornerRadius:6,displayColors:false,
+      callbacks:{title:function(c){return c[0].raw.nm;},label:function(c){var d=c.raw;
+        return [(d.cj?"conjunto: "+d.cj:""),"gasto "+formatCurrency(d.x),"costo "+formatCurrency(d.y),formatInt(d.co)+" compras"].filter(Boolean);}}}},
+      scales:{x:{beginAtZero:true,grid:{display:false},border:{color:p.hair},
+        title:{display:true,text:"gasto 7 días",color:p.tick,font:{size:11}},
+        ticks:{color:p.tick,font:{size:11},callback:function(v){return formatCurrency(v);}}},
+        y:{beginAtZero:true,grid:{color:p.grid,drawTicks:false},border:{display:false},
+        title:{display:true,text:"costo por compra",color:p.tick,font:{size:11}},
+        ticks:{color:p.tick,font:{size:11},callback:function(v){return formatCurrency(v);}}}}}),
+    plugins:[refLine(M.metricasPrincipales.banda.objetivo),{id:"rot",afterDatasetsDraw:function(c){
+      var x=c.scales.x,y=c.scales.y,g=c.ctx;
+      pts.slice().sort(function(a,b){return b.x-a.x;}).slice(0,5).forEach(function(d){
+        g.save();g.fillStyle=p.dim;g.font="10px -apple-system,system-ui,sans-serif";
+        g.fillText(String(d.nm||"").slice(0,22),Math.min(x.getPixelForValue(d.x)+d.r+4,x.right-70),y.getPixelForValue(d.y)+3);
+        g.restore();});}}]});
+}
+
+function tablaAds(P){
+  var ads=(P.anuncios||[]).slice().sort(function(a,b){return (safeNumber(b.gasto)||0)-(safeNumber(a.gasto)||0);});
+  show($("sec-tabla"),ads.length>0); if(!ads.length) return;
+  var grandes=ads.filter(function(a){return (safeNumber(a.gasto)||0)>=250;}),
+      vis=VER_TODOS?ads:grandes.slice(0,12),
+      maxG=Math.max.apply(null,ads.map(function(a){return safeNumber(a.gasto)||0;}).concat([1]));
+  document.querySelector("#t-ads thead").innerHTML='<tr><th>anuncio</th><th>conjunto</th><th>categoría</th>'
+    +'<th class="n">gasto</th><th class="n">cpm</th><th class="n">clics</th><th class="n">visitas</th>'
+    +'<th class="n">checkouts</th><th class="n">compras</th><th class="n">ctr enlace</th><th class="n">costo</th></tr>';
+  var tb=document.querySelector("#t-ads tbody"); tb.innerHTML="";
+  vis.forEach(function(a){ var tr=document.createElement("tr");
+    tr.innerHTML='<td><span class="nm">'+(a.nombre||"—")+'</span><span class="mini"><i style="width:'+((safeNumber(a.gasto)||0)/maxG*100)+'%"></i></span></td>'
+      +'<td><span class="cj">'+(a.conjunto||"—")+'</span></td><td><span class="cat">'+(CAT[a.categoria]||a.categoria||"—")+'</span></td>'
+      +'<td class="n">'+formatCurrency(a.gasto)+'</td><td class="n">'+formatCurrency(a.cpm,2)+'</td>'
+      +'<td class="n">'+formatInt(a.clics)+'</td><td class="n">'+formatInt(a.visitas)+'</td>'
+      +'<td class="n">'+formatInt(a.checkouts)+'</td><td class="n">'+formatInt(a.compras)+'</td>'
+      +'<td class="n">'+formatPercent(a.ctr_enlace,2)+'</td><td class="n">'+formatCurrency(a.cpa)+'</td>';
+    tb.appendChild(tr);});
+  var btn=$("btn-mas"); show(btn,ads.length>vis.length);
+  btn.textContent=VER_TODOS?"Ocultar los de gasto bajo":("Ver "+(ads.length-vis.length)+" anuncios más, con menos de "+formatCurrency(250)+" de gasto");
+}
+
+function campanias(P){
+  var cs=P.campanias||[]; show($("sec-camp"),cs.length>0); if(!cs.length) return;
+  var esV=(PILAR==="ventas");
+  document.querySelector("#t-camp thead").innerHTML='<tr><th>campaña</th><th>estado</th><th class="n">gasto hoy</th>'
+    +(esV?'<th class="n">compras hoy</th><th class="n">costo 7 días</th>':'<th class="n">resultados hoy</th>')
+    +'<th class="n">presupuesto usado</th></tr>';
+  var tb=document.querySelector("#t-camp tbody"); tb.innerHTML="";
+  cs.forEach(function(c){ var tr=document.createElement("tr");
+    tr.innerHTML='<td><span class="nm">'+(c.nombre||"—")+'</span></td><td><span class="cat">'+(c.estado||"—")+'</span></td>'
+      +'<td class="n">'+formatCurrency(c.gasto_hoy)+'</td>'
+      +(esV?'<td class="n">'+formatInt(c.compras_hoy)+'</td><td class="n">'+formatCurrency(c.cpa_7d)+'</td>'
+           :'<td class="n">'+formatInt(c.resultados_hoy)+'</td>')
+      +'<td class="n">'+formatPercent(c.pct_presupuesto,0)+'</td>';
+    tb.appendChild(tr);});
+}
+
+function heat(P){
+  var h=P.heatmap; show($("sec-heat"),!!(h&&h.valores&&h.valores.length)); if(!h||!h.valores) return;
+  var host=$("heat"); host.innerHTML=""; var mx=0;
+  h.valores.forEach(function(f){(f||[]).forEach(function(v){mx=Math.max(mx,safeNumber(v)||0);});});
+  function el(cls,txt){var e=document.createElement("div");e.className=cls;e.textContent=txt;return e;}
+  host.appendChild(el("hl",""));
+  for(var k=0;k<24;k++) host.appendChild(el("hh",k%3===0?String(k).padStart(2,"0"):""));
+  (h.dias||[]).forEach(function(d,i){ host.appendChild(el("hl",d));
+    var fila=h.valores[i]||[];
+    for(var j=0;j<24;j++){ var v=safeNumber(fila[j])||0,c=el("hc","");
+      if(v>0&&mx>0) c.style.background="color-mix(in srgb, var(--ink) "+Math.round(10+80*(v/mx))+"%, transparent)";
+      c.title=d+" "+String(j).padStart(2,"0")+"h · "+formatInt(v)+" compras"; host.appendChild(c);} });
+}
+
+function presupuesto(P){
+  var p=P.presupuesto||[]; show($("sec-pres"),p.length>0); if(!p.length) return;
+  var tot=p.reduce(function(s,x){return s+(safeNumber(x.monto)||0);},0)||1;
+  var st=$("stack"); st.innerHTML=""; var lg=$("stack-leg"); lg.innerHTML="";
+  p.forEach(function(x,i){ var pc=Math.round(85-(i*(60/Math.max(p.length-1,1))));
+    var col="color-mix(in srgb, var(--fill) "+pc+"%, transparent)";
+    var b=document.createElement("i"); b.style.width=(((safeNumber(x.monto)||0)/tot)*100)+"%"; b.style.background=col;
+    b.title=x.nombre+" · "+formatCurrency(x.monto); st.appendChild(b);
+    var s=document.createElement("span"); s.innerHTML='<i class="sw" style="background:'+col+'"></i>'+x.nombre+" · "+formatCurrency(x.monto);
+    lg.appendChild(s);});
+}
+
+function render(){
+  if(!DATA) return;
+  clearCharts();
+  var P=((DATA.pilares||{})[PILAR])||{};
+  MODELO=buildExecutiveModel(DATA,PILAR);
+  pintarEjecutivo(MODELO); pintarDecisiones(MODELO);
+  acumulado(P,MODELO); escalera(P,MODELO); ritmo(P); tendencia(P,MODELO);
+  matriz(P,MODELO); tablaAds(P); campanias(P); heat(P); presupuesto(P);
+  auditarColor(MODELO);
+}
+function hora12(hhmm){
+  if(!hhmm) return null;
+  var m=String(hhmm).match(/(\d{1,2}):(\d{2})/); if(!m) return String(hhmm);
+  var h=parseInt(m[1],10), suf=h<12?"a. m.":"p. m."; var h12=h%12; if(h12===0) h12=12;
+  return h12+":"+m[2]+" "+suf;
+}
+function cabecera(){
+  var g=DATA.generado||{};
+  var hl=hora12((g.cuenta_local||"").split(" ")[1]||g.cuenta_local);
+  $("meta-linea").textContent="Actualizado hoy, "+(hl||"—")+" · "+(g.zona||"GMT-6").replace("GMT-","GMT−")
+    +(g.proxima_actualizacion?"  ·  Próxima actualización: "+(hora12(g.proxima_actualizacion)||g.proxima_actualizacion):"");
+  var f=(g.utc||"").split("T")[0]||"—";
+  $("pie-gen").textContent="Generado el "+f+" · importes en "+CONFIG.moneda+".";
+  var d=DATA.desde_ultima;
+  if(d&&d.hora){ var t=[];
+    if(safeNumber(d.compras)!==null) t.push(formatInt(d.compras)+" compras nuevas");
+    if(safeNumber(d.delta_cpa)!==null) t.push("CPA "+(d.delta_cpa<0?"−":"+")+formatCurrency(Math.abs(d.delta_cpa)));
+    $("meta-diff").textContent="desde las "+d.hora+" · "+t.join(" · "); show($("meta-diff"),t.length>0);
+  } else show($("meta-diff"),false);
+}
+function pintarControles(){
+  /* Mientras no exista histórico diario no hay filtro de periodo: un control apagado
+     dice que el producto está a medias; uno ausente no se nota. */
+  var c=DATA.ciclo||{}, ct=$("ciclo-txt");
+  ct.textContent = (c.nombre?("ciclo de "+c.nombre):"ciclo de inmersión")
+    + (safeNumber(c.dia)!==null&&safeNumber(c.duracion)!==null ? (" · día "+formatInt(c.dia)+" de "+formatInt(c.duracion)) : "");
+  var gp=$("grp-pilar"); gp.innerHTML="";
+  PILARES.forEach(function(p){ var b=document.createElement("button"); b.className="f"; b.type="button";
+    b.dataset.p=p.clave; b.textContent=p.etiqueta; b.setAttribute("aria-pressed",String(p.clave===PILAR)); gp.appendChild(b);});
+}
+function bind(){
+  $("grp-pilar").addEventListener("click",function(e){var b=e.target.closest("button.f"); if(!b) return;
+    PILAR=b.dataset.p; VER_TODOS=false; VER_DEC=false;
+    Array.prototype.forEach.call(this.querySelectorAll("button.f"),function(x){x.setAttribute("aria-pressed",String(x===b));}); render();});
+  $("btn-mas").addEventListener("click",function(){VER_TODOS=!VER_TODOS;render();});
+  $("dec-mas").addEventListener("click",function(){VER_DEC=!VER_DEC;render();});
+  $("btn-detalle").addEventListener("click",function(){
+    var abierto=!$("detalle").classList.toggle("cerrado");
+    this.setAttribute("aria-expanded",String(abierto));
+    this.textContent=abierto?"Ocultar evidencia":"Ver evidencia y diagnóstico";
+    try{localStorage.setItem("detalle",abierto?"1":"0");}catch(e){}
+    if(abierto) render();});
+  $("btn-tema").addEventListener("click",function(){
+    var nuevo=tema()==="oscuro"?"claro":"oscuro";
+    document.documentElement.setAttribute("data-tema",nuevo);
+    this.textContent=nuevo==="oscuro"?"modo claro":"modo oscuro";
+    try{localStorage.setItem("tema",nuevo);}catch(e){}
+    render();});
+}
+(function(){ var t=null; try{t=localStorage.getItem("tema");}catch(e){}
+  if(!t) t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"oscuro":"claro";
+  document.documentElement.setAttribute("data-tema",t);
+  document.addEventListener("DOMContentLoaded",function(){
+    $("btn-tema").textContent=t==="oscuro"?"modo claro":"modo oscuro";
+    var d=null; try{d=localStorage.getItem("detalle");}catch(e){}
+    if(d==="1"){ $("detalle").classList.remove("cerrado"); $("btn-detalle").textContent="Ocultar evidencia";
+      $("btn-detalle").setAttribute("aria-expanded","true"); }});
+})();
+
+fetch("datos.json?cb="+Date.now())
+  .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+  .then(function(j){ DATA=j; pintarControles(); cabecera(); bind(); render(); })
+  .catch(function(err){
+    $("status-dot").style.background="var(--rojo)";
+    $("status-txt").textContent="Sin datos";
+    $("meta-linea").textContent="No se pudo cargar datos.json — "+err.message;
+  });
+})();
 </script>
-
 </body>
 </html>
