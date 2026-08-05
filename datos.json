@@ -1,18 +1,18 @@
 {
   "generado": {
-    "utc": "2026-08-05T00:35:10Z",
-    "cuenta_local": "2026-08-04 18:35",
+    "utc": "2026-08-05T12:39:14Z",
+    "cuenta_local": "2026-08-05 06:39",
     "zona": "GMT-6",
-    "proxima_actualizacion": "05:00",
-    "horas_transcurridas_dia_cuenta": 18
+    "proxima_actualizacion": "13:10",
+    "horas_transcurridas_dia_cuenta": 6
   },
   "ciclo": {
     "nombre": "agosto",
-    "dia": 18,
+    "dia": 19,
     "duracion": 23,
     "evento_inicio": "2026-08-08",
     "evento_fin": "2026-08-09",
-    "dias_para_evento": 4,
+    "dias_para_evento": 3,
     "ciclo_anterior": "julio"
   },
   "inmersiones": [
@@ -26,87 +26,87 @@
     {"ciclo": "julio", "evento_inicio": "2026-07-18", "evento_fin": "2026-07-19"},
     {"ciclo": "agosto", "evento_inicio": "2026-08-08", "evento_fin": "2026-08-09"}
   ],
-  "desde_ultima": {"hora": "06:20", "compras": 12, "delta_cpa": -0.46},
+  "desde_ultima": {"hora": "18:35", "compras": 1, "delta_cpa": 0.73},
   "pilares": {
     "ventas": {
-      "kpi": {"compras": 112, "inversion": 96991.94},
-      "termometro": {"cpa_7d": 658.48, "mediana_30d": 687.18},
-      "atencion": {"cpm": 296.13, "frecuencia": 1.99, "impresiones": 122300, "alcance": 61364, "mediana_cpm_30d": 273.5},
-      "embudo_7d": {"gasto": 36216.2, "clics": 1546, "visitas": 1030, "checkouts": 176, "compras": 55},
+      "kpi": {"compras": 113, "inversion": 98233.47},
+      "termometro": {"cpa_7d": 663.28, "mediana_30d": 690.07},
+      "atencion": {"cpm": 294.71, "frecuencia": 2.01, "impresiones": 126035, "alcance": 62631, "mediana_cpm_30d": 277.61},
+      "embudo_7d": {"gasto": 37143.75, "clics": 1603, "visitas": 1071, "checkouts": 182, "compras": 56},
       "escalera_7d": {
-        "actual": {"por_clic": 23.43, "por_visita": 35.16, "por_checkout": 205.77, "por_compra": 658.48},
-        "mediana_30d": {"por_clic": 20.81, "por_visita": 26.95, "por_checkout": 188.26, "por_compra": 687.18}
+        "actual": {"por_clic": 23.17, "por_visita": 34.68, "por_checkout": 204.09, "por_compra": 663.28},
+        "mediana_30d": {"por_clic": 21.2, "por_visita": 26.95, "por_checkout": 186.05, "por_compra": 690.07}
       },
       "series": {
         "acumulado": {
           "etiqueta_x": "dia del ciclo",
-          "labels": ["d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","d16","d17","d18"],
-          "actual": [10,17,22,26,30,33,36,42,46,49,57,66,72,84,90,97,107,112],
+          "labels": ["d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","d16","d17","d18","d19"],
+          "actual": [10,17,22,26,30,33,36,42,46,49,57,66,72,84,90,97,107,113,113],
           "anterior": [2,7,14,20,23,27,32,33,40,50,63,71,81,99,110,125,133,146,154,157,174,183,193,203,217,234,244,251],
           "evento_en_label": "d22"
         },
-        "cpa_diario": [611.46,1114.47,1309.22,2002.89,966.51,662.07,1393.55,743.33,1593.84,1912.36,712.11,540.81,685.62,407.75,929.24,1033.99,608.51,688.74],
+        "cpa_diario": [611.46,1114.47,1309.22,2002.89,966.51,662.07,1393.55,743.33,1593.84,1912.36,712.11,540.81,685.62,407.75,929.24,1033.99,608.55,728.47,0],
         "ritmo_dia": {
-          "horas": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
-          "gasto_acum": [132.45,182.96,242.01,293.75,341.25,488.73,778.36,1329.48,1918.54,2166.51,2405.68,2604.62,2720.96,2818.34,2981.35,3136.32,3281.98,3417.31,3464.21],
-          "gasto_semana_pasada": [49.89,72.51,89.94,99.94,126.78,214.83,528.76,992.61,1729.88,2235.73,2588.4,2917.86,3250.95,3608.04,3967.78,4248.87,4469.75,4677.7,4874.78],
-          "compras_por_hora": [0,0,0,0,0,0,0,1,0,0,1,2,0,0,0,1,0,0,0]
+          "horas": [0,1,2,3,4,5,6],
+          "gasto_acum": [120.75,158.91,175.49,202.42,221.78,262.76,319.72],
+          "gasto_semana_pasada": [100.8,160.89,218.94,272.45,341.59,496.62,824.92],
+          "compras_por_hora": [0,0,0,0,0,0,0]
         },
         "tendencia": {
           "granularidad": "diaria",
-          "labels": ["2026-07-08","2026-07-09","2026-07-10","2026-07-11","2026-07-12","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-17","2026-07-18","2026-07-19","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-25","2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-01","2026-08-02","2026-08-03","2026-08-04"],
-          "gasto": [5774.7,5148.45,4969.4,4093.14,5724.78,5355.97,4779.61,6900.68,7258.54,7531.06,6114.57,7801.26,6546.12,8011.56,3866.06,1986.21,4180.66,4459.99,6375.36,5737.09,5696.86,4867.31,4113.74,4892.97,5575.44,7237.94,6085.09,3443.71],
-          "cpa": [721.84,396.03,621.17,1364.38,336.75,595.11,477.96,690.07,518.47,443.0,611.46,1114.47,1309.22,2002.89,966.51,662.07,1393.55,743.33,1593.84,1912.36,712.11,540.81,685.62,407.75,929.24,1033.99,608.51,688.74]
+          "labels": ["2026-07-09","2026-07-10","2026-07-11","2026-07-12","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-17","2026-07-18","2026-07-19","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-25","2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05"],
+          "gasto": [5148.45,4969.4,4093.14,5724.78,5355.97,4779.61,6900.68,7258.54,7531.06,6114.57,7801.26,6546.12,8011.56,3866.06,1986.21,4180.66,4459.99,6375.36,5737.09,5696.86,4867.31,4113.74,4892.97,5575.44,7237.94,6085.53,4370.82,313.98],
+          "cpa": [396.03,621.17,1364.38,336.75,595.11,477.96,690.07,518.47,443.0,611.46,1114.47,1309.22,2002.89,966.51,662.07,1393.55,743.33,1593.84,1912.36,712.11,540.81,685.62,407.75,929.24,1033.99,608.55,728.47,0]
         }
       },
-      "totales": {"agosto": 96991.94, "julio": 147897.1},
+      "totales": {"agosto": 98233.47, "julio": 147897.1},
       "conjuntos": [
-        {"id":"3b16e2bc","nombre":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","campania":"🔴 INM · TIBIO + ABIERTO | 28Jul®","presupuesto":660.0,"gasto":931.65,"compras":1,"checkouts":2,"visitas":25,"clics":30,"frecuencia":1.3,"cpm":346.72,"es_test":false},
-        {"id":"ad04b200","nombre":"01Ago® | Test Broad 03 Broad - compradores4% LAL","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":1145.65,"compras":2,"checkouts":7,"visitas":32,"clics":37,"frecuencia":1.22,"cpm":490.64,"es_test":true},
-        {"id":"7e02f44b","nombre":"01Ago® | Test Broad 10% LAL","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":1143.43,"compras":1,"checkouts":5,"visitas":36,"clics":51,"frecuencia":1.89,"cpm":344.61,"es_test":true},
-        {"id":"42454234","nombre":"01Ago® | Test Broad 3% compradores","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":1167.61,"compras":1,"checkouts":5,"visitas":37,"clics":44,"frecuencia":1.43,"cpm":331.42,"es_test":true},
-        {"id":"fd0ecac7","nombre":"01Ago® | RMK | Interesados NO Compraron","campania":"🔴 INM · TIBIO + ABIERTO | 28Jul®","presupuesto":300.0,"gasto":1185.66,"compras":1,"checkouts":10,"visitas":54,"clics":67,"frecuencia":1.57,"cpm":375.45,"es_test":true},
-        {"id":"4995cc84","nombre":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®","campania":"🔴 INM · TIBIO + ABIERTO | 28Jul®","presupuesto":300.0,"gasto":6716.56,"compras":11,"checkouts":21,"visitas":187,"clics":237,"frecuencia":1.58,"cpm":309.39,"es_test":true},
-        {"id":"753f5712","nombre":"10 (06) CARRUSELL feb -  26Jul®","campania":"🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®","presupuesto":100.0,"gasto":645.08,"compras":1,"checkouts":4,"visitas":17,"clics":41,"frecuencia":1.75,"cpm":223.99,"es_test":true},
-        {"id":"3d67f52a","nombre":"Test Broad 3% compradores - 26Jul®","campania":"🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®","presupuesto":245.0,"gasto":1704.69,"compras":6,"checkouts":13,"visitas":59,"clics":78,"frecuencia":1.8,"cpm":297.14,"es_test":true},
-        {"id":"c01623d5","nombre":"AD05 · NUEVOS DROPBOX | MX Frío 31Jul®","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":2053.71,"compras":5,"checkouts":18,"visitas":82,"clics":96,"frecuencia":1.9,"cpm":389.55,"es_test":true},
-        {"id":"9cd31a46","nombre":"ABO · INM AGO · FRANK3 23Jul®","campania":"🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1","presupuesto":600.0,"gasto":4202.06,"compras":11,"checkouts":37,"visitas":205,"clics":263,"frecuencia":1.32,"cpm":234.05,"es_test":false}
+        {"id":"3b16e2bc","nombre":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","campania":"🔴 INM · TIBIO + ABIERTO | 28Jul®","presupuesto":660.0,"gasto":1174.81,"compras":1,"checkouts":2,"visitas":27,"clics":37,"frecuencia":1.350447,"cpm":338.37,"es_test":false},
+        {"id":"ad04b200","nombre":"01Ago® | Test Broad 03 Broad - compradores4% LAL","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":1226.45,"compras":2,"checkouts":7,"visitas":35,"clics":40,"frecuencia":1.237685,"cpm":473.9,"es_test":true},
+        {"id":"7e02f44b","nombre":"01Ago® | Test Broad 10% LAL","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":1219.38,"compras":1,"checkouts":6,"visitas":39,"clics":55,"frecuencia":1.995127,"cpm":330.9,"es_test":true},
+        {"id":"42454234","nombre":"01Ago® | Test Broad 3% compradores","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":1254.48,"compras":1,"checkouts":5,"visitas":42,"clics":51,"frecuencia":1.463313,"cpm":324.24,"es_test":true},
+        {"id":"fd0ecac7","nombre":"01Ago® | RMK | Interesados NO Compraron","campania":"🔴 INM · TIBIO + ABIERTO | 28Jul®","presupuesto":300.0,"gasto":1258.64,"compras":2,"checkouts":14,"visitas":63,"clics":77,"frecuencia":1.620738,"cpm":362.72,"es_test":true},
+        {"id":"4995cc84","nombre":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®","campania":"🔴 INM · TIBIO + ABIERTO | 28Jul®","presupuesto":300.0,"gasto":6814.38,"compras":11,"checkouts":21,"visitas":189,"clics":240,"frecuencia":1.581527,"cpm":308.27,"es_test":true},
+        {"id":"753f5712","nombre":"10 (06) CARRUSELL feb -  26Jul®","campania":"🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®","presupuesto":100.0,"gasto":673.14,"compras":1,"checkouts":4,"visitas":19,"clics":43,"frecuencia":1.771292,"cpm":226.34,"es_test":true},
+        {"id":"3d67f52a","nombre":"Test Broad 3% compradores - 26Jul®","campania":"🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®","presupuesto":245.0,"gasto":1767.75,"compras":6,"checkouts":13,"visitas":61,"clics":82,"frecuencia":1.838551,"cpm":295.12,"es_test":true},
+        {"id":"c01623d5","nombre":"AD05 · NUEVOS DROPBOX | MX Frío 31Jul®","campania":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","presupuesto":300.0,"gasto":2106.93,"compras":5,"checkouts":18,"visitas":86,"clics":101,"frecuencia":1.92332,"cpm":385.32,"es_test":true},
+        {"id":"9cd31a46","nombre":"ABO · INM AGO · FRANK3 23Jul®","campania":"🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1","presupuesto":600.0,"gasto":4325.12,"compras":11,"checkouts":37,"visitas":213,"clics":275,"frecuencia":1.330958,"cpm":231.54,"es_test":false}
       ],
       "anuncios": [
-        {"id":"ad2d73b6","nombre":"ABT | 03 AD-TipoReelIncomodo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":287.18,"cpm":488.4,"clics":8,"visitas":7,"checkouts":0,"compras":0,"ctr_enlace":1.36,"cpa":0},
-        {"id":"93dd052c","nombre":"ABT | 06 AD-HorizontalLargo2 | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":51.56,"cpm":542.74,"clics":1,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":1.05,"cpa":0},
-        {"id":"23b3bd6e","nombre":"ABT | 01 AD-HorizontalLargo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":219.69,"cpm":267.26,"clics":11,"visitas":10,"checkouts":2,"compras":1,"ctr_enlace":1.34,"cpa":219.69,"categoria":"ganador"},
-        {"id":"f3761d8d","nombre":"ABT | 04 AD-ImgTicket01 | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":180.05,"cpm":318.67,"clics":1,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0.18,"cpa":0},
-        {"id":"6d8d458c","nombre":"ABT | 10 AD-TipoReelMiedo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":140.47,"cpm":280.94,"clics":7,"visitas":6,"checkouts":0,"compras":0,"ctr_enlace":1.4,"cpa":0},
-        {"id":"7e76a5bf","nombre":"ABT | 09 AD-TipoReelIncomodo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":52.7,"cpm":450.43,"clics":2,"visitas":2,"checkouts":0,"compras":0,"ctr_enlace":1.71,"cpa":0},
-        {"id":"6d8fad2f","nombre":"V01Agosto","conjunto":"01Ago® | Test Broad 10% LAL","gasto":1143.43,"cpm":344.61,"clics":51,"visitas":36,"checkouts":5,"compras":1,"ctr_enlace":1.54,"cpa":1143.43},
-        {"id":"b78c584d","nombre":"AD_20_02Agosto","conjunto":"01Ago® | Test Broad 3% compradores","gasto":1167.61,"cpm":331.42,"clics":44,"visitas":37,"checkouts":5,"compras":1,"ctr_enlace":1.25,"cpa":1167.61},
-        {"id":"51ba0e29","nombre":"AD_27","conjunto":"01Ago® | Test Broad 03 Broad - compradores4% LAL","gasto":1145.65,"cpm":490.64,"clics":37,"visitas":32,"checkouts":7,"compras":2,"ctr_enlace":1.58,"cpa":572.83,"categoria":"ganador"},
-        {"id":"f208f05f","nombre":"RMK-AD_03 | 06Jul ®","conjunto":"01Ago® | RMK | Interesados NO Compraron","gasto":1185.66,"cpm":375.45,"clics":67,"visitas":54,"checkouts":10,"compras":1,"ctr_enlace":2.12,"cpa":1185.66},
-        {"id":"0787a1dd","nombre":"ABT | 08 AD-ImgTicket02 | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®","gasto":2813.96,"cpm":326.6,"clics":99,"visitas":79,"checkouts":11,"compras":7,"ctr_enlace":1.15,"cpa":401.99,"categoria":"ganador"},
-        {"id":"dcd00f53","nombre":"01","conjunto":"10 (06) CARRUSELL feb -  26Jul®","gasto":645.08,"cpm":223.99,"clics":41,"visitas":17,"checkouts":4,"compras":1,"ctr_enlace":1.42,"cpa":645.08,"categoria":"prometedor"},
-        {"id":"6ba7ed4e","nombre":"AD_20","conjunto":"Test Broad 3% compradores - 26Jul®","gasto":1417.79,"cpm":292.87,"clics":63,"visitas":51,"checkouts":5,"compras":3,"ctr_enlace":1.3,"cpa":472.6,"categoria":"ganador"},
-        {"id":"5affe829","nombre":"AD_24","conjunto":"Test Broad 3% compradores - 26Jul®","gasto":83.61,"cpm":287.32,"clics":3,"visitas":1,"checkouts":0,"compras":1,"ctr_enlace":1.03,"cpa":83.61,"categoria":"ganador"},
-        {"id":"4adb9726","nombre":"AD_25","conjunto":"Test Broad 3% compradores - 26Jul®","gasto":203.29,"cpm":336.02,"clics":12,"visitas":7,"checkouts":8,"compras":2,"ctr_enlace":1.98,"cpa":101.64,"categoria":"ganador"},
-        {"id":"57ac458f","nombre":"AD05 | VID AD-NoDormir | 24Jul®","conjunto":"AD05 · NUEVOS DROPBOX | MX Frío 31Jul®","gasto":2053.71,"cpm":389.55,"clics":96,"visitas":82,"checkouts":18,"compras":5,"ctr_enlace":1.82,"cpa":410.74,"categoria":"ganador"},
-        {"id":"0800357f","nombre":"FRANK3_23Jul®","conjunto":"ABO · INM AGO · FRANK3 23Jul®","gasto":4202.06,"cpm":234.05,"clics":263,"visitas":205,"checkouts":37,"compras":11,"ctr_enlace":1.46,"cpa":382.01,"categoria":"ganador"}
+        {"id":"ad2d73b6","nombre":"ABT | 03 AD-TipoReelIncomodo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":429.48,"cpm":471.96,"clics":11,"visitas":7,"checkouts":0,"compras":0,"ctr_enlace":1.208791,"cpa":0},
+        {"id":"93dd052c","nombre":"ABT | 06 AD-HorizontalLargo2 | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":52.13,"cpm":511.08,"clics":1,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0.980392,"cpa":0},
+        {"id":"23b3bd6e","nombre":"ABT | 01 AD-HorizontalLargo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":274.62,"cpm":267.92,"clics":12,"visitas":11,"checkouts":2,"compras":1,"ctr_enlace":1.170732,"cpa":274.62,"categoria":"ganador"},
+        {"id":"f3761d8d","nombre":"ABT | 04 AD-ImgTicket01 | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":187.54,"cpm":304.45,"clics":1,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0.162338,"cpa":0},
+        {"id":"6d8d458c","nombre":"ABT | 10 AD-TipoReelMiedo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":172.26,"cpm":254.82,"clics":9,"visitas":7,"checkouts":0,"compras":0,"ctr_enlace":1.331361,"cpa":0},
+        {"id":"7e76a5bf","nombre":"ABT | 09 AD-TipoReelIncomodo | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 03Ago®","gasto":58.78,"cpm":411.05,"clics":3,"visitas":2,"checkouts":0,"compras":0,"ctr_enlace":2.097902,"cpa":0},
+        {"id":"6d8fad2f","nombre":"V01Agosto","conjunto":"01Ago® | Test Broad 10% LAL","gasto":1219.38,"cpm":330.9,"clics":55,"visitas":39,"checkouts":6,"compras":1,"ctr_enlace":1.492537,"cpa":1219.38},
+        {"id":"b78c584d","nombre":"AD_20_02Agosto","conjunto":"01Ago® | Test Broad 3% compradores","gasto":1254.48,"cpm":324.24,"clics":51,"visitas":42,"checkouts":5,"compras":1,"ctr_enlace":1.31817,"cpa":1254.48},
+        {"id":"51ba0e29","nombre":"AD_27","conjunto":"01Ago® | Test Broad 03 Broad - compradores4% LAL","gasto":1226.45,"cpm":473.9,"clics":40,"visitas":35,"checkouts":7,"compras":2,"ctr_enlace":1.545595,"cpa":613.23,"categoria":"prometedor"},
+        {"id":"f208f05f","nombre":"RMK-AD_03 | 06Jul ®","conjunto":"01Ago® | RMK | Interesados NO Compraron","gasto":1258.64,"cpm":362.72,"clics":77,"visitas":63,"checkouts":14,"compras":2,"ctr_enlace":2.21902,"cpa":629.32,"categoria":"prometedor"},
+        {"id":"0787a1dd","nombre":"ABT | 08 AD-ImgTicket02 | 28Jul®","conjunto":"ABIERTO · VIDEO THRUPLAY 365D | MX M 27-55 | 28Jul®","gasto":2905.05,"cpm":322.6,"clics":102,"visitas":81,"checkouts":11,"compras":7,"ctr_enlace":1.132704,"cpa":415.01,"categoria":"ganador"},
+        {"id":"dcd00f53","nombre":"01","conjunto":"10 (06) CARRUSELL feb -  26Jul®","gasto":673.14,"cpm":226.34,"clics":43,"visitas":19,"checkouts":4,"compras":1,"ctr_enlace":1.445864,"cpa":673.14,"categoria":"prometedor"},
+        {"id":"6ba7ed4e","nombre":"AD_20","conjunto":"Test Broad 3% compradores - 26Jul®","gasto":1437.67,"cpm":290.15,"clics":65,"visitas":52,"checkouts":5,"compras":3,"ctr_enlace":1.311806,"cpa":479.22,"categoria":"ganador"},
+        {"id":"5affe829","nombre":"AD_24","conjunto":"Test Broad 3% compradores - 26Jul®","gasto":104.22,"cpm":287.11,"clics":5,"visitas":2,"checkouts":0,"compras":1,"ctr_enlace":1.37741,"cpa":104.22,"categoria":"ganador"},
+        {"id":"4adb9726","nombre":"AD_25","conjunto":"Test Broad 3% compradores - 26Jul®","gasto":225.86,"cpm":336.1,"clics":12,"visitas":7,"checkouts":8,"compras":2,"ctr_enlace":1.785714,"cpa":112.93,"categoria":"ganador"},
+        {"id":"57ac458f","nombre":"AD05 | VID AD-NoDormir | 24Jul®","conjunto":"AD05 · NUEVOS DROPBOX | MX Frío 31Jul®","gasto":2106.93,"cpm":385.32,"clics":101,"visitas":86,"checkouts":18,"compras":5,"ctr_enlace":1.84711,"cpa":421.39,"categoria":"ganador"},
+        {"id":"0800357f","nombre":"FRANK3_23Jul®","conjunto":"ABO · INM AGO · FRANK3 23Jul®","gasto":4325.12,"cpm":231.54,"clics":275,"visitas":213,"checkouts":37,"compras":11,"ctr_enlace":1.472163,"cpa":393.19,"categoria":"ganador"}
       ],
       "campanias": [
-        {"nombre":"🔴 INM · TIBIO + ABIERTO | 28Jul®","estado":"entregando","gasto_hoy":1497.89,"compras_hoy":1,"cpa_7d":683.17,"pct_presupuesto":118.9},
-        {"nombre":"🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®","estado":"entregando","gasto_hoy":129.09,"compras_hoy":0,"cpa_7d":1462.12,"pct_presupuesto":129.1},
-        {"nombre":"🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®","estado":"entregando","gasto_hoy":307.97,"compras_hoy":2,"cpa_7d":519.86,"pct_presupuesto":125.7},
-        {"nombre":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","estado":"entregando","gasto_hoy":1002.26,"compras_hoy":0,"cpa_7d":908.94,"pct_presupuesto":83.5},
-        {"nombre":"🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1","estado":"entregando","gasto_hoy":506.5,"compras_hoy":2,"cpa_7d":441.27,"pct_presupuesto":84.4}
+        {"nombre":"🔴 INM · TIBIO + ABIERTO | 28Jul®","estado":"entregando","gasto_hoy":141.48,"compras_hoy":0,"cpa_7d":670.42,"pct_presupuesto":11.2},
+        {"nombre":"🔴04.TESTEO INMERSION 03 FEB CREATIVOS -  26Jul®","estado":"entregando","gasto_hoy":10.95,"compras_hoy":0,"cpa_7d":1490.18,"pct_presupuesto":10.9},
+        {"nombre":"🔴04.EVERGREEN INMERSION // GENERAL - 26Jul®","estado":"entregando","gasto_hoy":20.97,"compras_hoy":0,"cpa_7d":525.2,"pct_presupuesto":8.6},
+        {"nombre":"🔴 ABO · INM · TEST CREATIVOS | 24Jul®","estado":"entregando","gasto_hoy":0.99,"compras_hoy":0,"cpa_7d":935.93,"pct_presupuesto":0.1},
+        {"nombre":"🔴 ABO · INM AGO · GANADORES EVERGREEN | 23Jul® 1","estado":"entregando","gasto_hoy":41.58,"compras_hoy":0,"cpa_7d":452.45,"pct_presupuesto":6.9}
       ],
       "heatmap": {
         "dias": ["lun","mar","mie","jue","vie","sab","dom"],
         "valores": [
           [0,0,0,0,0,0,0,1,1,0,1,2,4,0,0,0,1,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,1,0,0,1,2,0,0,0,1,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,2,0,2,0,0,1,0,0,1,0,0,0,1,0,0,0,0,2],
+          [0,0,0,0,0,0,0,1,0,0,1,2,0,0,0,1,0,0,0,0,0,0,0,1],
+          [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,2,2,0,1,0,0,1,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,2,0,1,1,0,2,0,0,1,1,1,1,0,0,0,0,2],
-          [2,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0],
+          [2,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0],
           [0,0,0,0,0,1,0,1,1,0,2,0,0,0,1,0,0,0,1,0,0,0,0,0]
         ]
       },
@@ -119,82 +119,82 @@
       ]
     },
     "seguidores": {
-      "kpi": {"visitas_perfil": 11391, "costo_por_visita": 1.38, "inversion": 15754.9},
+      "kpi": {"visitas_perfil": 11986, "costo_por_visita": 1.35, "inversion": 16193.88},
       "series": {
         "acumulado": {
           "etiqueta_x": "dia del ciclo",
-          "labels": ["d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","d16","d17","d18"],
-          "actual": [0,0,0,0,811,1535,2281,3061,3973,4828,5644,6451,7266,8154,8986,10027,10991,11391],
+          "labels": ["d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","d16","d17","d18","d19"],
+          "actual": [0,0,0,0,811,1535,2281,3061,3973,4828,5644,6451,7266,8154,8986,10027,10991,11800,11986],
           "evento_en_label": "d22"
         },
         "tendencia": {
           "granularidad": "diaria",
-          "labels": ["2026-07-08","2026-07-09","2026-07-10","2026-07-11","2026-07-12","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-17","2026-07-18","2026-07-19","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-25","2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-01","2026-08-02","2026-08-03","2026-08-04"],
-          "gasto": [912.69,889.17,883.16,845.9,1031.9,899.43,900.14,914.17,880.28,906.86,766.28,981.25,993.61,932.83,862.23,846.23,829.96,853.48,986.71,957.02,904.97,883.31,860.4,863.98,843.37,1026.76,932.09,430.42],
-          "cpa": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.06,1.17,1.11,1.09,1.08,1.12,1.11,1.09,1.06,0.97,1.01,0.99,0.97,1.08]
+          "labels": ["2026-07-09","2026-07-10","2026-07-11","2026-07-12","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-17","2026-07-18","2026-07-19","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-25","2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05"],
+          "gasto": [889.17,883.16,845.9,1031.9,899.43,900.14,914.17,880.28,906.86,766.28,981.25,993.61,932.83,862.23,846.23,829.96,853.48,986.71,957.02,904.97,883.31,860.4,863.98,843.37,1026.76,932.1,689.21,180.18],
+          "cpa": [0,0,0,0,0,0,0,0,0,0,0,0,0,1.06,1.17,1.11,1.09,1.08,1.12,1.11,1.09,1.06,0.97,1.01,0.99,0.97,0.85,0.97]
         }
       },
       "campanias": [
-        {"nombre":"🟢 Follow Me Ads - Trafico","estado":"entregando","gasto_hoy":430.42,"compras_hoy":400,"cpa_7d":1.02,"pct_presupuesto":47.8}
+        {"nombre":"🟢 Follow Me Ads - Trafico","estado":"entregando","gasto_hoy":180.18,"compras_hoy":186,"cpa_7d":0.99,"pct_presupuesto":20.0}
       ],
       "anuncios": [
-        {"id":"34cae4ff","nombre":"V5 Cancún","conjunto":"LAL 1% Seguidores (Exluyendo Seguidores)","gasto":0.0,"cpm":0.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"e4de8b3b","nombre":"Storie 2","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":179.04,"cpm":10.6,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"34cae4ff","nombre":"V5 Cancún","conjunto":"LAL 1% Seguidores (Exluyendo Seguidores)","gasto":0.14,"cpm":140.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"e4de8b3b","nombre":"Storie 2","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":190.52,"cpm":10.38,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"fe3d14c5","nombre":"Solo por hoy 1","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":0.22,"cpm":18.33,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"58cb102e","nombre":"Storie 3","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":8.48,"cpm":23.36,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"5c70ef83","nombre":"V5 Cancún","conjunto":"LAL 1% Compradores (Exluyendo Seguidores)","gasto":0.03,"cpm":30.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"c6525a46","nombre":"Storie 3","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":296.36,"cpm":13.4,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"c6525a46","nombre":"Storie 3","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":319.29,"cpm":13.19,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"00481962","nombre":"Solo por hoy 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":0.82,"cpm":39.05,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"59825af7","nombre":"V3 Cancún","conjunto":"LAL 1% Seguidores (Exluyendo Seguidores)","gasto":970.24,"cpm":97.11,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"bce6caa1","nombre":"Storie 1","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":367.08,"cpm":17.88,"clics":0,"visitas":2,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"a40417b4","nombre":"Storie 3","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":504.14,"cpm":9.84,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"83f37160","nombre":"Storie 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":274.85,"cpm":23.57,"clics":0,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"433e2c7b","nombre":"V1 Cancún","conjunto":"LAL 1% Compradores (Exluyendo Seguidores)","gasto":0.0,"cpm":0.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"59825af7","nombre":"V3 Cancún","conjunto":"LAL 1% Seguidores (Exluyendo Seguidores)","gasto":991.04,"cpm":96.55,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"bce6caa1","nombre":"Storie 1","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":385.41,"cpm":17.65,"clics":0,"visitas":2,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"a40417b4","nombre":"Storie 3","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":544.27,"cpm":9.62,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"83f37160","nombre":"Storie 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":294.61,"cpm":23.25,"clics":0,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"433e2c7b","nombre":"V1 Cancún","conjunto":"LAL 1% Compradores (Exluyendo Seguidores)","gasto":0.0,"cpm":0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"9ed7aea3","nombre":"Solo por hoy 1","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":0.21,"cpm":19.09,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"0dc6f306","nombre":"V3 Cancún","conjunto":"Abierto (Exluyendo Seguidores) - Copy","gasto":1032.19,"cpm":40.75,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"bc7a7b75","nombre":"Solo por hoy 2","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":58.27,"cpm":44.11,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"fd519839","nombre":"V5 Cancún","conjunto":"Abierto (Exluyendo Seguidores) - Copy","gasto":0.0,"cpm":0.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"5ae6d925","nombre":"V1 Cancún","conjunto":"Abierto (Exluyendo Seguidores) - Copy","gasto":0.0,"cpm":0.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"69472774","nombre":"Storie 1","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":663.41,"cpm":26.86,"clics":0,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"0dc6f306","nombre":"V3 Cancún","conjunto":"Abierto (Exluyendo Seguidores) - Copy","gasto":1047.74,"cpm":40.7,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"bc7a7b75","nombre":"Solo por hoy 2","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":66.78,"cpm":43.31,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"fd519839","nombre":"V5 Cancún","conjunto":"Abierto (Exluyendo Seguidores) - Copy","gasto":0.0,"cpm":0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"5ae6d925","nombre":"V1 Cancún","conjunto":"Abierto (Exluyendo Seguidores) - Copy","gasto":0.0,"cpm":0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"69472774","nombre":"Storie 1","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":705.22,"cpm":26.49,"clics":0,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"a6233cec","nombre":"V1 Cancún","conjunto":"LAL 1% Seguidores (Exluyendo Seguidores)","gasto":0.3,"cpm":300.0,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"2c346a09","nombre":"Solo por hoy 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":1.3,"cpm":22.41,"clics":0,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"2c346a09","nombre":"Solo por hoy 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":1.32,"cpm":22.37,"clics":0,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
         {"id":"089691fd","nombre":"Solo por hoy 1","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores)","gasto":0.75,"cpm":17.44,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"f13ff27a","nombre":"Storie 1","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":229.16,"cpm":14.21,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"8c2b0680","nombre":"V3 Cancún","conjunto":"LAL 1% Compradores (Exluyendo Seguidores)","gasto":971.68,"cpm":53.49,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"fe4a1e08","nombre":"Storie 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":281.8,"cpm":15.01,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0}
+        {"id":"f13ff27a","nombre":"Storie 1","conjunto":"Stories - Broad (Exluyendo Seguidores)","gasto":235.09,"cpm":14.02,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"8c2b0680","nombre":"V3 Cancún","conjunto":"LAL 1% Compradores (Exluyendo Seguidores)","gasto":1004.83,"cpm":53.13,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
+        {"id":"fe4a1e08","nombre":"Storie 2","conjunto":"Stories - LAL 1% Seguidores (Exluyendo Seguidores) - Copy","gasto":302.06,"cpm":14.74,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0}
       ],
       "presupuesto": [{"nombre":"🟢 Follow Me Ads - Trafico","monto":900.0}]
     },
     "leads": {
-      "kpi": {"leads": 1765, "cpl": 22.78, "inversion": 40203.29},
+      "kpi": {"leads": 1885, "cpl": 22.83, "inversion": 43041.79},
       "series": {
         "acumulado": {
           "etiqueta_x": "dia del ciclo",
-          "labels": ["d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","d16","d17","d18"],
-          "actual": [0,0,0,0,0,0,11,16,35,68,138,260,455,677,946,1254,1558,1765],
+          "labels": ["d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","d11","d12","d13","d14","d15","d16","d17","d18","d19"],
+          "actual": [0,0,0,0,0,0,11,16,35,68,138,260,455,677,946,1254,1558,1871,1885],
           "anterior": [14,30,42,70,188,336,514,740,972,1218,1421,1557,1708,1835,2089,2358,2623,2817,2968,3074,3177,3302,3438,3536,3536,3536,3536,3536],
           "evento_en_label": "d22"
         },
         "tendencia": {
           "granularidad": "diaria",
-          "labels": ["2026-07-08","2026-07-09","2026-07-10","2026-07-11","2026-07-12","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-17","2026-07-18","2026-07-19","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-25","2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-01","2026-08-02","2026-08-03","2026-08-04"],
-          "gasto": [5713.04,4202.27,3439.11,2250.05,1753.51,2241.01,2732.2,1791.08,0,0,0,0,0,0,0,0,650.11,186.82,434.52,495.9,1067.13,2057.64,3817.26,4723.07,6526.36,7720.32,8019.61,4504.55],
-          "cpa": [21.56,21.66,22.78,21.23,17.02,17.93,20.09,18.28,0,0,0,0,0,0,0,0,59.1,37.36,22.87,15.03,15.24,16.87,19.58,21.28,24.26,25.07,26.38,21.76]
+          "labels": ["2026-07-09","2026-07-10","2026-07-11","2026-07-12","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-17","2026-07-18","2026-07-19","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-25","2026-07-26","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05"],
+          "gasto": [4202.27,3439.11,2250.05,1753.51,2241.01,2732.2,1791.08,0,0,0,0,0,0,0,0,650.11,186.82,434.52,495.9,1067.13,2057.64,3817.26,4723.07,6526.36,7720.32,8021.41,6808.09,533.16],
+          "cpa": [21.66,22.78,21.23,17.02,17.93,20.09,18.28,0,0,0,0,0,0,0,0,59.1,37.36,22.87,15.03,15.24,16.87,19.58,21.28,24.26,25.07,26.39,21.75,38.08]
         }
       },
       "campanias": [
-        {"nombre":"🟡MASTERCLASS GRATIS - CDB - Exclusions","estado":"entregando","gasto_hoy":1239.87,"compras_hoy":46,"cpa_7d":23.56,"pct_presupuesto":68.9},
-        {"nombre":"🟡Captación CDB - Test","estado":"entregando","gasto_hoy":2135.97,"compras_hoy":92,"cpa_7d":25.91,"pct_presupuesto":59.3},
-        {"nombre":"🟡MASTERCLASS GRATIS - CDB - $1","estado":"entregando","gasto_hoy":1128.71,"compras_hoy":69,"cpa_7d":18.41,"pct_presupuesto":56.4}
+        {"nombre":"🟡MASTERCLASS GRATIS - CDB - Exclusions","estado":"entregando","gasto_hoy":125.65,"compras_hoy":1,"cpa_7d":23.44,"pct_presupuesto":7.0},
+        {"nombre":"🟡Captación CDB - Test","estado":"entregando","gasto_hoy":247.1,"compras_hoy":6,"cpa_7d":25.83,"pct_presupuesto":6.9},
+        {"nombre":"🟡MASTERCLASS GRATIS - CDB - $1","estado":"entregando","gasto_hoy":160.41,"compras_hoy":7,"cpa_7d":18.45,"pct_presupuesto":8.0}
       ],
       "anuncios": [
-        {"id":"778f7861","nombre":"AD011","conjunto":"LOOK & LIKE + BROAD","gasto":1.18,"cpm":40.69,"clics":1,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":3.45,"cpa":0},
-        {"id":"196ddaaf","nombre":"AD012","conjunto":"LOOK & LIKE + BROAD","gasto":9728.43,"cpm":115.13,"clics":1528,"visitas":1264,"checkouts":0,"compras":0,"ctr_enlace":1.81,"cpa":0},
+        {"id":"778f7861","nombre":"AD011","conjunto":"LOOK & LIKE + BROAD","gasto":1.18,"cpm":40.69,"clics":1,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":3.448276,"cpa":0},
+        {"id":"196ddaaf","nombre":"AD012","conjunto":"LOOK & LIKE + BROAD","gasto":10216.99,"cpm":114.53,"clics":1622,"visitas":1347,"checkouts":0,"compras":0,"ctr_enlace":1.818223,"cpa":0},
         {"id":"526922af","nombre":"AD013","conjunto":"LOOK & LIKE + BROAD","gasto":0.69,"cpm":76.67,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0},
-        {"id":"52344dc2","nombre":"Ad 2 - Webinar","conjunto":"Broad - Captación - Ad 2 Webinar","gasto":9113.59,"cpm":97.79,"clics":1568,"visitas":1238,"checkouts":0,"compras":0,"ctr_enlace":1.68,"cpa":0},
-        {"id":"cc0fe1d3","nombre":"Ad 1 - Webinar","conjunto":"Broad - Captación - Ad 1 Webinar","gasto":9155.38,"cpm":65.35,"clics":1785,"visitas":1360,"checkouts":0,"compras":0,"ctr_enlace":1.27,"cpa":0},
-        {"id":"bf29fe12","nombre":"AD011","conjunto":"LOOK & LIKE + BROAD","gasto":3.96,"cpm":96.59,"clics":1,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":2.44,"cpa":0},
-        {"id":"270bbed5","nombre":"AD012","conjunto":"LOOK & LIKE + BROAD","gasto":9364.98,"cpm":63.31,"clics":2051,"visitas":1703,"checkouts":0,"compras":0,"ctr_enlace":1.39,"cpa":0},
+        {"id":"52344dc2","nombre":"Ad 2 - Webinar","conjunto":"Broad - Captación - Ad 2 Webinar","gasto":9549.87,"cpm":97.94,"clics":1633,"visitas":1290,"checkouts":0,"compras":0,"ctr_enlace":1.674734,"cpa":0},
+        {"id":"cc0fe1d3","nombre":"Ad 1 - Webinar","conjunto":"Broad - Captación - Ad 1 Webinar","gasto":9794.67,"cpm":64.81,"clics":1928,"visitas":1478,"checkouts":0,"compras":0,"ctr_enlace":1.27579,"cpa":0},
+        {"id":"bf29fe12","nombre":"AD011","conjunto":"LOOK & LIKE + BROAD","gasto":3.96,"cpm":96.59,"clics":1,"visitas":1,"checkouts":0,"compras":0,"ctr_enlace":2.439024,"cpa":0},
+        {"id":"270bbed5","nombre":"AD012","conjunto":"LOOK & LIKE + BROAD","gasto":10106.19,"cpm":62.77,"clics":2229,"visitas":1837,"checkouts":0,"compras":0,"ctr_enlace":1.384395,"cpa":0},
         {"id":"9dd0e8fb","nombre":"AD013","conjunto":"LOOK & LIKE + BROAD","gasto":0.6,"cpm":66.67,"clics":0,"visitas":0,"checkouts":0,"compras":0,"ctr_enlace":0,"cpa":0}
       ],
       "presupuesto": [
