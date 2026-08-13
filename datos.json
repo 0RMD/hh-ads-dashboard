@@ -1,10 +1,10 @@
 {
   "generado": {
-    "utc": "2026-08-12T18:24:08Z",
-    "cuenta_local": "2026-08-12 12:24",
+    "utc": "2026-08-13T00:29:21Z",
+    "cuenta_local": "2026-08-12 18:29",
     "zona": "GMT-6",
-    "proxima_actualizacion": "19:10",
-    "horas_transcurridas_dia_cuenta": 12
+    "proxima_actualizacion": "07:10",
+    "horas_transcurridas_dia_cuenta": 18
   },
   "ciclo": {
     "nombre": "septiembre",
@@ -68,40 +68,40 @@
     }
   ],
   "desde_ultima": {
-    "hora": "06:41",
+    "hora": "12:24",
     "compras": 1,
-    "delta_cpa": 8.3
+    "delta_cpa": 4.38
   },
   "pilares": {
     "ventas": {
       "kpi": {
-        "compras": 5,
-        "inversion": 4842.06
+        "compras": 6,
+        "inversion": 5811.34
       },
       "termometro": {
-        "cpa_7d": 462.82,
+        "cpa_7d": 483.08,
         "mediana_30d": 712.11
       },
       "atencion": {
-        "cpm": 244.94,
-        "frecuencia": 1.46,
-        "impresiones": 45349,
-        "alcance": 30965,
+        "cpm": 242.67,
+        "frecuencia": 1.51,
+        "impresiones": 49767,
+        "alcance": 33056,
         "mediana_cpm_30d": 277.61
       },
       "embudo_7d": {
-        "gasto": 11107.66,
-        "clics": 717,
-        "visitas": 545,
-        "checkouts": 96,
-        "compras": 24
+        "gasto": 12076.94,
+        "clics": 785,
+        "visitas": 584,
+        "checkouts": 101,
+        "compras": 25
       },
       "escalera_7d": {
         "actual": {
-          "por_clic": 15.49,
-          "por_visita": 20.38,
-          "por_checkout": 115.7,
-          "por_compra": 462.82
+          "por_clic": 15.38,
+          "por_visita": 20.68,
+          "por_checkout": 119.57,
+          "por_compra": 483.08
         },
         "mediana_30d": {
           "por_clic": 21.2,
@@ -150,7 +150,7 @@
             0,
             0,
             3,
-            5
+            6
           ],
           "anterior": [
             10,
@@ -183,9 +183,95 @@
           null,
           null,
           null,
-          883.06,
-          741.3
+          883.16,
+          817.19
         ],
+        "ritmo_dia": {
+          "horas": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "gasto_acum": [
+            56.45,
+            76.55,
+            85.77,
+            96.13,
+            109.85,
+            168.29,
+            316.52,
+            525.96,
+            805.15,
+            1073.37,
+            1284.0,
+            1492.25,
+            1670.58,
+            1815.93,
+            1979.34,
+            2128.29,
+            2293.53,
+            2411.52,
+            2446.57
+          ],
+          "gasto_semana_pasada": [
+            121.48,
+            159.86,
+            176.57,
+            221.94,
+            245.76,
+            290.59,
+            516.21,
+            888.41,
+            1159.94,
+            1427.41,
+            1668.57,
+            1890.61,
+            2054.69,
+            2196.37,
+            2351.24,
+            2479.26,
+            2598.9,
+            2704.07,
+            2802.88
+          ],
+          "compras_por_hora": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
         "tendencia": {
           "granularidad": "diaria",
           "labels": [
@@ -245,8 +331,8 @@
             0.0,
             0.0,
             710.28,
-            2649.18,
-            1482.6
+            2649.49,
+            2451.57
           ],
           "cpa": [
             518.47,
@@ -275,75 +361,13 @@
             null,
             null,
             null,
-            883.06,
-            741.3
-          ]
-        },
-        "ritmo_dia": {
-          "horas": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12
-          ],
-          "gasto_acum": [
-            56.45,
-            76.55,
-            85.77,
-            96.13,
-            109.85,
-            163.87,
-            304.45,
-            511.34,
-            785.92,
-            1044.5,
-            1246.95,
-            1443.35,
-            1495.73
-          ],
-          "gasto_semana_pasada": [
-            121.48,
-            159.86,
-            176.57,
-            221.94,
-            245.76,
-            290.59,
-            516.21,
-            888.41,
-            1159.94,
-            1427.41,
-            1668.57,
-            1890.61,
-            2054.69
-          ],
-          "compras_por_hora": [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0
+            883.16,
+            817.19
           ]
         }
       },
       "totales": {
-        "septiembre": 4842.06,
+        "septiembre": 5811.34,
         "agosto": 107923.63
       },
       "conjuntos": [
@@ -371,7 +395,7 @@
           "checkouts": 6,
           "visitas": 13,
           "clics": 16,
-          "frecuencia": 1259615.0,
+          "frecuencia": 1.26,
           "cpm": 261.81,
           "es_test": true
         },
@@ -385,7 +409,7 @@
           "checkouts": 2,
           "visitas": 8,
           "clics": 11,
-          "frecuencia": 1293624.0,
+          "frecuencia": 1.29,
           "cpm": 269.92,
           "es_test": true
         },
@@ -399,7 +423,7 @@
           "checkouts": 4,
           "visitas": 45,
           "clics": 53,
-          "frecuencia": 136332.0,
+          "frecuencia": 1.36,
           "cpm": 236.96,
           "es_test": true
         },
@@ -413,7 +437,7 @@
           "checkouts": 4,
           "visitas": 49,
           "clics": 59,
-          "frecuencia": 1397354.0,
+          "frecuencia": 1.4,
           "cpm": 246.88,
           "es_test": true
         },
@@ -427,7 +451,7 @@
           "checkouts": 0,
           "visitas": 8,
           "clics": 16,
-          "frecuencia": 147281.0,
+          "frecuencia": 1.47,
           "cpm": 170.63,
           "es_test": true
         },
@@ -441,7 +465,7 @@
           "checkouts": 0,
           "visitas": 1,
           "clics": 14,
-          "frecuencia": 1463748.0,
+          "frecuencia": 1.46,
           "cpm": 183.64,
           "es_test": true
         },
@@ -455,7 +479,7 @@
           "checkouts": 1,
           "visitas": 8,
           "clics": 11,
-          "frecuencia": 1292282.0,
+          "frecuencia": 1.29,
           "cpm": 254.1,
           "es_test": true
         },
@@ -469,7 +493,7 @@
           "checkouts": 1,
           "visitas": 12,
           "clics": 16,
-          "frecuencia": 1197842.0,
+          "frecuencia": 1.2,
           "cpm": 325.36,
           "es_test": true
         },
@@ -478,13 +502,13 @@
           "nombre": "FRANK3®",
           "campania": "🔴05.EVERGREEN INMERSION / TOFU®",
           "presupuesto": 350.0,
-          "gasto": 240.91,
+          "gasto": 241.22,
           "compras": 1,
           "checkouts": 2,
           "visitas": 32,
           "clics": 33,
-          "frecuencia": 1334397.0,
-          "cpm": 144.08,
+          "frecuencia": 1.34,
+          "cpm": 144.01,
           "es_test": false
         },
         {
@@ -497,7 +521,7 @@
           "checkouts": 0,
           "visitas": 13,
           "clics": 16,
-          "frecuencia": 1073743.0,
+          "frecuencia": 1.07,
           "cpm": 220.56,
           "es_test": true
         },
@@ -511,7 +535,7 @@
           "checkouts": 0,
           "visitas": 5,
           "clics": 7,
-          "frecuencia": 1281867.0,
+          "frecuencia": 1.28,
           "cpm": 259.38,
           "es_test": true
         },
@@ -525,7 +549,7 @@
           "checkouts": 2,
           "visitas": 7,
           "clics": 11,
-          "frecuencia": 1300505.0,
+          "frecuencia": 1.3,
           "cpm": 135.53,
           "es_test": true
         }
@@ -541,7 +565,7 @@
           "visitas": 13,
           "checkouts": 6,
           "compras": 1,
-          "ctr_enlace": 174482.0,
+          "ctr_enlace": 1.74,
           "cpa": 240.08,
           "categoria": "ganador"
         },
@@ -555,7 +579,7 @@
           "visitas": 8,
           "checkouts": 2,
           "compras": 0,
-          "ctr_enlace": 1426719.0
+          "ctr_enlace": 1.43
         },
         {
           "id": "b80b8721",
@@ -567,7 +591,7 @@
           "visitas": 13,
           "checkouts": 0,
           "compras": 0,
-          "ctr_enlace": 1664932.0
+          "ctr_enlace": 1.66
         },
         {
           "id": "526784ef",
@@ -579,7 +603,7 @@
           "visitas": 8,
           "checkouts": 0,
           "compras": 0,
-          "ctr_enlace": 1641026.0
+          "ctr_enlace": 1.64
         },
         {
           "id": "2660cec9",
@@ -591,7 +615,7 @@
           "visitas": 8,
           "checkouts": 1,
           "compras": 0,
-          "ctr_enlace": 1397713.0
+          "ctr_enlace": 1.4
         },
         {
           "id": "acbad4cb",
@@ -603,7 +627,7 @@
           "visitas": 49,
           "checkouts": 4,
           "compras": 1,
-          "ctr_enlace": 2068724.0,
+          "ctr_enlace": 2.07,
           "cpa": 704.1
         },
         {
@@ -616,7 +640,7 @@
           "visitas": 45,
           "checkouts": 4,
           "compras": 0,
-          "ctr_enlace": 1932191.0
+          "ctr_enlace": 1.93
         },
         {
           "id": "7fbdad31",
@@ -664,7 +688,7 @@
           "visitas": 1,
           "checkouts": 0,
           "compras": 0,
-          "ctr_enlace": 1308411.0
+          "ctr_enlace": 1.31
         },
         {
           "id": "8d8d2cc1",
@@ -676,7 +700,7 @@
           "visitas": 7,
           "checkouts": 2,
           "compras": 0,
-          "ctr_enlace": 1067961.0
+          "ctr_enlace": 1.07
         },
         {
           "id": "654cb509",
@@ -688,7 +712,7 @@
           "visitas": 5,
           "checkouts": 0,
           "compras": 0,
-          "ctr_enlace": 980392.0
+          "ctr_enlace": 0.98
         },
         {
           "id": "cc7e73c4",
@@ -700,20 +724,20 @@
           "visitas": 12,
           "checkouts": 1,
           "compras": 0,
-          "ctr_enlace": 2402402.0
+          "ctr_enlace": 2.4
         },
         {
           "id": "30235a42",
           "nombre": "FRANK3",
           "conjunto": "FRANK3®",
-          "gasto": 240.91,
-          "cpm": 144.08,
+          "gasto": 241.22,
+          "cpm": 144.01,
           "clics": 33,
           "visitas": 32,
           "checkouts": 2,
           "compras": 1,
-          "ctr_enlace": 1973684.0,
-          "cpa": 240.91,
+          "ctr_enlace": 1.97,
+          "cpa": 241.22,
           "categoria": "ganador"
         }
       ],
@@ -721,26 +745,25 @@
         {
           "nombre": "🔴BOFU - REMARKETING -11Ago®",
           "estado": "entregando",
-          "gasto_hoy": 149.25,
+          "gasto_hoy": 236.4,
           "compras_hoy": 0,
-          "cpa_7d": null,
-          "pct_presupuesto": 49.75
+          "pct_presupuesto": 78.8
         },
         {
           "nombre": "🔴05.EVERGREEN INMERSION / TOFU®",
           "estado": "entregando",
-          "gasto_hoy": 1170.89,
-          "compras_hoy": 2,
-          "cpa_7d": 794.07,
-          "pct_presupuesto": 46.84
+          "gasto_hoy": 1886.82,
+          "compras_hoy": 3,
+          "pct_presupuesto": 75.47,
+          "cpa_7d": 778.5
         },
         {
           "nombre": "🟠 TESTEOS ROLANDO · INM 05-06SEP®",
           "estado": "entregando",
-          "gasto_hoy": 162.46,
+          "gasto_hoy": 328.35,
           "compras_hoy": 0,
-          "cpa_7d": 1516.54,
-          "pct_presupuesto": 27.08
+          "pct_presupuesto": 54.73,
+          "cpa_7d": 1682.43
         }
       ],
       "heatmap": {
@@ -819,7 +842,7 @@
             1,
             0,
             0,
-            0,
+            1,
             0,
             0,
             0,
@@ -955,9 +978,9 @@
     },
     "seguidores": {
       "kpi": {
-        "visitas_perfil": 4276,
+        "visitas_perfil": 4472,
         "costo_por_visita": 0.96,
-        "inversion": 4099.47
+        "inversion": 4301.72
       },
       "series": {
         "acumulado": {
@@ -998,8 +1021,8 @@
             1027,
             2160,
             3099,
-            3967,
-            4276
+            3968,
+            4472
           ],
           "anterior": [
             716,
@@ -1087,8 +1110,8 @@
             980.91,
             1010.09,
             917.23,
-            881.67,
-            309.57
+            881.72,
+            511.77
           ]
         }
       },
@@ -1098,9 +1121,9 @@
     },
     "leads": {
       "kpi": {
-        "leads": 870,
-        "cpl": 23.38,
-        "inversion": 20343.72
+        "leads": 919,
+        "cpl": 23.49,
+        "inversion": 21591.75
       },
       "series": {
         "acumulado": {
@@ -1142,7 +1165,7 @@
             223,
             455,
             738,
-            870
+            919
           ],
           "anterior": [
             0,
@@ -1229,9 +1252,9 @@
             604.98,
             1229.11,
             3258.94,
-            5768.8,
-            6242.87,
-            3844.0
+            5768.93,
+            6244.35,
+            5090.42
           ]
         }
       },
