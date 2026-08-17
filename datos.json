@@ -1,10 +1,10 @@
 {
   "generado": {
-    "utc": "2026-08-17T12:45:33Z",
-    "cuenta_local": "2026-08-17 06:45",
+    "utc": "2026-08-17T18:11:00Z",
+    "cuenta_local": "2026-08-17 12:11",
     "zona": "GMT-6",
-    "proxima_actualizacion": "13:10",
-    "horas_transcurridas_dia_cuenta": 6
+    "proxima_actualizacion": "19:10",
+    "horas_transcurridas_dia_cuenta": 12
   },
   "ciclo": {
     "nombre": "septiembre",
@@ -68,29 +68,29 @@
     }
   ],
   "desde_ultima": {
-    "hora": "18:38",
-    "compras": 2,
-    "delta_cpa": -1.32
+    "hora": "06:45",
+    "compras": 0,
+    "delta_cpa": 0.03
   },
   "pilares": {
     "ventas": {
       "kpi": {
         "compras": 31,
-        "inversion": 20293.32
+        "inversion": 21686.23
       },
       "termometro": {
-        "cpa_7d": 645.24,
+        "cpa_7d": 645.41,
         "mediana_30d": 708.51
       },
       "atencion": {
         "cpm": 249.58,
         "frecuencia": 2.58,
-        "impresiones": 80145,
-        "alcance": 31028,
+        "impresiones": 80167,
+        "alcance": 31032,
         "mediana_cpm_30d": 285.87
       },
       "embudo_7d": {
-        "gasto": 20002.54,
+        "gasto": 20007.77,
         "clics": 1231,
         "visitas": 929,
         "checkouts": 126,
@@ -99,9 +99,9 @@
       "escalera_7d": {
         "actual": {
           "por_clic": 16.25,
-          "por_visita": 21.53,
-          "por_checkout": 158.75,
-          "por_compra": 645.24
+          "por_visita": 21.54,
+          "por_checkout": 158.79,
+          "por_compra": 645.41
         },
         "mediana_30d": {
           "por_clic": 21.46,
@@ -172,8 +172,8 @@
           555.61,
           526.49,
           704.9,
-          612.61,
-          609.15,
+          612.69,
+          609.94,
           null
         ],
         "ritmo_dia": {
@@ -184,25 +184,28 @@
             3,
             4,
             5,
-            6
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
           ],
           "gasto_acum": [
-            55.08,
-            89.43,
-            106.2,
-            115.92,
-            127.36,
-            204.99,
-            290.78
-          ],
-          "gasto_semana_pasada": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            56.85,
+            92.62,
+            110.23,
+            121.1,
+            133.4,
+            215.28,
+            414.54,
+            731.39,
+            1030.91,
+            1278.79,
+            1504.46,
+            1671.62,
+            1693.41
           ],
           "compras_por_hora": [
             0,
@@ -211,7 +214,28 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
+          ],
+          "gasto_semana_pasada": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            78.87,
+            173.65,
+            303.27,
+            377.09,
+            434.22
           ]
         },
         "tendencia": {
@@ -272,9 +296,9 @@
             3333.65,
             3158.95,
             2819.61,
-            3675.65,
-            3654.91,
-            290.78
+            3676.14,
+            3659.65,
+            1678.46
           ],
           "cpa": [
             2002.89,
@@ -302,14 +326,14 @@
             555.61,
             526.49,
             704.9,
-            612.61,
-            609.15,
+            612.69,
+            609.94,
             null
           ]
         }
       },
       "totales": {
-        "septiembre": 20293.32,
+        "septiembre": 21686.23,
         "agosto": 107923.63
       },
       "conjuntos": [
@@ -318,13 +342,13 @@
           "nombre": "Retargeting 1 · Audiencia Interesada - 13Ago®",
           "campania": "🔴 MOFU · RETARGETING | ABO",
           "presupuesto": 300.0,
-          "gasto": 1193.97,
+          "gasto": 1196.57,
           "compras": 1,
           "checkouts": 4,
           "visitas": 49,
           "clics": 66,
           "frecuencia": 2.3,
-          "cpm": 216.97,
+          "cpm": 217.16,
           "es_test": true
         },
         {
@@ -332,13 +356,13 @@
           "nombre": "RMK | Interesados NO Compraron | 11Ago®",
           "campania": "🔴BOFU - REMARKETING -11Ago®",
           "presupuesto": 360.0,
-          "gasto": 1583.29,
+          "gasto": 1584.02,
           "compras": 4,
           "checkouts": 13,
           "visitas": 78,
           "clics": 103,
           "frecuencia": 1.76,
-          "cpm": 283.08,
+          "cpm": 283.06,
           "es_test": false
         },
         {
@@ -374,13 +398,13 @@
           "nombre": "05_LOOK&LIKE 4%(Parque)®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 250.0,
-          "gasto": 1407.34,
+          "gasto": 1408.07,
           "compras": 1,
           "checkouts": 8,
           "visitas": 44,
           "clics": 56,
           "frecuencia": 1.76,
-          "cpm": 321.75,
+          "cpm": 321.62,
           "es_test": true
         },
         {
@@ -416,13 +440,13 @@
           "nombre": "Test Broad 10% LAL®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 300.0,
-          "gasto": 1560.82,
+          "gasto": 1560.9,
           "compras": 3,
           "checkouts": 9,
           "visitas": 51,
           "clics": 76,
           "frecuencia": 1.87,
-          "cpm": 304.61,
+          "cpm": 304.51,
           "es_test": true
         },
         {
@@ -430,7 +454,7 @@
           "nombre": "24 COACHING Y TERAPEUTA IMAGENES TEXTO®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 276.0,
-          "gasto": 1364.85,
+          "gasto": 1365.33,
           "compras": 3,
           "checkouts": 11,
           "visitas": 47,
@@ -444,13 +468,13 @@
           "nombre": "12_Prueba_Ads_Ganadores_Grupo2 - 10Agosto®",
           "campania": "🟠 TOFU - VENTA - TESTEOS ROL®",
           "presupuesto": 300.0,
-          "gasto": 2038.45,
+          "gasto": 2038.56,
           "compras": 1,
           "checkouts": 12,
           "visitas": 121,
           "clics": 144,
           "frecuencia": 1.4,
-          "cpm": 255.22,
+          "cpm": 255.2,
           "es_test": true
         },
         {
@@ -458,13 +482,13 @@
           "nombre": "24_Prueba_Ads_Ganadores_Grupo1 - 10Agosto®",
           "campania": "🟠 TOFU - VENTA - TESTEOS ROL®",
           "presupuesto": 300.0,
-          "gasto": 2038.46,
+          "gasto": 2038.47,
           "compras": 4,
           "checkouts": 15,
           "visitas": 119,
           "clics": 157,
           "frecuencia": 1.56,
-          "cpm": 254.71,
+          "cpm": 254.68,
           "es_test": true
         }
       ],
@@ -473,8 +497,8 @@
           "id": "acbad4cb",
           "nombre": "GRUPO_10ADS_GANADORES_AD24",
           "conjunto": "24_Prueba_Ads_Ganadores_Grupo1 - 10Agosto®",
-          "gasto": 2038.46,
-          "cpm": 254.71,
+          "gasto": 2038.47,
+          "cpm": 254.68,
           "clics": 157,
           "visitas": 119,
           "checkouts": 15,
@@ -487,36 +511,36 @@
           "id": "39418f3d",
           "nombre": "GRUPO_10ADS_GANADORES_AD12",
           "conjunto": "12_Prueba_Ads_Ganadores_Grupo2 - 10Agosto®",
-          "gasto": 2038.45,
-          "cpm": 255.22,
+          "gasto": 2038.56,
+          "cpm": 255.2,
           "clics": 144,
           "visitas": 121,
           "checkouts": 12,
           "compras": 1,
           "ctr_enlace": 1.8,
-          "cpa": 2038.45,
+          "cpa": 2038.56,
           "categoria": "detener"
         },
         {
           "id": "33e90d23",
           "nombre": "AD07_29Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 487.84,
-          "cpm": 202.76,
+          "gasto": 488.06,
+          "cpm": 202.51,
           "clics": 31,
           "visitas": 25,
           "checkouts": 3,
           "compras": 1,
           "ctr_enlace": 1.29,
-          "cpa": 487.84,
+          "cpa": 488.06,
           "categoria": "ganador"
         },
         {
           "id": "f3efab1d",
           "nombre": "AD01_06Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 241.25,
-          "cpm": 211.81,
+          "gasto": 241.37,
+          "cpm": 211.54,
           "clics": 12,
           "visitas": 7,
           "checkouts": 1,
@@ -529,8 +553,8 @@
           "id": "5295f109",
           "nombre": "AD0813_29Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 210.34,
-          "cpm": 223.05,
+          "gasto": 212.6,
+          "cpm": 225.21,
           "clics": 12,
           "visitas": 9,
           "checkouts": 0,
@@ -557,28 +581,28 @@
           "id": "7fbdad31",
           "nombre": "RMK-AD_03 | 06Jul ®",
           "conjunto": "RMK | Interesados NO Compraron | 11Ago®",
-          "gasto": 1482.12,
-          "cpm": 288.01,
+          "gasto": 1482.85,
+          "cpm": 287.99,
           "clics": 99,
           "visitas": 75,
           "checkouts": 13,
           "compras": 4,
           "ctr_enlace": 1.92,
-          "cpa": 370.53,
+          "cpa": 370.71,
           "categoria": "ganador"
         },
         {
           "id": "8d8d2cc1",
           "nombre": "03 AD TX01®",
           "conjunto": "24 COACHING Y TERAPEUTA IMAGENES TEXTO®",
-          "gasto": 1364.85,
+          "gasto": 1365.33,
           "cpm": 161.44,
           "clics": 71,
           "visitas": 47,
           "checkouts": 11,
           "compras": 3,
           "ctr_enlace": 0.84,
-          "cpa": 454.95,
+          "cpa": 455.11,
           "categoria": "ganador"
         },
         {
@@ -599,28 +623,28 @@
           "id": "654cb509",
           "nombre": "V02_Junio",
           "conjunto": "Test Broad 10% LAL®",
-          "gasto": 1560.82,
-          "cpm": 304.61,
+          "gasto": 1560.9,
+          "cpm": 304.51,
           "clics": 76,
           "visitas": 51,
           "checkouts": 9,
           "compras": 3,
           "ctr_enlace": 1.48,
-          "cpa": 520.27,
+          "cpa": 520.3,
           "categoria": "ganador"
         },
         {
           "id": "afbb340d",
           "nombre": "LaLAD24Parque®",
           "conjunto": "05_LOOK&LIKE 4%(Parque)®",
-          "gasto": 1407.34,
-          "cpm": 321.75,
+          "gasto": 1408.07,
+          "cpm": 321.62,
           "clics": 56,
           "visitas": 44,
           "checkouts": 8,
           "compras": 1,
           "ctr_enlace": 1.28,
-          "cpa": 1407.34,
+          "cpa": 1408.07,
           "categoria": "sin_senal"
         },
         {
@@ -670,34 +694,34 @@
         {
           "nombre": "🔴 MOFU · RETARGETING | ABO",
           "estado": "entregando",
-          "gasto_hoy": 20.66,
+          "gasto_hoy": 118.9,
           "compras_hoy": 0,
-          "cpa_7d": 929.06,
-          "pct_presupuesto": 6.9
+          "cpa_7d": 930.36,
+          "pct_presupuesto": 39.6
         },
         {
           "nombre": "🔴BOFU - REMARKETING -11Ago®",
           "estado": "entregando",
-          "gasto_hoy": 35.66,
+          "gasto_hoy": 195.78,
           "compras_hoy": 0,
-          "cpa_7d": 395.82,
-          "pct_presupuesto": 9.9
+          "cpa_7d": 396.0,
+          "pct_presupuesto": 54.4
         },
         {
           "nombre": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "estado": "entregando",
-          "gasto_hoy": 203.25,
+          "gasto_hoy": 1006.71,
           "compras_hoy": 0,
-          "cpa_7d": 624.21,
-          "pct_presupuesto": 11.5
+          "cpa_7d": 624.3,
+          "pct_presupuesto": 57.0
         },
         {
           "nombre": "🟠 TOFU - VENTA - TESTEOS ROL®",
           "estado": "entregando",
-          "gasto_hoy": 42.93,
+          "gasto_hoy": 342.99,
           "compras_hoy": 0,
-          "cpa_7d": 815.38,
-          "pct_presupuesto": 7.2
+          "cpa_7d": 815.41,
+          "pct_presupuesto": 57.2
         }
       ],
       "heatmap": {
@@ -916,9 +940,9 @@
     },
     "seguidores": {
       "kpi": {
-        "visitas_perfil": 8706,
+        "visitas_perfil": 8848,
         "costo_por_visita": 0.97,
-        "inversion": 8461.01
+        "inversion": 8584.41
       },
       "series": {
         "acumulado": {
@@ -945,7 +969,7 @@
             6537,
             7465,
             8539,
-            8706
+            8848
           ]
         },
         "tendencia": {
@@ -1007,8 +1031,8 @@
             857.28,
             850.73,
             908.12,
-            1024.52,
-            156.32
+            1024.62,
+            279.62
           ]
         }
       },
@@ -1016,7 +1040,7 @@
         {
           "nombre": "🟢 Follow Me Ads - Trafico",
           "estado": "entregando",
-          "gasto_hoy": 157.43
+          "gasto_hoy": 278.65
         }
       ],
       "anuncios": [],
@@ -1029,9 +1053,9 @@
     },
     "leads": {
       "kpi": {
-        "leads": 1398,
-        "cpl": 24.19,
-        "inversion": 33819.65
+        "leads": 1457,
+        "cpl": 24.37,
+        "inversion": 35514.04
       },
       "series": {
         "acumulado": {
@@ -1058,7 +1082,7 @@
             1181,
             1280,
             1392,
-            1398
+            1457
           ]
         },
         "tendencia": {
@@ -1094,9 +1118,9 @@
             "2026-08-17"
           ],
           "gasto": [
-            0.0,
-            0.0,
-            0.0,
+            0,
+            0,
+            0,
             650.11,
             186.82,
             434.52,
@@ -1120,8 +1144,8 @@
             2380.38,
             1929.99,
             2377.67,
-            3694.46,
-            332.52
+            3701.05,
+            2020.32
           ]
         }
       },
@@ -1129,23 +1153,23 @@
         {
           "nombre": "🟡Captación CDB - Test",
           "estado": "entregando",
-          "gasto_hoy": 179.81
+          "gasto_hoy": 1116.66
         },
         {
           "nombre": "🟡MASTERCLASS GRATIS - CDB - $1",
           "estado": "entregando",
-          "gasto_hoy": 164.93
+          "gasto_hoy": 898.49
         }
       ],
       "anuncios": [],
       "presupuesto": [
         {
           "nombre": "🟡Captación CDB - Test",
-          "monto": 1800.0
+          "monto": 1000.0
         },
         {
           "nombre": "🟡MASTERCLASS GRATIS - CDB - $1",
-          "monto": 2000.0
+          "monto": 1000.0
         }
       ]
     }
