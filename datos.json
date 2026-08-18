@@ -1,18 +1,18 @@
 {
   "generado": {
-    "utc": "2026-08-18T00:30:31Z",
-    "cuenta_local": "2026-08-17 18:30",
+    "utc": "2026-08-18T12:31:39Z",
+    "cuenta_local": "2026-08-18 06:31",
     "zona": "GMT-6",
-    "proxima_actualizacion": "07:10",
-    "horas_transcurridas_dia_cuenta": 18
+    "proxima_actualizacion": "13:10",
+    "horas_transcurridas_dia_cuenta": 6
   },
   "ciclo": {
     "nombre": "septiembre",
-    "dia": 10,
+    "dia": 11,
     "duracion": 30,
     "evento_inicio": "2026-09-05",
     "evento_fin": "2026-09-06",
-    "dias_para_evento": 19,
+    "dias_para_evento": 18,
     "ciclo_anterior": "agosto"
   },
   "inmersiones": [
@@ -68,46 +68,46 @@
     }
   ],
   "desde_ultima": {
-    "hora": "12:11",
-    "compras": 5,
-    "delta_cpa": 0.0
+    "hora": "18:30",
+    "compras": 0,
+    "delta_cpa": -2.51
   },
   "pilares": {
     "ventas": {
       "kpi": {
         "compras": 36,
-        "inversion": 22592.62
+        "inversion": 23580.03
       },
       "termometro": {
-        "cpa_7d": 645.42,
-        "mediana_30d": 704.9
+        "cpa_7d": 629.21,
+        "mediana_30d": 695.26
       },
       "atencion": {
-        "cpm": 249.57,
-        "frecuencia": 2.58,
-        "impresiones": 80171,
-        "alcance": 31032,
-        "mediana_cpm_30d": 282.15
+        "cpm": 251.64,
+        "frecuencia": 2.62,
+        "impresiones": 90015,
+        "alcance": 34380,
+        "mediana_cpm_30d": 285.87
       },
       "embudo_7d": {
-        "gasto": 20008.07,
-        "clics": 1231,
-        "visitas": 929,
-        "checkouts": 126,
-        "compras": 31
+        "gasto": 22651.63,
+        "clics": 1298,
+        "visitas": 978,
+        "checkouts": 137,
+        "compras": 36
       },
       "escalera_7d": {
         "actual": {
-          "por_clic": 16.25,
-          "por_visita": 21.54,
-          "por_checkout": 158.79,
-          "por_compra": 645.42
+          "por_clic": 17.45,
+          "por_visita": 23.16,
+          "por_checkout": 165.34,
+          "por_compra": 629.21
         },
         "mediana_30d": {
           "por_clic": 21.46,
           "por_visita": 28.84,
-          "por_checkout": 189.22,
-          "por_compra": 704.9
+          "por_checkout": 190.47,
+          "por_compra": 695.26
         }
       },
       "series": {
@@ -155,6 +155,7 @@
             19,
             25,
             31,
+            36,
             36
           ],
           "anterior": [
@@ -193,8 +194,9 @@
           526.49,
           704.9,
           612.69,
-          609.99,
-          516.91
+          610.0,
+          670.76,
+          null
         ],
         "ritmo_dia": {
           "horas": [
@@ -204,61 +206,25 @@
             3,
             4,
             5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18
+            6
           ],
           "gasto_acum": [
-            55.73,
-            90.55,
-            107.76,
-            118.56,
-            132.05,
-            212.32,
-            408.3,
-            720.52,
-            1017.89,
-            1263.9,
-            1486.63,
-            1660.04,
-            1857.74,
-            1967.2,
-            2119.14,
-            2257.6,
-            2426.88,
-            2552.62,
-            2588.63
+            71.61,
+            92.81,
+            99.11,
+            107.94,
+            134.55,
+            191.8,
+            218.12
           ],
           "gasto_semana_pasada": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            78.87,
-            173.65,
-            303.27,
-            377.09,
-            434.22,
-            479.33,
-            506.18,
-            533.99,
-            567.52,
-            595.11,
-            620.15
+            96.47,
+            120.51,
+            133.54,
+            137.83,
+            163.97,
+            206.79,
+            272.65
           ],
           "compras_por_hora": [
             0,
@@ -267,25 +233,12 @@
             0,
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            2,
-            2,
-            0,
             0
           ]
         },
         "tendencia": {
           "granularidad": "diaria",
           "labels": [
-            "2026-07-21",
             "2026-07-22",
             "2026-07-23",
             "2026-07-24",
@@ -312,10 +265,10 @@
             "2026-08-14",
             "2026-08-15",
             "2026-08-16",
-            "2026-08-17"
+            "2026-08-17",
+            "2026-08-18"
           ],
           "gasto": [
-            8011.56,
             3866.06,
             1986.21,
             4180.66,
@@ -341,11 +294,11 @@
             3158.95,
             2819.61,
             3676.14,
-            3659.95,
-            2584.55
+            3660.01,
+            3353.78,
+            218.12
           ],
           "cpa": [
-            2002.89,
             966.51,
             662.07,
             1393.55,
@@ -371,28 +324,85 @@
             526.49,
             704.9,
             612.69,
-            609.99,
-            516.91
+            610.0,
+            670.76,
+            null
           ]
         }
       },
       "totales": {
-        "septiembre": 22592.62,
+        "septiembre": 23580.03,
         "agosto": 107923.63
       },
       "conjuntos": [
+        {
+          "id": "f3e93e0a",
+          "nombre": "LAL Ad 24 Winnercompradores4% (Ascensor) - Copia",
+          "campania": "🟠 TESTEOS ROL®",
+          "presupuesto": 300.0,
+          "gasto": 0.0,
+          "compras": 0,
+          "checkouts": 0,
+          "visitas": 0,
+          "clics": 0,
+          "frecuencia": 0.0,
+          "cpm": 0.0,
+          "es_test": true
+        },
+        {
+          "id": "f77afb06",
+          "nombre": "Test Broad 3% compradores - Copia",
+          "campania": "🟠 TESTEOS ROL®",
+          "presupuesto": 245.0,
+          "gasto": 0.0,
+          "compras": 0,
+          "checkouts": 0,
+          "visitas": 0,
+          "clics": 0,
+          "frecuencia": 0.0,
+          "cpm": 0.0,
+          "es_test": true
+        },
+        {
+          "id": "90e97a82",
+          "nombre": "Test Broad 10% LAL - Copia",
+          "campania": "🟠 TESTEOS ROL®",
+          "presupuesto": 200.0,
+          "gasto": 0.0,
+          "compras": 0,
+          "checkouts": 0,
+          "visitas": 0,
+          "clics": 0,
+          "frecuencia": 0.0,
+          "cpm": 0.0,
+          "es_test": true
+        },
+        {
+          "id": "53d9131e",
+          "nombre": "LOOK&LIKE 4%",
+          "campania": "🟠 TESTEOS ROL®",
+          "presupuesto": 200.0,
+          "gasto": 0.0,
+          "compras": 0,
+          "checkouts": 0,
+          "visitas": 0,
+          "clics": 0,
+          "frecuencia": 0.0,
+          "cpm": 0.0,
+          "es_test": true
+        },
         {
           "id": "eb73994b",
           "nombre": "Retargeting 1 · Audiencia Interesada - 13Ago®",
           "campania": "🔴 MOFU · RETARGETING | ABO",
           "presupuesto": 300.0,
-          "gasto": 1196.68,
+          "gasto": 1506.29,
           "compras": 1,
           "checkouts": 4,
-          "visitas": 49,
-          "clics": 66,
-          "frecuencia": 2.3,
-          "cpm": 217.14,
+          "visitas": 54,
+          "clics": 74,
+          "frecuencia": 2.56,
+          "cpm": 218.71,
           "es_test": true
         },
         {
@@ -400,13 +410,13 @@
           "nombre": "RMK | Interesados NO Compraron | 11Ago®",
           "campania": "🔴BOFU - REMARKETING -11Ago®",
           "presupuesto": 360.0,
-          "gasto": 1584.19,
+          "gasto": 1956.25,
           "compras": 4,
-          "checkouts": 13,
-          "visitas": 78,
-          "clics": 103,
-          "frecuencia": 1.76,
-          "cpm": 282.99,
+          "checkouts": 15,
+          "visitas": 89,
+          "clics": 117,
+          "frecuencia": 1.85,
+          "cpm": 281.47,
           "es_test": false
         },
         {
@@ -414,13 +424,13 @@
           "nombre": "07_LOOK&LIKE 4%(EntrevistaTeff)®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 250.0,
-          "gasto": 1398.23,
+          "gasto": 1663.09,
           "compras": 3,
           "checkouts": 16,
-          "visitas": 77,
-          "clics": 94,
-          "frecuencia": 1.46,
-          "cpm": 283.21,
+          "visitas": 81,
+          "clics": 102,
+          "frecuencia": 1.48,
+          "cpm": 288.73,
           "es_test": true
         },
         {
@@ -428,13 +438,13 @@
           "nombre": "06LOOK&LIKE 4%(CarruselBlanco)®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 240.0,
-          "gasto": 1222.24,
-          "compras": 4,
-          "checkouts": 12,
-          "visitas": 55,
-          "clics": 78,
-          "frecuencia": 1.75,
-          "cpm": 206.74,
+          "gasto": 1481.66,
+          "compras": 7,
+          "checkouts": 16,
+          "visitas": 71,
+          "clics": 98,
+          "frecuencia": 1.76,
+          "cpm": 199.58,
           "es_test": true
         },
         {
@@ -442,13 +452,13 @@
           "nombre": "05_LOOK&LIKE 4%(Parque)®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 250.0,
-          "gasto": 1408.07,
+          "gasto": 1674.8,
           "compras": 1,
           "checkouts": 8,
-          "visitas": 44,
-          "clics": 56,
-          "frecuencia": 1.76,
-          "cpm": 321.62,
+          "visitas": 46,
+          "clics": 59,
+          "frecuencia": 1.84,
+          "cpm": 336.31,
           "es_test": true
         },
         {
@@ -456,13 +466,13 @@
           "nombre": "04_LOOK&LIKE 4%(Ascensor)®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 250.0,
-          "gasto": 1431.25,
-          "compras": 3,
-          "checkouts": 8,
-          "visitas": 52,
-          "clics": 69,
-          "frecuencia": 1.35,
-          "cpm": 365.39,
+          "gasto": 1745.06,
+          "compras": 4,
+          "checkouts": 10,
+          "visitas": 61,
+          "clics": 81,
+          "frecuencia": 1.33,
+          "cpm": 377.23,
           "es_test": true
         },
         {
@@ -470,13 +480,13 @@
           "nombre": "02_LOOK&LIKE 4%®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 200.0,
-          "gasto": 1351.09,
-          "compras": 2,
-          "checkouts": 6,
-          "visitas": 80,
-          "clics": 97,
+          "gasto": 1567.26,
+          "compras": 3,
+          "checkouts": 8,
+          "visitas": 88,
+          "clics": 107,
           "frecuencia": 1.25,
-          "cpm": 250.95,
+          "cpm": 250.0,
           "es_test": true
         },
         {
@@ -484,13 +494,13 @@
           "nombre": "Test Broad 10% LAL®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 300.0,
-          "gasto": 1560.9,
+          "gasto": 1861.63,
           "compras": 3,
-          "checkouts": 9,
-          "visitas": 51,
-          "clics": 76,
-          "frecuencia": 1.87,
-          "cpm": 304.51,
+          "checkouts": 10,
+          "visitas": 63,
+          "clics": 92,
+          "frecuencia": 1.93,
+          "cpm": 314.2,
           "es_test": true
         },
         {
@@ -498,98 +508,98 @@
           "nombre": "24 COACHING Y TERAPEUTA IMAGENES TEXTO®",
           "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "presupuesto": 276.0,
-          "gasto": 1365.33,
+          "gasto": 1665.41,
           "compras": 3,
-          "checkouts": 11,
-          "visitas": 47,
-          "clics": 71,
-          "frecuencia": 2.11,
-          "cpm": 161.44,
-          "es_test": true
-        },
-        {
-          "id": "099c5bf4",
-          "nombre": "12_Prueba_Ads_Ganadores_Grupo2 - 10Agosto®",
-          "campania": "🟠 TOFU - VENTA - TESTEOS ROL®",
-          "presupuesto": 300.0,
-          "gasto": 2038.56,
-          "compras": 1,
           "checkouts": 12,
-          "visitas": 121,
-          "clics": 144,
-          "frecuencia": 1.4,
-          "cpm": 255.2,
+          "visitas": 56,
+          "clics": 83,
+          "frecuencia": 2.26,
+          "cpm": 162.8,
           "es_test": true
         },
         {
           "id": "bdb31984",
           "nombre": "24_Prueba_Ads_Ganadores_Grupo1 - 10Agosto®",
-          "campania": "🟠 TOFU - VENTA - TESTEOS ROL®",
+          "campania": "🟠 TESTEOS ROL®",
           "presupuesto": 300.0,
-          "gasto": 2038.47,
+          "gasto": 2074.82,
           "compras": 4,
           "checkouts": 15,
-          "visitas": 119,
-          "clics": 157,
-          "frecuencia": 1.56,
-          "cpm": 254.68,
+          "visitas": 112,
+          "clics": 146,
+          "frecuencia": 1.57,
+          "cpm": 264.54,
           "es_test": true
         }
       ],
       "anuncios": [
         {
+          "id": "2a7cc0e9",
+          "nombre": "V02_Junio",
+          "conjunto": "Test Broad 10% LAL - Copia",
+          "gasto": 0.0,
+          "cpm": 0.0,
+          "clics": 0,
+          "visitas": 0,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.0,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "2a18d8ca",
+          "nombre": "V05_Junio",
+          "conjunto": "Test Broad 10% LAL - Copia",
+          "gasto": 0.0,
+          "cpm": 0.0,
+          "clics": 0,
+          "visitas": 0,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.0,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
           "id": "acbad4cb",
           "nombre": "GRUPO_10ADS_GANADORES_AD24",
           "conjunto": "24_Prueba_Ads_Ganadores_Grupo1 - 10Agosto®",
-          "gasto": 2038.47,
-          "cpm": 254.68,
-          "clics": 157,
-          "visitas": 119,
+          "gasto": 2074.82,
+          "cpm": 264.54,
+          "clics": 146,
+          "visitas": 112,
           "checkouts": 15,
           "compras": 4,
-          "ctr_enlace": 1.96,
-          "cpa": 509.62,
+          "ctr_enlace": 1.86,
+          "cpa": 518.71,
           "categoria": "ganador"
-        },
-        {
-          "id": "39418f3d",
-          "nombre": "GRUPO_10ADS_GANADORES_AD12",
-          "conjunto": "12_Prueba_Ads_Ganadores_Grupo2 - 10Agosto®",
-          "gasto": 2038.56,
-          "cpm": 255.2,
-          "clics": 144,
-          "visitas": 121,
-          "checkouts": 12,
-          "compras": 1,
-          "ctr_enlace": 1.8,
-          "cpa": 2038.56,
-          "categoria": "detener"
         },
         {
           "id": "33e90d23",
           "nombre": "AD07_29Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 488.06,
-          "cpm": 202.51,
-          "clics": 31,
-          "visitas": 25,
+          "gasto": 664.98,
+          "cpm": 209.57,
+          "clics": 35,
+          "visitas": 26,
           "checkouts": 3,
           "compras": 1,
-          "ctr_enlace": 1.29,
-          "cpa": 488.06,
-          "categoria": "ganador"
+          "ctr_enlace": 1.1,
+          "cpa": 664.98,
+          "categoria": "prometedor"
         },
         {
           "id": "f3efab1d",
           "nombre": "AD01_06Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 241.37,
-          "cpm": 211.54,
-          "clics": 12,
-          "visitas": 7,
+          "gasto": 327.8,
+          "cpm": 210.53,
+          "clics": 14,
+          "visitas": 9,
           "checkouts": 1,
           "compras": 0,
-          "ctr_enlace": 1.05,
+          "ctr_enlace": 0.9,
           "cpa": null,
           "categoria": "sin_senal"
         },
@@ -597,13 +607,13 @@
           "id": "5295f109",
           "nombre": "AD0813_29Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 212.6,
-          "cpm": 225.21,
-          "clics": 12,
-          "visitas": 9,
+          "gasto": 243.78,
+          "cpm": 229.33,
+          "clics": 13,
+          "visitas": 10,
           "checkouts": 0,
           "compras": 0,
-          "ctr_enlace": 1.27,
+          "ctr_enlace": 1.22,
           "cpa": null,
           "categoria": "sin_senal"
         },
@@ -611,13 +621,13 @@
           "id": "085867ce",
           "nombre": "AD01_29Jul®",
           "conjunto": "Retargeting 1 · Audiencia Interesada - 13Ago®",
-          "gasto": 254.65,
-          "cpm": 250.64,
-          "clics": 11,
-          "visitas": 8,
+          "gasto": 269.73,
+          "cpm": 246.55,
+          "clics": 12,
+          "visitas": 9,
           "checkouts": 0,
           "compras": 0,
-          "ctr_enlace": 1.08,
+          "ctr_enlace": 1.1,
           "cpa": null,
           "categoria": "sin_senal"
         },
@@ -625,147 +635,301 @@
           "id": "7fbdad31",
           "nombre": "RMK-AD_03 | 06Jul ®",
           "conjunto": "RMK | Interesados NO Compraron | 11Ago®",
-          "gasto": 1483.02,
-          "cpm": 287.91,
-          "clics": 99,
-          "visitas": 75,
-          "checkouts": 13,
+          "gasto": 1855.08,
+          "cpm": 285.27,
+          "clics": 113,
+          "visitas": 86,
+          "checkouts": 15,
           "compras": 4,
-          "ctr_enlace": 1.92,
-          "cpa": 370.75,
+          "ctr_enlace": 1.74,
+          "cpa": 463.77,
           "categoria": "ganador"
         },
         {
           "id": "8d8d2cc1",
           "nombre": "03 AD TX01®",
           "conjunto": "24 COACHING Y TERAPEUTA IMAGENES TEXTO®",
-          "gasto": 1365.33,
-          "cpm": 161.44,
-          "clics": 71,
-          "visitas": 47,
-          "checkouts": 11,
+          "gasto": 1665.41,
+          "cpm": 162.8,
+          "clics": 83,
+          "visitas": 56,
+          "checkouts": 12,
           "compras": 3,
-          "ctr_enlace": 0.84,
-          "cpa": 455.11,
+          "ctr_enlace": 0.81,
+          "cpa": 555.14,
           "categoria": "ganador"
         },
         {
           "id": "bc4e495d",
           "nombre": "LaLADEntrevistaTeff®",
           "conjunto": "07_LOOK&LIKE 4%(EntrevistaTeff)®",
-          "gasto": 1398.23,
-          "cpm": 283.21,
-          "clics": 94,
-          "visitas": 77,
+          "gasto": 1663.09,
+          "cpm": 288.73,
+          "clics": 102,
+          "visitas": 81,
           "checkouts": 16,
           "compras": 3,
-          "ctr_enlace": 1.9,
-          "cpa": 466.08,
+          "ctr_enlace": 1.77,
+          "cpa": 554.36,
           "categoria": "ganador"
         },
         {
           "id": "654cb509",
           "nombre": "V02_Junio",
           "conjunto": "Test Broad 10% LAL®",
-          "gasto": 1560.9,
-          "cpm": 304.51,
-          "clics": 76,
-          "visitas": 51,
-          "checkouts": 9,
+          "gasto": 1861.63,
+          "cpm": 314.2,
+          "clics": 92,
+          "visitas": 63,
+          "checkouts": 10,
           "compras": 3,
-          "ctr_enlace": 1.48,
-          "cpa": 520.3,
-          "categoria": "ganador"
+          "ctr_enlace": 1.55,
+          "cpa": 620.54,
+          "categoria": "prometedor"
         },
         {
           "id": "afbb340d",
           "nombre": "LaLAD24Parque®",
           "conjunto": "05_LOOK&LIKE 4%(Parque)®",
-          "gasto": 1408.07,
-          "cpm": 321.62,
-          "clics": 56,
-          "visitas": 44,
+          "gasto": 1674.8,
+          "cpm": 336.31,
+          "clics": 59,
+          "visitas": 46,
           "checkouts": 8,
           "compras": 1,
-          "ctr_enlace": 1.28,
-          "cpa": 1408.07,
-          "categoria": "sin_senal"
+          "ctr_enlace": 1.18,
+          "cpa": 1674.8,
+          "categoria": "detener"
         },
         {
           "id": "526784ef",
           "nombre": "src=LaLADCarruselBlanco®",
           "conjunto": "06LOOK&LIKE 4%(CarruselBlanco)®",
-          "gasto": 1222.24,
-          "cpm": 206.74,
-          "clics": 78,
-          "visitas": 55,
-          "checkouts": 12,
-          "compras": 4,
+          "gasto": 1481.66,
+          "cpm": 199.58,
+          "clics": 98,
+          "visitas": 71,
+          "checkouts": 16,
+          "compras": 7,
           "ctr_enlace": 1.32,
-          "cpa": 305.56,
+          "cpa": 211.67,
           "categoria": "ganador"
+        },
+        {
+          "id": "39418f3d",
+          "nombre": "GRUPO_10ADS_GANADORES_AD12",
+          "conjunto": "12_Prueba_Ads_Ganadores_Grupo2 - 10Agosto®",
+          "gasto": 2042.3,
+          "cpm": 250.22,
+          "clics": 119,
+          "visitas": 101,
+          "checkouts": 11,
+          "compras": 1,
+          "ctr_enlace": 1.46,
+          "cpa": 2042.3,
+          "categoria": "detener"
+        },
+        {
+          "id": "6bee3a61",
+          "nombre": "AD01_29Jul®",
+          "conjunto": "Retargeting 2 · CasiCompran- 13Ago®",
+          "gasto": 121.73,
+          "cpm": 297.63,
+          "clics": 3,
+          "visitas": 3,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.73,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "c5279420",
+          "nombre": "AD10_29Jul®",
+          "conjunto": "Retargeting 2 · CasiCompran- 13Ago®",
+          "gasto": 165.86,
+          "cpm": 349.18,
+          "clics": 1,
+          "visitas": 0,
+          "checkouts": 2,
+          "compras": 1,
+          "ctr_enlace": 0.21,
+          "cpa": 165.86,
+          "categoria": "ganador"
+        },
+        {
+          "id": "25d36cc2",
+          "nombre": "AD11_29Jul®",
+          "conjunto": "Retargeting 2 · CasiCompran- 13Ago®",
+          "gasto": 376.56,
+          "cpm": 287.67,
+          "clics": 11,
+          "visitas": 7,
+          "checkouts": 3,
+          "compras": 0,
+          "ctr_enlace": 0.84,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "bc8edeff",
+          "nombre": "VV02 · DOLOR-ROLEPLAY · l... | 11®",
+          "conjunto": "01_LOOK&LIKE 4%®",
+          "gasto": 490.9,
+          "cpm": 183.65,
+          "clics": 34,
+          "visitas": 8,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 1.27,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "30235a42",
+          "nombre": "FRANK3",
+          "conjunto": "FRANK3®",
+          "gasto": 1241.73,
+          "cpm": 192.22,
+          "clics": 126,
+          "visitas": 103,
+          "checkouts": 4,
+          "compras": 1,
+          "ctr_enlace": 1.95,
+          "cpa": 1241.73,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "2660cec9",
+          "nombre": "AD05 | Años preparandote| 11AGO",
+          "conjunto": "03_LOOK&LIKE 4%®",
+          "gasto": 1016.28,
+          "cpm": 279.74,
+          "clics": 45,
+          "visitas": 35,
+          "checkouts": 3,
+          "compras": 0,
+          "ctr_enlace": 1.24,
+          "cpa": null,
+          "categoria": "checkout"
+        },
+        {
+          "id": "a2a7197a",
+          "nombre": "AD24 -1",
+          "conjunto": "LAL Ad 24 Winnercompradores4% (Ascensor) - Copia",
+          "gasto": 0.0,
+          "cpm": 0.0,
+          "clics": 0,
+          "visitas": 0,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.0,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "52e19d35",
+          "nombre": "AD24 -2",
+          "conjunto": "LAL Ad 24 Winnercompradores4% (Ascensor) - Copia",
+          "gasto": 0.0,
+          "cpm": 0.0,
+          "clics": 0,
+          "visitas": 0,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.0,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "42122d05",
+          "nombre": "AD12",
+          "conjunto": "LOOK&LIKE 4%",
+          "gasto": 0.0,
+          "cpm": 0.0,
+          "clics": 0,
+          "visitas": 0,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.0,
+          "cpa": null,
+          "categoria": "sin_senal"
+        },
+        {
+          "id": "f4be2a79",
+          "nombre": "AD_20",
+          "conjunto": "Test Broad 3% compradores - Copia",
+          "gasto": 0.0,
+          "cpm": 0.0,
+          "clics": 0,
+          "visitas": 0,
+          "checkouts": 0,
+          "compras": 0,
+          "ctr_enlace": 0.0,
+          "cpa": null,
+          "categoria": "sin_senal"
         },
         {
           "id": "cc7e73c4",
           "nombre": "LaLAD24Ascensor®",
           "conjunto": "04_LOOK&LIKE 4%(Ascensor)®",
-          "gasto": 1431.25,
-          "cpm": 365.39,
-          "clics": 69,
-          "visitas": 52,
-          "checkouts": 8,
-          "compras": 3,
-          "ctr_enlace": 1.76,
-          "cpa": 477.08,
+          "gasto": 1745.06,
+          "cpm": 377.23,
+          "clics": 81,
+          "visitas": 61,
+          "checkouts": 10,
+          "compras": 4,
+          "ctr_enlace": 1.75,
+          "cpa": 436.26,
           "categoria": "ganador"
         },
         {
           "id": "b80b8721",
           "nombre": "AD12",
           "conjunto": "02_LOOK&LIKE 4%®",
-          "gasto": 1351.09,
-          "cpm": 250.95,
-          "clics": 97,
-          "visitas": 80,
-          "checkouts": 6,
-          "compras": 2,
-          "ctr_enlace": 1.8,
-          "cpa": 675.54,
-          "categoria": "prometedor"
+          "gasto": 1567.26,
+          "cpm": 250.0,
+          "clics": 107,
+          "visitas": 88,
+          "checkouts": 8,
+          "compras": 3,
+          "ctr_enlace": 1.71,
+          "cpa": 522.42,
+          "categoria": "ganador"
         }
       ],
       "campanias": [
         {
           "nombre": "🔴 MOFU · RETARGETING | ABO",
           "estado": "entregando",
-          "gasto_hoy": 208.16,
+          "gasto_hoy": 24.92,
           "compras_hoy": 0,
-          "cpa_7d": 930.41,
-          "pct_presupuesto": 69.4
+          "cpa_7d": 1085.22,
+          "pct_presupuesto": 8.3
         },
         {
           "nombre": "🔴BOFU - REMARKETING -11Ago®",
           "estado": "entregando",
-          "gasto_hoy": 290.74,
+          "gasto_hoy": 14.77,
           "compras_hoy": 0,
-          "cpa_7d": 396.05,
-          "pct_presupuesto": 80.8
+          "cpa_7d": 489.06,
+          "pct_presupuesto": 4.1
         },
         {
           "nombre": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
           "estado": "entregando",
-          "gasto_hoy": 1481.98,
-          "compras_hoy": 5,
-          "cpa_7d": 624.3,
-          "pct_presupuesto": 83.9
+          "gasto_hoy": 147.71,
+          "compras_hoy": 0,
+          "cpa_7d": 576.31,
+          "pct_presupuesto": 8.4
         },
         {
-          "nombre": "🟠 TOFU - VENTA - TESTEOS ROL®",
+          "nombre": "🟠 TESTEOS ROL®",
           "estado": "entregando",
-          "gasto_hoy": 599.26,
+          "gasto_hoy": 25.99,
           "compras_hoy": 0,
-          "cpa_7d": 815.41,
-          "pct_presupuesto": 99.9
+          "cpa_7d": 823.42,
+          "pct_presupuesto": 2.1
         }
       ],
       "heatmap": {
@@ -795,60 +959,8 @@
             1,
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
+            2,
+            2,
             0,
             0,
             0,
@@ -859,14 +971,14 @@
           ],
           [
             0,
-            1,
             0,
             0,
             0,
             0,
             0,
             0,
-            1,
+            0,
+            0,
             0,
             0,
             0,
@@ -884,6 +996,58 @@
             0
           ],
           [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
             0,
             0,
             0,
@@ -898,15 +1062,15 @@
             0,
             0,
             0,
+            1,
+            0,
+            1,
             0,
             0,
+            1,
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            1,
             0
           ],
           [
@@ -926,7 +1090,7 @@
             0,
             0,
             0,
-            0,
+            1,
             0,
             0,
             0,
@@ -955,10 +1119,10 @@
             0,
             0,
             0,
+            1,
             0,
             0,
-            0,
-            0,
+            1,
             0
           ]
         ]
@@ -977,16 +1141,16 @@
           "monto": 1766.0
         },
         {
-          "nombre": "🟠 TOFU - VENTA - TESTEOS ROL®",
-          "monto": 600.0
+          "nombre": "🟠 TESTEOS ROL®",
+          "monto": 1245.0
         }
       ]
     },
     "seguidores": {
       "kpi": {
-        "visitas_perfil": 9022,
+        "visitas_perfil": 9654,
         "costo_por_visita": 0.97,
-        "inversion": 8741.43
+        "inversion": 9327.25
       },
       "series": {
         "acumulado": {
@@ -1001,7 +1165,8 @@
             "d7",
             "d8",
             "d9",
-            "d10"
+            "d10",
+            "d11"
           ],
           "actual": [
             1027,
@@ -1013,13 +1178,13 @@
             6537,
             7465,
             8539,
-            9022
+            9481,
+            9654
           ]
         },
         "tendencia": {
           "granularidad": "diaria",
           "labels": [
-            "2026-07-21",
             "2026-07-22",
             "2026-07-23",
             "2026-07-24",
@@ -1046,10 +1211,10 @@
             "2026-08-14",
             "2026-08-15",
             "2026-08-16",
-            "2026-08-17"
+            "2026-08-17",
+            "2026-08-18"
           ],
           "gasto": [
-            932.83,
             862.23,
             846.23,
             829.96,
@@ -1076,7 +1241,8 @@
             850.73,
             908.12,
             1024.64,
-            436.62
+            866.89,
+            155.55
           ]
         }
       },
@@ -1084,7 +1250,7 @@
         {
           "nombre": "🟢 Follow Me Ads - Trafico",
           "estado": "entregando",
-          "gasto_hoy": 434.97
+          "gasto_hoy": 154.78
         }
       ],
       "anuncios": [],
@@ -1097,9 +1263,9 @@
     },
     "leads": {
       "kpi": {
-        "leads": 1476,
-        "cpl": 24.33,
-        "inversion": 35909.11
+        "leads": 1523,
+        "cpl": 24.15,
+        "inversion": 36775.57
       },
       "series": {
         "acumulado": {
@@ -1114,7 +1280,8 @@
             "d7",
             "d8",
             "d9",
-            "d10"
+            "d10",
+            "d11"
           ],
           "actual": [
             60,
@@ -1126,13 +1293,13 @@
             1181,
             1280,
             1392,
-            1476
+            1510,
+            1523
           ]
         },
         "tendencia": {
           "granularidad": "diaria",
           "labels": [
-            "2026-07-21",
             "2026-07-22",
             "2026-07-23",
             "2026-07-24",
@@ -1159,10 +1326,10 @@
             "2026-08-14",
             "2026-08-15",
             "2026-08-16",
-            "2026-08-17"
+            "2026-08-17",
+            "2026-08-18"
           ],
           "gasto": [
-            0.0,
             0.0,
             0.0,
             650.11,
@@ -1188,8 +1355,9 @@
             2380.38,
             1929.99,
             2377.67,
-            3702.8,
-            2413.64
+            3703.18,
+            3134.56,
+            145.16
           ]
         }
       },
@@ -1197,12 +1365,12 @@
         {
           "nombre": "🟡Captación CDB - Test",
           "estado": "entregando",
-          "gasto_hoy": 1329.6
+          "gasto_hoy": 61.53
         },
         {
           "nombre": "🟡MASTERCLASS GRATIS - CDB - $1",
           "estado": "entregando",
-          "gasto_hoy": 1079.51
+          "gasto_hoy": 78.76
         }
       ],
       "anuncios": [],
