@@ -1,10 +1,10 @@
 {
  "generado": {
-  "utc": "2026-08-26T12:44:37Z",
-  "cuenta_local": "2026-08-26 06:44",
+  "utc": "2026-08-26T18:31:15Z",
+  "cuenta_local": "2026-08-26 12:31",
   "zona": "GMT-6",
-  "proxima_actualizacion": "13:10",
-  "horas_transcurridas_dia_cuenta": 6
+  "proxima_actualizacion": "19:10",
+  "horas_transcurridas_dia_cuenta": 12
  },
  "ciclo": {
   "nombre": "septiembre",
@@ -67,30 +67,25 @@
    "evento_fin": "2026-09-06"
   }
  ],
- "desde_ultima": {
-  "hora": "12:32",
-  "compras": 4,
-  "delta_cpa": -0.0397
- },
  "pilares": {
   "ventas": {
    "kpi": {
-    "compras": 97,
-    "inversion": 61780.36
+    "compras": 98,
+    "inversion": 63604.62
    },
    "termometro": {
-    "cpa_7d": 565.16,
-    "mediana_30d": 612.69
+    "cpa_7d": 565.38,
+    "mediana_30d": 671.82
    },
    "atencion": {
-    "cpm": 258.31,
-    "frecuencia": 2.8309,
-    "impresiones": 120335,
-    "alcance": 42507,
-    "mediana_cpm_30d": 271.75
+    "cpm": 258.36,
+    "frecuencia": 2.8312,
+    "impresiones": 120362,
+    "alcance": 42512,
+    "mediana_cpm_30d": 268.06
    },
    "embudo_7d": {
-    "gasto": 31084.02,
+    "gasto": 31096.17,
     "clics": 2478,
     "visitas": 2000,
     "checkouts": 212,
@@ -98,16 +93,16 @@
    },
    "escalera_7d": {
     "actual": {
-     "por_clic": 12.54,
-     "por_visita": 15.54,
-     "por_checkout": 146.62,
-     "por_compra": 565.16
+     "por_clic": 12.55,
+     "por_visita": 15.55,
+     "por_checkout": 146.68,
+     "por_compra": 565.38
     },
     "mediana_30d": {
      "por_clic": 16.86,
      "por_visita": 22.34,
      "por_checkout": 167.71,
-     "por_compra": 612.69
+     "por_compra": 671.82
     }
    },
    "series": {
@@ -153,7 +148,7 @@
       79,
       86,
       96,
-      97
+      98
      ],
      "anterior": [
       10,
@@ -199,9 +194,9 @@
      438.17,
      671.82,
      553.34,
-     710.97,
-     478.99,
-     354.88
+     710.99,
+     480.2,
+     1083.49
     ],
     "ritmo_dia": {
      "horas": [
@@ -211,16 +206,28 @@
       3,
       4,
       5,
-      6
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
      ],
      "gasto_acum": [
-      61.56,
-      100.67,
-      114.97,
-      124.5,
-      145.83,
-      256.77,
-      366.72
+      64.05,
+      103.72,
+      118.18,
+      128.35,
+      150.08,
+      266.39,
+      509.56,
+      886.84,
+      1285.68,
+      1598.35,
+      1863.76,
+      2110.5,
+      2190.83
      ],
      "gasto_semana_pasada": [
       63.01,
@@ -229,7 +236,13 @@
       100.87,
       119.82,
       177.2,
-      306.51
+      306.51,
+      599.3,
+      927.88,
+      1249.26,
+      1485.67,
+      1634.03,
+      1850.51
      ],
      "compras_por_hora": [
       0,
@@ -238,6 +251,12 @@
       0,
       0,
       1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
       0
      ]
     },
@@ -299,9 +318,9 @@
       4819.86,
       4702.74,
       5533.42,
-      4976.81,
-      4789.93,
-      354.88
+      4976.91,
+      4801.98,
+      2166.99
      ],
      "cpa": [
       685.62,
@@ -324,34 +343,118 @@
       610.26,
       672.86,
       803.18,
-      1255.03,
+      1255.04,
       698.78,
       438.17,
       671.82,
       553.34,
-      710.97,
-      478.99,
-      354.88
+      710.99,
+      480.2,
+      1083.49
      ]
     }
    },
    "totales": {
-    "septiembre": 61780.36,
+    "septiembre": 63604.62,
     "agosto": 107923.63
    },
    "conjuntos": [
+    {
+     "id": "6211e1cb",
+     "nombre": "Broad 26Ago_Hector_En_Cama_v3",
+     "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
+     "presupuesto": 200.0,
+     "gasto": 0.0,
+     "compras": 0,
+     "checkouts": 0,
+     "visitas": 0,
+     "clics": 0,
+     "frecuencia": 0.0,
+     "cpm": 0.0,
+     "es_test": true
+    },
+    {
+     "id": "5009dfb0",
+     "nombre": "Broad 26Ago_Hector_En_Cama_v2",
+     "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
+     "presupuesto": 200.0,
+     "gasto": 0.0,
+     "compras": 0,
+     "checkouts": 0,
+     "visitas": 0,
+     "clics": 0,
+     "frecuencia": 0.0,
+     "cpm": 0.0,
+     "es_test": true
+    },
+    {
+     "id": "70147f4b",
+     "nombre": "Broad 26Ago_Hector_En_Cama",
+     "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
+     "presupuesto": 200.0,
+     "gasto": 0.0,
+     "compras": 0,
+     "checkouts": 0,
+     "visitas": 0,
+     "clics": 0,
+     "frecuencia": 0.0,
+     "cpm": 0.0,
+     "es_test": true
+    },
+    {
+     "id": "bd9aeac7",
+     "nombre": "26_Ago Creativos Nuevos Agosto Testeo - Ad_Tenebroso",
+     "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
+     "presupuesto": 200.0,
+     "gasto": 0.0,
+     "compras": 0,
+     "checkouts": 0,
+     "visitas": 0,
+     "clics": 0,
+     "frecuencia": 0.0,
+     "cpm": 0.0,
+     "es_test": true
+    },
+    {
+     "id": "32becd46",
+     "nombre": "26_Ago Creativos Nuevos Agosto Testeo_Edad para Iniciar Marca Personal",
+     "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
+     "presupuesto": 200.0,
+     "gasto": 0.0,
+     "compras": 0,
+     "checkouts": 0,
+     "visitas": 0,
+     "clics": 0,
+     "frecuencia": 0.0,
+     "cpm": 0.0,
+     "es_test": true
+    },
+    {
+     "id": "9105877f",
+     "nombre": "Tofu - Estaticos Testeo - Periodico_Cara_Sorpresa",
+     "campania": "🟠 02.Tofu | TESTEOS ROL®",
+     "presupuesto": 200.0,
+     "gasto": 0.0,
+     "compras": 0,
+     "checkouts": 0,
+     "visitas": 0,
+     "clics": 0,
+     "frecuencia": 0.0,
+     "cpm": 0.0,
+     "es_test": true
+    },
     {
      "id": "401ab5cb",
      "nombre": "Transforma tu perfil de IG - Ultima Hora fondo Negro",
      "campania": "🟠 02.Tofu | TESTEOS ROL®",
      "presupuesto": 200.0,
-     "gasto": 260.0,
+     "gasto": 260.08,
      "compras": 1,
      "checkouts": 4,
      "visitas": 12,
      "clics": 18,
-     "frecuencia": 1.423942,
-     "cpm": 120.76,
+     "frecuencia": 1.424603,
+     "cpm": 120.74,
      "es_test": true
     },
     {
@@ -369,31 +472,17 @@
      "es_test": true
     },
     {
-     "id": "707096cc",
-     "nombre": "Tofu - Estaticos Testeo - prueba ad foto Hector",
-     "campania": "🟠 02.Tofu | TESTEOS ROL®",
-     "presupuesto": 200.0,
-     "gasto": 283.15,
-     "compras": 0,
-     "checkouts": 0,
-     "visitas": 6,
-     "clics": 6,
-     "frecuencia": 1.524059,
-     "cpm": 194.34,
-     "es_test": true
-    },
-    {
      "id": "e9ef4d45",
      "nombre": "Transforma tu perfil de IG - adJaviVerde",
      "campania": "🟠 02.Tofu | TESTEOS ROL®",
      "presupuesto": 200.0,
-     "gasto": 269.58,
+     "gasto": 269.66,
      "compras": 0,
      "checkouts": 1,
      "visitas": 7,
      "clics": 10,
-     "frecuencia": 1.535604,
-     "cpm": 181.17,
+     "frecuencia": 1.534501,
+     "cpm": 180.98,
      "es_test": true
     },
     {
@@ -415,13 +504,13 @@
      "nombre": "rmk-ad_01 | 24 Ago",
      "campania": "🟠 02.Tofu | TESTEOS ROL®",
      "presupuesto": 150.0,
-     "gasto": 355.13,
+     "gasto": 359.18,
      "compras": 1,
      "checkouts": 4,
      "visitas": 15,
      "clics": 20,
-     "frecuencia": 1.696915,
-     "cpm": 379.82,
+     "frecuencia": 1.69873,
+     "cpm": 383.74,
      "es_test": true
     },
     {
@@ -429,13 +518,13 @@
      "nombre": "RMK-AD_02 | 24Ago",
      "campania": "🟠 02.Tofu | TESTEOS ROL®",
      "presupuesto": 150.0,
-     "gasto": 357.37,
+     "gasto": 357.59,
      "compras": 1,
      "checkouts": 2,
      "visitas": 11,
      "clics": 14,
-     "frecuencia": 1.708674,
-     "cpm": 342.31,
+     "frecuencia": 1.710311,
+     "cpm": 342.19,
      "es_test": true
     },
     {
@@ -443,14 +532,14 @@
      "nombre": "RMK | Interesados NO Compraron | 06Jul®",
      "campania": "🔴 REMARKETING y RETARGETING",
      "presupuesto": 200.0,
-     "gasto": 929.62,
+     "gasto": 929.83,
      "compras": 2,
      "checkouts": 6,
      "visitas": 23,
      "clics": 39,
-     "frecuencia": 1.640777,
-     "cpm": 366.71,
-     "es_test": false
+     "frecuencia": 1.639948,
+     "cpm": 366.51,
+     "es_test": true
     },
     {
      "id": "beb06eba",
@@ -471,13 +560,13 @@
      "nombre": "Broad Nuevos AdsV09 | Testeo Agosto",
      "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "presupuesto": 350.0,
-     "gasto": 2455.14,
+     "gasto": 2455.25,
      "compras": 3,
      "checkouts": 17,
      "visitas": 107,
      "clics": 126,
-     "frecuencia": 1.877932,
-     "cpm": 271.41,
+     "frecuencia": 1.875803,
+     "cpm": 271.39,
      "es_test": true
     },
     {
@@ -485,13 +574,13 @@
      "nombre": "18_Prueba_Ads_Abierto Te Eligirias?",
      "campania": "🟠 02.Tofu | TESTEOS ROL®",
      "presupuesto": 300.0,
-     "gasto": 2203.0,
+     "gasto": 2203.21,
      "compras": 4,
      "checkouts": 18,
      "visitas": 71,
      "clics": 101,
-     "frecuencia": 1.972854,
-     "cpm": 306.18,
+     "frecuencia": 1.973129,
+     "cpm": 306.17,
      "es_test": true
     },
     {
@@ -499,13 +588,13 @@
      "nombre": "18_Prueba_Ads_LyL4%® - Copia",
      "campania": "🟠 02.Tofu | TESTEOS ROL®",
      "presupuesto": 350.0,
-     "gasto": 3108.61,
+     "gasto": 3110.56,
      "compras": 11,
      "checkouts": 42,
      "visitas": 998,
      "clics": 1199,
-     "frecuencia": 1.418837,
-     "cpm": 154.23,
+     "frecuencia": 1.418978,
+     "cpm": 154.31,
      "es_test": true
     },
     {
@@ -527,13 +616,13 @@
      "nombre": "07_LOOK&LIKE 4%(EntrevistaTeff)®",
      "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "presupuesto": 290.0,
-     "gasto": 1529.98,
+     "gasto": 1530.11,
      "compras": 2,
      "checkouts": 6,
      "visitas": 71,
      "clics": 82,
-     "frecuencia": 1.18916,
-     "cpm": 345.21,
+     "frecuencia": 1.189059,
+     "cpm": 345.09,
      "es_test": false
     },
     {
@@ -541,13 +630,13 @@
      "nombre": "06LOOK&LIKE 4%(CarruselBlanco)®",
      "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "presupuesto": 260.0,
-     "gasto": 1333.24,
+     "gasto": 1333.37,
      "compras": 4,
      "checkouts": 9,
      "visitas": 65,
      "clics": 82,
-     "frecuencia": 1.373365,
-     "cpm": 189.57,
+     "frecuencia": 1.37356,
+     "cpm": 189.56,
      "es_test": false
     },
     {
@@ -569,13 +658,13 @@
      "nombre": "FRANK3®",
      "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "presupuesto": 200.0,
-     "gasto": 649.37,
+     "gasto": 649.95,
      "compras": 0,
      "checkouts": 4,
      "visitas": 28,
      "clics": 42,
-     "frecuencia": 1.276687,
-     "cpm": 312.05,
+     "frecuencia": 1.277914,
+     "cpm": 312.03,
      "es_test": false
     },
     {
@@ -583,13 +672,13 @@
      "nombre": "Test Broad 10% LAL®",
      "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "presupuesto": 200.0,
-     "gasto": 2327.14,
+     "gasto": 2327.76,
      "compras": 1,
      "checkouts": 4,
      "visitas": 48,
      "clics": 65,
-     "frecuencia": 1.608503,
-     "cpm": 459.0,
+     "frecuencia": 1.609137,
+     "cpm": 458.94,
      "es_test": true
     },
     {
@@ -611,30 +700,81 @@
      "nombre": "24 COACHING Y TERAPEUTA IMAGENES TEXTO®",
      "campania": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "presupuesto": 276.0,
-     "gasto": 1894.43,
+     "gasto": 1897.76,
      "compras": 9,
      "checkouts": 17,
      "visitas": 71,
      "clics": 95,
-     "frecuencia": 1.754736,
-     "cpm": 182.61,
+     "frecuencia": 1.753082,
+     "cpm": 182.83,
      "es_test": false
     }
    ],
    "anuncios": [
     {
-     "id": "b16fd1de",
-     "nombre": "Tofu - Estaticos Testeo - prueba ad foto Hector",
-     "conjunto": "Tofu - Estaticos Testeo - prueba ad foto Hector",
-     "gasto": 283.15,
-     "cpm": 194.34,
-     "clics": 6,
-     "visitas": 6,
+     "id": "3af5db2a",
+     "nombre": "26_Ago_Edad para Iniciar Marca Personal",
+     "conjunto": "26_Ago Creativos Nuevos Agosto Testeo_Edad para Iniciar Marca Personal",
+     "gasto": 0.0,
+     "cpm": 0.0,
+     "clics": 0,
+     "visitas": 0,
      "checkouts": 0,
      "compras": 0,
-     "ctr_enlace": 0.4118,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "ctr_enlace": 0.0,
+     "cpa": 0
+    },
+    {
+     "id": "dc4101b9",
+     "nombre": "26_Ago_Ad_Tenebroso",
+     "conjunto": "26_Ago Creativos Nuevos Agosto Testeo - Ad_Tenebroso",
+     "gasto": 0.0,
+     "cpm": 0.0,
+     "clics": 0,
+     "visitas": 0,
+     "checkouts": 0,
+     "compras": 0,
+     "ctr_enlace": 0.0,
+     "cpa": 0
+    },
+    {
+     "id": "c3cf775b",
+     "nombre": "26Ago_Hector_En_Cama",
+     "conjunto": "Broad 26Ago_Hector_En_Cama",
+     "gasto": 0.0,
+     "cpm": 0.0,
+     "clics": 0,
+     "visitas": 0,
+     "checkouts": 0,
+     "compras": 0,
+     "ctr_enlace": 0.0,
+     "cpa": 0
+    },
+    {
+     "id": "6619a603",
+     "nombre": "26Ago_Hector_En_Cama_v2",
+     "conjunto": "Broad 26Ago_Hector_En_Cama_v2",
+     "gasto": 0.0,
+     "cpm": 0.0,
+     "clics": 0,
+     "visitas": 0,
+     "checkouts": 0,
+     "compras": 0,
+     "ctr_enlace": 0.0,
+     "cpa": 0
+    },
+    {
+     "id": "d0125e7f",
+     "nombre": "Tofu - Estaticos Testeo - Periodico_Cara_Sorpresa",
+     "conjunto": "Tofu - Estaticos Testeo - Periodico_Cara_Sorpresa",
+     "gasto": 0.0,
+     "cpm": 0.0,
+     "clics": 0,
+     "visitas": 0,
+     "checkouts": 0,
+     "compras": 0,
+     "ctr_enlace": 0.0,
+     "cpa": 0
     },
     {
      "id": "6431a632",
@@ -647,22 +787,20 @@
      "checkouts": 0,
      "compras": 0,
      "ctr_enlace": 0.4825,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "cpa": 0
     },
     {
      "id": "2f67a694",
      "nombre": "Transforma tu perfil de IG - adJaviVerde",
      "conjunto": "Transforma tu perfil de IG - adJaviVerde",
-     "gasto": 269.58,
-     "cpm": 181.17,
+     "gasto": 269.66,
+     "cpm": 180.98,
      "clics": 10,
      "visitas": 7,
      "checkouts": 1,
      "compras": 0,
-     "ctr_enlace": 0.672,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "ctr_enlace": 0.6711,
+     "cpa": 0
     },
     {
      "id": "3792a442",
@@ -675,63 +813,62 @@
      "checkouts": 0,
      "compras": 0,
      "ctr_enlace": 0.5935,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "cpa": 0
     },
     {
      "id": "33054ca8",
      "nombre": "Transforma tu perfil de IG - Ultima Hora fondo Negro",
      "conjunto": "Transforma tu perfil de IG - Ultima Hora fondo Negro",
-     "gasto": 260.0,
-     "cpm": 120.76,
+     "gasto": 260.08,
+     "cpm": 120.74,
      "clics": 18,
      "visitas": 12,
      "checkouts": 4,
      "compras": 1,
-     "ctr_enlace": 0.836,
-     "cpa": 260.0,
+     "ctr_enlace": 0.8357,
+     "cpa": 260.08,
      "categoria": "ganador"
     },
     {
      "id": "01e98dbb",
      "nombre": "RMK-AD_01 | 21ago ® - Copia",
      "conjunto": "rmk-ad_01 | 24 Ago",
-     "gasto": 355.13,
-     "cpm": 379.82,
+     "gasto": 359.18,
+     "cpm": 383.74,
      "clics": 20,
      "visitas": 15,
      "checkouts": 4,
      "compras": 1,
-     "ctr_enlace": 2.139,
-     "cpa": 355.13,
+     "ctr_enlace": 2.1368,
+     "cpa": 359.18,
      "categoria": "ganador"
     },
     {
      "id": "e6b915e5",
      "nombre": "RMK-AD_02 | 21ago®",
      "conjunto": "RMK-AD_02 | 24Ago",
-     "gasto": 357.37,
-     "cpm": 342.31,
+     "gasto": 357.59,
+     "cpm": 342.19,
      "clics": 14,
      "visitas": 11,
      "checkouts": 2,
      "compras": 1,
-     "ctr_enlace": 1.341,
-     "cpa": 357.37,
+     "ctr_enlace": 1.3397,
+     "cpa": 357.59,
      "categoria": "ganador"
     },
     {
      "id": "5101184a",
      "nombre": "RMK-AD_03 | 21ago ®",
      "conjunto": "RMK | Interesados NO Compraron | 06Jul®",
-     "gasto": 764.2,
-     "cpm": 385.38,
+     "gasto": 764.41,
+     "cpm": 385.09,
      "clics": 38,
      "visitas": 22,
      "checkouts": 6,
      "compras": 2,
-     "ctr_enlace": 1.9163,
-     "cpa": 382.1,
+     "ctr_enlace": 1.9144,
+     "cpa": 382.2,
      "categoria": "ganador"
     },
     {
@@ -752,14 +889,14 @@
      "id": "50372d18",
      "nombre": "V-09.4 No Me Importa lo que Pase",
      "conjunto": "Broad Nuevos AdsV09 | Testeo Agosto",
-     "gasto": 2206.05,
-     "cpm": 267.63,
+     "gasto": 2206.16,
+     "cpm": 267.61,
      "clics": 116,
      "visitas": 101,
      "checkouts": 16,
      "compras": 3,
-     "ctr_enlace": 1.4073,
-     "cpa": 735.35,
+     "ctr_enlace": 1.4071,
+     "cpa": 735.39,
      "categoria": "detener"
     },
     {
@@ -773,8 +910,7 @@
      "checkouts": 0,
      "compras": 0,
      "ctr_enlace": 0.5102,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "cpa": 0
     },
     {
      "id": "7e8d8720",
@@ -787,21 +923,20 @@
      "checkouts": 1,
      "compras": 0,
      "ctr_enlace": 1.4827,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "cpa": 0
     },
     {
      "id": "440177c2",
      "nombre": "Organico_Si_Fueras_tu_clienta_te eligirias?",
      "conjunto": "18_Prueba_Ads_Abierto Te Eligirias?",
-     "gasto": 2074.46,
-     "cpm": 308.98,
+     "gasto": 2074.67,
+     "cpm": 308.96,
      "clics": 96,
      "visitas": 66,
      "checkouts": 17,
      "compras": 4,
-     "ctr_enlace": 1.4298,
-     "cpa": 518.62,
+     "ctr_enlace": 1.4296,
+     "cpa": 518.67,
      "categoria": "ganador"
     },
     {
@@ -822,42 +957,42 @@
      "id": "fdb226e3",
      "nombre": "Organico_Viral_PinitosHH",
      "conjunto": "18_Prueba_Ads_LyL4%® - Copia",
-     "gasto": 3108.61,
-     "cpm": 154.23,
+     "gasto": 3110.56,
+     "cpm": 154.31,
      "clics": 1199,
      "visitas": 998,
      "checkouts": 42,
      "compras": 11,
-     "ctr_enlace": 5.9486,
-     "cpa": 282.6,
+     "ctr_enlace": 5.948,
+     "cpa": 282.78,
      "categoria": "ganador"
     },
     {
      "id": "bc4e495d",
      "nombre": "LaLADEntrevistaTeff®",
      "conjunto": "07_LOOK&LIKE 4%(EntrevistaTeff)®",
-     "gasto": 1529.98,
-     "cpm": 345.21,
+     "gasto": 1530.11,
+     "cpm": 345.09,
      "clics": 82,
      "visitas": 71,
      "checkouts": 6,
      "compras": 2,
-     "ctr_enlace": 1.8502,
-     "cpa": 764.99,
+     "ctr_enlace": 1.8493,
+     "cpa": 765.05,
      "categoria": "detener"
     },
     {
      "id": "654cb509",
      "nombre": "V02_Junio",
      "conjunto": "Test Broad 10% LAL®",
-     "gasto": 2327.14,
-     "cpm": 459.0,
+     "gasto": 2327.76,
+     "cpm": 458.94,
      "clics": 65,
      "visitas": 48,
      "checkouts": 4,
      "compras": 1,
-     "ctr_enlace": 1.2821,
-     "cpa": 2327.14,
+     "ctr_enlace": 1.2815,
+     "cpa": 2327.76,
      "categoria": "detener"
     },
     {
@@ -878,42 +1013,54 @@
      "id": "30235a42",
      "nombre": "FRANK3",
      "conjunto": "FRANK3®",
-     "gasto": 649.37,
-     "cpm": 312.05,
+     "gasto": 649.95,
+     "cpm": 312.03,
      "clics": 42,
      "visitas": 28,
      "checkouts": 4,
      "compras": 0,
-     "ctr_enlace": 2.0183,
-     "cpa": 0,
-     "categoria": "sin_senal"
+     "ctr_enlace": 2.0163,
+     "cpa": 0
     },
     {
      "id": "526784ef",
      "nombre": "src=LaLADCarruselBlanco®",
      "conjunto": "06LOOK&LIKE 4%(CarruselBlanco)®",
-     "gasto": 1333.24,
-     "cpm": 189.57,
+     "gasto": 1333.37,
+     "cpm": 189.56,
      "clics": 82,
      "visitas": 65,
      "checkouts": 9,
      "compras": 4,
-     "ctr_enlace": 1.1659,
-     "cpa": 333.31,
+     "ctr_enlace": 1.1658,
+     "cpa": 333.34,
      "categoria": "ganador"
+    },
+    {
+     "id": "4a7c4d62",
+     "nombre": "26Ago_Hector_En_Cama_v3_corto",
+     "conjunto": "Broad 26Ago_Hector_En_Cama_v3",
+     "gasto": 0.0,
+     "cpm": 0.0,
+     "clics": 0,
+     "visitas": 0,
+     "checkouts": 0,
+     "compras": 0,
+     "ctr_enlace": 0.0,
+     "cpa": 0
     },
     {
      "id": "8d8d2cc1",
      "nombre": "03 AD TX01®",
      "conjunto": "24 COACHING Y TERAPEUTA IMAGENES TEXTO®",
-     "gasto": 1894.43,
-     "cpm": 182.61,
+     "gasto": 1897.76,
+     "cpm": 182.83,
      "clics": 95,
      "visitas": 71,
      "checkouts": 17,
      "compras": 9,
-     "ctr_enlace": 0.9158,
-     "cpa": 210.49,
+     "ctr_enlace": 0.9152,
+     "cpa": 210.86,
      "categoria": "ganador"
     },
     {
@@ -935,48 +1082,243 @@
     {
      "nombre": "🔴 REMARKETING y RETARGETING",
      "estado": "entregando",
-     "gasto_hoy": 15.55,
+     "gasto_hoy": 88.81,
      "compras_hoy": 0,
-     "cpa_7d": 464.81,
-     "pct_presupuesto": 0.0777
+     "cpa_7d": 464.92,
+     "pct_presupuesto": 0.4441
     },
     {
      "nombre": "🟠 02.Tofu | TESTEOS ROL®",
      "estado": "entregando",
-     "gasto_hoy": 99.77,
+     "gasto_hoy": 969.11,
      "compras_hoy": 0,
-     "cpa_7d": 489.84,
-     "pct_presupuesto": 0.0416
+     "cpa_7d": 490.15,
+     "pct_presupuesto": 0.4038
     },
     {
      "nombre": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
      "estado": "entregando",
-     "gasto_hoy": 217.55,
-     "compras_hoy": 1,
-     "cpa_7d": 625.1,
-     "pct_presupuesto": 0.1033
+     "gasto_hoy": 1122.87,
+     "compras_hoy": 2,
+     "cpa_7d": 625.26,
+     "pct_presupuesto": 0.3615
     }
    ],
+   "heatmap": {
+    "dias": [
+     "jue",
+     "vie",
+     "sab",
+     "dom",
+     "lun",
+     "mar",
+     "mie"
+    ],
+    "valores": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      3,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      0,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      2,
+      2,
+      5,
+      4,
+      7,
+      6,
+      5,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      3,
+      3,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    ]
+   },
    "presupuesto": [
     {
-     "nombre": "🔴 REMARKETING y RETARGETING",
-     "monto": 200.0
+     "nombre": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
+     "monto": 3106.0
     },
     {
      "nombre": "🟠 02.Tofu | TESTEOS ROL®",
      "monto": 2400.0
     },
     {
-     "nombre": "🔴 MOFU - 05.EVERGREEN INMERSION - ABIERTO®",
-     "monto": 2106.0
+     "nombre": "🔴 REMARKETING y RETARGETING",
+     "monto": 200.0
     }
    ]
   },
   "seguidores": {
    "kpi": {
-    "visitas_perfil": 17050,
+    "visitas_perfil": 17152,
     "costo_por_visita": 0.97,
-    "inversion": 16580.14
+    "inversion": 16701.39
    },
    "series": {
     "acumulado": {
@@ -1020,8 +1362,8 @@
       13812,
       14957,
       16084,
-      16907,
-      17050
+      16908,
+      17152
      ],
      "anterior": [
       716,
@@ -1109,8 +1451,8 @@
       856.69,
       1043.13,
       981.08,
-      838.0,
-      138.31
+      838.08,
+      259.48
      ],
      "cpa": [
       1.06,
@@ -1140,7 +1482,7 @@
       0.91,
       0.87,
       1.02,
-      0.97
+      1.06
      ]
     }
    },
@@ -1198,12 +1540,12 @@
     {
      "id": "a40417b4",
      "nombre": "Storie 3",
-     "gasto": 301.9
+     "gasto": 301.94
     },
     {
      "id": "83f37160",
      "nombre": "Storie 2",
-     "gasto": 358.05
+     "gasto": 358.06
     },
     {
      "id": "433e2c7b",
@@ -1231,14 +1573,9 @@
      "gasto": 0.11
     },
     {
-     "id": "5ae6d925",
-     "nombre": "V1 Cancún",
-     "gasto": 0.0
-    },
-    {
      "id": "69472774",
      "nombre": "Storie 1",
-     "gasto": 695.82
+     "gasto": 695.83
     },
     {
      "id": "2c346a09",
@@ -1258,7 +1595,7 @@
     {
      "id": "8c2b0680",
      "nombre": "V3 Cancún",
-     "gasto": 1044.0
+     "gasto": 1044.02
     },
     {
      "id": "fe4a1e08",
@@ -1275,9 +1612,9 @@
   },
   "leads": {
    "kpi": {
-    "leads": 2596,
-    "cpl": 24.7,
-    "inversion": 64118.41
+    "leads": 2625,
+    "cpl": 24.71,
+    "inversion": 64872.45
    },
    "series": {
     "acumulado": {
@@ -1322,7 +1659,7 @@
       2338,
       2503,
       2592,
-      2596
+      2625
      ],
      "anterior": [
       0,
@@ -1409,9 +1746,9 @@
       3908.78,
       4298.99,
       5384.11,
-      4800.68,
-      2519.3,
-      145.86
+      4800.75,
+      2522.93,
+      896.2
      ],
      "cpa": [
       19.58,
@@ -1440,17 +1777,17 @@
       25.59,
       26.39,
       29.1,
-      28.31,
-      36.47
+      28.35,
+      27.16
      ]
     }
    },
    "campanias": [
     {
-     "nombre": "🟡MASTERCLASS GRATIS - CDB - $1"
+     "nombre": "🟡Captación CDB - Test"
     },
     {
-     "nombre": "🟡Captación CDB - Test"
+     "nombre": "🟡MASTERCLASS GRATIS - CDB - $1"
     }
    ],
    "anuncios": [
@@ -1467,17 +1804,17 @@
     {
      "id": "38cd7fde",
      "nombre": "AD012",
-     "gasto": 5788.46
+     "gasto": 5789.2
     },
     {
      "id": "52344dc2",
      "nombre": "Ad 2 - Webinar",
-     "gasto": 5122.04
+     "gasto": 5122.22
     },
     {
      "id": "cc0fe1d3",
      "nombre": "Ad 1 - Webinar",
-     "gasto": 5026.48
+     "gasto": 5028.3
     },
     {
      "id": "bf29fe12",
@@ -1487,7 +1824,7 @@
     {
      "id": "270bbed5",
      "nombre": "AD012",
-     "gasto": 5294.39
+     "gasto": 5295.35
     },
     {
      "id": "9dd0e8fb",
@@ -1506,5 +1843,10 @@
     }
    ]
   }
+ },
+ "desde_ultima": {
+  "hora": "06:44",
+  "compras": 1,
+  "delta_cpa": 0.0004
  }
 }
