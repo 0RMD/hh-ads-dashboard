@@ -2128,8 +2128,119 @@
      "nombre": "🟢 Follow Me Ads - Trafico"
     }
    ],
-   "anuncios": [],
-   "presupuesto": []
+   "anuncios": [
+    {
+     "id": "34cae4ff",
+     "nombre": "V5 Cancún",
+     "gasto": 0.3
+    },
+    {
+     "id": "e4de8b3b",
+     "nombre": "Storie 2",
+     "gasto": 409.26
+    },
+    {
+     "id": "fe3d14c5",
+     "nombre": "Solo por hoy 1",
+     "gasto": 1.78
+    },
+    {
+     "id": "58cb102e",
+     "nombre": "Storie 3",
+     "gasto": 7.9
+    },
+    {
+     "id": "c6525a46",
+     "nombre": "Storie 3",
+     "gasto": 142.24
+    },
+    {
+     "id": "00481962",
+     "nombre": "Solo por hoy 2",
+     "gasto": 3.01
+    },
+    {
+     "id": "59825af7",
+     "nombre": "V3 Cancún",
+     "gasto": 1065.57
+    },
+    {
+     "id": "bce6caa1",
+     "nombre": "Storie 1",
+     "gasto": 449.76
+    },
+    {
+     "id": "a40417b4",
+     "nombre": "Storie 3",
+     "gasto": 326.24
+    },
+    {
+     "id": "83f37160",
+     "nombre": "Storie 2",
+     "gasto": 338.79
+    },
+    {
+     "id": "433e2c7b",
+     "nombre": "V1 Cancún",
+     "gasto": 2.98
+    },
+    {
+     "id": "9ed7aea3",
+     "nombre": "Solo por hoy 1",
+     "gasto": 0.42
+    },
+    {
+     "id": "0dc6f306",
+     "nombre": "V3 Cancún",
+     "gasto": 1061.29
+    },
+    {
+     "id": "bc7a7b75",
+     "nombre": "Solo por hoy 2",
+     "gasto": 16.41
+    },
+    {
+     "id": "fd519839",
+     "nombre": "V5 Cancún",
+     "gasto": 0.03
+    },
+    {
+     "id": "69472774",
+     "nombre": "Storie 1",
+     "gasto": 713.35
+    },
+    {
+     "id": "2c346a09",
+     "nombre": "Solo por hoy 2",
+     "gasto": 7.32
+    },
+    {
+     "id": "089691fd",
+     "nombre": "Solo por hoy 1",
+     "gasto": 1.02
+    },
+    {
+     "id": "f13ff27a",
+     "nombre": "Storie 1",
+     "gasto": 293.39
+    },
+    {
+     "id": "8c2b0680",
+     "nombre": "V3 Cancún",
+     "gasto": 1035.37
+    },
+    {
+     "id": "fe4a1e08",
+     "nombre": "Storie 2",
+     "gasto": 420.04
+    }
+   ],
+   "presupuesto": [
+    {
+     "nombre": "🟢 Follow Me Ads - Trafico",
+     "monto": 900.0
+    }
+   ]
   },
   "leads": {
    "kpi": {
@@ -2331,8 +2442,53 @@
      "nombre": "🟡MASTERCLASS GRATIS - CDB - $1"
     }
    ],
-   "anuncios": [],
-   "presupuesto": []
+   "anuncios": [
+    {
+     "id": "65cd7192",
+     "nombre": "AD011",
+     "gasto": 10.55
+    },
+    {
+     "id": "5862ebed",
+     "nombre": "AD013",
+     "gasto": 2.3
+    },
+    {
+     "id": "38cd7fde",
+     "nombre": "AD012",
+     "gasto": 9222.38
+    },
+    {
+     "id": "cc0fe1d3",
+     "nombre": "Ad 1 - Webinar",
+     "gasto": 5344.34
+    },
+    {
+     "id": "bf29fe12",
+     "nombre": "AD011",
+     "gasto": 2.15
+    },
+    {
+     "id": "270bbed5",
+     "nombre": "AD012",
+     "gasto": 5857.06
+    },
+    {
+     "id": "9dd0e8fb",
+     "nombre": "AD013",
+     "gasto": 0.75
+    }
+   ],
+   "presupuesto": [
+    {
+     "nombre": "🟡Captación CDB - Test",
+     "monto": 600.0
+    },
+    {
+     "nombre": "🟡MASTERCLASS GRATIS - CDB - $1",
+     "monto": 1950.0
+    }
+   ]
   }
  },
  "desde_ultima": {
